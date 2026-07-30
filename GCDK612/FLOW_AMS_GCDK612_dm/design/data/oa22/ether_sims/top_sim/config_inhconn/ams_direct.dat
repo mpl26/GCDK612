@@ -1,0 +1,15 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1108434110556=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1108491847000:7-dirName35-$AMS/design/custom_cdba/top_inhconn8-snapShot24-top_sim:ams1105662160944;
+$END
+$ALWAYS_USE_RUN_DIR
+	$AMS/design/custom_cdba/top_inhconn;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11056621609446-Solver7-Spectre7-CdsPlat5-sun4v;
+$END

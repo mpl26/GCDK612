@@ -1,0 +1,139 @@
+#
+gsclib090 BUFX3 symbol
+COEF_OUT_reg_6_2182_3
+COEF_OUT_reg_3_37_5a
+#
+gsclib090 INVX8 symbol
+i_170001
+i_170002
+i_170004
+i_170005
+#
+gsclib090 BUFX1 symbol
+i_510
+COEF_OUT_reg_4_393_5a
+COEF_OUT_reg_2_586_5a
+#
+gsclib090 CLKBUFX1 symbol
+i_508
+i_1865
+i_1866
+#
+gsclib090 OAI21X1 symbol
+i_141270
+i_131271
+i_121272
+#
+gsclib090 AND2X1 symbol
+i_261282
+#
+gsclib090 AOI21X1 symbol
+i_13
+i_81264
+#
+gsclib090 NAND3X1 symbol
+i_9
+#
+gsclib090 NOR2X1 symbol
+i_3
+i_111273
+i_2
+i_5
+i_38
+i_36
+#
+gsclib090 OR2X1 symbol
+i_251283
+i_241284
+i_231285
+i_05557
+i_19
+i_201288
+i_211287
+i_221286
+#
+gsclib090 NAND2X1 symbol
+i_55
+i_54
+i_53
+i_52
+i_51
+i_50
+i_49
+i_48
+i_47
+i_46
+i_45
+i_44
+i_43
+i_42
+i_41
+i_40
+i_39
+i_1
+i_7
+i_11
+i_15
+i_16
+i_17
+i_18
+i_20
+i_21
+i_22
+i_23
+i_24
+i_25
+i_26
+i_27
+i_28
+i_29
+i_30
+i_31
+i_32
+i_4
+i_56
+i_35
+#
+gsclib090 DFFSRX1 symbol
+coefficient_reg_0
+coefficient_reg_1
+coefficient_reg_2
+coefficient_reg_3
+coefficient_reg_4
+coefficient_reg_5
+coefficient_reg_6
+coefficient_reg_7
+coefficient_reg_8
+coefficient_reg_9
+coefficient_reg_10
+coefficient_reg_11
+coefficient_reg_12
+coefficient_reg_13
+coefficient_reg_14
+coefficient_reg_15
+coefficient_reg_16
+coefficient_reg_17
+COEF_OUT_reg_0
+COEF_OUT_reg_1
+COEF_OUT_reg_2
+COEF_OUT_reg_3
+COEF_OUT_reg_4
+COEF_OUT_reg_5
+COEF_OUT_reg_6
+COEF_OUT_reg_7
+#
+gsclib090 INVX1 symbol
+i_252
+i_251
+i_250
+i_249
+i_248
+i_247
+i_246
+i_245
+#
+ether AWDP_ADD_152629_0 symbol
+i_4725
+#
+ether AWDP_INC_252659_0 symbol
+i_4723

@@ -1,0 +1,30 @@
+Simulation:     USIM_PLL_250MHZ 
+
+Purpose:        Transient simulation of the 250MHZ PLL using UltraSim
+
+States:         tt_MS_A2_M0_A2
+Note:
+The suffix of the state indicates simulator options: 
+Suffix	- Simulatior Option	- Setting
+MS 	- Circuit Type 		- Mixed-signal
+A2 	- Accuracy Mode 	- Balanced (2) 
+M0 	- Post-layout Method 	- pre-layout(0) 
+A2 	- Analog Mode 		- analog 2 (2)
+The default integration method for transient analysis, backward euler (be) is
+used.
+
+Description:    The AMS_PLL_250MHZ test-bench contains  an instantiation of 
+the PLL block, PLL_250MHZ. The input of the PLL_250MHZ block is driven by a 
+25MHz periodic voltage source. Ideal current sources are used to provides the 
+bias currents necessary to operate the block. 
+
+Verification:   The simulation needs to be run for about 5us for the PLL to 
+lock. The CLK_250MHZ_PH<5> output of the PLL can monitored to check the 
+frequency and duty-cycle of the PLL output clock. When the frequency of the
+phase<5> signal reaches a steady value around 250MHz, it indicates PLL lock. 
+The frequency may be determined by checking the period of the clock. 
+
+Input Signals:  I29/CLK_25MHZ
+
+Output Signals: phase<5>, I29/CLK_250MHZ_PH<5>
+

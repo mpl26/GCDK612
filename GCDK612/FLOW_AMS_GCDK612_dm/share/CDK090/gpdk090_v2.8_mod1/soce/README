@@ -1,0 +1,16 @@
+
+Enclosed are 3 cap tables for encounter.
+
+gpdk090.basic.CapTbl - is a basic encounter cap table
+gpdk090.extended.CapTbl - is an extended cap table created with a pcs file and the coyote field solver
+gpdk090.lef.extended.CapTbl - is an extended cap table that also includes the lef file and runs with the coyote field solver
+
+gpdk090.pcs - is the Process Capacitance Specification (pcs) file built up from the info from Kent, Shufan and some research.
+
+Enclosed are the 3 logs for the cap table runs and 3 example scripts to recreate the cap tables.
+Also enclosed is the lef used for creating the lef.extended cap table.
+
+The cap tables take from about 5 min(basic) to 8 hours(extended) to run on a Intel 2.8GHz Linux workstation.
+
+
+

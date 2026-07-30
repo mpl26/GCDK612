@@ -1,0 +1,49 @@
+Simulation: isource_1_2_ac_sim
+
+Purpose: Measure ac stability of external bias current mirror loop and
+cascode bias loop.
+
+
+Available states: tt_55_2p5
+
+
+
+Description: The isource_1_2_ac_sim testbench consists of the external
+resistor based current mirror block and  Bias_bg_current_source_1_2. The 
+bandgap reference is modeled with an ideal source. The Bias_bg_vt_current
+block provides bias currents for the current mirror. A bond package model
+block,BOND,is used to model parasitics contributed by the pad to the external 
+resistor output pin, Rext. Finally, a loop_breaker, block is added to
+allow for AC  open loop gain and phase measurements.
+
+
+Verification:
+	The  bias loop AC stability can be characterized using the upper
+portion of the test bench containing instance I_CURRENT12. The AC 
+response can be measured as the ratio of nets AC_OUT_B and AC_IN_B. The 
+pins that these nets connect to are CASC_AC_IN and CASC_AC_OUT.For example,
+valid expression for the AC magnitude and gain using the artist calculator
+	 are:
+dB20(VF("/AC_OUT_B")/VF("/AC_IN_B"))
+phase(VF("/AC_OUT_B")/VF("/AC_IN_B"))
+From these expressions the phase margin can be graphically determined.
+
+	The cascode bias loop AC stability can be characterized using the 
+lower portion of the test bench containing instance I9. The AC response
+can be measured as the ratio of nets AC_OUT_C and AC_IN_C. The pins that
+these nets connect to are CASC_AC_IN and CASC_AC_OUT. For example, valid 
+expressions for the AC magnitude and gain using the artist calculator
+are:
+
+dB20(VF("/AC_OUT_C")/VF("/AC_IN_C")) AC magnitude response
+phase(VF("/AC_OUT_C")/VF("/AC_IN_C")) AC phase response
+From these expressions the phase margin can be graphically determined.
+
+Inputs:
+AC_IN_B			Bias AC input
+AC_IN_C			Cascode AC signal input
+
+
+Outputs:
+AC_OUT_B		Bias AC output
+AC_OUT_C		Cascode AC ouptut

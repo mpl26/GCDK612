@@ -1,0 +1,227 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  PLL_250MHZ
+// Project :  umc18a01
+// Author  :  dshelton
+// Notes   :  based on umc05001 spectre hdl pll module
+//            modeled single cyle lock-time
+//
+//            setting ACCURATE define provides cycle to cycle
+//            phase locking, typical duty cycle, accurate prop delays 
+//            from phase comparator to output. Otherwise model simply 
+//            'locks' to first edge of reference clock and puts out 
+//            160MHz clock with 50% duty cycle  
+// To Do   :  
+//
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+#define PLL250_ACCURATE 
+
+module PLL_250MHZ (
+  CLK_250MHZ_PH,
+  CP_ITEST_25u,          
+  VSS, 
+  VDD,
+  IEXT_25u, 
+  IEXT_100u,
+  IPLY_25u, 
+  CLK_25MHZ,
+  DISABLE, 
+  SIDDQ) ()
+
+  node [V,I] CLK_250MHZ_PH[10:0];
+  node [V,I] CP_ITEST_25u;
+  node [V,I] VSS;
+  node [V,I] VDD;
+  node [V,I] IEXT_25u; 
+  node [V,I] IEXT_100u;
+  node [V,I] IPLY_25u;
+  node [V,I] CLK_25MHZ;
+  node [V,I] DISABLE;   
+  node [V,I] SIDDQ;
+
+
+{
+#ifdef PLL250_ACCURATE
+  integer i           = 0;
+  integer go          = 0;
+ 
+  real duty_cycle     = .425;
+  real last_cross;
+  real i_real;
+  real go_real;
+#endif
+
+  real vth            = 0;
+  real td_tap         = .1n;    // prop delay to TAP outputs
+
+#ifdef PLL250_ACCURATE 
+  real tr             = .2n;
+  real tf             = .2n;
+#else
+  real tr             = 1n;
+  real tf             = 1n;
+#endif
+ 
+  real start_time     = 0;
+  real period         = 4n;
+  real tapspacing     = 4n/11;
+  real rbias25        = 9e3; 
+  real rbias100       = 9e3;
+  real vout_real;
+  real low_bias_25    = 20e-6;
+  real high_bias_25   = 30e-6;
+  real low_bias_100   = 80e-6;
+  real high_bias_100  = 120e-6; 
+ 
+  integer vout        = 0;
+  integer restart     = 1;
+  integer rising_edge = 1; 
+ 
+  
+  analog {
+    // track supplies
+    vth = 0.5*(V(VDD) - V(VSS)) + V(VSS);
+    rising_edge = $threshold(V(CLK_25MHZ) - vth, +1, .001, 1);
+	  
+#ifdef PLL250_ACCURATE	  // accurate model here	  
+    tapspacing  = period/11;
+    i_real      = i;
+    go_real     = go; 
+
+    if ($threshold(V(CLK_25MHZ) - vth, +1, .001, 1)) {
+      i += 1;
+      go = (i > 1) ? 1 : 0;
+      period     = ($time() - last_cross)/10e0;
+      last_cross = $time();
+    }
+ 
+    // siddq/disable mode
+    if(V(SIDDQ) > vth || V(DISABLE) > vth) {
+      vout = 0;
+      restart = 1;
+      i = 0;
+
+      // bias current inputs pulled high in SIDDQ mode 
+      V(IEXT_25u, VDD) <- V(VDD);
+      V(IPLY_25u, VDD) <- V(VDD);
+      V(IEXT_100u, VDD) <- V(VDD);					    
+
+    }
+
+   // bias out-of-range shutdown
+    else if((V(SIDDQ) < vth) && 
+       (V(DISABLE) < vth) &&
+      ((I(VDD, IEXT_25u)  < low_bias_25)   ||
+       (I(VDD, IEXT_25u)  > high_bias_25)  ||
+       (I(VDD, IPLY_25u)  < low_bias_25)   ||
+       (I(VDD, IPLY_25u)  > high_bias_25)  ||
+       (I(VDD, IEXT_100u) < low_bias_100)  ||
+       (I(VDD, IEXT_100u) > high_bias_100))) {
+					      
+      vout = 0;
+      restart = 1;
+      i = 0;
+
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);
+    }	  
+
+    // normal operation	  
+    else {
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);	  
+	 
+      if(go && rising_edge) {
+	vout = 1;
+        restart = 0;
+	start_time = $time();
+      }
+	 
+      if($break_point(start_time, period) && !restart) {
+          vout = 1;
+	}
+        
+     if($break_point(start_time +duty_cycle*period, period) && !restart) {
+          vout = 0;
+	}
+
+    }
+#else  // fast model here	
+	     
+    // siddq/disable mode
+    if(V(SIDDQ) > vth || V(DISABLE) > vth) {	  
+      restart = 1;
+      vout = 0;
+						  
+      // bias current inputs pulled high in SIDDQ mode 
+      V(IEXT_25u, VDD) <- V(VDD);
+      V(IPLY_25u, VDD) <- V(VDD);
+      V(IEXT_100u, VDD) <- V(VDD);
+    }
+
+    // bias out-of-range shutdown
+    else if((V(SIDDQ) < vth) && 
+       (V(DISABLE) < vth) &&
+      ((I(VDD, IEXT_25u)  < low_bias_25)   ||
+       (I(VDD, IEXT_25u)  > high_bias_25)  ||
+       (I(VDD, IPLY_25u)  < low_bias_25)   ||
+       (I(VDD, IPLY_25u)  > high_bias_25)  ||
+       (I(VDD, IEXT_100u) < low_bias_100)  ||
+       (I(VDD, IEXT_100u) > high_bias_100))) {
+					      
+      restart = 1;
+      vout = 0; 
+
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);
+    }	  	  
+
+    // normal operation		  
+    else {
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);	 
+	 
+      if(rising_edge && restart) {
+	vout = 1;
+	start_time = $time();
+	restart = 0;
+      }
+
+      if($break_point(start_time, 0.5*period) && !restart) {
+          vout = !vout;
+      }	 
+    }
+	  
+#endif	  	  
+    vout_real = vout ? V(VDD) : V(VSS);
+	  
+    V(CLK_250MHZ_PH[0])  <- 
+           $transition(vout_real, td_tap, tr, tf);
+    V(CLK_250MHZ_PH[1])  <- 
+           $transition(vout_real, td_tap + tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[2])  <- 
+           $transition(vout_real, td_tap + 2*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[3])  <- 
+           $transition(vout_real, td_tap + 3*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[4])  <- 
+           $transition(vout_real, td_tap + 4*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[5])  <- 
+           $transition(vout_real, td_tap + 5*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[6])  <- 
+           $transition(vout_real, td_tap + 6*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[7])  <- 
+           $transition(vout_real, td_tap + 7*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[8])  <- 
+           $transition(vout_real, td_tap + 8*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[9])  <- 
+           $transition(vout_real, td_tap + 9*tapspacing, tr, tf);
+    V(CLK_250MHZ_PH[10]) <- 
+           $transition(vout_real, td_tap + 10*tapspacing, tr, tf);
+  }
+}
+

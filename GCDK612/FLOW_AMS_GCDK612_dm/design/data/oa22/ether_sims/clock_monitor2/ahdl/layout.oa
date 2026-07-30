@@ -1,0 +1,78 @@
+//
+//	Module Name :	clock_monitor2
+//	Rev :		
+//	Author :	Steve Broome
+//	Date :	        7/11/98
+//      Last Modified:  5/11/99  changed symbol, updated ahdl code, added threshold offset parameter
+//                      3/21/03  modified from cell "clock_monitor" changed "threshref" from a parameter
+//                               to a float that gets its input from a pin. this was needed for the
+//                               verilogams view.  
+//
+//
+//
+//	Input(s) :	clockref, clockref_bar  - Differential reference clock input
+//                      threshvolt   -  Threshold voltage offset of ref clock.  Normally the threshold is 0 for
+//                                   differential signals.  If for example, a 3.3volt CMOS signal is placed
+//                                   on the plus pin, and gnd is on the minus pin, threshvolt  should
+//                                   be set to 1.65V.
+//
+//	Output(s) :	freq       - Frequency of clock in GHz/volt
+//			duty       - Duty cycle of clock in %/volt
+//                      jitter_e2e - Edge to edge jitter in sec (cycle to cycle measured on rising edge)
+//	Description :
+//
+// This module looks for clock edges to cross threshref volts, and measures
+// duty cycle, frequency, and edge to edge jitter based on these crossings.
+//
+
+module clock_monitor2(freq, duty, clockref, clockref_bar, threshvoltp, threshvoltm, jitter_e2e)
+  node [V,I] freq, duty, clockref, clockref_bar, jitter_e2e, threshvoltp,threshvoltm;
+{
+  real old_rise, new_rise, old_fall, new_fall, old_period, new_period;
+  real dutycycle, frequency, e2ejitter,threshref;
+  
+  initial 
+    {
+      old_rise=0;
+      new_rise=0;
+      old_fall=0;
+      new_fall=0;
+      old_period=0;
+      new_period=0;
+      dutycycle=0;
+      frequency=0;
+    }
+
+  
+  analog 
+    { 
+      if( $threshold( V(clockref,clockref_bar)-threshref, +1))
+        { 
+          old_rise=new_rise;
+          new_rise=$time();
+	  if(old_rise!=0)
+	    {
+	      old_period=new_period;
+	      new_period=new_rise-old_rise;
+              frequency = (1/(new_rise-old_rise));
+	      if(old_period!=0)
+	        { e2ejitter = new_period-old_period; }
+	    }
+        }
+      if( $threshold( V(clockref,clockref_bar)-threshref, -1))
+        { 
+          old_fall=new_fall;
+          new_fall=$time();
+	  if(old_fall!=0)
+	    { dutycycle = (new_fall-new_rise)/(new_fall-old_fall); } 
+        } 
+      threshref = V(threshvoltp,threshvoltm);
+      V(duty) <- 100*dutycycle;   //dutycycle voltage is a percentage
+      V(freq) <- frequency/1e9;   //if don't divide by large number (and do GHz/Volt), simulator may bomb because voltage gets too large
+      V(jitter_e2e) <- e2ejitter;
+    }
+   
+  final 
+    {
+    }
+}

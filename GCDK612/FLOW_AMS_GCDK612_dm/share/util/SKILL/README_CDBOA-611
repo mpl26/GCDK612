@@ -1,0 +1,71 @@
+Instance Terminal Correction - Error: CDBOA-611
+
+The error CDBOA-611 was found on the Elpida test case. This error is caused
+by having more than one instance terminal on a single terminal on an
+instance. This was allowed in Virtuoso before 446 but is not supported in
+OpenAccess. This has been fixed in later versions of Virtuoso.
+
+ERROR   (CDBOA-611): Cellview <path> is incomplete because the CDBA version      
+                     includes instance terminals with the same name <name>      
+                     connected to different nets.
+                     
+                      Generated 22 times. In releases prior to IC 4.4.6, CDBA   
+                     allows instances to have terminals with the same name as   
+                     long as these are attached to different nets. OpenAccess   
+                     does not. Correct the terminal names in CDBA before        
+                     translating these cellviews, either by editing the         
+                     cellviews manually or by regenerating them using the latest
+                     version of CDBA.
+
+To fix this problem the programs in the file OAfixDupInstTerm.il were
+created. These will report and fix any instance which has a terminal with
+two instance terminals connected to the same net. If the instance has a
+terminal connected to different nets, the program checks the nets to see if
+they have more than one connection, if not, one of the instance terminals
+is deleted, this was an error in early releases of VXL. If both nets have
+more than one connection, the program reports the problem and the user must
+manually fix it.
+The procedures are run on the CDBA database. You may run them on a library
+or cell basis.
+OAfixDupInstTermsLib - Processes libraries to correct data causing cdb2oa
+error 611.
+Arguments:
+?log - Open port to add output log information
+?logFileName - Name of log file to create. Default is libEdit<PID>.log
+?libList - List of libraries or name of library to process. By default all
+           the libraries in the cds.lib are processed.
+?skipList - Name or list of libraries to skip processing
+?viewList - Name or list of views to process
+
+OAfixDupInstTermsLib( ?logFileName "logFile" ?libList "libName" )
+
+      - Processes named library
+OAfixDupInstTermsLib( ?logFileName "logFile" ?libList list( lib1 lib2... ) )
+      - Processes libraries in list
+OAfixDupInstTermsLib( ?logFileName "logFile" )
+      - Processes all libraries in cds.lib
+OAfixDupInstTermsLib( ?logFileName "logFile" ?skipList list( lib1 lib2... ) )
+      - Processes all libraries in cds.lib except those in skip list
+
+OAfixDupInstTermsLib( ?logFileName "DupInstTerms_ether.log3" ?libList "ether" ?viewList "layout" )      
+OAfixDupInstTermsLib( ?logFileName "logFile" ?viewList "layout" )
+
+      - Processes the layout views in all libraries in cds.lib,
+
+OAeditCellFixDupInstTerms - Processes named cell and views. Use this if you
+only have a few views to fix.
+Arguments:
+?libName - Name of library for cell - REQUIRED
+?cellName - Name of cell to process - REQUIRED
+?cellId - ID of a cell in a library - Overrides libName and cellName
+?viewList - List of views to process. Default is all views.
+?log - Open output log file port. Default is stdout
+
+OAeditCellFixDupInstTerms( ?libName "libName" ?cellName "cellName" ?log stdout )
+      - Processes all the views of a cell
+OAeditCellFixDupInstTerms( ?libName "libName" ?cellName "cellName" \
+      ?viewlist "layout" )
+      - Process the layout view from the cell, output to stdout
+
+For comments on this program please contact the DFII on OpenAccess Adoption
+Team at Cadence <a_team@cadence.com>

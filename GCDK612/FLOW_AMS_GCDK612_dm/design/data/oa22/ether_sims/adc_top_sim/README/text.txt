@@ -1,0 +1,69 @@
+Simulation  :	adc_top_SIM
+Purpose     :	Test the operation of the 6-bit ADC (adc) 
+		and 3-bit ADC (adcflash) with the decoders.
+
+Input Signal:	Common Mode: 765mV
+                Voltage Swing: +/-200mV single ended
+		frequency = 56.64Mhz
+
+Description :	This simulation takes the input differential analog signal and 
+		codifies it into a 6-bit (adc) and/or 3-bit (adcflash) output 
+		digital word.
+
+		The main path to test is the 6-bit path used for 100TX.
+		The testcase sets the following bits:
+		basefx_dis = 1 (disables 100FX mode) 
+		test_en    = 0 (disables test mode of the adc)
+		base100_tx_dis = 0 (Enables 100TX operation)
+
+		Run both: Spectre (from schematic) and SpectreVerilog (Config)
+
+Verification:   Verify results by checking the Input (INP/INM) vs. the output
+		DACOUT_INT and DACOUT_FLASH generated signals.
+
+		The output for the adc should be a repeated pattern of different
+		sampling points of the input sinusoidal signal.
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+
+Simulator   :   Spectre-Verilog
+View        :   config (uses schematic) / config2 (uses schematic_ams)
+States      :   tt
+Interface Elements: MOS_2p5
+	a2d voltage low : 0.5V (Produces a logic "0" state)
+	a2d voltage high: 0.6V (Produces a logic "1" state)
+	
+	d2a output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	d2a output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	d2a rise time   : 100p (Transition time from Analog low to high voltage)
+	d2a fall time   : 100p (Transition time from Analog high to low voltage)
+
+Simulator   :	AMSDesigner
+View        :   config_ams
+Connectivity Module: mixedsignal_25A
+	elect2logic25a module:
+	   threshold voltage: 1.25V
+	   voltage high (> threshold voltage) (Produces a logic "1" state)
+	   voltage low  (< threshold voltage) (Produces a logic "0" state)
+	
+	logic2elect25a module:
+	   output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	   output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	   output Z    : 0.0V (Analog voltage corresponding to logic "Z" state)
+	   output X    : 0.0V (Analog voltage corresponding to logic "X" state)
+	   rise time   : 400p (Transition time from Analog low to high voltage)
+	   fall time   : 400p (Transition time from Analog high to low voltage)
+--------------------------------------------------------------------------------
+
+2004-11-19: Simulation time 
+(RayV)      Environment: Linux machine: 2 CPU, 2.8GHz, 8GB RAM, 20GB SWAP)
+            ------------------------------------------------------------------
+	   | Sim Engine | Sim Time | Env |  Used View |   Note
+	    ------------+----------+-----+------------+------------------------
+	   | Spectre    | 35:06 min| ADE | schematic  | Transistor level
+	   | Ultrasim   |  1:03 min| ADE | schematic  | Fast MOS transistor
+	   | AMS        |          | ADE | verilogams | behavioral model
+	    ------------------------------------------------------------------
+        

@@ -1,0 +1,61 @@
+Simulation  :	adc_cascode_opamp_SIM
+Purpose     :	Check the Cascode Opamp used in the ADC.
+
+Description :	Check the OUT_AC and OUT_AC_3BIT outputs for 
+		Gain and Phase plots.
+
+Verification:   Check Amplitude and Phase of Opamp to determine stability.
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+
+
+==============================================================================
+
+2005-09-22: These views are added for generating specs for using in NeoCiruit:
+            -------------------------------------------------------------------
+	       View                    |  Specs. and  Note              
+	    -------------------------------------------------------------------
+            1. config_Gain_Vio_CMRR_SR | Open-loop gain,   Aol = 94
+               sch_Gain_Vio_CMRR_SR    | Common-mode gain, Acm = 0.56
+	                               | Input Offset Voltage, Vio = 36 mV
+				       | Common-mode Rejection Ration, CMRR=44dB
+				       | Slew Rate, SR = 1.6 V/uSec
+				       
+	    2. config_dc_ac_2          | AC Response Band Width at 3dB = 25.75M Hz
+	       sch_dc_ac_2             | AC Response Gain at 1KHz = 122.8 
+	       
+	    3. sch_system              | <for analyze block funtionality>
+	    -------------------------------------------------------------------
+	              
+       ADE Expressions Used:
+       --------------------
+      1. Input Offset Voltage:
+         Vio = abs((value(VT("INP") cross(VT("/Vout") 0.09 1 "falling")) - value(VT("INM") cross(VT("/Vout") 0.09 1 "falling"))))
+
+      2. Common-Mode Gain:
+         Acm = (value(VT("Vout3") 1.8e-06) / value(VT("Vcm") 1.8e-06))
+	
+      3. Open-Loop Gain:
+         Aol = (value(VT("/Vout2") 1.8e-06) / (value(VT("/INP2") 1.8e-06) - value(VT("/INM2") 1.8e-06)))
+	
+      4. Common-Mode Rejection Ratio:
+         CMRR = 20log( Aol / Acm )
+              = dB20((value(VT("/Vout2") 1.8e-06) / (value(VT("/INP2") 1.8e-06) - value(VT("/INM2") 1.8e-06)) / (value(VT("Vout3") 1.8e-06) / value(VT("Vcm") 1.8e-06))))
+      
+      5. Slew Rate:
+         SR = dV / dT
+            =((value(VT("Vout2") cross(VT("Vout2") 780m 1 "rising" )) - value(VT("Vout2") cross(VT("Vout2") 300m 1 "rising" )))/(cross(VT("Vout2") 780m 1 "rising" ) - cross(VT("Vout2") 300m 1 "rising" )))*1E-6
+	 Where: dV = value(VT("Vout2") cross(VT("Vout2") 780m 1 "rising" )) - value(VT("Vout2") cross(VT("Vout2") 300m 1 "rising" ))
+	        dT = cross(VT("Vout2") 780m 1 "rising" ) - cross(VT("Vout2") 300m 1 "rising" )
+ 
+      6. AC Gain at 1K Hz:
+         Aac = value(mag(VF("/OUT_AC_3BIT")) 1000)
+
+      7. AC response band-wdith @3dB:
+         AC_BW = bandwidth(mag(VF("/OUT_AC_3BIT")) 3 "low" )
+      
+------------------------------ End of file ---------------------------------
+	    
+	       

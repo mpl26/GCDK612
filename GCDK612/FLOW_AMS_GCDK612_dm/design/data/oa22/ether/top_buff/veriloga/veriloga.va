@@ -1,0 +1,348 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  top_buff
+// Project :  umc18a01
+// Author  :  dshelton
+// Notes   :  This model is used to speed up top-level mixed-signal 
+//            simulations by reducing the number of timestep calculations
+//            required. All output clocks are synchronous with inputs 
+//            with no prop-delay.   
+// To Do   : 
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+`include "constants.h"
+`include "discipline.h"
+
+module top_buff(
+   PHASE_125, 
+   PHASE_250, 
+   XTAL25, 
+   X_125, 
+   PHASE_IN, 
+   PLL_160_IN, 
+   RESETN, 
+   XTAL25_IN, 
+   X_160,
+   VDDTX,
+   VDDRX,
+   GNDRX,
+   GNDTX,
+   VDD,
+   GND);
+   
+   output [10:0] PHASE_125;
+   output [10:0] PHASE_250;
+   output        XTAL25;
+   output        X_125;
+   input  [10:0] PHASE_IN;
+   input         PLL_160_IN;
+   input         RESETN;
+   input         XTAL25_IN;
+   output        X_160;
+   input         VDD;
+   input         VDDRX;
+   input         VDDTX;
+   input         GND;
+   input         GNDRX;
+   input         GNDTX;		   
+
+   electrical [10:0] PHASE_125;
+   electrical [10:0] PHASE_250;
+   electrical        XTAL25;
+   electrical        X_125;
+   electrical [10:0] PHASE_IN;
+   electrical        PLL_160_IN;
+   electrical        RESETN;
+   electrical        XTAL25_IN;
+   electrical        X_160;
+   electrical        VDD;
+   electrical        VDDRX;
+   electrical        VDDTX;
+   electrical        GND;
+   electrical        GNDRX;
+   electrical        GNDTX;	   
+
+   parameter real vtrans = 1.25;
+   parameter real vhigh  = 2.5;
+   parameter real vlow   = 0.0;
+   parameter real tdel   = 0.0;   
+   parameter real tr     = 0.5n; 
+   parameter real tf     = 0.5n;  
+
+   real     XTAL25_real;
+   real     PLL_160_real;
+   real     PHASE10_real;
+   real     PHASE9_real;  
+   real     PHASE8_real;   
+   real     PHASE7_real;
+   real     PHASE6_real;   
+   real     PHASE5_real;   
+   real     PHASE4_real;   
+   real     PHASE3_real;   
+   real     PHASE2_real;   
+   real     PHASE1_real;   
+   real     PHASE0_real; 
+   real     PHASE10_125_real;
+   real     PHASE9_125_real;  
+   real     PHASE8_125_real;   
+   real     PHASE7_125_real;
+   real     PHASE6_125_real;   
+   real     PHASE5_125_real;   
+   real     PHASE4_125_real;   
+   real     PHASE3_125_real;   
+   real     PHASE2_125_real;   
+   real     PHASE1_125_real;   
+   real     PHASE0_125_real;  
+   real     RESETN_dly1_real;
+   real     RESETN_dly2_real; 
+   real     RSTb_real;   
+   
+   integer  XTAL25_int;
+   integer  PLL_160_int;
+   integer  PHASE10_int; 
+   integer  PHASE9_int; 
+   integer  PHASE8_int; 
+   integer  PHASE7_int; 
+   integer  PHASE6_int; 
+   integer  PHASE5_int; 
+   integer  PHASE4_int; 
+   integer  PHASE3_int; 
+   integer  PHASE2_int; 
+   integer  PHASE1_int; 
+   integer  PHASE0_int;
+   integer  RESETN_int; 
+   integer  RESETN_dly1; 
+   integer  RESETN_dly2;
+   integer  RESETN_dly1n; 
+   integer  RESETN_dly2n;    
+   integer  RSTb_int;   
+   integer  PHASE10_125_int;
+   integer  PHASE9_125_int;
+   integer  PHASE8_125_int;
+   integer  PHASE7_125_int;
+   integer  PHASE6_125_int;
+   integer  PHASE5_125_int;
+   integer  PHASE4_125_int;
+   integer  PHASE3_125_int;
+   integer  PHASE2_125_int;
+   integer  PHASE1_125_int;
+   integer  PHASE0_125_int;
+   integer  div10;   
+   integer  div9;   
+   integer  div8;   
+   integer  div7;   
+   integer  div6;   
+   integer  div5;   
+   integer  div4;   
+   integer  div3;   
+   integer  div2;   
+   integer  div1;   
+   integer  div0;
+   integer  started;
+ 
+    
+   analog begin
+      @ (initial_step) begin
+         XTAL25_int    = V(XTAL25_IN)    > vtrans;
+         PLL_160_int   = V(PLL_160_IN)   > vtrans;
+         PHASE10_int   = V(PHASE_IN[10]) > vtrans;	
+         PHASE9_int    = V(PHASE_IN[9])  > vtrans;	
+         PHASE8_int    = V(PHASE_IN[8])  > vtrans;	
+         PHASE7_int    = V(PHASE_IN[7])  > vtrans;	
+         PHASE6_int    = V(PHASE_IN[6])  > vtrans;	
+         PHASE5_int    = V(PHASE_IN[5])  > vtrans;	
+         PHASE4_int    = V(PHASE_IN[4])  > vtrans;	
+         PHASE3_int    = V(PHASE_IN[3])  > vtrans;	
+         PHASE2_int    = V(PHASE_IN[2])  > vtrans;	
+         PHASE1_int    = V(PHASE_IN[1])  > vtrans;	 	 
+         PHASE0_int    = V(PHASE_IN[0])  > vtrans;	
+	 started       = 0;	 
+      end
+
+      RESETN_int = V(RESETN) > vtrans;
+
+      @ (cross(V(XTAL25_IN)    - vtrans, +1) or 
+         cross(V(RESETN)       - vtrans, -1))
+	 if (!RESETN_int) begin
+	    RESETN_dly1  = 0;
+	    RESETN_dly2  = 0;
+	    RESETN_dly1n = 0;
+	    RESETN_dly2n = 0;	    
+	    RSTb_int     = 0;
+         end
+
+         else begin
+	    RESETN_dly1 = RESETN_int;
+	    RESETN_dly2 = RESETN_dly1n;
+	    RSTb_int    = RESETN_dly2n;
+         end
+
+      
+      RSTb_real = RSTb_int;
+      RESETN_dly1_real = RESETN_dly1;
+      RESETN_dly2_real = RESETN_dly2;      
+      
+      
+      @ (cross(V(XTAL25_IN)    - vtrans, +1)) XTAL25_int    = 1;
+      @ (cross(V(XTAL25_IN)    - vtrans, -1)) begin
+         XTAL25_int    = 0;
+	 RESETN_dly1n = RESETN_dly1;
+	 RESETN_dly2n = RESETN_dly2;
+      end
+      @ (cross(V(PLL_160_IN)   - vtrans, +1)) PLL_160_int   = 1;
+      @ (cross(V(PLL_160_IN)   - vtrans, -1)) PLL_160_int   = 0;
+      @ (cross(V(PHASE_IN[10]) - vtrans, +1)) begin 
+         PHASE10_int   = 1;
+         if (started) div10 = !PHASE10_125_int;
+      end
+      @ (cross(V(PHASE_IN[10]) - vtrans, -1)) PHASE10_int   = 0;
+      @ (cross(V(PHASE_IN[9])  - vtrans, +1)) begin
+         PHASE9_int    = 1;
+         if (started) div9 = !PHASE9_125_int;
+      end
+      @ (cross(V(PHASE_IN[9])  - vtrans, -1)) PHASE9_int    = 0;
+      @ (cross(V(PHASE_IN[8])  - vtrans, +1)) begin
+         PHASE8_int    = 1;
+         if (started) div8 = !PHASE8_125_int;
+      end
+      @ (cross(V(PHASE_IN[8])  - vtrans, -1)) PHASE8_int    = 0;	
+      @ (cross(V(PHASE_IN[7])  - vtrans, +1)) begin 
+         PHASE7_int    = 1;
+         if (started) div7 = !PHASE7_125_int;
+      end
+      @ (cross(V(PHASE_IN[7])  - vtrans, -1)) PHASE7_int    = 0;	
+      @ (cross(V(PHASE_IN[6])  - vtrans, +1)) begin
+         PHASE6_int    = 1;
+         if (started) div6 = !PHASE6_125_int;
+      end
+      @ (cross(V(PHASE_IN[6])  - vtrans, -1)) PHASE6_int    = 0;	
+      @ (cross(V(PHASE_IN[5])  - vtrans, +1)) begin
+         PHASE5_int    = 1;
+         if (started) div5 = !PHASE5_125_int;
+      end
+      @ (cross(V(PHASE_IN[5])  - vtrans, -1)) PHASE5_int    = 0;	
+      @ (cross(V(PHASE_IN[4])  - vtrans, +1)) begin
+         PHASE4_int    = 1;
+         if (started) div4 = !PHASE4_125_int;
+      end
+      @ (cross(V(PHASE_IN[4])  - vtrans, -1)) PHASE4_int    = 0;	
+      @ (cross(V(PHASE_IN[3])  - vtrans, +1)) begin
+         PHASE3_int    = 1;
+         div3 = !PHASE3_125_int;
+	 started = 1;
+      end
+      @ (cross(V(PHASE_IN[3])  - vtrans, -1)) PHASE3_int    = 0;	
+      @ (cross(V(PHASE_IN[2])  - vtrans, +1)) begin
+         PHASE2_int    = 1;
+         div2 = !PHASE2_125_int;
+      end
+      @ (cross(V(PHASE_IN[2])  - vtrans, -1)) PHASE2_int    = 0;	
+      @ (cross(V(PHASE_IN[1])  - vtrans, +1)) begin
+         PHASE1_int    = 1;
+         div1 = !PHASE1_125_int;
+      end
+      @ (cross(V(PHASE_IN[1])  - vtrans, -1)) PHASE1_int    = 0;	
+      @ (cross(V(PHASE_IN[0])  - vtrans, +1)) begin
+         PHASE0_int    = 1;
+         div0 = !PHASE0_125_int;
+      end
+      @ (cross(V(PHASE_IN[0])  - vtrans, -1)) PHASE0_int    = 0; 
+      
+      if (!RSTb_int) begin
+         PHASE10_125_int = 0;
+         PHASE9_125_int  = 0;
+         PHASE8_125_int  = 0;
+         PHASE7_125_int  = 0;
+         PHASE6_125_int  = 0;
+         PHASE5_125_int  = 0;
+         PHASE4_125_int  = 0;
+         PHASE3_125_int  = 0;
+         PHASE2_125_int  = 0;
+         PHASE1_125_int  = 0;
+         PHASE0_125_int  = 0;
+	 div10 = 0;
+	 div9  = 0;
+         div8  = 0;
+	 div7  = 0;
+	 div6  = 0;
+	 div5  = 0;
+	 div4  = 0;
+	 div3  = 0;
+	 div2  = 0;
+	 div1  = 0;
+	 div0  = 0;
+	 started = 0;
+      end
+
+      else begin
+         PHASE10_125_int = div10;
+         PHASE9_125_int  = div9;
+         PHASE8_125_int  = div8;
+         PHASE7_125_int  = div7;
+         PHASE6_125_int  = div6;
+         PHASE5_125_int  = div5;
+         PHASE4_125_int  = div4;
+         PHASE3_125_int  = div3;
+         PHASE2_125_int  = div2;
+         PHASE1_125_int  = div1;
+         PHASE0_125_int  = div0;		 
+      end	
+
+      XTAL25_real      = (XTAL25_int      ? vhigh : vlow);
+      PLL_160_real     = (PLL_160_int     ? vhigh : vlow);
+      PHASE10_real     = (PHASE10_int     ? vhigh : vlow);
+      PHASE9_real      = (PHASE9_int      ? vhigh : vlow);
+      PHASE8_real      = (PHASE8_int      ? vhigh : vlow);
+      PHASE7_real      = (PHASE7_int      ? vhigh : vlow);
+      PHASE6_real      = (PHASE6_int      ? vhigh : vlow);
+      PHASE5_real      = (PHASE5_int      ? vhigh : vlow);
+      PHASE4_real      = (PHASE4_int      ? vhigh : vlow);
+      PHASE3_real      = (PHASE3_int      ? vhigh : vlow);
+      PHASE2_real      = (PHASE2_int      ? vhigh : vlow);
+      PHASE1_real      = (PHASE1_int      ? vhigh : vlow);
+      PHASE0_real      = (PHASE0_int      ? vhigh : vlow);	
+      PHASE10_125_real = (PHASE10_125_int ? vhigh : vlow);
+      PHASE9_125_real  = (PHASE9_125_int  ? vhigh : vlow);
+      PHASE8_125_real  = (PHASE8_125_int  ? vhigh : vlow);
+      PHASE7_125_real  = (PHASE7_125_int  ? vhigh : vlow);
+      PHASE6_125_real  = (PHASE6_125_int  ? vhigh : vlow);
+      PHASE5_125_real  = (PHASE5_125_int  ? vhigh : vlow);
+      PHASE4_125_real  = (PHASE4_125_int  ? vhigh : vlow);
+      PHASE3_125_real  = (PHASE3_125_int  ? vhigh : vlow);
+      PHASE2_125_real  = (PHASE2_125_int  ? vhigh : vlow);
+      PHASE1_125_real  = (PHASE1_125_int  ? vhigh : vlow);
+      PHASE0_125_real  = (PHASE0_125_int  ? vhigh : vlow);	     
+ 
+
+      V(XTAL25)        <+ transition(XTAL25_real,      tdel, tr, tf);
+
+      V(X_160)         <+ transition(PLL_160_real,     tdel, tr, tf);
+
+      V(PHASE_250[10]) <+ transition(PHASE10_real,     tdel, tr, tf);
+      V(PHASE_250[9])  <+ transition(PHASE9_real,      tdel, tr, tf); 
+      V(PHASE_250[8])  <+ transition(PHASE8_real,      tdel, tr, tf); 
+      V(PHASE_250[7])  <+ transition(PHASE7_real,      tdel, tr, tf); 
+      V(PHASE_250[6])  <+ transition(PHASE6_real,      tdel, tr, tf); 
+      V(PHASE_250[5])  <+ transition(PHASE5_real,      tdel, tr, tf); 
+      V(PHASE_250[4])  <+ transition(PHASE4_real,      tdel, tr, tf); 
+      V(PHASE_250[3])  <+ transition(PHASE3_real,      tdel, tr, tf); 
+      V(PHASE_250[2])  <+ transition(PHASE2_real,      tdel, tr, tf); 
+      V(PHASE_250[1])  <+ transition(PHASE1_real,      tdel, tr, tf); 
+      V(PHASE_250[0])  <+ transition(PHASE0_real,      tdel, tr, tf);   
+      V(PHASE_125[10]) <+ transition(PHASE10_125_real, tdel, tr, tf);
+      V(PHASE_125[9])  <+ transition(PHASE9_125_real,  tdel, tr, tf); 
+      V(PHASE_125[8])  <+ transition(PHASE8_125_real,  tdel, tr, tf); 
+      V(PHASE_125[7])  <+ transition(PHASE7_125_real,  tdel, tr, tf); 
+      V(PHASE_125[6])  <+ transition(PHASE6_125_real,  tdel, tr, tf); 
+      V(PHASE_125[5])  <+ transition(PHASE5_125_real,  tdel, tr, tf); 
+      V(PHASE_125[4])  <+ transition(PHASE4_125_real,  tdel, tr, tf); 
+      V(PHASE_125[3])  <+ transition(PHASE3_125_real,  tdel, tr, tf); 
+      V(PHASE_125[2])  <+ transition(PHASE2_125_real,  tdel, tr, tf); 
+      V(PHASE_125[1])  <+ transition(PHASE1_125_real,  tdel, tr, tf); 
+      V(PHASE_125[0])  <+ transition(PHASE0_125_real,  tdel, tr, tf); 
+      V(X_125)         <+ transition(PHASE0_125_real,  tdel, tr, tf);      
+	 
+
+   end
+
+endmodule

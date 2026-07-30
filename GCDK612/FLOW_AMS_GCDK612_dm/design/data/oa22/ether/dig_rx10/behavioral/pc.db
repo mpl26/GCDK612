@@ -1,0 +1,29 @@
+#
+gsclib090 BUFX1 symbol
+i_238812
+#
+gsclib090 INVX8 symbol
+i_235738
+i_235742
+i_235867
+#
+gsclib090 CLKBUFX1 symbol
+i_223
+i_238922
+#
+gsclib090 BUFX3 symbol
+i_199
+i_238596
+i_391
+#
+ether dig_rx10_ser2par symbol
+i_dig_rx10_ser2par
+#
+ether dig_rx10_manch_dec symbol
+i_dig_rx10_manch_dec
+#
+ether dig_rx10_pol_rvrs symbol
+i_dig_rx10_pol_rvrs
+#
+ether dig_rx10_squelch symbol
+i_dig_rx10_squelch

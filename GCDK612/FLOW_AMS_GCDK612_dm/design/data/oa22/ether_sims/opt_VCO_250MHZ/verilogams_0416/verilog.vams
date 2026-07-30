@@ -1,0 +1,106 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "PLL_VCO_250MHZ" "verilogams"
+// output 11 phase taps based on input voltage
+// output frequency is determined by input frequency
+// and the transfer function 
+// fout/Vcontrol =  KVCO/((1+tvco*S)(1+treg*S))
+// values of KVCO, tvco, and treg come from 
+// Shawnee project PLL CDR presentation
+//
+// timescale should not be modified for correct module
+// function.
+
+`timescale 1ps / 1ps
+`include "constants.vams"
+`include "disciplines.vams"
+`undef _debug
+                         
+module PLL_VCO_250MHZ ( VCO_CLK_PH, IEXT_100u, PD, VDD, VSS, Vcontrol );
+
+  input VSS;
+  input IEXT_100u;
+  input Vcontrol;
+  output  [10:0] VCO_CLK_PH;
+  input VDD;
+  input PD;
+
+  electrical VSS, VDD, IEXT_100u;
+  electrical Vcontrol;
+  logic [10:0] VCO_CLK_PH;
+  logic PD;
+
+  reg [10:0] VCO_CLK_PH;
+
+  parameter real fvco  = 55M;
+  parameter real freg  = 34M;
+  parameter real tvco  = 1.0/fvco;
+  parameter real treg  = 1.0/freg;
+//  parameter real KVCO  = 280.0; // MHz/Volt
+//  parameter real KVCO  = 232.0; // MHz/Volt typical
+  parameter real KVCO  = 340.0; // MHz/Volt (near 250MHz oscillation).
+  parameter real foffset = 160.0M; 
+
+  electrical fout;
+//  electrical f1;
+  real freq;
+  real	         phasenow,
+		 osc, phasedelay,
+		 digdelay,period,
+		 controlVoltage,
+		 vont_mod;
+
+  real	 	aclk0;
+  integer 	ii,jj;
+
+// variables for debug
+`ifdef _debug
+  real  sum0,sum1;
+`endif                       
+// end variables for debug
+
+  initial
+     VCO_CLK_PH = 11'b0;
+ 
+  analog begin
+     // 2nd order model of VCO
+//     V(f1)    <+  ddt(V(fout));
+//     V(fout)  <+  KVCO*V(Vcontrol)-(tvco+treg)*V(f1)-tvco*treg*ddt(V(f1)); 
+// use integral representation as per Ron Vogelsong
+       V(fout) <+ idt(idt(KVCO*V(Vcontrol)-V(fout))-(tvco+treg)*V(fout))/(tvco*treg);
+     // determine phase and time delay for phase taps
+     freq      =  1.0M*V(fout)-foffset;    //in Hz
+     phasenow  =  idtmod(freq,0,1);
+     period    =  (freq > 1.0e-3) ? (1.0/freq) : 1.0e3;
+     phasedelay=  period/(11.0*1p); // timescale must be 1p for this to work
+     aclk0   =  (phasenow > 0.5) ? 0 : 1;
+     controlVoltage = V(Vcontrol);
+  end // analog
+
+  // generate the digital clocks from the aclk0
+  // note, there is no output unless Vcontrol>0.577V
+  // producing ~60MHz minimum frequency output
+
+  always@(cross((aclk0-0.5),+1)) begin
+     digdelay = phasedelay;
+`ifdef _debug
+     sum0 = sum0 + 1;
+`endif     
+     if (controlVoltage > 0.577) begin
+`ifdef _debug                       
+       sum1 = sum1 + 1;
+`endif
+       VCO_CLK_PH[0]  =  1'b1;
+       for (ii=1; ii<11; ii = ii + 1) 
+       #(digdelay) VCO_CLK_PH[ii] = 1'b1;
+     end
+  end
+
+  always@(cross((aclk0-0.5),-1)) begin
+     digdelay = phasedelay;
+     if (controlVoltage > 0.577) begin
+       VCO_CLK_PH[0]  =  1'b0;
+       for (jj=1; jj<11; jj = jj + 1) 
+       #(digdelay) VCO_CLK_PH[jj] = 1'b0;
+     end
+  end
+
+endmodule

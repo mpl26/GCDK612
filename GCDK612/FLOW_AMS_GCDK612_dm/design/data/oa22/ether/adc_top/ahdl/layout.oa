@@ -1,0 +1,333 @@
+// Spectre AHDL for drouillard_ms, adc_top, ahdl
+// 4_1_2003dw : changed BASEFX_DIS to BASEFX_DIS_1p0
+// 4_3_2003dw : adjusting triplevels for 1v logic
+
+module adc_top ( adc_flash, adc_latch_clk, adc_out, BASE100TX_DIS, BASEFX_DIS_1p0, CLK, DVDD, DVSS, I100_ext1, I100_ext2, I100_poly1, I100_poly2, INM, INP, SIDDQ, TEST_ENABLE, TEST_INM, TEST_INP, VDD, VSS) ()
+    node [V,I] adc_flash[2:0];
+    node [V,I] adc_latch_clk;
+    node [V,I] adc_out[5:0];
+    node [V,I] BASE100TX_DIS;
+    node [V,I] BASEFX_DIS_1p0;
+    node [V,I] CLK;
+    node [V,I] DVDD;
+    node [V,I] DVSS;
+    node [V,I] I100_ext1;
+    node [V,I] I100_ext2;
+    node [V,I] I100_poly1;
+    node [V,I] I100_poly2;
+    node [V,I] INM;
+    node [V,I] INP;
+    node [V,I] SIDDQ;
+    node [V,I] TEST_ENABLE;
+    node [V,I] TEST_INM;
+    node [V,I] TEST_INP;
+    node [V,I] VDD;
+    node [V,I] VSS;
+
+{
+  node [V,I] sample_clk;             // delayed clock for sampling data
+
+  real test_attenuation     = 0.921; // test-mode inputs attentuated in ADC
+  real rbias1               = 6.0e3; // resistance for bias terminations
+  real rbias2               = 8.3e3; // resistance for bias terminations
+  real roff                 = 10e6;  // off resistance for bias terminations
+  real r1;                           
+  real r2;
+  real unconverted          = 0.0;
+  real vref                 = 0.8;          
+  real halfref              = 0.4;
+  real vtrans               = 0.5;  //4_3_2003dw changed from 0.9 to 0.5
+  real rising_edge_clk;
+  real falling_edge_clk;
+  real rising_sample_clk;
+  real falling_sample_clk;
+  real all_edges_real;
+#ifdef ADC_ACCURATE 
+  real tfall                = 0.4n;
+  real trise                = 0.4n;
+  real tdel                 = 1n;
+#else
+  real tfall                = 0.4n;
+  real trise                = 0.4n;
+  real tdel                 = 1n; 
+#endif 
+  real sample_del           = 465p;
+  real full_scale           = 0.4;
+  real diff_voltage         = 0.0;
+  real vlogic_high          = 1.0;  //4_3_2003dw changed from 2.5 to 1
+  real vlogic_low           = 0;
+  real adcbit5              = 1.0;  // reporting bits for the ADC //4_3_2003dw changed from 2.5 to 1
+  real adcbit4              = 0;
+  real adcbit3              = 0;
+  real adcbit2              = 0;
+  real adcbit1              = 0;
+  real adcbit0              = 0;
+  real adcconvbit5          = 1.0;  // adc conversion bits //4_3_2003dw changed from 2.5 to 1
+  real adcconvbit4          = 0;
+  real adcconvbit3          = 0;
+  real adcconvbit2          = 0;
+  real adcconvbit1          = 0;
+  real adcconvbit0          = 0;
+  real adcbuf5              = 1.0;  // adc dummy bits 1  //4_3_2003dw changed from 2.5 to 1
+  real adcbuf4              = 0;
+  real adcbuf3              = 0;
+  real adcbuf2              = 0;
+  real adcbuf1              = 0;
+  real adcbuf0              = 0;
+  real flashbit2            = 0;    // reporting bits for the Flash
+  real flashbit1            = 0;
+  real flashbit0            = 0;
+  real flashbuffbit2        = 0;    // flash dummy bits 2
+  real flashbuffbit1        = 0;
+  real flashbuffbit0        = 0;
+  real flashconvbit2        = 0;    // flash conversion bits
+  real flashconvbit1        = 0;
+  real flashconvbit0        = 0;
+  real flashbuf2            = 0;    // flash dummy bits 1
+  real flashbuf1            = 0;
+  real flashbuf0            = 0;
+  real low_bias             = 80e-6;
+  real high_bias            = 120e-6;
+ 
+ 
+  real sample_clk_real;             // debug variables
+
+  integer vd[6];
+  integer i;
+  integer all_edges;
+  integer debug_on          = 0;    // 1 -> assign debug variables
+                                    // 0 -> debug variables static
+
+  analog
+  {
+     // resistors to VSS sense bias currents
+     V(I100_ext1, VSS)  <- r1*I(I100_ext1, VSS);
+     V(I100_ext2, VSS)  <- r1*I(I100_ext2, VSS);
+     V(I100_poly1, VSS) <- r2*I(I100_poly1, VSS);
+     V(I100_poly2, VSS) <- r2*I(I100_poly2, VSS);
+
+     // track suplies
+     vlogic_high      = V(DVDD);
+     vlogic_low       = V(DVSS);
+     vtrans           = 0.5*(V(DVDD) - V(DVSS)) + V(DVSS);  // 4_3_2003dw changed VDD to DVDD
+
+     // sample clock and create delayed internal version to sample data
+     rising_edge_clk  = $threshold(V(CLK) - vtrans,  1.0);
+     falling_edge_clk = $threshold(V(CLK) - vtrans, -1.0);
+     all_edges_real   = all_edges ? V(VDD) : V(VSS);
+   
+     V(sample_clk) <- $transition(all_edges_real, sample_del, trise, tfall);
+
+     rising_sample_clk  = $threshold(V(sample_clk) - vtrans,  1.0);
+     falling_sample_clk = $threshold(V(sample_clk) - vtrans, -1.0);
+
+
+     //added adc_latch_clk output
+     V(adc_latch_clk) <- $tdelay(V(CLK), 1.2n);
+//------------------------------------	 
+// siddq mode
+// Note: 1) circuit holds last value during siddq state
+//            2) 20% error in any bias current puts circuit into siddq
+
+	if ((V(SIDDQ) > vtrans) || ((V(BASE100TX_DIS) > vtrans) && (V(BASEFX_DIS_1p0) > vtrans))) {
+		r1 = roff;
+		r2 = roff;
+	}
+//-------------------------------------
+// bias out of range - non-operational
+
+	else if ((V(SIDDQ) < vtrans)          && 
+		((V(BASE100TX_DIS)   < vtrans)    || (V(BASEFX_DIS_1p0) < vtrans)) &&
+		((I(I100_ext1, VSS)  < low_bias)  ||
+		(I(I100_ext1, VSS)  > high_bias) ||
+		(I(I100_ext2, VSS)  < low_bias)  ||
+		(I(I100_ext2, VSS)  > high_bias) ||
+		(I(I100_poly1, VSS) < low_bias)  ||
+		(I(I100_poly1, VSS) > high_bias) ||
+		(I(I100_poly2, VSS) < low_bias)  ||
+		(I(I100_poly2, VSS) > high_bias))) {
+
+		r1 = rbias1;
+		r2 = rbias2;
+	}				
+//-------------------------------------
+
+// operational mode
+//-------------------------------------
+// on rising edge
+//   2) set ADC dummy 1 from ADC conv
+//   3) report flash data from flash dummy 3
+//   4) set flash dummy 2 form flash dummy 1
+//   5) do flash sample and conversion
+// on falling edge
+//   1) do ADC sample and conversion
+//   2) set ADC data from ADC dummy 1
+//   3) set flash dummy 3 from flash dummy 2
+//   4) set flash dummy 1 from flash conv
+//-------------------------------------
+//-------------------------------------
+	if(rising_sample_clk) {
+		// starting here is the flash adc conversion
+		// this will operate while the clock input is high
+		// TEST_ENABLE must be low for 100BT or fiber-mode operation
+		
+		if ((V(TEST_ENABLE)  < vtrans) && (V(BASEFX_DIS_1p0) > vtrans)) {
+			diff_voltage = (V(INP) - V(INM));
+		}
+
+		else {
+			diff_voltage = (V(TEST_INP) - V(TEST_INM));
+		}
+	}
+//------------------------------------		
+	if (V(BASEFX_DIS_1p0) > vtrans) {      
+		if((diff_voltage < (-0.45*full_scale))) {
+			flashconvbit2 = vlogic_high;
+			flashconvbit1 = vlogic_low;
+			flashconvbit0 = vlogic_high;
+		}
+		else if((diff_voltage > (-0.45*full_scale)) && (diff_voltage < (-0.35*full_scale))) {
+			flashconvbit2 = vlogic_high;
+			flashconvbit1 = vlogic_high;
+			flashconvbit0 = vlogic_low;
+		}
+		else if((diff_voltage > (-0.35*full_scale)) && (diff_voltage < (-0.25*full_scale))) {
+			flashconvbit2 = vlogic_high;
+			flashconvbit1 = vlogic_high;
+			flashconvbit0 = vlogic_high;
+		}
+		else if((diff_voltage > (-0.25*full_scale)) && (diff_voltage < (0.25*full_scale))) {
+			flashconvbit2 = vlogic_low;
+			flashconvbit1 = vlogic_low;
+			flashconvbit0 = vlogic_low;
+		}
+		else if((diff_voltage > (0.25*full_scale)) && (diff_voltage < (0.35*full_scale))) {
+			flashconvbit2 = vlogic_low;
+			flashconvbit1 = vlogic_low;
+			flashconvbit0 = vlogic_high;
+		}
+		else if((diff_voltage > (0.35*full_scale)) && (diff_voltage < (0.45*full_scale))) {
+			flashconvbit2 = vlogic_low;
+			flashconvbit1 = vlogic_high;
+			flashconvbit0 = vlogic_low;
+		}
+		else {
+			flashconvbit2 = vlogic_low;
+			flashconvbit1 = vlogic_high;
+			flashconvbit0 = vlogic_high;
+		}
+	}
+//-----------------------------------------
+	else {
+		if(diff_voltage < 1n) {  
+			flashconvbit2 = vlogic_high;
+			flashconvbit1 = vlogic_high;
+			flashconvbit0 = vlogic_high;
+		}
+		else {
+			flashconvbit2 = vlogic_low;
+			flashconvbit1 = vlogic_low;
+			flashconvbit0 = vlogic_high;
+		}
+	}		
+//-----------------------------------------
+	if(falling_sample_clk) {
+	 		// next is to take the sample for the adc that would finish
+         	// now and do the conversion also sample either input or 
+         	// test inputs depending upon state of TEST_ENABLE if high 
+         	// test inputs
+		if ((V(TEST_ENABLE)  < vtrans) && (V(BASEFX_DIS_1p0) > vtrans)) {
+	   		unconverted = ((V(INP) - V(INM)) + halfref);
+		}
+
+		else {	
+			unconverted = (test_attenuation*(V(TEST_INP) - V(TEST_INM)) + halfref);
+		}
+			
+		for (i = 5; i >= 0 ; i--) {	
+			vd[i] = 0;	
+					
+			if (unconverted > halfref+1n) {
+				vd[i] = 1;
+			unconverted -= halfref;
+			}
+
+			else {
+				vd[i] = 0;
+			}
+			
+			unconverted *= 2;
+		}
+		
+	 // Invert MSB to form 2's complement
+		vd[5] = !vd[5];
+		
+		adcconvbit5 = (vd[5] ? vlogic_high : vlogic_low);
+		adcconvbit4 = (vd[4] ? vlogic_high : vlogic_low);
+		adcconvbit3 = (vd[3] ? vlogic_high : vlogic_low);
+		adcconvbit2 = (vd[2] ? vlogic_high : vlogic_low);
+		adcconvbit1 = (vd[1] ? vlogic_high : vlogic_low);
+		adcconvbit0 = (vd[0] ? vlogic_high : vlogic_low);
+	}
+//---------------------------------------			
+	if(rising_edge_clk) {
+		all_edges = 1;
+
+		// set ADC dummy 1 from ADC conv bits
+		adcbuf5 = adcconvbit5;
+		adcbuf4 = adcconvbit4;
+		adcbuf3 = adcconvbit3;
+		adcbuf2 = adcconvbit2;
+		adcbuf1 = adcconvbit1;
+		adcbuf0 = adcconvbit0;
+		
+		// set flash dummy 2 from flash dummy 1
+		flashbuffbit2 = flashbuf2;
+		flashbuffbit1 = flashbuf1;
+		flashbuffbit0 = flashbuf0;
+	}
+//--------------------------------------	
+	if(falling_edge_clk) { 
+		all_edges = 0;
+
+		// will first set the adcbits from the vd[i] to enact the 
+		// reporting on a falling clock edge
+		adcbit5 = adcbuf5;
+		adcbit4 = adcbuf4;
+		adcbit3 = adcbuf3;
+		adcbit2 = adcbuf2;
+		adcbit1 = adcbuf1;
+		adcbit0 = adcbuf0;
+		
+		// will now load the flash adc bits with the contents of
+		// flash dummy 2
+		flashbit2 = flashbuffbit2;
+		flashbit1 = flashbuffbit1;
+		flashbit0 = flashbuffbit0;
+		
+		// set flash dummy 1 from flash conv
+		flashbuf2 = flashconvbit2;
+		flashbuf1 = flashconvbit1;
+		flashbuf0 = flashconvbit0;
+	}
+
+		V(adc_out[5]) <- $transition(adcbit5, tdel, trise, tfall);
+		V(adc_out[4]) <- $transition(adcbit4, tdel, trise, tfall);
+		V(adc_out[3]) <- $transition(adcbit3, tdel, trise, tfall);
+		V(adc_out[2]) <- $transition(adcbit2, tdel, trise, tfall);
+		V(adc_out[1]) <- $transition(adcbit1, tdel, trise, tfall);
+		V(adc_out[0]) <- $transition(adcbit0, tdel, trise, tfall);
+
+		V(adc_flash[2]) <- $transition(flashbit2, tdel, trise, tfall);
+		V(adc_flash[1]) <- $transition(flashbit1, tdel, trise, tfall);
+		V(adc_flash[0]) <- $transition(flashbit0, tdel, trise, tfall);
+
+//-------------------------------------
+	// real values for debug observability
+ 	if (debug_on) {
+		sample_clk_real = V(sample_clk);
+	}
+//-------------------------------------	
+
+  }
+}

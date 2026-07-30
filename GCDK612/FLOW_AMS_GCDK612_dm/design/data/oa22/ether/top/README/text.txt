@@ -1,0 +1,31 @@
+
+         Cadence Design Systems, Inc.
+    CIC, FSC, Virtuoso Flow Solutions group
+    ---------------------------------------
+    
+    
+View Info (Library = ether, Cell = top):
+o av_hrcx_intcon
+  2005-01-23: This HRCX view is for AMS simulation with RC parasitic on the
+              interconnect on top level. All 6 top blocks are excluded as 
+	      black boxes.
+	      How to run HRCX:
+	      (a) Run LVS with state file:  ether_top_6blackbox
+	      (b) Raun RCX with state file: av_HRCX_withBlackBox
+
+o layout
+  2004-12: Top layout bloock without labels
+  
+o layout_labels
+  2004-12: Top layout with logo, labels, etc. 
+
+o layout_place
+  A floorplan block with abstract views and pins for power and signal route.  
+  
+------------------------------------------------------------------------------
+Mnenonics:
+2005-03-22: Changed cutouts in abstract views from 0.14u to 0.15u; since the 
+            SoCE routes Metal2 with 0.15u as minimum width for avoiding the
+	    dog-born vias. New LEF file was generated to the top block.
+              
+    

@@ -1,0 +1,177 @@
+PROCESS gpdk090
+
+
+LAYER POLY
+MinSpace       0.12
+MinWidth       0.10
+Thickness      0.15
+Height         0.37
+END
+
+
+LAYER M1
+MinSpace       0.12
+MinWidth       0.12
+Thickness      0.30
+Height         0.82
+END
+
+
+LAYER M2
+MinSpace       0.14
+MinWidth       0.14
+Thickness      0.36
+Height         1.42
+END
+
+
+LAYER M3
+MinSpace       0.14
+MinWidth       0.14
+Thickness      0.360
+Height         2.08
+END
+
+
+LAYER M4
+MinSpace       0.14
+MinWidth       0.14
+Thickness      0.360
+Height         2.74
+END
+
+
+LAYER M5
+MinSpace       0.14
+MinWidth       0.14
+Thickness      0.360
+Height         3.40
+END
+
+
+LAYER M6
+MinSpace       0.14
+MinWidth       0.14
+Thickness      0.360
+Height         4.06
+END
+
+
+LAYER M7
+MinSpace       0.14
+MinWidth       0.14
+Thickness      0.360
+Height         4.72
+END
+
+
+LAYER M8
+MinSpace       0.44
+MinWidth       0.44
+Thickness      0.60
+Height         5.38
+END
+
+
+LAYER M9
+MinSpace       0.44
+MinWidth       0.44
+Thickness      0.60
+Height         6.58
+END
+
+
+DIELECTRIC FOX
+Conformal           FALSE
+Thickness           0.37
+Height              0.0
+DielectricConstant  4.5
+END
+
+
+DIELECTRIC ILD
+Conformal           FALSE
+Thickness           0.45
+Height              0.37
+DielectricConstant  4.5
+END
+
+
+DIELECTRIC IMD1
+Conformal           FALSE
+Thickness           0.60
+Height              0.82
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD2
+Conformal           FALSE
+Thickness           0.66
+Height              1.42
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD3
+Conformal           FALSE
+Thickness           0.66
+Height              2.08
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD4
+Conformal           FALSE
+Thickness           0.66
+Height              2.74
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD5
+Conformal           FALSE
+Thickness           0.66
+Height              3.40
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD6
+Conformal           FALSE
+Thickness           0.66
+Height              4.06
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD7
+Conformal           FALSE
+Thickness           0.66
+Height              4.72
+DielectricConstant  2.9
+END
+
+
+DIELECTRIC IMD8
+Conformal           FALSE
+Thickness           1.20
+Height              5.38
+DielectricConstant  4.2
+END
+
+
+DIELECTRIC IMD9
+Conformal           FALSE
+Thickness           1.20
+Height              6.58
+DielectricConstant  4.2
+END
+
+
+DIELECTRIC PASS
+Conformal           FALSE
+Thickness           0.80
+Height              7.78
+DielectricConstant  4.1
+END

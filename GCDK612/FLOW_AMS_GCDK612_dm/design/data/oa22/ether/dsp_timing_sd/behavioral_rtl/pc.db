@@ -1,0 +1,10 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dsp_tc_greater *
+greater
+
+#CELL
+* dsp_tc_less *
+less
+

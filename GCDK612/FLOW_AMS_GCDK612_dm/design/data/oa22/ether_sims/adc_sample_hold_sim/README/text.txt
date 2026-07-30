@@ -1,0 +1,12 @@
+Simulation  :   adc_sample_hold_SIM
+Purpose     :   Test the operation of the ADC Sample and Hold circuit.
+		Test the operation of the VHDLAMS model.
+
+Description :   Tests that the ADC Sample and Hold Operation
+
+Verification:   Verify that OUTP/OUTN   is a sampled version of INP/INM
+		Verify that OUTP2/OUTN2 is a sampled version of INP2/INM2
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt

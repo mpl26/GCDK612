@@ -1,0 +1,132 @@
+#
+gsclib090 BUFX3 symbol
+i_1305
+i_187
+i_200
+i_212
+i_222
+i_233
+#
+gsclib090 CLKBUFX1 symbol
+i_1289
+i_438
+i_442
+i_181
+i_183
+i_379
+i_389
+i_396
+i_406
+#
+gsclib090 NAND2X2 symbol
+i_44
+i_69
+#
+gsclib090 OR4X1 symbol
+i_28
+#
+gsclib090 AND2X1 symbol
+i_17
+i_14
+i_0
+#
+gsclib090 OR2X1 symbol
+i_8
+i_24
+#
+gsclib090 NOR2X1 symbol
+i_30
+i_482
+i_1
+i_10
+i_18
+i_5
+i_32
+i_16
+i_36
+i_05626
+i_23
+i_22
+i_21
+#
+gsclib090 NAND2X1 symbol
+i_4
+i_35
+i_11
+i_2
+i_112
+i_113
+i_103
+i_101
+i_102
+i_84
+i_43
+i_52
+i_70
+i_67
+i_71
+i_85
+i_86
+i_25
+i_26
+#
+gsclib090 NAND3X1 symbol
+i_77
+i_61
+i_9
+i_13
+i_6
+i_497
+i_575
+i_56
+i_90
+#
+gsclib090 NAND4X1 symbol
+i_95
+i_526
+i_511
+i_525
+i_397
+i_29
+i_599
+i_587
+i_539
+i_563
+#
+gsclib090 AOI21X1 symbol
+i_96
+i_79
+i_62
+i_7
+#
+gsclib090 AOI22X1 symbol
+i_115
+i_114
+i_104
+i_92
+i_91
+i_74
+i_76
+i_58
+i_59
+i_46
+i_45
+#
+gsclib090 INVX2 symbol
+i_842
+#
+gsclib090 INVX1 symbol
+i_855
+i_854
+i_853
+i_852
+i_851
+i_850
+i_849
+i_848
+i_847
+i_846
+i_845
+i_844
+i_843
+i_841

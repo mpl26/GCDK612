@@ -1,0 +1,33 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I45:VDD=VDD;
+	I45:VSS=GND;
+$END
+$TIMESTAMP
+	1121990158=9-analogLib10-pcapacitor;
+	1121990032=9-analogLib10-pcapacitor6-symbol;
+	1121990158=9-analogLib9-presistor;
+	1121990048=9-analogLib9-presistor6-symbol;
+	1121979038=5-ether10-top_common;
+	1121979039=5-ether10-top_common6-layout;
+	1121979019=5-ether19-top_1_port_transmit;
+	1121979020=5-ether19-top_1_port_transmit6-layout;
+	-1=5-ether18-top_1_port_receive;
+	1121978992=5-ether18-top_1_port_receive6-layout;
+	1121979023=5-ether14-top_1_port_pnr;
+	1121979037=5-ether14-top_1_port_pnr6-layout;
+	1121978795=5-ether9-anlg_cntl;
+	1121978797=5-ether9-anlg_cntl6-layout;
+	1121978682=5-ether9-Bias_port;
+	1121978684=5-ether9-Bias_port6-layout;
+	1122078618=verilog.vams;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:pcapacitor:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+	analogLib:presistor:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-1;
+$END

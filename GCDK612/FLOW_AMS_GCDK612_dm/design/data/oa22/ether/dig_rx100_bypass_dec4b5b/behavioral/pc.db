@@ -1,0 +1,74 @@
+#
+gsclib090 BUFX1 symbol
+SYMBOL_DATA_reg_2_480_5a
+SYMBOL_DATA_reg_3_551_5a
+SYMBOL_DV_reg_580_5a
+SYMBOL_DATA_reg_1_682_5a
+SYMBOL_ER_reg_696_5a
+SYMBOL_DATA_reg_4_715_5a
+SYMBOL_DATA_reg_0_775_5a
+#
+gsclib090 BUFX3 symbol
+SYMBOL_DATA_reg_3_1162_3
+SYMBOL_DATA_reg_3_1163_3
+SYMBOL_DATA_reg_2_1270_3
+SYMBOL_DATA_reg_2_1271_3
+SYMBOL_ER_reg_1276_3
+SYMBOL_ER_reg_1277_3
+SYMBOL_DV_reg_1288_3
+SYMBOL_DV_reg_1289_3
+SYMBOL_DATA_reg_0_1320_3
+SYMBOL_DATA_reg_0_1321_3
+SYMBOL_DATA_reg_4_1330_3
+SYMBOL_DATA_reg_4_1331_3
+SYMBOL_DATA_reg_1_1354_3
+SYMBOL_DATA_reg_1_1355_3
+#
+gsclib090 NOR2X1 symbol
+i_706
+i_17
+i_0
+#
+gsclib090 CLKBUFX1 symbol
+i_471
+#
+gsclib090 MX2X1 symbol
+i_1
+i_2
+i_3
+i_4
+i_708
+#
+gsclib090 AND2X1 symbol
+i_5
+#
+gsclib090 DFFSRX1 symbol
+SYMBOL_ER_reg
+SYMBOL_DATA_reg_4
+SYMBOL_DATA_reg_3
+SYMBOL_DATA_reg_2
+SYMBOL_DATA_reg_1
+SYMBOL_DATA_reg_0
+SYMBOL_DV_reg
+#
+gsclib090 OAI21X1 symbol
+i_1076
+i_1069
+i_1062
+i_1055
+i_1048
+i_1041
+i_1034
+#
+gsclib090 NAND3X1 symbol
+i_1077
+i_1070
+i_1063
+i_1056
+i_1049
+i_1042
+i_1035
+#
+gsclib090 INVX1 symbol
+i_1111
+i_16

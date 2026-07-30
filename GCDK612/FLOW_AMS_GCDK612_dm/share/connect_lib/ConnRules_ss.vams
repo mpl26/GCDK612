@@ -1,0 +1,33 @@
+// 'ConnRules_ss.vams' - Verilog-AMS supply sensitive connection rules file.
+// last revised:   1/30/04 (ronv)
+
+// This file is a template for definition of rules for a particular 
+// logic family.  Values for some typical parameters are defined here,
+// then used in the three sets of connections rules below.
+// See the "README.txt" file for a more complete usage description.
+
+`define Vthi  0.67
+`define Vtlo  0.33
+`define Tr    0.4n
+`define Rlo   200
+`define Rhi   200
+`define Rx    40
+`define Rz    10M
+
+connectrules ConnRules_ss_full;
+  connect L2E_ss #( .vthi(`Vthi), .vtlo(`Vtlo),
+      .tr(`Tr), .tf(`Tr), .tx(`Tr), .tz(`Tr),
+      .rlo(`Rlo), .rhi(`Rhi), .rx(`Rx), .rz(`Rz) );
+  connect E2L_ss #( .vthi(`Vthi), .vtlo(`Vtlo), .tr(`Tr) );
+  connect Bidir_ss #( .vthi(`Vthi), .vtlo(`Vtlo),
+      .tr(`Tr), .tf(`Tr), .tx(`Tr), .tz(`Tr),
+      .rlo(`Rlo), .rhi(`Rhi), .rx(`Rx), .rz(`Rz) );
+endconnectrules
+
+connectrules ConnRules_ss_mid;
+  connect E2L_ss #( .vthi(`Vthi), .vtlo(`Vtlo), .tr(`Tr) );
+  connect L2E_1_ss #( .tr(`Tr), .rout(`Rlo) );
+  connect Bidir_ss #( .vthi(`Vthi), .vtlo(`Vtlo),
+      .tr(`Tr), .tf(`Tr), .tx(`Tr), .tz(`Tr),
+      .rlo(`Rlo), .rhi(`Rhi), .rx(`Rx), .rz(`Rz) );
+endconnectrules

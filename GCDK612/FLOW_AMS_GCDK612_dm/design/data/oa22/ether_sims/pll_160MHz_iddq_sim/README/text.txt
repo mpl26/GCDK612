@@ -1,0 +1,23 @@
+Simulation:     PLL_160MHZ_iddq_sim 
+
+Purpose:       Monitor power consummed by the 160MHz PLL and its sublocks 
+while in the powered down state.  
+
+States:          tt 
+
+Description:  The PLL_160MHZ test bench contains an instantiation of the top 
+level PLL macro, PLL_160MHZ. Ideal sources are used for power and current 
+references.The SIDDQ is connected to a voltage pulse via net PD. 
+ 
+
+Verification:  The PLL_160MHZ_iddq sim test bench is ran in spectre using a
+transient analysis.   The current going into the PLL power supply pin when 
+the PD signal is high can be checked. The pll current is expected to be very 
+low in the  power down mode.Transient simulation of the power down mode of 
+the 160MHZ PLL. For convenience, the currents going into the PLL supply and 
+its sub-blocks are saved in the state file for this test bench.
+
+Input Signals:  VDD, PD
+
+Output Signals: I3/VDD
+

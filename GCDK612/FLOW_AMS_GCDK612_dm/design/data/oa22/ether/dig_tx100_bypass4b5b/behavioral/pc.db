@@ -1,0 +1,84 @@
+#
+gsclib090 BUFX1 symbol
+TX100_ACTIVE_SYMBOL_reg_566_5a
+#
+gsclib090 BUFX3 symbol
+TX100_ACTIVE_SYMBOL_reg_1080_3
+TX100_ACTIVE_SYMBOL_reg_1081_3
+encoder_latch_reg_0_1334_3
+encoder_latch_reg_0_1335_3
+encoder_latch_reg_4_1358_3
+encoder_latch_reg_4_1359_3
+encoder_latch_reg_2_1384_3
+encoder_latch_reg_2_1385_3
+encoder_latch_reg_3_1470_3
+encoder_latch_reg_3_1471_3
+TXD_latch_reg_0_1490_3
+TXD_latch_reg_3_1505_3
+encoder_latch_reg_1_1518_3
+TXD_latch_reg_2_1585_3
+TXD_latch_reg_1_1600_3
+TXD_latch_reg_4_1696_3
+TXD_latch_reg_3_2508_3
+encoder_latch_reg_1_2543_3
+TXD_latch_reg_0_2585_3
+TXD_latch_reg_2_2587_3
+TXD_latch_reg_1_2605_3
+TXD_latch_reg_4_2786_3
+#
+gsclib090 CLKBUFX1 symbol
+i_660
+i_785
+#
+gsclib090 NAND2X1 symbol
+i_4
+i_3
+i_2
+i_1
+i_05578
+#
+gsclib090 OAI21X1 symbol
+i_1880
+#
+gsclib090 NAND3X1 symbol
+i_1881
+#
+gsclib090 DFFSRX1 symbol
+encoder_latch_reg_4
+encoder_latch_reg_3
+encoder_latch_reg_2
+encoder_latch_reg_1
+encoder_latch_reg_0
+TX100_ACTIVE_SYMBOL_reg
+TXD_latch_reg_4
+TXD_latch_reg_3
+TXD_latch_reg_2
+TXD_latch_reg_1
+TXD_latch_reg_0
+#
+gsclib090 MX2X1 symbol
+i_1915
+i_10
+i_1908
+i_9
+i_1901
+i_8
+i_1894
+i_7
+i_1887
+i_6
+i_1873
+i_1866
+i_1859
+i_1852
+i_1845
+#
+gsclib090 INVX1 symbol
+i_1958
+i_1957
+i_1956
+i_1955
+i_1954
+#
+gsclib090 INVX2 symbol
+i_1959

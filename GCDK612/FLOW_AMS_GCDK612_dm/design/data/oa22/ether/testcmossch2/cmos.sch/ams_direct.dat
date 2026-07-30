@@ -1,0 +1,9 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1264530368=verilog.vams;
+$END

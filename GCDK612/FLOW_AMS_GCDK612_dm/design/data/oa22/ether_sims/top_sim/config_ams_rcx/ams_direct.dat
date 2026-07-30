@@ -1,0 +1,13 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1110847661545=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1111638517000:7-dirName62-/usr1/zfan/amstl_flow_workshop/design/custom_cdba/top_sim_run18-snapShot24-top_sim:ams1111638498992;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11107393909236-Solver8-UltraSim7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11116384989926-Solver7-Spectre7-CdsPlat5-sun4v;
+$END

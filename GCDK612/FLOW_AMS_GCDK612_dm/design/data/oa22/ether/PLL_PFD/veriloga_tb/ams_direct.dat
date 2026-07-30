@@ -1,0 +1,11 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$GLOBAL_SIGNALS
+	VSS!:::VERILOGAMS=(netDiscipline=electrical);
+	VDD!:::VERILOGAMS=(netDiscipline=electrical);
+$END
+$INH_SIGNAL_CONN
+	VSS!:DVSS;
+	VDD!:DVDD;
+$END

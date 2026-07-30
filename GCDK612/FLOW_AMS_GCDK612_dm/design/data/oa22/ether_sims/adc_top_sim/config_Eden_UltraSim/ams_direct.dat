@@ -1,0 +1,12 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	0=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1099524048000:7-dirName38-./simulation/UltraSim/adc_top_sim_run18-snapShot28-adc_top_sim:ams1099522798156;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot28-adc_top_sim:ams10995227981566-Solver8-UltraSim7-CdsPlat5-lnx86;
+$END

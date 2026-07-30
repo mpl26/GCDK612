@@ -1,0 +1,22 @@
+Simulation:     ARST_bias_sim 
+
+Purpose: Verify the threshold of the AutoReset block.  
+
+States:         tt 
+
+Description:  The ARST_bias_sim test bench contains an instantiation of the PLL 
+auto reset block, PLL_ARST. The block's input, TAP is driven by an ideal dc     
+source. An ideal voltage source connected to a poly resistor is used to derive  
+a poly resistor based bias current for the block. 
+
+Verification:  The ARST_bias_sim is ran in the spectre environment using a dc   
+analysis. The input TAP is swept while monitoring the output CMP_OUT. The
+CMP_OUT  output of the Auto Reset block can be plotted w.r.t the control voltage
+input. The input voltage for which the output switches state is the threshold of
+the Auto Reset block. Note that the threshold maybe different for rising and
+falling transitions.
+
+Input Signals:  TAP 
+
+Output Signals: CMP_OUT 
+

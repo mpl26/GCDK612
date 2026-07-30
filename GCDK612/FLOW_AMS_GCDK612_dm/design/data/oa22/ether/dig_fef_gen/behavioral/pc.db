@@ -1,0 +1,101 @@
+#
+gsclib090 BUFX1 symbol
+counter84_reg_4_306_5a
+counter84_reg_1_339_5a
+#
+gsclib090 BUFX3 symbol
+meta_signal_status_reg_1_576_3
+meta_signal_status_reg_1_577_3
+counter84_reg_6_1356_3
+counter84_reg_6_1357_3
+iTX_reg_1382_3
+iTX_reg_1383_3
+counter84_reg_4_1924_3
+counter84_reg_3_2093_3
+counter84_reg_5_2110_3
+meta_signal_status_reg_1_2480_3
+#
+gsclib090 CLKBUFX1 symbol
+i_770
+i_1613
+i_1916
+#
+gsclib090 OR4X1 symbol
+i_13094
+#
+gsclib090 NAND3X1 symbol
+i_8
+i_22
+i_21
+i_19
+i_17
+i_15
+i_12
+#
+gsclib090 NAND4X1 symbol
+i_9
+i_16
+#
+gsclib090 AOI21X1 symbol
+i_45
+#
+gsclib090 OR2X1 symbol
+i_40
+i_46
+#
+gsclib090 NOR2X1 symbol
+i_36
+i_35
+i_38
+i_42
+i_05580
+i_10
+i_1
+#
+gsclib090 MX2X1 symbol
+i_2065
+i_2058
+i_2051
+i_2044
+i_2037
+i_2030
+i_2023
+i_13116
+#
+gsclib090 DFFSRX1 symbol
+iTX_reg
+counter84_reg_6
+counter84_reg_5
+counter84_reg_4
+counter84_reg_3
+counter84_reg_2
+counter84_reg_1
+counter84_reg_0
+meta_signal_status_reg_1
+meta_signal_status_reg_0
+#
+gsclib090 OAI21X1 symbol
+i_2072
+i_5
+#
+gsclib090 NAND2X1 symbol
+i_2074
+i_2
+i_3
+i_4
+i_6
+i_7
+i_43
+i_15354
+i_13120
+i_20
+i_14
+i_13
+#
+gsclib090 INVX1 symbol
+i_2132
+i_2131
+i_2130
+#
+gsclib090 INVX2 symbol
+i_2133

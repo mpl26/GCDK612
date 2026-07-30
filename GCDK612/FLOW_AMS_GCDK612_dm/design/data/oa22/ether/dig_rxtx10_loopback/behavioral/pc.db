@@ -1,0 +1,74 @@
+#
+gsclib090 BUFX3 symbol
+prev_odd_txd_reg_0_1378_3
+prev_odd_txd_reg_0_1379_3
+prev_txd_reg_0_1390_3
+prev_txd_reg_0_1391_3
+prev_odd_txd_reg_2_1462_3
+prev_odd_txd_reg_2_1463_3
+prev_txd_reg_2_1476_3
+prev_txd_reg_2_1477_3
+prev_txen_reg_1496_3
+prev_odd_txen_reg_1498_3
+prev_txd_reg_1_1536_3
+prev_odd_txd_reg_1_1549_3
+prev_odd_txd_reg_3_1554_3
+prev_txd_reg_3_1615_3
+prev_odd_txd_reg_1_2496_3
+prev_txd_reg_1_2509_3
+prev_txen_reg_2579_3
+prev_odd_txen_reg_2624_3
+prev_txd_reg_3_2678_3
+prev_odd_txd_reg_3_2723_3
+#
+gsclib090 NAND4X1 symbol
+i_8
+#
+gsclib090 NAND2X1 symbol
+i_782
+i_12
+i_781
+#
+gsclib090 NAND3X1 symbol
+i_752
+#
+gsclib090 NOR2X1 symbol
+i_768
+i_5
+i_05606
+i_6
+#
+gsclib090 DFFSRX1 symbol
+prev_odd_txd_reg_3
+prev_odd_txd_reg_2
+prev_odd_txd_reg_1
+prev_odd_txd_reg_0
+prev_txd_reg_3
+prev_txd_reg_2
+prev_txd_reg_1
+prev_txd_reg_0
+prev_odd_txen_reg
+prev_txen_reg
+#
+gsclib090 MX2X1 symbol
+i_1123
+i_1116
+i_1109
+i_1102
+i_1095
+i_1088
+i_1081
+i_1
+i_1074
+i_1067
+i_1060
+i_2
+i_3
+i_4
+#
+gsclib090 INVX1 symbol
+i_1163
+i_1162
+#
+gsclib090 INVX2 symbol
+i_1164

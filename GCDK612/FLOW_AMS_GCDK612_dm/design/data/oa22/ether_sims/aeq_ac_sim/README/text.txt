@@ -1,0 +1,33 @@
+Simulation: analog_eq_AC
+
+Purpose: Measure analog equalizer AC response and common mode feedback AC response.
+
+Available States: tt state1 state2
+
+
+Description: The analog_eq_AC test bench contains the top level cell for the 
+analog equalizer. The test bench contains additional supporting circuitry for 
+performing ac analysis. Specifically,  the front end of the equalizer is
+driven by an ac source whose magnitude is attenuated by 6db via a resistive divider, 
+which is connected to nets InP and InN. In application, the output of 
+the equalizer is interfaced with the sample and hold block. A discrete transistor 
+represnetation  of this block is added to the equalizer output so that the load
+capacitance on Outp and Outn is correctly modeled.
+
+Verification:
+	The AC response of the equalizer can characterized by running an AC analysis.
+The ac response is taken as the ratio of the differential ouput Outp
+-Outn to the differential input,inP-inN. 
+Pins fdbk_in and fdbk_out are shorted prior to running this test. 
+	
+	The open loop characteristics of the equalizer common mode feedback is characterized
+via the addition of a series impedance between fdbk_in and fdbk_out, while
+placing cap to ground on the fdbk_in pin. The open loop gain of the common mode
+feedback can be measured at net AC_OUT.  
+	
+Inputs: InP		Analog equalizer positive differential input
+	InN		Analog equalizer negative differential input
+	fdbk_in	        Analog equalizer common mode open loop feeback input (signal inject side)
+	fdbk_out        Analog equalizer common mode oopen loop feedback output (signal return)
+
+Outputs: AC_OUT		Open loop ac output

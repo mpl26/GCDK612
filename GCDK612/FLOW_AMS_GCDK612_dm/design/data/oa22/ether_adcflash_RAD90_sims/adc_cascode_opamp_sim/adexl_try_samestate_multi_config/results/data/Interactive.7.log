@@ -1,0 +1,18 @@
+Starting Single Run, Sweeps and Corners...
+
+Current time: Tue Oct 25 23:00:12 2011 
+Best design point: 1
+Design specs: 
+	ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:1	corner	Default - 
+	ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:2	corner	Default - 
+Design parameters: 
+	isr_100u		50
+	siddq		5
+	vdd		2
+	vin_ac		500m
+
+Interactive.7
+Number of points completed: 1
+Number of simulation errors: 1
+Interactive.7 completed. 
+Current time: Tue Oct 25 23:00:31 2011 

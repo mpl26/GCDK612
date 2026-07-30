@@ -1,0 +1,15 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1109116189488=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1109116107000:7-dirName65-/usr1/zfan/FLOW_ETHER_CDK090/design/custom_cdba/top_sim_run_table8-snapShot24-top_sim:ams1108078937463;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11037589926986-Solver7-Spectre7-CdsPlat5-sun4v;
+	8-Snapshot24-top_sim:ams11049676288866-Solver7-Spectre7-CdsPlat5-sun4v;
+	8-Snapshot24-top_sim:ams11080789374636-Solver7-Spectre7-CdsPlat5-sun4v;
+	8-Snapshot24-top_sim:ams11049677222266-Solver7-Spectre7-CdsPlat5-sun4v;
+$END

@@ -1,0 +1,17 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1098196968344=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1081992946000:7-dirName61-/.automount/lnx-ent3/root/usr1/cic/Pigpen_cic/adc_top_sim_run8-snapShot28-adc_top_sim:ams1079475507569;
+	1091205482000:7-dirName71-/.automount/lnx-ent3/root/usr1/vfs_flow_90nm/simulation/adc_top_sim_run8-snapShot28-adc_top_sim:ams1090881151134;
+	1091056478000:7-dirName73-/.automount/lnx-ent3/root/usr1/vfs_flow_90nm/simulation/adc_top_sim_run_28-snapShot28-adc_top_sim:ams1091056372903;
+	1097770857000:7-dirName73-/.automount/lnx-ent3/root/usr1/vfs_flow_90nm/simulation/adc_top_sim_run_38-snapShot28-adc_top_sim:ams1092429698499;
+	1098196982000:7-dirName75-/.automount/lnx-ent3/root/usr1/vfs_flow_90nm/simulation/adc_top_sim_run_ron8-snapShot28-adc_top_sim:ams1097771268170;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot28-adc_top_sim:ams10924296984996-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot28-adc_top_sim:ams10977712681706-Solver7-Spectre7-CdsPlat5-lnx86;
+$END

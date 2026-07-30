@@ -1,0 +1,616 @@
+#!/bin/ksh
+
+# Version: 2.02
+
+setExeVar() { eval `echo ${2} | /bin/tr '[:lower:]' '[:upper:]'`=\"${1}${2}\"; }
+setExeVars() { P="${1}"; shift; for i in $@; { setExeVar "${P}" ${i}; } }
+setExeVars "" connect emerge eprint epick ereduce flatnet flattrans \
+              flattub geom grow inter netprint
+
+# Usage: beginFlattenInputs
+# Outputs:
+#    SAVEDIR - (Env. Var.) Directory where files will
+#       be stored prior to flattening
+beginFlattenInputs() {
+  SAVEDIR=flattenInputs/
+  /bin/mkdir -p ${SAVEDIR}
+}
+
+# Usage: changeTransFileNameAP infile outfile
+# Inputs:
+#    infile.ap - trans ap file
+# Outputs:
+#    outfile.ap - renamed trans ap file
+changeTransFileNameAP() {
+  [ -r "${1}.ap" ] && {
+    [ -r "${2}.ap" ] && /bin/rm -f ${2}.ap
+    /bin/ln -s ${1}.ap ${2}.ap
+  }
+  [ -r "${1}.nr" ] && {
+    [ -r "${2}.nr" ] && /bin/rm -f ${2}.nr
+    /bin/ln -s ${1}.nr ${2}.nr
+  }
+  [ -r "${1}.box" ] && {
+    [ -r "${2}.box" ] && /bin/rm -f ${2}.box
+    /bin/ln -s ${1}.box ${2}.box
+  }
+  return 0
+}
+
+# Usage: moveTpickTransFile intransfile outtransfile
+# Inputs:
+#    intransfile - tpick'd transistor file
+# Outputs:
+#    outtransfile - original transistor file
+moveTpickTransFile() {
+  [ -r "${1}" ] && {
+    /bin/mv -f ${1} ${2}
+  }
+  [ -r "${1}.ap" ] && {
+    /bin/mv -f ${1}.ap ${2}.ap
+  }
+  [ -r "${1}.nr" ] && {
+    /bin/mv -f ${1}.nr ${2}.nr
+  }
+  [ -r "${1}.box" ] && {
+    /bin/mv -f ${1}.box ${2}.box
+  }
+  return 0
+}
+
+# Usage: checkCapGround netfile ground-name
+# Outputs:
+#    none
+checkCapGround() {
+  set +e
+  ${NETPRINT} -l ${2} ${1} > /dev/null
+  [ "$?" -ne "0" ] && {
+    echo $0: cap ground signal \'"${2}"\' does not exist
+    exit 1
+  }
+  set -e
+}
+
+# Usage: createBJTModelFile filename modelname
+# Inputs:
+#    modelname - bipolar model name
+# Outputs:
+#    filename - bipolar model file
+createBJTModelFile() {
+  MODEL=${2}
+  echo "*
+	${MODEL} N 1.0
+	${MODEL} P 1.0
+	${MODEL} X 1.0
+*
+	${MODEL} N 1000.001 1000.001 1000.0
+	${MODEL} P 1000.001 1000.001 1000.0
+	${MODEL} X 1000.001 1000.001 1000.0" > ${1}
+}
+
+# Usage: createCapDiodeTerm devlayer interconnect terminal
+# Inputs:
+#    devlayer - device layer
+#    interconnect - connectable layer
+# Outputs:
+#    terminal - terminal formed from device layer and interconect layer
+createCapDiodeTerm() {
+  [ -f "${3}" ] && /bin/rm -f ${3}
+  ${GEOM} -V ${1} ${2} - ${1}.tmp,11,n
+  ${EREDUCE} -V -n1 -r ${1}.tmp ${3}
+  /bin/rm -f ${1}.tmp
+}
+
+# Usage: createCAPModelFile filename model scale devlayer term1 term2 [term3]
+# Inputs:
+#    model - cap model name
+#    scale - area scale factor
+#    devlayer - device layer
+#    term1 - 1st conductor layer
+#    term2 - 2nd conductor layer
+#    term3 - backgate
+# Outputs:
+#    filename - CAP model file
+createCAPModelFile() {
+  OUT=${1}
+  MODEL=${2}
+  SCALE=${3}
+  shift 3
+  [ $# -eq 3 ] && {
+    echo "*
+	  $@
+	  C 2, 3(1), ${MODEL}, 0, 0, 1, 1, :a, ${SCALE}, 111:p, 0, 0xx" > ${OUT}
+  } || {
+    echo "*
+	  $@
+	  C 2, 3,4(1), ${MODEL}, 0, 0, 1, 1, :a, ${SCALE}, 1111:p, 0, 0xxx" > ${OUT}
+  }
+}
+
+# Usage: createDIODEModelFile filename model scale devlayer term1 term2 [term3]
+# Inputs:
+#    model - diode model name
+#    scale - scale factor
+#    devlayer - device layer
+#    term1 - 1st conductor layer
+#    term2 - 2nd conductor layer
+#    term3 - backgate
+# Outputs:
+#    filename - CAP model file
+createDIODEModelFile() {
+  OUT=${1}
+  MODEL=${2}
+  SCALE=${3}
+  shift 3
+  [ $# -eq 3 ] && {
+    echo "*
+	  $@
+	  D 2, 3(1), ${MODEL}, 0, 0, 1, 2, :a, ${SCALE}, 111:p, 1, 0xx" > ${OUT}
+  } || {
+    echo "*
+	  $@
+	  D 2, 3,4(1), ${MODEL}, 0, 0, 1, 2, :a, ${SCALE}, 1111:p, 1, 0xxx" > ${OUT}
+  }
+}
+
+# Usage: createEmptyLayer layername
+# Outputs:
+#    layername - empty edge file
+createEmptyLayer() {
+  [ -f "${1}" ] && /bin/rm -f ${1}
+  echo "${1}:" > ${1}.tmp
+  ${EPRINT} -1 ${1}.tmp
+  ${CONNECT} -V ${1} - -
+  /bin/rm -f ${1}.tmp
+}
+
+# Usage: createLink infile linkname
+# Inputs:
+#    infile - file
+#    linkname - name of link to file
+# Outputs:
+#    linkname - name of link to file
+#        If this file existed, it will be removed
+createLink() { /bin/rm -f ${2}; /bin/ln -s ${1} ${2}; }
+
+# Usage: createMosfetGateTerminal devlayer gateconductor terminal
+# Inputs:
+#    devlayer - device layer
+#    gateconductor - poly layer
+# Outputs:
+#    terminal - terminal layer
+createMosfetGateTerminal() {
+  [ -f "${3}" ] && /bin/rm -f ${3}
+  ${EREDUCE} -V -n1 -r ${1} ${1}.tmp
+  ${GEOM} -V ${1}.tmp ${2} - ${3},11
+  /bin/rm -f ${1}.tmp
+}
+
+# Usage: createNRMosfetGateTerminal devlayer gateconductor terminal
+# Inputs:
+#    devlayer - device layer
+#    gateconductor - poly layer
+# Outputs:
+#    terminal - terminal layer
+createNRMosfetGateTerminal() {
+  [ -f "${3}" ] && /bin/rm -f ${3}
+  ${GEOM} -V ${1} ${2} - ${3},11
+}
+
+# Usage: createMosfetSDTerminals devlayer S/D-conductor terminal
+# Inputs:
+#    devlayer - device layer
+#    S/D-conductor - diffusion layer
+# Outputs:
+#    terminal - terminal layer
+createMosfetSDTerminals() {
+  [ -f "${3}" ] && /bin/rm -f ${3}
+  ${GROW} -V 0.001 ${1} ${1}.tmp
+  ${GEOM} -V ${1}.tmp ${2} - ${3},11
+  /bin/rm -f ${1}.tmp
+}
+
+# Usage: createResistorTerminals devlayer conductor terminal
+# Inputs:
+#    devlayer - device layer
+#    conductor - interconnect layer
+# Outputs:
+#    terminal - terminal layer
+createResistorTerminals() {
+  [ -f "${3}" ] && /bin/rm -f ${3}
+  ${GROW} -V 0.001 ${1} ${1}.tmp
+  ${GEOM} -V ${1}.tmp ${2} - ${3},11
+  /bin/rm -f ${1}.tmp
+}
+
+# Usage: createResistorSubstateTerminal devlayer substrate terminal
+# Inputs:
+#    devlayer - device layer
+#    substrate - substrate layer
+# Outputs:
+#    terminal - terminal layer
+createResistorSubstrateTerminal() {
+  [ -f "${3}" ] && /bin/rm -f ${3}
+  ${EREDUCE} -V -n1 -r ${1} ${1}.tmp
+  ${GEOM} -V ${1}.tmp ${2} - ${3},11
+  /bin/rm -f ${1}.tmp
+}
+
+# Usage: createRCXDir directory
+# Outputs:
+#    directory - RCX run directory
+#    RCXDIR - (Env. Var.) RCX run directory
+createRCXDir() {
+  [ ! -d "${1}" ] && {
+    set +e
+    /bin/mkdir -p ${1};
+    [ "$?" != "0" ] && {
+      echo $0: cannot create RCX directory \'${1}\' >&2
+      exit 1
+    }
+    set -e
+  }
+  RCXDIR=${1}
+}
+
+# Usage: endFlattenInputs
+# Inputs:
+#    RCX_SAVE_DATA - (Env. Var.) If set to anything,
+#       data will be saved, otherwise it will be deleted
+endFlattenInputs() {
+  if [ -z "${RCX_SAVE_DATA}" ]; then
+    /bin/rm -rf ${SAVEDIR}
+  fi
+}
+
+# Usage: flattenBJTData deviceLayer
+# Inputs:
+#    deviceLayer - device recognition layer
+#    deviceLayer.trans - BJT file
+#    deviceLayer.net - device name mapping file
+#    HIERARCHY_DELIMITER - delimiter for
+#       flattening BJT names
+# Outputs:
+#    Same as inputs, but flattened.
+flattenBJTData() {
+  /bin/mv ${1} ${1}.qtrans* ${1}.net ${SAVEDIR}
+  ${FLATTUB} -V -F -m ${SAVEDIR}${1} ${1}
+  ${FLATTRANS} -V ${SAVEDIR}${1}.qtrans ${1}.qtrans
+  ${FLATNET} -V -li -h '/' ${SAVEDIR}${1}.net ${1}.net
+}
+
+# Usage: flattenCapData deviceLayer
+# Inputs:
+#    deviceLayer - device recognition layer
+#    deviceLayer.cpax - PAX file
+#    deviceLayer.net - device name mapping file
+#    HIERARCHY_DELIMITER - delimiter for
+#       flattening CAP names
+# Outputs:
+#    Same as inputs, but flattened.
+flattenCapData() {
+  /bin/mv ${1} ${1}.cpax* ${1}.net ${SAVEDIR}
+  ${FLATTUB} -V -F -m ${SAVEDIR}${1} ${1}
+  ${FLATTRANS} -V ${SAVEDIR}${1}.cpax ${1}.cpax
+  ${FLATNET} -V -li -h '/' ${SAVEDIR}${1}.net ${1}.net
+}
+
+# Usage: flattenDeviceData boxfile
+# Inputs:
+#    boxfile - generic device instance file
+# Outputs:
+#    boxfile - flattened generic device instance file
+flattenDeviceData() {
+  /bin/mv ${1} ${SAVEDIR}
+  ${FLATTRANS} -V ${SAVEDIR}${1} ${1}
+}
+
+# Usage: flattenDiodeData deviceLayer
+# Inputs:
+#    deviceLayer - device recognition layer
+#    deviceLayer.dpax - PAX file
+#    deviceLayer.net - device name mapping file
+#    HIERARCHY_DELIMITER - delimiter for
+#       flattening diode names
+# Outputs:
+#    Same as inputs, but flattened.
+flattenDiodeData() {
+  /bin/mv ${1} ${1}.dpax* ${1}.net ${SAVEDIR}
+  ${FLATTUB} -V -F -m ${SAVEDIR}${1} ${1}
+  ${FLATTRANS} -V ${SAVEDIR}${1}.dpax ${1}.dpax
+  ${FLATNET} -V -li -h '/' ${SAVEDIR}${1}.net ${1}.net
+}
+
+# Usage: flattenLayers layers
+# Inputs:
+#    layers - list of polygon data layers (with or without
+#       connectivity info)
+# Outputs:
+#    layers - list of flattened polygon data layers (with or
+#       without connectivity info)
+flattenLayers() {
+  j=1
+  /bin/mv $* ${SAVEDIR}
+  for i in $*; {
+    [ "${j}" = "1" ] && {
+      INLAY="${SAVEDIR}${i}"
+      OUTLAY="${i}"
+    } || {
+      INLAY="${INLAY},${SAVEDIR}${i}"
+      OUTLAY="${OUTLAY},${i}"
+    }
+    ((j = ${j} + 1))
+  }
+  ${FLATTUB} -V -F -m ${INLAY} ${OUTLAY}
+}
+
+# Usage: flattenResData deviceLayer
+# Inputs:
+#    deviceLayer - device recognition layer
+#    deviceLayer.res - resistor file
+#    deviceLayer.net - device name mapping file
+#    HIERARCHY_DELIMITER - delimiter for
+#       flattening resistor names
+# Outputs:
+#    Same as inputs, but flattened.
+flattenResData() {
+  /bin/mv ${1} ${1}.res* ${1}.net ${SAVEDIR}
+  ${FLATTUB} -V -F -m ${SAVEDIR}${1} ${1}
+  ${FLATTRANS} -V ${SAVEDIR}${1}.res ${1}.res
+  ${FLATNET} -V -li -h '/' ${SAVEDIR}${1}.net ${1}.net
+}
+
+# Usage: flattenTransistorData deviceLayer
+# Inputs:
+#    deviceLayer - device recognition layer
+#    deviceLayer.trans - transistor file
+#    deviceLayer.net - device name mapping file
+#    deviceLayer.trans.ap - transistor src/drn
+#       area/perim parameter file
+#    deviceLayer.trans.nr - transistor src/drn
+#       resistance parameter file
+#    HIERARCHY_DELIMITER - delimiter for
+#       flattening transistor names
+# Outputs:
+#    Same as inputs, but flattened.
+flattenTransistorData() {
+  /bin/mv ${1} ${1}.trans* ${1}.net ${SAVEDIR}
+  ${FLATTUB} -V -F -m ${SAVEDIR}${1} ${1}
+  ${FLATTRANS} -V ${SAVEDIR}${1}.trans ${1}.trans
+  ${FLATNET} -V -li -h '/' ${SAVEDIR}${1}.net ${1}.net
+}
+
+# Usage: mergeLayers outlayer inlayer1 [inlayer2 ...]
+# Inputs:
+#    inlayer1 - input layer1
+#    inlayer2 ... - optional input layers
+# Outputs:
+#    outlayer - output layer
+mergeLayers() {
+  case $# in
+    0|1)
+       echo usage: mergeLayers outlayer inlayer1 [inlayer2 ...] >&2
+       exit 1
+       ;;
+    2)
+       [ "${1}" != "${2}" ] && /bin/cp ${2} ${1}
+       return 0
+       ;;
+    3)
+       [ "${2}" = "${3}" ] && {
+         /bin/cp ${2} ${1}
+       } || {
+         ${EMERGE} -V ${2} ${3} ${1}.tmp
+         ${GEOM} -V ${1}.tmp - ${1},1,i,1
+         /bin/rm -f ${1}.tmp
+       }
+       ;;
+    *)
+       RCX_OUT=${1}
+       shift
+       k=0
+       until [ $# -le 1 ]; do
+	 ((k = ${k} + 1))
+	 ${EMERGE} -V ${1} ${2} tmp${k}
+	 shift 2
+       done
+       [ $# -eq 1 ] && {
+	 ((k = ${k} + 1))
+	 ${EMERGE} -V ${1} tmp1 tmp${k}
+	 /bin/rm -f tmp1
+	 i=2
+       } || { i=1; }
+       while [ ${i} -lt ${k} ]; do
+	 ((j = ${i} + 1))
+	 ((k = ${k} + 1))
+	 ${EMERGE} -V tmp${i} tmp${j} tmp${k}
+	 /bin/rm -f tmp${i} tmp${j}
+	 ((i = ${j} + 1))
+       done
+       /bin/mv tmp${k} ${RCX_OUT}
+       ${GEOM} -V ${RCX_OUT} - ${RCX_OUT},1,i,1
+       ;;
+  esac
+}
+
+# Usage: mergeCutLayers outlayer inlayer1 [inlayer2 ...]
+# Inputs:
+#    inlayer1 - input layer1
+#    inlayer2 ... - optional input layers
+# Outputs:
+#    outlayer - output layer
+mergeCutLayers() {
+  case $# in
+    0|1)
+       echo usage: mergeCutLayers outlayer inlayer1 [inlayer2 ...] >&2
+       exit 1
+       ;;
+    2)
+       [ "${1}" != "${2}" ] && /bin/cp ${2} ${1}
+       return 0
+       ;;
+    3)
+       [ "${2}" = "${3}" ] && {
+         /bin/cp ${2} ${1}
+       } || {
+         ${EMERGE} -V ${2} ${3} ${1}
+       }
+       ;;
+    *)
+       RCX_OUT=${1}
+       shift
+       k=0
+       until [ $# -le 1 ]; do
+	 ((k = ${k} + 1))
+	 ${EMERGE} -V ${1} ${2} tmp${k}
+	 shift 2
+       done
+       [ $# -eq 1 ] && {
+	 ((k = ${k} + 1))
+	 ${EMERGE} -V ${1} tmp1 tmp${k}
+	 /bin/rm -f tmp1
+	 i=2
+       } || { i=1; }
+       while [ ${i} -lt ${k} ]; do
+	 ((j = ${i} + 1))
+	 ((k = ${k} + 1))
+	 ${EMERGE} -V tmp${i} tmp${j} tmp${k}
+	 /bin/rm -f tmp${i} tmp${j}
+	 ((i = ${j} + 1))
+       done
+       /bin/mv tmp${k} ${RCX_OUT}
+       ;;
+  esac
+}
+
+# Usage: resizeLayer grow-amt in-layer [out-layer]
+# Outputs:
+#    out-layer/in-layer - grown version of in-layer.
+#	  if out-layer is omitted, in-layer is
+#	  overwritten
+resizeLayer() {
+  case $# in
+    2)
+       ${GROW} -V -m ${1} ${2} ${2}.tmp
+       /bin/mv ${2}.tmp ${2}
+       ;;
+    3)
+       ${GROW} -V -m ${1} ${2} ${3}
+       ;;
+    *)
+       echo usage: resizeLayer grow-amt in-layer [out-layer] >&2
+       exit 1
+       ;;
+  esac
+}
+
+# Usage: selectNets netfile namefile inset subset complement
+# Inputs:
+#    netfile - name to net id number data file
+#    namefile - name of nets to be selected
+#    inset - input layer
+# Outputs:
+#    subset - selected subset of inlayer
+#    complement - complement of subset
+selectNets() {
+  if [ $# -ne 5 ]; then
+    selectNets $@
+    echo "Usage: selectNets netfile namefile inset subset complement" 1>&2
+    exit 1
+  fi
+  ${EPICK} -V -l ${2} -n ${1} ${3} ${4}
+  ${EPICK} -V -l ${2} -n ${1} -c ${3} ${5}
+}
+
+# Usage: selecteNetsByNumber numfile inset subset complement
+# Inputs:
+#    numfile - id numbers of nets to be selected
+#    inset - input layer
+# Outputs:
+#    subset - selected subset of inlayer
+#    complement - complement of subset
+selectNetsByNumber() {
+  if [ $# -ne 4 ]; then
+    echo selectNetsByNumber $@
+    echo "Usage: selectNetsByNumber numfile inset subset complement" 1>&2
+    exit 1
+  fi
+  ${EPICK} -V -f ${1} ${2} ${3}
+  ${EPICK} -V -f ${1} -c ${2} ${4}
+}
+
+# Usage: selectExcludedNetsByNumber powerfile excludefile netfile inset capground subset complement mode
+# Inputs:
+#    powerfile - id numbers of power nets to be selected
+#    excludefile - names of excluded nets to be selected
+#    netfile - name of the RCX netfile
+#    inset - input layer
+#    capground - the value of variable ${CAP_GROUND}
+#    mode - specifies coupled or decoupled extraction
+# Outputs:
+#    subset - selected subset of inlayer
+#    complement - complement of subset
+selectExcludedNetsByNumber() {
+  if [ $# -ne 8 ]; then
+    echo selectExcludedNetsByNumber $@
+    echo "Usage: selectExcludedNetsByNumber powerfile excludefile netfile insetcapground subset complement mode" 1>&2
+    exit 1
+  fi
+  ${EPICK} -V -f ${1} -l ${2} -n ${3} ${4} ${6}
+  ${EPICK} -V -f ${1} -l ${2} -n ${3} -c ${4} ${7}
+}
+
+# Usage: selectViaOverlapRegions layer1 layer2 via output
+# Inputs:
+#    layer1 - connectable layer1
+#    layer2 - connectable layer2
+#    via - via which connects layer1 and layer2
+# Outputs:
+#    output - regions of layer1 and layer2 which overlap and
+#             contain vias
+selectViaOverlapRegions() {
+  ${GEOM} -V ${1} ${2} - ${1}.${2}.tmp,11,n
+  ${INTER} -V ${1}.${2}.tmp ${3} -P ${1}.${2}.${3}
+  ${EPICK} -V -f ${1}.${2}.${3} ${1}.${2}.tmp ${4}
+  /bin/rm -f ${1}.${2}.tmp ${1}.${2}.${3}
+}
+
+# Usage: setCapGround power-ground-file [ground-name]
+# Outputs:
+#    CAP_GROUND - (Env. Var.) lumped cap reference net
+setCapGround() {
+  if [ $# -eq 2 ]; then
+    set +e
+    /bin/cat ${1} | /bin/tr " ," \\\n\\\n | /bin/fgrep "${2}" > /dev/null
+    if [ $? -ne 0 ]; then
+      (echo Invalid lumped capacitance reference net \'"${2}"\'
+       echo "It must be one of\n") 1>&2
+      /bin/cat ${1} 1>&2
+      CAP_GROUND=`/bin/head -1 ${1}`
+      echo "\n"\'"${CAP_GROUND}"\' will be used instead 1>&2
+    else
+      CAP_GROUND=${2}
+    fi
+    set -e
+  else
+    if [ -s "${1}" ]; then
+      CAP_GROUND=`/bin/head -1 ${1}`
+    fi
+  fi
+}
+
+# Usage: setTempDir directory
+# Outputs:
+#    TEMPDIR - (Env. Var.) directory for temporary files
+setTempDir() {
+  set +e
+  /bin/touch ${1}/$$ 2> /dev/null
+  [ "$?" != "0" ] && {
+    echo $0: cannot create files in temporary directory \'${1}\' >&2
+    exit 1
+  }
+  set -e
+  /bin/rm -f ${1}/$$
+  TEMPDIR=${1}
+  export TEMPDIR
+}

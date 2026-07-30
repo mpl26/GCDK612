@@ -1,0 +1,74 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_rxtx100_misc *
+i_dig_rxtx100_misc
+
+#CELL
+* dig_reset *
+i_dig_reset
+
+#CELL
+* dig_slicer_mux *
+i_dig_slicer_mux
+
+#CELL
+* dig_tx10misc *
+i_dig_tx10misc
+
+#CELL
+* dig_arbitrary_timer *
+i_dig_arbitrary_timer
+
+#CELL
+* dig_rx_mux *
+i_dig_rx_mux
+
+#CELL
+* dig_rx10 *
+i_dig_rx10
+
+#CELL
+* top_dig_led_out *
+i_top_dig_led_out
+
+#CELL
+* dig_rx100_path *
+i_dig_rx100_path
+
+#CELL
+* dig_tx100_path *
+i_dig_tx100_path
+
+#CELL
+* dig_clk *
+i_dig_clk
+
+#CELL
+* dig_rxtx_tpdisc *
+i_dig_rxtx_tpdisc
+
+#CELL
+* dig_mdio *
+i_dig_mdio
+
+#CELL
+* dig_regs *
+i_dig_regs
+
+#CELL
+* dig_mdix *
+i_dig_mdix
+
+#CELL
+* dig_test_mux *
+i_dig_test_mux
+
+#CELL
+* dig_test *
+i_dig_test
+
+#CELL
+* dig_an_autonegotiation *
+i_dig_an_autonegotiation
+

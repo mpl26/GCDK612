@@ -1,0 +1,158 @@
+// Spectre AHDL for drouillard_ph2_A, trans_ld_10bt_100tx, ahdl
+module trans_ld_10bt_100tx ( BI_DAM, BASE100_DIS, MLT3ENC_DATA, gnd, vdd, 
+        siddq, ibias_rext_400u, I_100u_Rext_NC, BASE10_TX_DIS, 
+	ibias_rext_50u, BASE10_DIS, ibias_rext2_50u, dgnd, dvdd, TP_DIS, 
+	BI_DAP, tenbt_filter, clk_160mhz,
+	reset)
+node [V,I] BI_DAM;
+node [V,I] BI_DAP;
+node [V,I] BASE10_DIS;
+node [V,I] BASE10_TX_DIS;
+node [V,I] BASE100_DIS;
+node [V,I] I_100u_Rext_NC;
+node [V,I] MLT3ENC_DATA[1:0];
+node [V,I] TP_DIS;
+node [V,I] clk_160mhz;
+node [V,I] dgnd;
+node [V,I] dvdd;
+node [V,I] gnd;
+node [V,I] ibias_rext2_50u;
+node [V,I] ibias_rext_50u;
+node [V,I] ibias_rext_400u;
+node [V,I] reset;
+node [V,I] siddq;
+node [V,I] tenbt_filter[4:0];
+node [V,I] vdd;
+
+{
+real    trise    = 0.5n;
+real    tfall    = 0.5n;
+real    iout     = 0;
+real    iout_pos = 0;
+real    iout_neg = 0;
+real    imax     = 0;
+real    ibias    = 0;
+integer sign  	 = 0;
+integer bit1  	 = 0;
+integer bit2  	 = 0;
+integer bit3  	 = 0;
+integer bit4  	 = 0;
+integer tx_on 	 = 0;
+integer tenbt_on = 0;
+real vthresh;
+real vthresh_1p0;
+
+real vi400u, vi50u, vi100u;
+
+analog {
+   vthresh = V(vdd)/2;
+   vthresh_1p0 = V(dvdd)/2;
+ 
+   if(V(siddq) > vthresh | V(TP_DIS) > vthresh) {
+        vi400u   = 0;
+	vi50u    = 0;
+	vi100u   = 0;
+        iout_pos = 0;
+	iout_neg = 0;
+        tenbt_on = 0;
+	tx_on    = 0;
+   }
+   else {    
+	// Terminate Current Sources
+        vi400u   = 0.800;			// 800mV for 400u current
+	vi50u    = 0.650;			// 650mV for 50u currents
+	vi100u   = 1.1;				// 1.1V for 100uA currents
+
+	//  Operating mode section
+	if(V(reset) > vthresh_1p0)
+	     tenbt_on = 0;
+	else if(V(BASE10_DIS) > vthresh)
+	     tenbt_on = 0;
+	else
+	     tenbt_on = 1;
+
+	if(V(BASE100_DIS) > vthresh)
+	     tx_on = 0;
+	else
+	     tx_on = 1;
+   }
+
+   // 10BaseT Operation
+   if(tenbt_on) {
+	if(V(BASE10_TX_DIS) < vthresh_1p0) {
+	     imax = 307.7*I(ibias_rext_400u); //imax = 100e-3;
+	     ibias = 10*I(ibias_rext_400u);
+	}
+	else {
+	     imax  = 0;
+	     ibias = (10/4)*I(ibias_rext_400u);
+	} 
+	
+	// Tenbt signal construction
+	trise = 11n;
+	tfall = 11n;
+
+	sign = V(tenbt_filter[4]) > vthresh_1p0;
+	bit1 = V(tenbt_filter[3]) > vthresh_1p0;
+	bit2 = V(tenbt_filter[2]) > vthresh_1p0;
+	bit3 = V(tenbt_filter[1]) > vthresh_1p0;
+	bit4 = V(tenbt_filter[0]) > vthresh_1p0; 
+    
+	if(!sign){
+	     iout = 0;
+	     iout += (bit1 ? imax/2 : 0);
+	     iout += (bit2 ? imax/4 : 0);
+	     iout += (bit3 ? imax/8 : 0);
+	     iout += (bit4 ? imax/16: 0);
+	     iout_pos = 0;
+	     iout_neg = iout; 
+	}
+	else {
+    	     iout = imax/16;
+    	     iout += (!bit1 ? imax/2 : 0);
+    	     iout += (!bit2 ? imax/4 : 0);
+    	     iout += (!bit3 ? imax/8 : 0);
+     	     iout += (!bit4 ? imax/16: 0);
+	     iout_pos = iout;
+	     iout_neg = 0;
+	}
+   }
+   // 100Base-TX Operation
+   else if(tx_on) {
+	imax  = 100*I(ibias_rext_400u);
+	ibias = 10*I(ibias_rext_400u);
+
+	trise = 0.5n;
+	tfall = 0.5n;
+ 
+	if((V(MLT3ENC_DATA[0]) > vthresh) && (V(MLT3ENC_DATA[1]) > vthresh)) {
+	     iout_pos =  5*ibias;
+	     iout_neg =  5*ibias;
+        }
+	else if((V(MLT3ENC_DATA[0]) > vthresh) && (V(MLT3ENC_DATA[1]) < vthresh))
+        {
+	     iout_pos = 0;
+	     iout_neg = imax;
+        }
+        else if((V(MLT3ENC_DATA[0]) < vthresh) && (V(MLT3ENC_DATA[1]) > vthresh))
+        {
+	     iout_pos = imax;
+	     iout_neg = 0;
+        }
+        else if((V(MLT3ENC_DATA[0]) < vthresh) && (V(MLT3ENC_DATA[1]) < vthresh))
+        {
+	     iout_pos = 5*ibias;
+	     iout_neg = 5*ibias;
+        }
+   }
+
+   V(ibias_rext_400u) <- vi400u;
+   V(ibias_rext_50u)  <- vi50u;
+   V(ibias_rext2_50u) <- vi50u;
+   V(I_100u_Rext_NC)  <- vi100u;
+
+   I(BI_DAP) <- $transition(iout_pos, 0, trise, tfall) ; 
+   I(BI_DAM) <- $transition(iout_neg, 0, trise, tfall) ; 
+
+}
+}

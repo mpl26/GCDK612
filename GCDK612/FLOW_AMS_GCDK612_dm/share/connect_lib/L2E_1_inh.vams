@@ -1,0 +1,60 @@
+
+// INCLUDE FILES:
+`include "disciplines.vams"
+`timescale 1ns / 100ps
+
+//============================================================================
+connectmodule L2E_1_inh(Din,Aout);
+ input Din; logic Din;          // digital input signal
+ output Aout; electrical Aout;  // analog output signal
+ 
+// Supply Sensitivity attributes
+// electrical (* integer supplySensitivity = "cds_globals.\\vdd! " ; *) vdd;
+ //electrical (* integer groundSensitivity = "cds_globals.\\vss! " ; *) vss;
+
+//INHCONN attribute 
+electrical
+   (* integer inh_conn_prop_name="DVDD";
+      integer inh_conn_def_value="cds_globals.\\vdda! "; *)
+ \vdda ;
+electrical
+   (* integer inh_conn_prop_name="DVSS";
+      integer inh_conn_def_value="cds_globals.\\vss! "; *)
+ \vss ;
+
+  
+// INSTANCE PARAMETERS:
+ parameter real tr=0.2n;        // risetime of analog output
+ parameter real rout=200;       // output resistance
+// scaled output levels (0 maps to Vref, 1 maps to Vsup):
+ parameter real vlo=0 from [0:1);               // frac. output low level
+ parameter real vhi=1 from (vlo:1];             // frac. output high level
+ parameter real vxz=(vhi+vlo)/2 from [vlo:vhi]; // frac for XZ state voltage
+
+// LOCAL VARIABLES:
+ reg Dreg;                      // output is a register
+ real Kout,Kres;                // relative output voltage & resistance states
+ real Vout,Rval;                // output V & R with transitions
+ 
+//============================================================================
+ initial begin
+   Dreg = Din;                  // initial logic writeback
+   Kout = (Din===1'b0)? vlo : (Din===1'b1)? vhi : vxz;    // initial V
+   Kres = (Din===1'bz)? 1 : 0;                            // initial R
+ end
+ always @Din begin
+   Dreg = Din;                  // logic writeback follows level.
+   case(Din)
+     1'b0:  begin  Kout=vlo; Kres=0;    end  // low state
+     1'b1:  begin  Kout=vhi; Kres=0;    end  // high state
+     1'bx:  begin  Kout=vxz; Kres=-0.1; end  // X (impedance is 0.2*rout)
+     1'bz:  begin  Kout=vxz; Kres=1;    end  // Z (impedance is 80K*rout)
+   endcase
+ end
+ analog begin
+   Vout = V(vdda,vss)*transition(Kout,0,tr,tr);    // add risetimes & supply dep
+   Rval = rout*(1+80K*pow(transition(Kres,0,tr,tr),5)); // resistor with rise
+   I(Aout) <+ (V(Aout,vss)-Vout)/Rval;                // drive output 
+ end
+ assign Din = Dreg;             // assign digital value to input pin. 
+endmodule

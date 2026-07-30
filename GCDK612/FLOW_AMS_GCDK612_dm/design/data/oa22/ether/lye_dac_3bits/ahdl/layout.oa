@@ -1,0 +1,72 @@
+// $Date: 1995/08/12 01:54:14 $
+// $Revision: 1.7 $
+//
+//
+//The sample SpectreHDL library is unsupported and subject to change
+//without notice. Future versions of SpectreHDL may not be compatible
+//with this library.
+ 
+
+
+//--------------------
+// dac_3bit_ideal
+//
+// -  3 bit digital analog converter
+//
+// vd0..vd2:	data inputs [V,A]
+// vout:	[V,A]
+//
+// INSTANCE parameters
+//    vref   = reference voltage that conversion is with respect to [V]
+//    vtrans = transition voltage between logic high and low [V]
+//    tdel,trise,tfall = {usual} [s]
+//
+// MODEL parameters
+//    {none}
+
+module lye_dac_3bits (vout, vd0, vd1, vd2 )
+   (vref, tdel, trise, tfall, vtrans)
+node [V, I] vd2, vd1, vd0, vout;
+parameter real vref  = 0.4;
+parameter real trise = 100p;
+parameter real tfall = 100p;
+parameter real tdel  = 100p;
+parameter real vtrans  = 1.25;
+{
+
+    real out_scaled; // output scaled as fraction of 8
+
+    analog {
+
+	if ((V(vd2) > vtrans) && (V(vd1) < vtrans) && (V(vd1) > vtrans)) {
+		out_scaled = -0.20;
+	}
+	else if ((V(vd2) > vtrans) && (V(vd1) > vtrans) && (V(vd1) < vtrans)) {
+		out_scaled = -0.16;
+	}
+	else if ((V(vd2) > vtrans) && (V(vd1) > vtrans) && (V(vd1) > vtrans)) {
+		out_scaled = -0.12;
+	}
+	else if ((V(vd2) < vtrans) && (V(vd1) < vtrans) && (V(vd1) < vtrans)) {
+		out_scaled = 0.0;
+	}
+	else if ((V(vd2) < vtrans) && (V(vd1) < vtrans) && (V(vd1) > vtrans)) {
+		out_scaled = 0.12;
+	}
+	else if ((V(vd2) < vtrans) && (V(vd1) > vtrans) && (V(vd1) < vtrans)) {
+		out_scaled = 0.16;
+	}
+	else if ((V(vd2) < vtrans) && (V(vd1) > vtrans) && (V(vd1) > vtrans)) {
+		out_scaled = 0.2;
+	}
+	else {
+		out_scaled=0;
+	}
+		V(vout) <- $transition( out_scaled, tdel, trise, tfall );
+    }
+}
+
+
+
+
+

@@ -1,0 +1,14 @@
+;;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+envLoadFile(".cdsenv")  ;; Load Cadence environment
+;ddsOpenLibManager()     ;; Open library manager upon start
+;;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;For Synchronicity
+;load( strcat( getShellEnvVar( "SYNC_DIR" ) "/cds/skill/dssInit.il" ) )
+
+;For CioSoft
+;let( (clioDir)
+;    clioDir = getShellEnvVar("CLIOSOFT_DIR")
+;    load((strcat clioDir "/scripts/cds_sosviadfII.il"))
+;)
+

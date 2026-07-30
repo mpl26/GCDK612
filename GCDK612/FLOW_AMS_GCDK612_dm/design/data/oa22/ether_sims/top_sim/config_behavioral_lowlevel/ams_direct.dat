@@ -1,0 +1,17 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1136393736432=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1136393749000:7-dirName45-$AMS/simulation/ether.top.behavioral_lowlevel8-snapShot24-top_sim:ams1108759422596;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11064260133526-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11087594225966-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11054850920956-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11064247883936-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11087561837396-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11060732677236-Solver7-Spectre7-CdsPlat5-lnx86;
+$END

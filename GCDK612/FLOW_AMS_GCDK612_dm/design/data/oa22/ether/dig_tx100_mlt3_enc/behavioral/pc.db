@@ -1,0 +1,38 @@
+#
+gsclib090 BUFX1 symbol
+datareg_reg_325_5a
+#
+gsclib090 BUFX3 symbol
+datareg_reg_1996_3
+#
+gsclib090 CLKBUFX1 symbol
+i_647
+#
+gsclib090 NOR2X1 symbol
+i_2
+#
+gsclib090 MX2X1 symbol
+i_4
+i_5
+#
+gsclib090 DFFSRX1 symbol
+MLT3ENC_DATA_reg_1
+MLT3ENC_DATA_reg_0
+datareg_reg
+#
+gsclib090 NAND3X1 symbol
+i_2350
+i_2343
+i_2336
+#
+gsclib090 NAND2X1 symbol
+i_2351
+i_2349
+i_2344
+i_2342
+i_2337
+i_2335
+#
+gsclib090 INVX1 symbol
+i_2371
+i_2370

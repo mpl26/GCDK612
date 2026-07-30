@@ -1,0 +1,12 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1128404125337=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1128404140000:7-dirName41-$AMS/simulation/ether.top.transistor_hrcx8-snapShot24-top_sim:ams1108760618592;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11087606185926-Solver8-UltraSim7-CdsPlat5-lnx86;
+$END

@@ -1,0 +1,21 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1234218898=5-ether12-clkbuf_1x_hv;
+	1234218898=5-ether12-clkbuf_1x_hv6-symbol;
+	1234218898=5-ether10-and2_1x_hv;
+	1234218898=5-ether10-and2_1x_hv6-symbol;
+	1234218898=5-ether9-dff_1x_hv;
+	1234218898=5-ether9-dff_1x_hv6-symbol;
+	1234218898=5-ether10-dffr_2x_hv;
+	1234218898=5-ether10-dffr_2x_hv6-symbol;
+	-1=5-basic4-opin;
+	1250017016=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1250017016=5-basic4-ipin6-symbol;
+	1250033370=verilog.vams;
+$END

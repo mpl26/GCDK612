@@ -1,0 +1,18 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* adc_decode *
+ADC_DECODE
+
+#CELL
+* adc_lvlshft_2p5_to_1p0 *
+I27
+
+#CELL
+* adc_lvlshft_1p0_to_2p5 *
+I29
+
+#CELL
+* adc_wo_decode *
+ADC_WO_DECODE
+

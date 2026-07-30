@@ -1,0 +1,36 @@
+#
+gsclib090 INVX8 symbol
+i_235850
+#
+gsclib090 CLKBUFX1 symbol
+i_795
+#
+gsclib090 OR2X1 symbol
+i_05584
+#
+gsclib090 NOR2X1 symbol
+i_1
+#
+gsclib090 INVX1 symbol
+i_2376
+#
+ether dig_tx100_enc4b5b symbol
+i_dig_tx100_enc4b5b
+#
+ether dig_tx100_bypass4b5b symbol
+i_dig_tx100_bypass4b5b
+#
+ether dig_tx100_serializer symbol
+i_dig_tx100_serializer
+#
+ether dig_fef_gen symbol
+i_dig_fef_gen
+#
+ether dig_tx100_scrambler symbol
+i_dig_tx100_scrambler
+#
+ether dig_tx100_bypass_scrambler symbol
+i_dig_tx100_bypass_scrambler
+#
+ether dig_tx100_mlt3_enc symbol
+i_dig_tx100_mlt3_enc

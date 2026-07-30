@@ -1,0 +1,56 @@
+\o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 03/22/2020 00:06 (cpgsrv12) $
+\o Sub version:		sub-version  s113 
+\o Arguments:		-unmapped -mpssession virtuoso22878 -mpshost walvrh214mon 
+\o Working Directory:	walvrh214mon:/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22
+\o 64-bit offsets
+\o Qt version: 		5.9.1
+\o changeWorkingDir("/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o Log file is "/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/libManager.log".
+\o Opening libManager window.
+\a nrSetWindowVisibility(cdsLibManager "show")
+\o MPS service: map window
+\o Library Manager customization server connected.
+\a nrSetCurrentWindow(cdsLibManager)
+\w Warning: The directory: '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/share/CDK180/gsclib180/oa22/GSCLib_20' does not exist
+\w 	but was defined in libFile '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/cds.lib' for Lib 'GSCLib_20'.
+\w Warning: The directory: '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/share/CDK180/gpdk180/libs.oa22/gpdk180' does not exist
+\w 	but was defined in libFile '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/cds.lib' for Lib 'gpdk180'.
+\w Warning: The directory: '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/share/CDK090/giolib090/oa22/giolib090' does not exist
+\w 	but was defined in libFile '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/cds.lib' for Lib 'giolib090'.
+\a nrResizeWindow(cdsLibManager list(285 70 1248 622))
+\a cdsLibManager->libListBox->value = "ether"
+\a cdsLibManager->libLineEdit->value = "ether"
+\a cdsLibManager->cellListBox->value = "top"
+\a cdsLibManager->cellLineEdit->value = "top"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a lmgrLogShowPopup("mainListPopup2" 61 228 2 "schematic")
+\a cdsLibManager->FileOpenROButton->value = t
+\o MPS request: open design readonly
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\w Warning: The directory: '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/share/CDK180/gsclib180/oa22/GSCLib_20' does not exist
+\w 	but was defined in libFile '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/cds.lib' for Lib 'GSCLib_20'.
+\w Warning: The directory: '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/share/CDK180/gpdk180/libs.oa22/gpdk180' does not exist
+\w 	but was defined in libFile '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/cds.lib' for Lib 'gpdk180'.
+\w Warning: The directory: '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/share/CDK090/giolib090/oa22/giolib090' does not exist
+\w 	but was defined in libFile '/data/sample_data/GCDK612/FLOW_AMS_GCDK612_dm/design/data/oa22/cds.lib' for Lib 'giolib090'.
+\a cdsLibManager->libListBox->value = "ether"
+\a cdsLibManager->libLineEdit->value = "ether"
+\a cdsLibManager->cellListBox->value = "top"
+\a cdsLibManager->cellLineEdit->value = "top"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a nrSetCurrentWindow(cdsLibManager)
+\o MPS service: shutdown
+\o libManager is exiting.
+\a exit(0)

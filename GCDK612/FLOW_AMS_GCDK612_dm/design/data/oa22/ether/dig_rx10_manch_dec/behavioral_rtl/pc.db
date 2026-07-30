@@ -1,0 +1,14 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_rx10_manch_dec_filter *
+i_dig_rx10_manch_dec_filter
+
+#CELL
+* dig_rx10_manch_dec_outwave *
+i_dig_rx10_manch_dec_outwave
+
+#CELL
+* dig_rx10_manch_dec_edge *
+i_dig_rx10_manch_dec_edge
+

@@ -1,0 +1,356 @@
+#
+gsclib090 INVX8 symbol
+i_170003
+i_170006
+i_170007
+i_170008
+i_170009
+i_170010
+i_170011
+i_170012
+i_170013
+i_170014
+i_170015
+i_170016
+i_170019
+i_170020
+i_170023
+i_170027
+i_170032
+i_170035
+i_170036
+i_170042
+i_170043
+i_170044
+i_170045
+i_170046
+i_170047
+i_170048
+i_170049
+i_170050
+i_170059
+i_170060
+i_170065
+i_170066
+i_170072
+i_170077
+i_170078
+i_170085
+i_170186
+i_170187
+i_170188
+i_170189
+i_170190
+i_170191
+i_170196
+i_170198
+i_170199
+i_170200
+i_170204
+i_170233
+i_170234
+i_170235
+i_170236
+i_170240
+i_170255
+i_170256
+#
+gsclib090 BUFX1 symbol
+i_673
+i_1476
+count_reg_3_285_5a
+data_11_reg_0_488_5a
+data_6_reg_1_570_5a
+#
+gsclib090 CLKBUFX3 symbol
+i_672
+#
+gsclib090 CLKBUFX1 symbol
+i_671
+i_826
+i_828
+i_831
+i_835
+i_838
+i_840
+i_841
+i_842
+i_844
+i_846
+i_848
+i_850
+i_853
+i_854
+i_927
+i_1477
+#
+gsclib090 BUFX3 symbol
+i_435
+i_675
+i_678
+i_883
+i_926
+i_928
+data_11_reg_0_328_3
+data_11_reg_0_329_3
+data_11_reg_1_398_3
+data_11_reg_1_399_3
+data_12_reg_1_602_3
+data_12_reg_1_603_3
+data_12_reg_0_652_3
+data_12_reg_0_653_3
+data_1_reg_1_902_3
+data_1_reg_1_903_3
+count_reg_1_1294_3
+count_reg_1_1295_3
+data_1_reg_0_1348_3
+data_1_reg_0_1349_3
+count_reg_0_1370_3
+count_reg_0_1371_3
+data_9_reg_0_1659_3
+data_10_reg_1_1697_3
+count_reg_2_1785_3
+count_reg_6_1852_3
+data_3_reg_0_1855_3
+data_3_reg_1_1898_3
+data_0_reg_1_2052_3
+count_reg_4_2074_3
+data_8_reg_0_2195_3
+data_11_reg_0_2365_3
+data_11_reg_1_2463_3
+data_12_reg_1_2537_3
+data_12_reg_0_2689_3
+count_reg_2_2884_3
+count_reg_6_2913_3
+#
+gsclib090 AND2X1 symbol
+i_6
+#
+gsclib090 AOI21X1 symbol
+i_33
+i_05560
+#
+gsclib090 XOR2X1 symbol
+i_23
+i_25
+#
+gsclib090 NOR3X1 symbol
+i_19
+i_32
+#
+gsclib090 NOR2X1 symbol
+i_15
+i_38
+i_39
+i_41
+i_1
+i_3
+#
+gsclib090 NAND2X1 symbol
+i_15027
+i_15026
+i_15025
+i_44
+i_21
+i_13861
+i_18
+i_8
+i_20
+i_22
+i_27
+i_30
+i_10
+i_11
+i_12
+#
+gsclib090 NAND3X1 symbol
+i_15028
+i_9
+#
+gsclib090 MX2X1 symbol
+i_7
+#
+gsclib090 OR2X1 symbol
+i_5
+i_15034
+i_15031
+i_15030
+i_15029
+i_15024
+i_15023
+i_15022
+i_15021
+#
+gsclib090 OAI21X1 symbol
+i_2
+i_4
+i_13
+i_16
+i_17
+#
+gsclib090 DFFSRX1 symbol
+COUT_reg_11
+COUT_reg_10
+COUT_reg_9
+COUT_reg_8
+COUT_reg_7
+COUT_reg_6
+COUT_reg_5
+COUT_reg_4
+COUT_reg_3
+COUT_reg_2
+COUT_reg_1
+COUT_reg_0
+SOUT_reg_11
+SOUT_reg_10
+SOUT_reg_9
+SOUT_reg_8
+SOUT_reg_7
+SOUT_reg_6
+SOUT_reg_5
+SOUT_reg_4
+SOUT_reg_3
+SOUT_reg_2
+SOUT_reg_1
+SOUT_reg_0
+count_reg_6
+count_reg_5
+count_reg_4
+count_reg_3
+count_reg_2
+count_reg_1
+count_reg_0
+data_12_reg_1
+data_12_reg_0
+data_11_reg_1
+data_11_reg_0
+data_10_reg_1
+data_10_reg_0
+data_9_reg_1
+data_9_reg_0
+data_8_reg_1
+data_8_reg_0
+data_7_reg_1
+data_7_reg_0
+data_6_reg_1
+data_6_reg_0
+data_5_reg_1
+data_5_reg_0
+data_4_reg_1
+data_4_reg_0
+data_3_reg_1
+data_3_reg_0
+data_2_reg_1
+data_2_reg_0
+data_1_reg_1
+data_1_reg_0
+data_0_reg_1
+data_0_reg_0
+#
+gsclib090 INVX1 symbol
+i_636
+i_635
+i_634
+i_633
+i_632
+i_631
+i_630
+#
+ether dsp_slice_mult_11 symbol
+m0
+#
+ether dsp_fb_update_11 symbol
+i_dsp_fb_update_0
+#
+ether dsp_csa_wordlength10_1 symbol
+i_dsp_csa3_1
+#
+ether dsp_slice_mult_10 symbol
+m1
+#
+ether dsp_fb_update_10 symbol
+i_dsp_fb_update_1
+#
+ether dsp_slice_mult_9 symbol
+m2
+#
+ether dsp_fb_update_9 symbol
+i_dsp_fb_update_2
+#
+ether dsp_csa_wordlength10_0 symbol
+i_dsp_csa3_0
+#
+ether dsp_csa_wordlength9_1 symbol
+i_dsp_csa2_1
+#
+ether dsp_csa_wordlength8_2 symbol
+i_dsp_csa1_2
+#
+ether dsp_slice_mult_8 symbol
+m3
+#
+ether dsp_fb_update_8 symbol
+i_dsp_fb_update_3
+#
+ether dsp_slice_mult_7 symbol
+m4
+#
+ether dsp_fb_update_7 symbol
+i_dsp_fb_update_4
+#
+ether dsp_slice_mult_6 symbol
+m5
+#
+ether dsp_fb_update_6 symbol
+i_dsp_fb_update_5
+#
+ether dsp_csa_wordlength9_0 symbol
+i_dsp_csa2_0
+#
+ether dsp_csa_wordlength8_1 symbol
+i_dsp_csa1_1
+#
+ether dsp_slice_mult_5 symbol
+m6
+#
+ether dsp_fb_update_5 symbol
+i_dsp_fb_update_6
+#
+ether dsp_slice_mult_4 symbol
+m7
+#
+ether dsp_fb_update_4 symbol
+i_dsp_fb_update_7
+#
+ether dsp_slice_mult_3 symbol
+m8
+#
+ether dsp_fb_update_3 symbol
+i_dsp_fb_update_8
+#
+ether dsp_csa_wordlength8_0 symbol
+i_dsp_csa1_0
+#
+ether dsp_slice_mult_2 symbol
+m9
+#
+ether dsp_fb_update_2 symbol
+i_dsp_fb_update_9
+#
+ether dsp_slice_mult_1 symbol
+m10
+#
+ether dsp_fb_update_1 symbol
+i_dsp_fb_update_10
+#
+ether dsp_slice_mult_0 symbol
+m11
+#
+ether dsp_fb_update_0 symbol
+i_dsp_fb_update_11
+#
+ether dsp_csa_wordlength11 symbol
+i_dsp_csa4_0
+#
+ether dsp_csa_wordlength12 symbol
+i_dsp_csa5_0

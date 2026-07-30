@@ -1,0 +1,25 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	VSS!:::;
+	VDD!:::;
+$END
+$INH_SIGNAL_CONN
+	VDD!:DVDD;
+	VSS!:DVSS;
+$END
+$TIMESTAMP
+	1234219119=7-gpdk0906-pmos2v;
+	1234219119=7-gpdk0906-pmos2v6-symbol;
+	1234219118=7-gpdk0906-nmos2v;
+	1234219118=7-gpdk0906-nmos2v6-symbol;
+	-1=5-basic4-ipin;
+	1250017016=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1250017016=5-basic4-opin6-symbol;
+	1250033145=verilog.vams;
+$END

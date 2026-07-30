@@ -1,0 +1,15 @@
+Simulation  :	adc_cascode_opamp_SIM
+Purpose     :	Check the Cascode Opamp used in the ADC.
+
+Description :	Check the OUT_AC and OUT_AC_3BIT outputs for 
+		Gain and Phase plots.
+
+Verification:   Check Amplitude and Phase of Opamp to determine stability.
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+
+
+
+

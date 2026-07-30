@@ -1,0 +1,1 @@
+generateCapTbl  -basic -pcs gpdk090.pcs -output gpdk090.basic.CapTbl

@@ -1,0 +1,10 @@
+* ---------------------------------------------------------------------------
+* dummy model, "cmodel", for pcapacitor from the HRCX
+* 2005-01-23: RayV created this for AMS simulation with 'av_hrcx_intcon' view. 
+* ----------------------------------------------------------------------------
+*
+simulator lang=spectre
+*
+model cmodel capacitor 
+*
+

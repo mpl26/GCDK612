@@ -1,0 +1,42 @@
+Simulation  : adcflash_sim
+Purpose     : Test the operation of the 3-bit ADC (adcflash).
+Input Signal:
+		Common Mode: 765mV
+		Voltage Swing: +/-200mV single ended
+
+Description : This simulation takes the input differential signal and codifies
+it into a 6-bit thermometer code (adcflash<5:0>). This signal is then decoded
+using the adc_decode block to generate a 3-bit output (adc_flash<2:0>).
+
+Verification:	Plot: INP/INM; adcflash<5:0>; ph1 (clock).
+		Run for about 700ns.
+		Verify that the adcflash<5:0> block causes a pyramid type output
+		on adcflash<5:0>. Where adcflash<0> turns on first followed by 
+		adcflash<1> ... and finally adcflash<5>. When turning off 
+		(outputs at 0) adcflash<5> goes to 0 first followed by 4,3,...
+		and finally adcflash<0>.
+
+		For AMS the signal falls on top of one of the reference levels
+		causing one of the bits to switch levels. After the input signal
+		starts ramping the pyramid type output should be observed.
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+
+Simulator   :	AMSDesigner
+View        :   config_ams
+Connectivity Module: mixedsignal_25A
+	elect2logic25a module:
+	   threshold voltage: 1.25V
+	   voltage high (> threshold voltage) (Produces a logic "1" state)
+	   voltage low  (< threshold voltage) (Produces a logic "0" state)
+	
+	logic2elect25a module:
+	   output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	   output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	   output Z    : 0.0V (Analog voltage corresponding to logic "Z" state)
+	   output X    : 0.0V (Analog voltage corresponding to logic "X" state)
+	   rise time   : 400p (Transition time from Analog low to high voltage)
+	   fall time   : 400p (Transition time from Analog high to low voltage)
+--------------------------------------------------------------------------------

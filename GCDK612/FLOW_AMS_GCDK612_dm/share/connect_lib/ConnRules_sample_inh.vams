@@ -1,0 +1,8 @@
+//
+//
+
+connectrules mps_sample_inh;
+  connect E2L_sample_inh ;
+  connect L2E_1_sample_inh ;
+  connect Bidir_sample_inh ;
+endconnectrules

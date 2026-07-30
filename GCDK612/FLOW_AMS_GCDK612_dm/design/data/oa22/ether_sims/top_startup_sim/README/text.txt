@@ -1,0 +1,41 @@
+Simulation  :   top_sim_siddq
+
+Purpose     :   Adds the Digital Interface to the pseudotop_sim_startup test.
+		Verifies the ramping of the voltage supplies and common block
+		currents are correct.
+
+Simulator   :   Spectre-Verilog
+View        :   Config
+States      :   tt
+Interface Elements: MOS_2p5
+	a2d voltage low : 0.5V (Produces a logic "0" state)
+	a2d voltage high: 0.6V (Produces a logic "1" state)
+	
+	d2a output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	d2a output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	d2a rise time   : 100p (Transition time from Analog low to high voltage)
+	d2a fall time   : 100p (Transition time from Analog high to low voltage)
+
+Input Signal:   Internal Ramping Voltage Sources.
+
+Description :   This test ramps the input power supplies for 1us to start-up
+		the chip.
+		The digital "testcase" block uses the "behavioral_startup" view
+		to drive the chip reset signal (RESETN) to keep all the blocks
+		at the reset state.
+		After a 2us wait the crystal driver (XTAL) is enabled and the
+		reset signal released to allow a smooth startup of the analog
+		and digital blocks.
+
+Verification:   Check that the ramping of the different power supplies and
+		the corresponding currents for the voltage source.
+		Also, check the voltage level output of the current references
+		from the Common Block inside the top schematic. 
+
+Note        :	It is necessary to have the pseudotop_sim_startup simulation 
+		working correctly before this test. The use of analog models for
+		the digital blocks in the pseudtop simulations allows for pure
+		spectre simulations to make convergence and connectivity testing
+		easier. Once the Analog model is working then the digital
+		verilog blocks are added and the test repeated with a
+		Spectre-Verilog simulation.

@@ -1,0 +1,331 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  Analog_eq
+// Project :  Drouillard 
+// Author  :  dshelton
+// Notes   :  based on umc05001 spectre hdl module
+//            This file calculates the decimal equivalent of agc_eq[4:0] 
+//            and then compares it to the possible  32 settings for 2
+//            different modes.
+//
+////            Timing_mode = 1 T/2 -Spaced timing.  
+//            Timing_mode = 0 T   -Spaced timing. 
+//
+//            The output transfer function is then selected from matlab 
+//            file "/project/umc18a01/analog_eq/matlab/atlas_fin**.txt" 
+//            from the determined bit setting.
+//
+//            Pole and zeros in file  "fin**.txt" were determined by
+//            using fmins optimzation script in Matlab
+//            (1 zero, 5 poles, gain) from transistor level simulation,
+//            where ** is either T2 or MM depending on the timing_mode 
+//            selected.   
+//
+//            Output shorts to gnd when siddq is high. 
+//
+//
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+module Analog_eq ( 
+  fdbk_out, outm, outp, I_rext_100_1, I_rext_100_2, I_rext_100_3,
+  I_rext_100_4, Vref, agc_eq, agc_eq_bypass, agnd, avdd, dgnd, dvdd, fdbk_in,
+  inm, inp, siddq, timing_mode )
+ (strobes_on)
+
+  node [V,I] agnd;
+  node [V,I] avdd;
+  node [V,I] dvdd;
+  node [V,I] dgnd;
+  node [V,I] siddq;
+  node [V,I] I_rext_100_1;
+  node [V,I] I_rext_100_2;
+  node [V,I] I_rext_100_3;
+  node [V,I] I_rext_100_4;
+  node [V,I] Vref;
+  node [V,I] inm;
+  node [V,I] inp;
+  node [V,I] outm;
+  node [V,I] outp;
+  node [V,I] agc_eq[4:0];
+  node [V,I] agc_eq_bypass;
+  node [V,I] timing_mode;
+  node [V,I] fdbk_in;
+  node [V,I] fdbk_out;
+
+  parameter integer strobes_on = 0;   
+
+{ 
+  node [V,I] n1p;
+  node [V,I] n2p;
+  node [V,I] n3p;
+  node [V,I] n4p;
+  node [V,I] n5p;  
+  node [V,I] sum;
+
+  real pi = 3.14159;
+  real Av;
+  real zero_out[2] = {1e9, 0};      //initialize real and imaginary comp. 
+  real pole_out[10]= {1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
+  real rbias1      = 9000;          // close to effective input  
+  real rbias2      = 6000;          //   resistance on current bias inputs
+  real roff        = 10e6;          // resistance through NFET switch
+  real r1;
+  real r2;
+  real vcm;                         // nominal common-mode output voltage
+  real vtrans      = 0.9;
+  real vtransd      = 0.4;
+  real low_bias    = 80e-6;
+  real high_bias   = 120e-6;
+  
+  integer agc_eq_decimal= 0;
+  integer h=0;
+  integer i=0;
+  integer j=0;
+
+  // variables for matlab file
+  stream matlab_data1;
+  stream matlab_data2;
+  real zero1[34]; 
+  real pole1[34]; 
+  real pole2[34]; 
+  real pole3[34]; 
+  real pole4[34];
+  real pole5[34];  
+  real Gain[34];
+  real zero1A[34]; 
+  real pole1A[34]; 
+  real pole2A[34]; 
+  real pole3A[34]; 
+  real pole4A[34];
+  real pole5A[34];   
+  real GainA[34];
+  real zero1B[34]; 
+  real pole1B[34]; 
+  real pole2B[34]; 
+  real pole3B[34]; 
+  real pole4B[34];
+  real pole5B[34]; 
+  real GainB[34];
+
+  initial{
+
+    // read in poles and zeros from matlab optimization
+    matlab_data1 = 
+       $fopen("/project/tsmc13lv99/sitelibs/schroeder_sims/matlab/atlas_finT2.txt", "r");
+
+
+    while( !$fread(matlab_data1, "%e %e %e %e %e %e %e", 
+        zero1A[i], pole1A[i], pole2A[i], pole3A[i],
+        pole4A[i], pole5A[i], GainA[i] ) ) 
+      i++;
+     
+    i=0; 
+    matlab_data2 = 
+       $fopen("/project/tsmc13lv99/sitelibs/schroeder_sims/matlab/atlas_finMM.txt", "r");
+ 
+
+    while( !$fread(matlab_data2, "%e %e %e %e %e %e %e",
+        zero1B[i], pole1B[i], pole2B[i], pole3B[i], 
+        pole4B[i], pole5B[i], GainB[i] ) ) 
+      i++;   
+  }
+
+  analog {
+    if (strobes_on) {
+      i=32;
+      $strobe("i is %d", i);
+      $strobe("zero1B[i] is %e", zero1B[i]);
+      $strobe("pole1B[i] is %e", pole1B[i]);
+      $strobe("pole2B[i] is %e", pole2B[i]);
+      $strobe("pole3B[i] is %e", pole3B[i]);
+      $strobe("pole4B[i] is %e", pole4B[i]);
+      $strobe("pole5B[i] is %e", pole5B[i]);		     
+      $strobe("GainB[i] is %e", GainB[i]);
+
+      $strobe("zero1A[i] is %e", zero1A[i]);
+      $strobe("pole1A[i] is %e", pole1A[i]);
+      $strobe("pole2A[i] is %e", pole2A[i]);
+      $strobe("pole3A[i] is %e", pole3A[i]);
+      $strobe("pole4A[i] is %e", pole4A[i]);
+      $strobe("pole5A[i] is %e", pole5A[i]);		     
+      $strobe("GainA[i] is %e", GainA[i]);
+    }
+  
+    if (V(timing_mode) > V(dvdd)/2) {
+      for (h = 0 ; h <= 32 ; h++) {
+        zero1[h]=zero1A[h];
+        pole1[h]=pole1A[h];
+        pole2[h]=pole2A[h];
+        pole3[h]=pole3A[h];
+        pole4[h]=pole4A[h];
+        pole5[h]=pole5A[h];				   
+        Gain[h]=GainA[h];
+		
+        if (strobes_on) {
+          $strobe("h is %d", h);
+          $strobe("zero1[h] is %e", zero1[h]);
+          $strobe("pole1[h] is %e", pole1[h]);
+          $strobe("pole2[h] is %e", pole2[h]);
+          $strobe("pole3[h] is %e", pole3[h]);
+          $strobe("pole4[h] is %e", pole4[h]);
+          $strobe("pole5[h] is %e", pole5[h]);			 
+          $strobe("Gain[h] is %e", Gain[h]);
+        }
+      }    	
+    }
+	
+    else {
+      for (h = 0 ; h <= 32 ; h++) {
+        zero1[h]=zero1B[h];
+	pole1[h]=pole1B[h];
+	pole2[h]=pole2B[h];
+	pole3[h]=pole3B[h];
+	pole4[h]=pole4B[h];
+	pole5[h]=pole5B[h];				   
+	Gain[h]=GainB[h]; 
+		
+        if (strobes_on) {
+	  $strobe("zero1[h] is %e", zero1[h]);
+	  $strobe("pole1[h] is %e", pole1[h]);
+	  $strobe("pole2[h] is %e", pole2[h]);
+	  $strobe("pole3[h] is %e", pole3[h]);
+	  $strobe("pole4[h] is %e", pole4[h]);
+	  $strobe("pole5[h] is %e", pole5[h]);			 
+	  $strobe("Gain[h] is %e", Gain[h]);
+        }
+      }  
+    }	  
+
+    // track supplies	  
+    vtrans = 0.5*(V(avdd) - V(agnd)) + V(agnd);
+    vtransd = 0.5*(V(dvdd) - V(dgnd)) + V(dgnd);
+
+
+	  
+    // power down
+    if (V(siddq) > vtrans) {
+      // I_RPOLY_100_x are all tristate during SIDDQ mode
+      r1 = roff;
+      r2 = roff;
+
+      vcm = 0;
+      Av  = 0;
+      I(avdd, fdbk_out) <- 10n;
+      V(fdbk_in, agnd) <- I(fdbk_in, agnd)*7.7k;
+    }
+
+    // bias out-of-range shutdown
+    else if ((V(siddq) < vtrans) &&
+            ((I(I_rext_100_1, agnd) < low_bias)  ||
+             (I(I_rext_100_1, agnd) > high_bias) ||
+             (I(I_rext_100_2, agnd) < low_bias)  ||
+             (I(I_rext_100_2, agnd) > high_bias) ||
+             (I(I_rext_100_3, agnd) < low_bias)  ||
+             (I(I_rext_100_3, agnd) > high_bias) ||
+             (I(I_rext_100_4, agnd) < low_bias)  ||
+             (I(I_rext_100_4, agnd) > high_bias))) {
+
+      r1 = rbias1;
+      r2 = rbias2;
+
+      vcm = 0;
+      Av  = 0;
+      I(avdd, fdbk_out) <- 10n;
+      V(fdbk_in, agnd) <- I(fdbk_in, agnd)*7.7k;
+    }	  
+
+    // normal operation 
+    else {
+
+      I(avdd, fdbk_out) <- 100u;
+      V(fdbk_in, agnd) <- I(fdbk_in, agnd)*7.7k;
+
+      // model bias current input resistance
+      r1 = rbias1;
+      r2 = rbias2;
+
+      // calculate nominal common-mode from avdd resistive divide
+      // 17.3mV offset observed emperically
+      //
+      //      vcm = 0.0173 + (15*99.9703)/((15*99.9703)+(34*99.9703))*V(Vref);
+      vcm = 0.052 + (15*99.9703)/((15*99.9703)+(34*99.9703))*V(Vref);
+
+      // set transfer function by:
+      // using bypass default for agc_eq_decimal
+      if (V(agc_eq_bypass) > vtransd) {
+        agc_eq_decimal = 32;
+      }
+
+      // or calculating decimal equavilant for agc_eq bit setting
+      else {
+        agc_eq_decimal = 0;     // initialize for all time steps 
+
+        generate(j = 0 : 4 : 1) {
+          if (V(agc_eq[j]) > vtransd) {
+            agc_eq_decimal += pow(2,j); 
+   	  }
+        }
+      }
+
+      if (strobes_on) {
+        $strobe("agc_eq_decimal is %d", agc_eq_decimal);
+      }
+
+      Av = Gain[agc_eq_decimal];
+    } 
+         
+    // then setting zeros and poles for laplace 
+    // function (real & imag) 
+    zero_out[0] = -2*pi*$transition(zero1[agc_eq_decimal],0,10n,10n);
+    zero_out[1] = 0;
+
+    pole_out[0] = -2*pi*$transition(pole1[agc_eq_decimal],0,10n,10n);
+    pole_out[1] = 0;
+    pole_out[2] = -2*pi*$transition(pole2[agc_eq_decimal],0,10n,10n);
+    pole_out[3] = 0; 
+    pole_out[4] = -2*pi*$transition(pole3[agc_eq_decimal],0,10n,10n);
+    pole_out[5] = 0;
+    pole_out[6] = -2*pi*$transition(pole4[agc_eq_decimal],0,10n,10n);
+    pole_out[7] = 0;
+    pole_out[8] = -2*pi*$transition(pole5[agc_eq_decimal],0,10n,10n);
+    pole_out[9] = 0;	  
+
+    if (strobes_on) {
+      $strobe("k is %d", agc_eq_decimal);
+      $strobe("zero_out[0] is %e", zero_out[0]);
+      $strobe("pole_out[0] is %e", pole_out[0]);
+      $strobe("pole_out[2] is %e", pole_out[2]);
+      $strobe("pole_out[4] is %e", pole_out[4]);
+      $strobe("pole_out[6] is %e", pole_out[6]);
+      $strobe("pole_out[8] is %e", pole_out[8]);		     
+      $strobe("Av is %e", Gain[agc_eq_decimal]);
+    }
+
+    // Output transfer function
+    // H(s)= mult((1-s/zero_out[agc_eq_decimal]))/
+    //                mult((1-s/pole_out[agc_eq_decimal]))      
+    V(n1p)  <- Av*(V(inp) - V(inm)) - (1/zero_out[0])*dot(Av*(V(inp) - V(inm)));
+    V(n2p)  <- V(n1p) + (1/pole_out[0])*dot(V(n2p)); 
+    V(n3p)  <- V(n2p) + (1/pole_out[2])*dot(V(n3p)); 
+    V(n4p)  <- V(n3p) + (1/pole_out[4])*dot(V(n4p));
+    V(n5p)  <- V(n4p) + (1/pole_out[6])*dot(V(n5p)); 	  
+    V(sum)  <- V(n5p) + (1/pole_out[8])*dot(V(sum));  
+
+//    V(outp) <- vcm + 0.75*V(sum);
+//    V(outm) <- vcm - 0.65*V(sum);
+    V(outp) <- vcm + 0.65*V(sum);
+    V(outm) <- vcm - 0.65*V(sum);
+
+    V(I_rext_100_1, agnd) <- r1*I(I_rext_100_1, agnd);
+    V(I_rext_100_3, agnd) <- r1*I(I_rext_100_3, agnd);
+    V(I_rext_100_4, agnd) <- r1*I(I_rext_100_4, agnd);
+    V(I_rext_100_2, agnd) <- r2*I(I_rext_100_2, agnd);
+
+  }
+
+  final{
+    $fclose( matlab_data1);
+    $fclose( matlab_data2);
+  }
+}

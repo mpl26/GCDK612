@@ -1,0 +1,14 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dsp_tc_greater *
+greater
+
+#CELL
+* dsp_aeq_lpf *
+i_dsp_aeq_lpf
+
+#CELL
+* dsp_tc_less *
+less
+

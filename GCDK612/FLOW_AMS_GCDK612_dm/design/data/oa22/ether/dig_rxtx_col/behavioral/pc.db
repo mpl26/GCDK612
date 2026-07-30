@@ -1,0 +1,105 @@
+#
+gsclib090 BUFX1 symbol
+count_enab_reg_256_5a
+sqe_count_reg_0_568_5a
+sqe_count_reg_1_663_5a
+col_gen_reg_695_5a
+col_test_reg_699_5a
+#
+gsclib090 AND2X1 symbol
+i_0
+#
+gsclib090 BUFX3 symbol
+i_1318
+col_gen_reg_972_3
+col_gen_reg_973_3
+col_test_reg_1240_3
+col_test_reg_1241_3
+sqe_count_reg_1_1282_3
+sqe_count_reg_1_1283_3
+prev_txen_reg_1532_3
+sqe_count_reg_2_1741_3
+sqe_count_reg_0_1909_3
+sqe_count_reg_4_2089_3
+sqe_count_reg_3_2247_3
+prev_txen_reg_2486_3
+sqe_count_reg_2_2930_3
+#
+gsclib090 XOR2X1 symbol
+i_17
+i_16
+i_14
+#
+gsclib090 AOI21X1 symbol
+i_12408
+i_10
+i_47
+i_45
+#
+gsclib090 NAND3X1 symbol
+i_1197
+i_1183
+i_15
+i_29
+#
+gsclib090 NOR2X1 symbol
+i_4
+i_5
+i_12348
+i_49
+i_36
+i_33
+i_15444
+i_19
+#
+gsclib090 MX2X1 symbol
+i_1168
+i_1210
+i_1203
+i_1189
+i_1175
+#
+gsclib090 OAI21X1 symbol
+i_1217
+i_1196
+i_1182
+i_12416
+i_315311
+i_2
+#
+gsclib090 DFFSRX1 symbol
+col_test_reg
+col_gen_reg
+sqe_count_reg_4
+sqe_count_reg_3
+sqe_count_reg_2
+sqe_count_reg_1
+sqe_count_reg_0
+count_enab_reg
+prev_txen_reg
+#
+gsclib090 NAND4X1 symbol
+i_1225
+i_12380
+i_41
+i_35
+i_13
+#
+gsclib090 NAND2X1 symbol
+i_1226
+i_1224
+i_1
+i_1219
+i_7
+i_21
+#
+gsclib090 INVX1 symbol
+i_1286
+i_1285
+i_1284
+i_1283
+i_1282
+i_1281
+#
+gsclib090 INVX2 symbol
+i_1287

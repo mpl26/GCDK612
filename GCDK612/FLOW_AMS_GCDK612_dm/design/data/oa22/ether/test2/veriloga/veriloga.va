@@ -1,0 +1,8 @@
+// VerilogA for ether, test2, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module test2;
+
+endmodule

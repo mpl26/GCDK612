@@ -1,0 +1,10 @@
+#!/bin/csh
+
+@ i = 2
+
+while ( $i <= 30000)
+  @ cellnum = $i + 20000
+  cp -r ether/cell_1  ether/cell_$cellnum
+  echo cell_$cellnum
+  @ i++
+end 

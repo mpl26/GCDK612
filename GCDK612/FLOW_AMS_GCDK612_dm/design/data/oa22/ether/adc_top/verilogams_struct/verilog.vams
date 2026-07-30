@@ -1,0 +1,64 @@
+//Verilog-AMS HDL for "drouillard_ph2", "adc_top" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+module adc_top ( adc_flash, adc_latch_clk, adc_out,
+		 BASE100TX_DIS, BASEFX_DIS_1p0, CLK, DVDD, DVSS,
+		 I100_ext1, I100_ext2, I100_poly1, I100_poly2,
+		 INM, INP, SIDDQ, TEST_ENABLE, TEST_INM, TEST_INP,
+		 VDD, VSS ); 
+
+output	[2:0]	adc_flash;
+output	[5:0]	adc_out;
+output		adc_latch_clk;
+input		INP, INM;
+input		CLK;
+input		TEST_INP, TEST_INM;
+input		SIDDQ;
+input		TEST_ENABLE;
+input		BASE100TX_DIS, BASEFX_DIS_1p0;
+input		I100_ext1, I100_ext2, I100_poly1, I100_poly2;
+input		DVDD, DVSS, VDD, VSS;
+
+wire [62:0] adc_1p0,   adc_2p5;
+wire [5:0]  flash_1p0, flash_2p5;
+ 
+// Avoid X/Z states in analog sections
+`include "myfunctions.vams"
+wire tx100dis = noxz(BASE100TX_DIS,1'b0);
+wire fxdis    = noxz(BASEFX_DIS_1p0,1'b1);
+wire iSIDDQ   = noxz(SIDDQ,1'b0);
+wire clkin    = noxz(CLK,1'b0);
+wire testen   = noxz(TEST_ENABLE,1'b0);
+wire BASE100TX_DIS_2p5, BASEFX_DIS_2p5;
+wire POWEROFF = (BASE100TX_DIS_2p5 & BASEFX_DIS_2p5) | iSIDDQ; 
+
+// Instances in adc_top
+adc_lvlshft_1p0_to_2p5 I29 ( .CLK_1p0(clkin), .CLK_2p5(CLK_2p5),
+       .BASE100TX_DIS_2p5(BASE100TX_DIS_2p5), .BASE100TX_DIS_1p0(tx100dis),
+       .BASEFX_DIS_2p5(BASEFX_DIS_2p5), .BASEFX_DIS_1p0(fxdis),
+       .VDD_2p5( VDD ), .VDD_1p0( DVDD ), .VSS( VSS ) );
+
+adc_wo_decode ADC_WO_DECODE ( .adc_out(adc_2p5), .adcflash_out(flash_2p5),
+	.ph1(ph1_2p5), .ph1b(ph1b_2p5),	.FX_BIT(FX_BIT_2p5),
+	.INP(INP), .INM(INM), .CLK(CLK_2p5), 
+	.TEST_ENABLE(testen), .TEST_INP(TEST_INP), .TEST_INM(TEST_INM),
+	.SIDDQ(POWEROFF), .BASEFX_DIS(BASEFX_DIS_2p5),
+	.I100_ext1(I100_ext1), .I100_ext2(I100_ext2), 
+	.I100_poly1(I100_poly1), .I100_poly2(I100_poly2),
+	.VDD(VDD), .VSS(VSS) );
+
+adc_lvlshft_2p5_to_1p0 I27 ( .adc_2p5(adc_2p5), .adc_1p0(adc_1p0), 
+		.FX_BIT_2p5(FX_BIT_2p5), .FX_BIT_1p0(FX_BIT_1p0),
+		.ph1_2p5(ph1_2p5),   .ph1_1p0(ph1_1p0), 
+		.ph1b_2p5(ph1b_2p5), .ph1b_1p0(ph1b_1p0), 
+		.flash_2p5(flash_2p5), .flash_1p0(flash_1p0),
+		.VDD_2p5(VDD), .VDD_1p0(DVDD),  .vss(VSS) );
+ 
+adc_decode ADC_DECODE ( .adc_out(adc_out), .adc_flash(adc_flash),
+		.adc_latch_clk(adc_latch_clk), .adc(adc_1p0),
+		.adcflash(flash_1p0), .ph1(ph1_1p0), .ph1b(ph1b_1p0), 
+		.BASEFX_DIS(BASEFX_DIS_1p0), .FX_BIT(FX_BIT_1p0) );
+ 
+
+endmodule

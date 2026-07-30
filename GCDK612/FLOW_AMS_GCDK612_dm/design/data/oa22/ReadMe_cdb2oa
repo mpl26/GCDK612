@@ -1,0 +1,57 @@
+ 
+                           ReadMe cdb2oa
+			   -------------
+--------------------------------------------------------------------------------			   
+Conversion syntax: 			   
+cdb2oa -lib <t_libName> -cdslibpath <t_libPath> <options>
+---------------------------------------------------------------------------------
+
+Convesion Steps:
+===============
+0. Pre-requsite:
+   a) Sofware hierarchy:
+      Update .cshrc_oa22_sj file with appropriate entry for CDSHOME, IUSHOME, ASSURAHOME
+      source .cshrc_oa22_sj
+   b) Optional, update FLOW_ETHER_CDK090/share/CDK090
+   c) Update cds.lib with the appropriate reference library
+
+1. Optional (these library should available from CDK090), 
+   Convert Reference library (technology library and standard cell library):
+   % cdb2oa -lib gpdk090 -cdslibpath ../../custom_cdb -log cdb2oa_gpdk090.log
+   % cdb2oa -lib gsclib090 -cdslibpath ../../custom_cdb -log cdb2oa_gsclib090.log
+
+2. Convert design library:
+   % cdb2oa_x.csh ether_label
+   % cdb2oa_x.csh av_hrcx_ether
+   % cdb2os_x.csh ether
+   % cdb2oa_x.csh ether_sim
+   
+   Note: Convert directly without clean up (not recommend though):
+   % cdb2oa -lib ether_label -cdslibpath ../../custom_cdb -log cdb2oa_ether_label.log
+   % cdb2oa -lib av_hrcx_ether -cdslibpath ../../custom_cdb -log cdb2oa_av_hrcx_ether.log
+   % cdb2oa -lib ether -cdslibpath       ../../custom_cdb -log cdb20a_ether.log 
+   % cdb2oa -lib ether_sims -cdslibpath ../../custom_cdb -log cdb20a_ether_sims.log 
+   
+   These below libraries are not listed in custom_cdb/cds.lib should direct convert:
+   % cdb2oa -lib ether_adcflash_RAD90      -cdslibpath ../../custom_cdb/neowa_gpdk090 -log cdb2oa_ether_adcflash_RAD90.log
+   % cdb2oa -lib ether_adcflash_RAD90_sims -cdslibpath ../../custom_cdb/neowa_gpdk090 -log cdb2oa_ether_adcflash_RAD90_sims.log
+   % cdb2oa -lib ether_adcflash_VLM90      -cdslibpath ../../custom_cdb/neowa_gpdk090 -log cdb2oa_ether_adcflash_VLM90.log
+   % cdb2oa -lib ether_adcflash_VLM90_sims -cdslibpath ../../custom_cdb/neowa_gpdk090 -log cdb2oa_ether_adcflash_VLM90_sims.log
+   % cdb2oa -lib ether_adcflash_180      -cdslibpath ../../custom_cdb/neowa_gpdk180 -log cdb2oa_ether_adcflash_180.log
+   % cdb2oa -lib ether_adcflash_180_sims -cdslibpath ../../custom_cdb/neowa_gpdk180 -log cdb2oa_ether_adcflash_180_sims.log  
+   % cdb2oa -lib iplib_adcflash_RAD180      -cdslibpath ../../custom_cdb/neowa_gpdk180 -log cdb2oa_iplib_adcflash_RAD180.log
+   % cdb2oa -lib iplib_adcflash_RAD180_sims -cdslibpath ../../custom_cdb/neowa_gpdk180 -log cdb2oa_iplib_adcflash_RAD180_sims.log  
+ 
+ 
+3. Run applications on these libraries:
+   % cd FLOW_ETHER_CDK090/design/custom_oa22
+   
+4. Record the regression result in MS-Excell file in "doc" directory.
+      
+--------------------------------------------------------------------------------
+
+Mnemonics:
+Convert sepecific cell: 
+     cdb2oa -lib ether -cell top_1_port_receive -cdslibpath ../../custom_cdb -log cdb20a_ether_receive.log 
+     cdb2oa -lib ether -cell PLL_PFD -cdslibpath ../../custom_cdb    
+     cdb2oa -lib ether -cell test1_rayv -cdslibpath ../../custom_cdb

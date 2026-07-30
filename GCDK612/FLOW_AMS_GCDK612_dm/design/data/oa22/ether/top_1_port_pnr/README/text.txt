@@ -1,0 +1,15 @@
+
+                          README
+		          =======
+			  
+The "symbol_golden" view is a golden reference. 
+In case the "symbol" view is over written by the Verilog-In process, user should
+replace the new generated "symbol" with "symbol_golden" for maintaining the 
+design integrity in "ether/top/schematic".
+
+2005-10-04: (a) added VDD and VSS back to behavioral_rtl (see its history)
+                due to requirement from AMS parasitic simulation.
+	    (b) implemented InhCon for handling VDD and VSS on "schematic"
+	        and "layout" view. This is required for making LVS clean.
+		
+-------------------------------------------------------------------------		 	

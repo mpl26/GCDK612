@@ -1,0 +1,33 @@
+;; 2004-06-10: List all pins in the current schematic
+;; 2004-06-16: This program can query schematic, layout, and symbol view
+;; To DOs: a) list terminals into 3 columns for comparison (sch, sym, lay)
+;;         b) pass in argument for sort by name, direction
+;;----------------------------------------------------------------------------
+procedure( vfs_listAllPins()
+let( (cv)
+     cv = deGetEditCellView()
+     printf("\nFound %n terminals in: %s/%s/%s" length(cv~>terminals) \
+             cv~>libName cv~>cellName cv~>viewName )
+     printf("\n ----------------------------------------------")
+     printf("\n| Pin Name           | Pin direction           |")
+     printf("\n ----------------------------------------------")     
+     
+     foreach( termName 	sort(cv~>terminals~>name nil)
+              foreach(  terminal cv~>terminals 
+	                when( termName == terminal~>name
+	                      printf("\n %-20s  %-15s" termName terminal~>direction)
+			      ); end when
+			); end foreach      
+	     ); end foreach
+	     
+     printf("\n-----------------------------------------------")
+     printf("\nSummary: Total terminals  = %n"  length(cv~>terminals))
+     printf("\n         input terminals  = %n" \
+             length( rexMatchList( "input" cv~>terminals~>direction)))
+     printf("\n         output terminals = %n" \
+             length( rexMatchList( "output" cv~>terminals~>direction)))
+     printf("\n         inOut terminals  = %n" \
+             length( rexMatchList( "inputoutput" cv~>terminals~>direction))) 
+     printf("\n-----------------------------------------------")	     
+   )); end let and procedure
+;;-----------------------------The End ---------------------------------

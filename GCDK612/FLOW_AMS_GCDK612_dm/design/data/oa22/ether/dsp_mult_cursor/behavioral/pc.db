@@ -1,0 +1,110 @@
+#
+gsclib090 BUFX1 symbol
+i_524
+#
+gsclib090 OAI21X1 symbol
+i_32
+i_52329
+i_42330
+i_32331
+i_22332
+#
+gsclib090 NOR2X1 symbol
+i_19
+i_18
+i_95
+#
+gsclib090 XOR2X1 symbol
+i_14201
+#
+gsclib090 AND2X1 symbol
+i_62328
+i_10
+#
+gsclib090 OR2X1 symbol
+i_17
+#
+gsclib090 NAND2X1 symbol
+i_23
+i_24
+i_25
+i_26
+i_33
+i_34
+i_35
+i_36
+i_37
+i_38
+i_39
+i_40
+i_41
+i_0
+i_43
+i_45
+i_47
+i_49
+i_144172
+i_22
+i_20
+i_215525
+i_31
+i_30
+i_29
+i_28
+i_27
+#
+gsclib090 MX2X1 symbol
+i_52323
+i_62322
+i_72321
+i_82320
+i_92319
+i_102318
+i_11
+i_12
+i_13
+i_14
+i_15
+i_16
+i_9
+i_8
+i_7
+i_6
+i_5
+i_4
+i_3
+i_2
+i_1
+#
+gsclib090 DFFSRX1 symbol
+full_product_ff_reg_15
+full_product_ff_reg_14
+full_product_ff_reg_13
+full_product_ff_reg_12
+full_product_ff_reg_11
+full_product_ff_reg_10
+full_product_ff_reg_9
+full_product_ff_reg_8
+full_product_ff_reg_7
+full_product_ff_reg_6
+full_product_ff_reg_5
+full_product_ff_reg_4
+#
+gsclib090 INVX1 symbol
+i_227
+i_226
+i_225
+i_224
+i_223
+#
+ether AWDP_MINUS_451121 symbol
+i_14199
+#
+ether AWDP_MULT_151045 symbol
+i_14198
+#
+ether AWDP_MINUS_051041 symbol
+i_14197
+#
+ether AWDP_INC_351100 symbol
+i_14195

@@ -1,0 +1,3 @@
+load(strcat(getShellEnvVar("SYNC_DIR") "/cds/skill/dssInit.il"))
+dssChangeDefaultsContextP("project")
+syncStatusBrowserModuleFilterPaths = list(strcat(getShellEnvVar("SYNC_DEVELOPMENT_DIR") "/DesignSync/DRR/module_cache"))

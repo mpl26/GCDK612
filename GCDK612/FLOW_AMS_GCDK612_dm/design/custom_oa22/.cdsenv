@@ -1,0 +1,2 @@
+ui	ciwCmdInputLines	int	5
+ui mouseMoveSampleRate int 80

@@ -1,0 +1,1 @@
+apTbl  -solverExe /projects/regress3.2/tools/SOC3.2/03.20-p003_1/lnx86/tools/bin/coyote -lef  -pcs gpdk090.pcs -output gpdk090.lef.extended.CapTbl -coyote

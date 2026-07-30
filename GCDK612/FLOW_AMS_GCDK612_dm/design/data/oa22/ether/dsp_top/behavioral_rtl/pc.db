@@ -1,0 +1,34 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dsp_wander *
+i_dsp_wander
+
+#CELL
+* dsp_timing *
+i_dsp_timing
+
+#CELL
+* dsp_ecb *
+i_dsp_ecb
+
+#CELL
+* dsp_dfe *
+i_dsp_dfe
+
+#CELL
+* dsp_aeq *
+i_dsp_aeq
+
+#CELL
+* dsp_sm_interface *
+i_dsp_sm_interface
+
+#CELL
+* dsp_mse *
+i_dsp_mse
+
+#CELL
+* dsp_signaldetect *
+i_dsp_signaldetect
+

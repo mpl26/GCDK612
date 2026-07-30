@@ -1,0 +1,121 @@
+Simulation  :   top_sim
+
+Purpose     :   Verify Operation of the Top level Macro using the
+		high level description languages of the different blocks
+		(AHDL, VerilogA, VerilogAMS) and digital RTL code (behavioral,
+		verilog, behavioral_rtl).
+
+Simulator   :   Spectre-Verilog
+View        :   config
+States      :   tt
+Interface Elements: MOS_2p5
+	a2d voltage low : 0.5V (Produces a logic "0" state)
+	a2d voltage high: 0.6V (Produces a logic "1" state)
+	
+	d2a output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	d2a output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	d2a rise time   : 100p (Transition time from Analog low to high voltage)
+	d2a fall time   : 100p (Transition time from Analog high to low voltage)
+
+Simulator   :	AMSDesigner
+View        :   configAMS
+Connectivity Module: mixedsignal_25A
+	elect2logic25a module:
+	   threshold voltage: 1.25V
+	   voltage high (> threshold voltage) (Produces a logic "1" state)
+	   voltage low  (< threshold voltage) (Produces a logic "0" state)
+	
+	logic2elect25a module:
+	   output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	   output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	   output Z    : 0.0V (Analog voltage corresponding to logic "Z" state)
+	   output X    : 0.0V (Analog voltage corresponding to logic "X" state)
+	   rise time   : 400p (Transition time from Analog low to high voltage)
+	   fall time   : 400p (Transition time from Analog high to low voltage)
+
+Description :	This tests verifies the full operation of the 10/100 Macro by
+		using the high level description language models of the
+		different analog blocks. It uses the behavioral (or rtl)
+		code to check the operation of the digital blocks. The Macro or
+		device under test (DUT) is placed in external loopback mode by
+		connecting the serial outputs (TPOP, TPIP) to the serial input
+		pins (TPIP, TPIN).
+		
+		The test is driven by the digital block "testcase" with
+		corresponding view "behavioral".
+		
+		Testcase performs the following tests:
+		1. Assigns the PHY address to the device under test (DUT).
+		2. Enables and drives the External Reference clock used for the
+		clock synthesizers (PLL's).
+		3. Resets the Chip.
+		4. Waits the appropriate time for the startup sequence to
+		complete.
+		5. Checks the initial state of the chip by checking the status
+		of the difference LED's (Collision, link, Carrier Sense, etc.)
+		6. Verifies the that Management Interface (MI) registers startup
+		in the correct state.
+		7. Re-programs the Registers to enable the 100Base-T blocks and
+		to reduce testing time.
+		8. After enabling 100TX mode and verifying the state of the
+		register it waits an appropriate amount of time to allow the
+		250MHz PLL to startup, the 100TX path to start sending idle's
+		and for the receiver block to lock to the incoming data.
+		9. After the wait period the state of the fifo is checked.
+		10. The speed of the receive and drive clocks are verified.
+		11. The MII TX pins are driven (TD - data, TXEN - enable
+		transmission).
+		12. The transmitted data is then looped back externally into the
+		receive input (TPIP, TPOP) and the results are self-checked by
+		the code. An Error message will be displayed if the received
+		data (RD - received data; RXDV - Data Valid; RXER - Receive
+		Error) is incompatible with the transmitted data.
+		13. A second testcase with longer transmission time is send to
+		verify correct operation on long transmissions (chip does not
+		loss lock, no errors are inserted in the receive channel).
+		14. Final test forces an error in the transmit data and verifies
+		that the corresponding error is found in the receive channel.
+		
+		
+Verification:   Verify that no Error Messages are displayed in the Verilog
+		Simulation Window.
+		Currently Saved values:
+		
+		User may find it interesting to look at the following signals:
+		TXC        - Output clock from DUT to synchronize to external
+		             provided data.
+		TXEN       - Enable Data Transmission
+		TXD<4:0>   - 5 bit Input Data
+		TXER       - Force Error on Transmission indicator
+		TPOP, TPON - Serial Differential Output data from Driver.
+		CRS        - Carrier Sense (Asserted on Transmission or receive of
+		              data).
+		RXD<4:0>   - Received Data
+		RXC        - Received and Recovered Clock
+		RXDV       - Data being received is valid
+		RXER       - Error found in receive data indicator
+		COL        - Collision indicator (should be 0 since testing 
+			     in full-duplex mode)
+			     
+		MDIO_OE    - Tristate serial I/O bus control
+		MDIO_IN    - Input Data to the Management Interface
+		MDIO_OUT   - Output Data from Management Interface
+		MDC        - Management Interface Clock
+		
+		RESETN     - Chip Reset
+
+Note       :	Other major blocks can be verified with the same test. However,
+		due to the length of the simulation and the data storage 
+		requirements for the simulation these were ommitted from the
+		final simulation saved results.
+===========================================================================================
+
+Mnemnonic:
+2005-01-22: (rayv) created 4 config view for top level simulation as below:
+            ether_sims/top/config_behavioral_hilevel  (Use ether/adc_top/verilogams_hilevel)
+	                   config_behavioral_lowlevel (Use ether/adc_top/verilogams_lowlevel)
+			   config_transistor          (for running with Ultrasim)
+			   config_trsnsistor_hrcx     (use ether/top/av_hrcx_intcon view)
+2005-10-03: (rayv) added "config_transistor_rcx" for simulation with ether/top/av_rcx_intconn.
+                   Note: The "config_transistor_rcx" use result of RCX (instead of HRCX) and
+		         it provides same result as from "config_trsnsistor_hrcx".  

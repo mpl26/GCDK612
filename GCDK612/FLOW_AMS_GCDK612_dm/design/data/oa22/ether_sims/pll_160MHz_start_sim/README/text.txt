@@ -1,0 +1,28 @@
+Simulation:     PLL_160MHZ_start_sim 
+
+Purpose:        Transient simulation of the 160MHZ PLL to check start up of the
+PLL using spectre. The simulation is meant to check that the PLL sub-blocks like
+the Charge Pump and the VCO start up correctly.
+
+States:         tt 
+
+Description:    The PLL_160MHZ_start_sim test bench contains an 
+instantiation of the top level PLL macro, PLL_160MHZ. Ideal sources are used 
+for power and current references. An ideal voltage source connected to a poly 
+resistor is used to derive  a poly resistor based bias current for the block. 
+The SIDDQ pin is connected to a pulse voltage source via net PD. In addition 
+the misc_clock_monitor block is included to monitor the characteristics of the 
+PLL output clock.
+
+Verification:   The simulation needs to be run for about 3-4us for the PLL 
+to lock. The CLK_160MHz output of the PLL is monitored using the 
+misc_clock_monitor block. The outputs of this block give the frequency,
+duty-cycle and the edge-to-edge jitter of the clock. When the f_CLK_160MHZ
+output reaches a steady value around 160MHz, it indicates PLL lock. After this
+point the duty-cycle and the edge-to-edge jitter can be read from the
+dc_CLK_160MHZ and j_CLK_160MHZ outputs.
+
+Input Signals:  VDD, CLK_REF 
+
+Output Signals: CLK_160MHZ, f_CLK_160MHZ, dc_CLK_160MHZ, j_CLK_160MHZ 
+

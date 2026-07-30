@@ -1,0 +1,132 @@
+#
+gsclib090 BUFX1 symbol
+NEG_LINK_PULSE_reg_236_5a
+state_reg_0_574_5a
+count_150_reset_reg_718_5a
+#
+gsclib090 INVX8 symbol
+i_235744
+#
+gsclib090 BUFX3 symbol
+i_1319
+i_472
+i_480
+count_150_reset_reg_994_3
+count_150_reset_reg_995_3
+prev1_neg_detect_reg_1368_3
+prev1_neg_detect_reg_1369_3
+prev2_neg_detect_reg_1376_3
+prev2_neg_detect_reg_1377_3
+prev1_pos_detect_reg_1474_3
+prev1_pos_detect_reg_1475_3
+prev2_pos_detect_reg_1480_3
+RX10_PRESENT_reg_1546_3
+state_reg_3_1732_3
+state_reg_0_1939_3
+state_reg_2_1961_3
+POS_LINK_PULSE_reg_2103_3
+prev2_pos_detect_reg_2495_3
+RX10_PRESENT_reg_2612_3
+state_reg_3_2932_3
+#
+gsclib090 NAND3X1 symbol
+i_11
+i_28
+#
+gsclib090 AND2X1 symbol
+i_16096
+#
+gsclib090 AOI22X1 symbol
+i_20
+#
+gsclib090 AOI21X1 symbol
+i_41
+i_8
+i_9
+i_16166
+i_16186
+i_38
+i_35
+i_37
+#
+gsclib090 OR2X1 symbol
+i_44
+i_1
+#
+gsclib090 NAND4X1 symbol
+i_958
+#
+gsclib090 OAI21X1 symbol
+i_964
+i_950
+i_49
+i_10
+i_36
+i_5
+i_27
+i_16
+#
+gsclib090 NAND2X1 symbol
+i_966
+i_16012
+i_959
+i_957
+i_16001
+i_952
+i_12
+i_4
+i_30
+i_25
+i_3
+i_2
+i_48
+i_19
+i_16141
+i_14
+#
+gsclib090 NOR2X1 symbol
+i_16052
+i_13
+i_6
+i_05605
+i_15
+i_56
+#
+gsclib090 DFFSRX1 symbol
+NEG_LINK_PULSE_reg
+RX10_PRESENT_reg
+count_150_reset_reg
+state_reg_3
+state_reg_2
+state_reg_1
+state_reg_0
+prev2_neg_detect_reg
+prev1_neg_detect_reg
+POS_LINK_PULSE_reg
+prev2_pos_detect_reg
+prev1_pos_detect_reg
+#
+gsclib090 MX2X1 symbol
+i_978
+i_971
+i_943
+i_936
+i_929
+i_922
+i_915
+i_908
+i_901
+i_7
+#
+gsclib090 INVX1 symbol
+i_1055
+i_1054
+i_1053
+i_1052
+i_1051
+#
+gsclib090 INVX2 symbol
+i_1056
+#
+ether dig_counter symbol
+i_dig_counter

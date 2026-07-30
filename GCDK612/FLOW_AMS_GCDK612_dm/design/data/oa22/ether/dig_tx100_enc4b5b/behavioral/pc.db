@@ -1,0 +1,114 @@
+#
+gsclib090 BUFX1 symbol
+TX100_ACTIVE_NORMAL_reg_293_5a
+#
+gsclib090 BUFX3 symbol
+ENC4B5B_DATA_reg_0_1336_3
+ENC4B5B_DATA_reg_0_1337_3
+ENC4B5B_DATA_reg_3_1386_3
+ENC4B5B_DATA_reg_3_1387_3
+ENC4B5B_DATA_reg_4_1410_3
+ENC4B5B_DATA_reg_4_1411_3
+ENC4B5B_DATA_reg_1_1525_3
+ENC4B5B_DATA_reg_2_1544_3
+start_of_stream_reg_1555_3
+TX100_ACTIVE_NORMAL_reg_1767_3
+end_of_stream2_reg_1899_3
+ENC4B5B_DATA_reg_1_2658_3
+ENC4B5B_DATA_reg_2_2670_3
+start_of_stream_reg_2719_3
+end_of_stream_reg_144_5a
+#
+gsclib090 NAND4X1 symbol
+i_13239
+i_45
+i_43236
+#
+gsclib090 AOI21X1 symbol
+i_37
+i_05577
+i_4
+i_50
+i_1081
+i_1172
+i_10
+i_29
+#
+gsclib090 AND2X1 symbol
+i_3
+#
+gsclib090 OR2X1 symbol
+i_43
+#
+gsclib090 XOR2X1 symbol
+i_51
+#
+gsclib090 OAI21X1 symbol
+i_1726
+i_1719
+i_52
+i_14
+i_41
+i_35
+i_1162
+i_1154
+i_1185
+i_31
+#
+gsclib090 NAND3X1 symbol
+i_1734
+i_1720
+i_279208
+i_33237
+i_5
+#
+gsclib090 NOR2X1 symbol
+i_1111
+i_44
+i_1
+i_17
+i_2
+i_16
+i_34
+#
+gsclib090 NAND2X1 symbol
+i_1117
+i_1735
+i_1733
+i_1728
+i_279203
+i_54
+i_23238
+i_36
+i_9
+i_30
+#
+gsclib090 DFFSRX1 symbol
+ENC4B5B_DATA_reg_4
+ENC4B5B_DATA_reg_3
+ENC4B5B_DATA_reg_2
+ENC4B5B_DATA_reg_1
+ENC4B5B_DATA_reg_0
+start_of_stream_reg
+TX100_ACTIVE_NORMAL_reg
+end_of_stream2_reg
+end_of_stream_reg
+#
+gsclib090 MX2X1 symbol
+i_1768
+i_1761
+i_1754
+i_1747
+i_1740
+i_1712
+#
+gsclib090 INVX1 symbol
+i_1840
+i_1839
+i_1838
+i_1837
+i_1836
+i_1835
+#
+gsclib090 INVX2 symbol
+i_1841

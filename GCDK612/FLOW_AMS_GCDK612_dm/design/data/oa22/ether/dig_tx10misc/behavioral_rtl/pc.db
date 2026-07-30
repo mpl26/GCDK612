@@ -1,0 +1,30 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_rxtx10_link *
+i_dig_rxtx10_link
+
+#CELL
+* dig_tx10_manch_enc *
+i_dig_tx10_manch_enc
+
+#CELL
+* dig_rxtx_crs_gen *
+i_dig_rxtx_crs_gen
+
+#CELL
+* dig_rxtx_col *
+i_dig_rxtx_col
+
+#CELL
+* dig_tx10_jabber *
+i_dig_tx10_jabber
+
+#CELL
+* dig_rxtx10_loopback *
+i_dig_rxtx10_loopback
+
+#CELL
+* dig_tx10_filter *
+i_dig_tx10_filter
+

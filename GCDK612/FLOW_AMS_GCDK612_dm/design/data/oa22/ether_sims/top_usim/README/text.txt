@@ -1,0 +1,51 @@
+Simulation:     top_sim_usim 
+
+Purpose:        Transient simulation of the top level macro using UltraSim. 
+Verify the operation of the top level macro in the 100 BaseT mode in the 
+external loop-back configuration.  
+
+States:         tt
+Note:
+
+Description:    The top_bias_sim_usim test-bench contains  an instantiation of 
+the top level macro and the transformer network for external loopback operation.
+The SIDDQ pin is tied to GND. The control bits are tied of such that the macro
+is set to 100 BaseT mode.  The XTAL25 clock input is driven with a 25MHz CMOS
+clock generated using a pulse voltage source. The RESETN signal is driven using
+a pulse voltage source and is released after 10ns from the simulation start.
+
+The top level macro is placed in external loopback mode by connecting the 
+serial outputs (TPOP, TPIP) to the serial input pins (TPIP, TPIN).
+
+UltraSim simulation options are set for various blocks in the hierarchy based 
+on their type ( digital, analog, etc and function ). These options are set by
+setting a property on the individual instances of the blocks in the hierarchy.
+For analog blocks in the hierarchy such as the PLL_250MHZ, PLL_160MHZ, 
+Bias_top, top_1_port_analog the UltraSim simulation options are set to 
+sim_mod=ms acc=2 analog=2 
+For digital blocks in the hierarchy such as top_1_port_pnr, the UltraSim
+simulation options are set to
+sim_mod=df acc=2
+
+The simulation is run through the Analog Design Environment.
+
+Verification:   The simulation needs to be run for at about 30us. The simulation
+results can be verified by looking at the  /twp_0 and the /twm_0 signals i.e., 
+TPOP and TPON serial differential outputs from the driver  may be checked
+for MLT encoded data. 
+
+Input Signals:  /XTAL25, /RESETN
+
+Output Signals: /twp_0, /twm_0
+
+UltraSim Notes: 
+Ultrasim transient simulation stops with a floating point exception. The 
+simulation was tried with trap (trapezoidal), be (backward euler) and gear2 
+(2nd orger gear) integration methods. The exception occured before transient 
+simulation started for trap and be methods. For the gear2 method, the transient 
+simulation ran for a little while and then stopped. Please refer to PCR651795
+and PCR650123.
+
+
+                
+

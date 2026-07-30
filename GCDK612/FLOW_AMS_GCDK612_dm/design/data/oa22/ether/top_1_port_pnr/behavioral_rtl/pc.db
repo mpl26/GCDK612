@@ -1,0 +1,10 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* top_digital *
+i_top_digital
+
+#CELL
+* dsp_top *
+i_dsp_top
+

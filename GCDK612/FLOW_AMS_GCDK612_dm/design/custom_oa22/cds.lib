@@ -1,0 +1,30 @@
+--        Cadence Design Systems, Inc.
+-- CIC, VFS, Virtuoso Flow Solutions Engineering
+--
+-- Cadence library: -----------------------------------------------
+DEFINE cdsDefTechLib $CDSHOME/tools/dfII/etc/cdsDefTechLib
+DEFINE basic         $CDSHOME/tools/dfII/etc/cdslib/basic
+DEFINE analogLib     $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE sample        $CDSHOME/tools/dfII/samples/cdslib/sample
+#DEFINE avTech ${ASSURAHOME}/tools/assura/etc/avtech/avTech
+-- 
+-- PDK library:
+DEFINE gpdk090 ../../share/CDK090/gpdk090/libs.oa22/gpdk090
+#DEFINE gpdk180 ../../share/CDK180/gpdk180/libs.oa22/gpdk180
+-- 
+-- CDK library:
+DEFINE gsclib090  ../../share/CDK090/gsclib090/oa22/gsclib090
+#DEFINE GSCLib_20  ../../share/CDK180/gsclib180/oa22/GSCLib_20
+--
+-- Design Library:
+DEFINE ether                     ../data/oa22/ether
+DEFINE ether_sims                ../data/oa22/ether_sims
+DEFINE ether_adcflash_VLM90      ../data/oa22/ether_adcflash_VLM90
+DEFINE ether_adcflash_VLM90_sims ../data/oa22/ether_adcflash_VLM90_sims
+DEFINE ether_adcflash_RAD90      ../data/oa22/ether_adcflash_RAD90
+DEFINE ether_adcflash_RAD90_sims ../data/oa22/ether_adcflash_RAD90_sims
+#
+-- Soft include for development:
+# softinclude ./for_dev.lib
+-- 
+-- Personal library:

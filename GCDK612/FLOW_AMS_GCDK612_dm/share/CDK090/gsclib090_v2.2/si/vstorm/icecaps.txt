@@ -1,0 +1,191 @@
+process "TSMC 0.18um 6ML worse case model for Panasonic CPU migration project" {
+	background_dielectric_constant 1.000000
+}
+diffusion "N_SOURCE_DRAIN" {
+	thickness 0.000000
+	resistivity 6.800000 
+}
+diffusion "P_SOURCE_DRAIN" {
+	thickness 0.000000
+	resistivity 7.200000 
+}
+conductor "POLYCIDE" {
+	min_spacing 0.250000
+	min_width 0.180000 
+	height 0.290000 
+	thickness 0.210000 
+	resistivity 10.300000  
+	gate_forming_layer true 
+}
+conductor "METAL_1" {
+	min_spacing 0.230000
+	min_width 0.230000 
+	height 0.840000 
+	thickness 0.557000 
+	resistivity 0.101000  
+	gate_forming_layer false 
+}
+conductor "METAL_2" {
+	min_spacing 0.280000
+	min_width 0.280000 
+	height 1.938000 
+	thickness 0.557000 
+	resistivity 0.101000  
+	gate_forming_layer false 
+}
+conductor "METAL_3" {
+	min_spacing 0.280000
+	min_width 0.280000 
+	height 3.036000 
+	thickness 0.557000 
+	resistivity 0.101000  
+	gate_forming_layer false 
+}
+conductor "METAL_4" {
+	min_spacing 0.280000
+	min_width 0.280000 
+	height 4.134000 
+	thickness 0.557000 
+	resistivity 0.101000  
+	gate_forming_layer false 
+}
+conductor "METAL_5" {
+	min_spacing 0.280000
+	min_width 0.280000 
+	height 5.232000 
+	thickness 0.557000 
+	resistivity 0.101000  
+	gate_forming_layer false 
+}
+conductor "METAL_6" {
+	min_spacing 0.460000
+	min_width 0.440000 
+	height 6.330000 
+	thickness 1.040000 
+	resistivity 0.045000  
+	gate_forming_layer false 
+}
+dielectric "FOX" {
+	conformal FALSE
+	height 0.000000
+	thickness 0.290000 
+	dielectric_constant 4.000000 
+}
+dielectric "ILD" {
+	conformal FALSE
+	height 0.290000
+	thickness 0.550000 
+	dielectric_constant 3.900000 
+}
+dielectric "IMD1a" {
+	conformal FALSE
+	height 0.840000
+	thickness 0.904000 
+	dielectric_constant 3.700000 
+}
+dielectric "IMD1b" {
+	conformal FALSE
+	height 1.744000
+	thickness 0.194000 
+	dielectric_constant 4.200000 
+}
+dielectric "IMD2a" {
+	conformal FALSE
+	height 1.938000
+	thickness 0.904000 
+	dielectric_constant 3.700000 
+}
+dielectric "IMD2b" {
+	conformal FALSE
+	height 2.842000
+	thickness 0.194000 
+	dielectric_constant 4.200000 
+}
+dielectric "IMD3a" {
+	conformal FALSE
+	height 3.036000
+	thickness 0.904000 
+	dielectric_constant 3.700000 
+}
+dielectric "IMD3b" {
+	conformal FALSE
+	height 3.940000
+	thickness 0.194000 
+	dielectric_constant 4.200000 
+}
+dielectric "IMD4a" {
+	conformal FALSE
+	height 4.134000
+	thickness 0.904000 
+	dielectric_constant 3.700000 
+}
+dielectric "IMD4b" {
+	conformal FALSE
+	height 5.038000
+	thickness 0.194000 
+	dielectric_constant 4.200000 
+}
+dielectric "IMD5a" {
+	conformal FALSE
+	height 5.232000
+	thickness 0.904000 
+	dielectric_constant 3.700000 
+}
+dielectric "IMD5b" {
+	conformal FALSE
+	height 6.136000
+	thickness 0.194000 
+	dielectric_constant 4.200000 
+}
+passivation "PASS1" {
+	conformal FALSE
+	height 6.330000
+	thickness 1.040000 
+	dielectric_constant 4.200000 
+}
+passivation "PASS2" {
+	conformal FALSE
+	height 7.370000
+	thickness 0.630000 
+	dielectric_constant 7.900000 
+}
+via "CONT" {
+	top_layer "METAL_1"
+	bottom_layer "POLYCIDE" 
+	contact_resistance 30.000000  
+}
+via "CONT" {
+	top_layer "METAL_1"
+	bottom_layer "N_SOURCE_DRAIN" 
+	contact_resistance 30.000000  
+}
+via "CONT" {
+	top_layer "METAL_1"
+	bottom_layer "P_SOURCE_DRAIN" 
+	contact_resistance 30.000000  
+}
+via "VA1" {
+	top_layer "METAL_2"
+	bottom_layer "METAL_1" 
+	contact_resistance 20.000000  
+}
+via "VA2" {
+	top_layer "METAL_3"
+	bottom_layer "METAL_2" 
+	contact_resistance 20.000000  
+}
+via "VA3" {
+	top_layer "METAL_4"
+	bottom_layer "METAL_3" 
+	contact_resistance 20.000000  
+}
+via "VA4" {
+	top_layer "METAL_5"
+	bottom_layer "METAL_4" 
+	contact_resistance 20.000000  
+}
+via "VA5" {
+	top_layer "METAL_6"
+	bottom_layer "METAL_5" 
+	contact_resistance 13.000000  
+}

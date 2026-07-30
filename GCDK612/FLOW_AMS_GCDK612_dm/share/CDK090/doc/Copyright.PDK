@@ -1,0 +1,43 @@
+CADENCE DESIGN SYSTEMS, INC. END USER LICENSE AGREEMENT
+
+For Process Design Kits
+
+(c) Copyright 2004 Cadence Design Systems, Inc. All Rights Reserved.
+
+THIS LICENSE AGREEMENT ("AGREEMENT") IS A LEGAL DOCUMENT BETWEEN YOU AND CADENCE DESIGN SYSTEMS, INC. ("CADENCE"). PLEASE READ THIS AGREEMENT CAREFULLY BEFORE DOWNLOADING OR INSTALLING THE PROCESS DESIGN KIT IDENTIFIED ON THIS WEB PAGE AND RELATED DOCUMENTATION ("PRODUCT"). "You" refers to both you individually and the entity for whom you are using, copying, downloading or distributing the PRODUCT.
+
+YOU ACKNOWLEDGE AND AGREE THAT YOUR RIGHT TO ACCESS AND USE THE PRODUCT MAY ALSO BE SUBJECT TO YOUR EXECUTION OF A SEPARATE NON-DISCLOSURE AGREEMENT OR LICENSE AGREEMENT WITH A FOUNDRY OR OTHER THIRD PARTY.  IN SUCH CASE, YOU HEREBY REPRESENT AND WARRANT THAT YOU ARE A PARTY TO A CURRENT AND VALID AGREEMENT WITH SUCH THIRD PARTY AND WILL AT ALL TIMES COMPLY WITH THE TERMS AND CONDITIONS OF SUCH AGREEMENT.
+
+BY CLICKING YES DURING THE DOWNLOAD OR INSTALLATION OR BY USING THE PRODUCT, YOU ACKNOWLEDGE THAT YOU HAVE READ THE LICENSE AGREEMENT AND ACCEPT ITS TERMS. IF YOU DO NOT WANT TO BE BOUND BY THE TERMS, YOU WILL NOT BE PERMITTED TO DOWNLOAD OR USE THE PRODUCT.
+
+1. GRANT OF LICENSE.
+
+a)        Subject to the terms of this Agreement, Cadence grants to you the limited, nonexclusive, internal use only, right to use the PRODUCT for the sole purposes of:
+
+    * internal training on the use of the PRODUCT with Cadence EDA software tools
+    * developing internal design flows using Cadence EDA software tools for your internal commercial purposes
+    * internally evaluating Cadence EDA software tools for end-user licensing
+* if the PRODUCT includes a reference design, using such reference design to test the operation of Cadence EDA software tools with the flows developed using the PRODUCT
+
+(collectively, the "Purpose").  Your right to use the PRODUCT, as granted in this clause 1(a), will commence on the day that you accept the terms of this Agreement and will continue for a period of three (3) years from the date this Agreement becomes effective.
+
+(b)        you are prohibited from using THE PRODUCT or any derivative thereof for any other purpose including, without limitation, benchmarking design tools and PREPARING OR PRESENTING CUSTOMER DEMONSTRATIONS.  Further, you may not use any reference design of Cadence or its licensors, or a derivative thereof, included within the PRODUCT for production purposes.  The PRODUCT is Cadence's or its Licensors' proprietary and confidential information.  YOU MAY NOT DISTRIBUTE THE PRODUCT OR ANY DERIVATIVE WORK THEREOF, OR DISCLOSE ITS CONTENTS, TO ANY THIRD PARTY. Cadence reserves the right to terminate your rights under this Agreement and to seek any other legal remedies if you violate any provisions hereof and, in the event of such termination, you agree to cease using the PRODUCT and destroy all copies of the PRODUCT or parts thereof from your systems and files.
+
+2. OWNERSHIP. The PRODUCT and any copies thereof are owned by Cadence or its licensors' and are protected by United States copyright laws and international treaty provisions. You may make no more than one (1) copy of the PRODUCT solely for backup or archival purposes.  You must label any copies with all information included on the original media label. You agree not to distribute copies of the Product to third parties.
+
+3. OTHER RESTRICTIONS. You agree not to use, copy, modify, sell, or transfer or assign to third parties (by operation of law or otherwise) the PRODUCT or any copy, in whole or in part, and any attempt to transfer or assign shall be void. For any PRODUCT provided to you other than in source code or human readable format, you agree not to reverse engineer, decompile, disassemble, or make any attempt to discover the source code or human readable format for such PRODUCT.
+
+4.  CONFIDENTIALITY.  The PRODUCT is the confidential and proprietary information of Cadence and may only be used by You in accordance with the terms of this Agreement.  You shall hold such confidential information in strict confidence and not disclose it to third parties. The foregoing prohibition shall not apply to the extent that the confidential information is required to be disclosed as a matter of law or by order of a court, provided that You use reasonable efforts to provide Cadence with prior notice of such obligation to disclose and reasonably assists in obtaining a protective order.If the PRODUCT is copied to or used on a computer attached to a network, you must have a reasonable mechanism in place to ensure that the PRODUCT may not be used or copied by unlicensed persons.
+
+5. NO WARRANTY. THE PRODUCT IS PROVIDED TO YOU "AS IS" WITHOUT WARRANTY, EXPRESS OR IMPLIED, OF ANY KIND, INCLUDING, WITHOUT LIMITATION ANY WARRANTY AS TO PERFORMANCE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR ANY PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE RESULTS AND PERFORMANCE OF THE PRODUCT IS ASSUMED BY YOU.  Cadence is not obligated to provide any support, assistance, installation, training or other services, updates, or enhancements related to the PRODUCT.
+
+6. LIMITATION OF LIABILITY. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL CADENCE OR ANYONE ELSE INVOLVED IN THE CREATION, PRODUCTION, DELIVERY, OR LICENSING OF THE PRODUCT BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY INCIDENTAL, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES, OR ANY OTHER DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OR INABILITY TO USE THIS PRODUCT, WHETHER OR NOT THE POSSIBILITY OR CAUSE OF SUCH DAMAGES WAS KNOWN TO CADENCE.  
+
+7. EXPORT LAWS. You agree that you will not export or re-export the PRODUCT or any copy thereof in any form without the appropriate United States and foreign government license or permit. You also agree that your obligations under this section will survive and continue after any termination or revocation of rights under this Agreement.
+
+8. GENERAL. This Agreement constitutes the complete agreement between you and Cadence and may not be modified unless a written amendment is signed by a corporate officer of Cadence. You agree to submit to exclusive jurisdiction in the federal and state courts of California, U.S.A. This Agreement shall be interpreted pursuant to California law without regard to principles of conflicts of laws. The invalidity or unenforceability of any provision hereof shall in no way affect the validity or enforceability of any other provision. If you have any questions concerning this Agreement, or if you desire to contact Cadence Design Systems, Inc. for any reason, please do so in writing at the address listed below.
+
+Cadence is a registered trademark and the Cadence logo is a trademark of Cadence Design Systems, Inc. All others are properties of their holders.
+
+Cadence Design Systems, Inc., 555 River Oaks Parkway, San Jose, CA 95134 U.S.A.
+

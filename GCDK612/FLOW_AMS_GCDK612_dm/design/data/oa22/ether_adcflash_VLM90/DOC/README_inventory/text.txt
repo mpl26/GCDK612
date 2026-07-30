@@ -1,0 +1,55 @@
+                                          Design Hierarchy                                          
+****************************************************************************************************
+Library     : ether_adcflash_180
+Cell        : adcflash
+View        : schematic
+Option      : Top to bottom
+Stop Level  : Top to bottom 
+****************************************************************************************************
+
+  ;gpdk180 nmoshv symbol (5) 
+  ;ether_adcflash_180 or2_2x_hv symbol (2) 
+  ;  ;gpdk180 nmoshv symbol (3) 
+  ;  ;gpdk180 pmoshv symbol (3) 
+  ;ether_adcflash_180 inv_2x_hv symbol (2) 
+  ;  ;gpdk180 nmoshv symbol (1) 
+  ;  ;gpdk180 pmoshv symbol (1) 
+  ;ether_adcflash_180 and2_1x_hv symbol (2) 
+  ;  ;gpdk180 nmoshv symbol (3) 
+  ;  ;gpdk180 pmoshv symbol (3) 
+  ;ether_adcflash_180 adc_sample_hold symbol (1) 
+  ;  ;ether_adcflash_180 inv_2x_hv symbol (1) 
+  ;  ;  ;gpdk180 nmoshv symbol (1) 
+  ;  ;  ;gpdk180 pmoshv symbol (1) 
+  ;  ;gpdk180 pmoscap symbol (2) 
+  ;  ;gpdk180 pmoshv symbol (6) 
+  ;  ;gpdk180 nmoshv symbol (15) 
+  ;ether_adcflash_180 adcflash_comparator_actr symbol (7) 
+  ;  ;gpdk180 pmoshv symbol (4) 
+  ;  ;gpdk180 nmoshv symbol (10) 
+  ;  ;gpdk180 polyhres symbol (2) 
+  ;  ;  ;gpdk180 resPrim2 symbol (2) 
+  ;  ;ether_adcflash_180 clkbuf_2x_hv symbol (2) 
+  ;  ;  ;gpdk180 nmoshv symbol (2) 
+  ;  ;  ;gpdk180 pmoshv symbol (2) 
+  ;  ;ether_adcflash_180 nand2_2x_hv symbol (2) 
+  ;  ;  ;gpdk180 nmoshv symbol (2) 
+  ;  ;  ;gpdk180 pmoshv symbol (2) 
+  ;  ;analogLib cap symbol (8) 
+  ;ether_adcflash_180 adcflash_ref_ladder symbol (1) 
+  ;  ;gpdk180 pmoscap symbol (1) 
+  ;  ;gpdk180 pmoshv symbol (1) 
+  ;  ;gpdk180 polyhres symbol (12) 
+  ;  ;  ;gpdk180 resPrim2 symbol (2) 
+  ;  ;ether_adcflash_180 adc_cascode_opamp symbol (1) 
+  ;  ;  ;gpdk180 pmoshv symbol (15) 
+  ;  ;  ;gpdk180 nmoshv symbol (23) 
+*************************************************************************
+
+    pmoshv          =         73
+    polyhres        =         26
+    nmoshv          =        136
+    resPrim2        =         16
+    pmoscap         =          3
+--------------------------------------------------------
+    Sum             =        254 

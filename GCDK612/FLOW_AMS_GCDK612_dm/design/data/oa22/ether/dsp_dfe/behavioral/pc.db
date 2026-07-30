@@ -1,0 +1,184 @@
+#
+gsclib090 INVX8 symbol
+i_170021
+i_170022
+i_170025
+i_170026
+i_170071
+i_170073
+i_170075
+i_170192
+i_170194
+i_170205
+i_170206
+i_170237
+i_170239
+i_170242
+i_170258
+#
+gsclib090 CLKBUFX3 symbol
+i_890
+#
+gsclib090 BUFX1 symbol
+i_879
+#
+gsclib090 BUFX3 symbol
+i_561
+i_875
+i_889
+i_1269
+i_924
+ADC_DELAY_reg_3_1858_3
+ADC_DELAY_reg_2_2040_3
+#
+gsclib090 CLKBUFX1 symbol
+i_65
+#
+gsclib090 AOI21X1 symbol
+i_10
+i_9
+i_8
+i_7
+i_6
+i_5
+i_4
+i_3
+i_2
+i_1
+#
+gsclib090 NAND3X1 symbol
+i_38
+#
+gsclib090 OR2X1 symbol
+i_12
+i_11250
+#
+gsclib090 NOR3X1 symbol
+i_20
+#
+gsclib090 OR4X1 symbol
+i_22
+#
+gsclib090 NAND2X1 symbol
+i_41
+i_25
+i_85
+i_26
+i_83
+i_27
+i_81
+i_28
+i_79
+i_29
+i_77
+i_30
+i_75
+i_31
+i_73
+i_32
+i_71
+i_33
+i_69
+i_13
+i_67
+i_34
+#
+gsclib090 NAND4X1 symbol
+i_42
+i_264207
+#
+gsclib090 OAI21X1 symbol
+i_16225
+#
+gsclib090 AND2X1 symbol
+i_05566
+#
+gsclib090 NOR2X1 symbol
+i_11
+i_21249
+i_44
+i_43
+i_45
+i_24
+i_17
+i_16
+i_14
+#
+gsclib090 DFFSRX1 symbol
+ADC_DELAY_reg_5
+ADC_DELAY_reg_4
+ADC_DELAY_reg_3
+ADC_DELAY_reg_2
+ADC_DELAY_reg_1
+ADC_DELAY_reg_0
+ERROR_OUT_reg_10
+ERROR_OUT_reg_9
+ERROR_OUT_reg_8
+ERROR_OUT_reg_7
+ERROR_OUT_reg_6
+ERROR_OUT_reg_5
+ERROR_OUT_reg_4
+ERROR_OUT_reg_3
+ERROR_OUT_reg_2
+ERROR_OUT_reg_1
+ERROR_OUT_reg_0
+dfe_clip_ff_reg_10
+dfe_clip_ff_reg_9
+dfe_clip_ff_reg_8
+dfe_clip_ff_reg_7
+dfe_clip_ff_reg_6
+dfe_clip_ff_reg_5
+dfe_clip_ff_reg_4
+dfe_clip_ff_reg_3
+dfe_clip_ff_reg_2
+dfe_clip_ff_reg_1
+dfe_clip_ff_reg_0
+decision_ff_reg_1
+decision_ff_reg_0
+sign_err_reg_1
+sign_err_reg_0
+#
+gsclib090 INVX1 symbol
+i_299
+i_298
+i_297
+i_296
+i_295
+i_294
+i_293
+i_292
+i_291
+i_290
+i_289
+i_288
+i_287
+#
+ether AWMUX_32_10 symbol
+i_16370
+#
+ether dsp_ff symbol
+i_dsp_ff
+#
+ether dsp_fb symbol
+i_dsp_fb
+#
+ether dsp_csa_wordlength13 symbol
+i_dsp_csa6_0
+#
+ether dsp_csa_wordlength14 symbol
+i_dsp_csa7_0
+#
+ether dsp_csa_wordlength15 symbol
+i_dsp_csa8_0
+#
+ether AWDP_ADD_054864 symbol
+i_16230
+#
+ether dsp_tc_greater_width16 symbol
+greater
+#
+ether dsp_tc_less_width16 symbol
+less
+#
+ether AWDP_SUB_2 symbol
+i_16223

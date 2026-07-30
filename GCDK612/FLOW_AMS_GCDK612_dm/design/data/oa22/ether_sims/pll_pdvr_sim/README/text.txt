@@ -1,0 +1,30 @@
+Simulation:     PDVR_sim 
+
+Purpose:        AC simulation of the Charge Pump driver PDVR at different
+corners. The simulation is meant to check the stability of the internal 
+feedback loop
+
+States:         ff, tt, ss 
+
+Description:    The PDVR_sim testbench contains an instantiation of the 
+PLL_PDVR block. An ideal voltage source connected to a poly resistor is 
+used to derive  a poly resistor based bias current for the block. V2 is 
+the AC input source. The combination of resistor R8 the capacitor C0 and 
+the voltage controlled voltage source E0 break the feedback loop and 
+provide dc bias. The PDVR takes the single-ended UP signal from the phase 
+frequency detector, converts it to a differential signal and  level-shifts 
+the signals to appropriate voltage level to drive the pmos switches in the 
+charge pump.
+
+
+Verification:   The Openloop gain and the phase of the loop are plotted. 
+The expressions for the Openloop gain and the phase are stored in the 
+artist states for convenience and are automatically plotted after the 
+simulation completes. The phase margin and the gain bandwidth product are 
+printed in the Analog Design Environment  window. These can be checked to 
+make sure that the numbers are acceptable.
+
+Input Signals:  FB_IN
+
+Output Signals: FB_OUT
+

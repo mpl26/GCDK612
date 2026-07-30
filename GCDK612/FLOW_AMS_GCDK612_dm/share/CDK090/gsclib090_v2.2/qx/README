@@ -1,0 +1,42 @@
+A container folder for the creation of Fire&Ice icecaps files
+
+Created by Johannes Grad (jgrad)
+12/21/04
+
+
+1) Creation
+The original data was taken from CDK090/gpdk090/fire&ice/qx
+When running
+$viewict gpdk090_9l.ict
+it was noted that there are gaps between all dielectrics
+
+
+2) Correcting gpdk090_9l.ict
+Each layer has two entries:
+   height    Distance from substrate
+   thickness Thickness of layer (starting at "height")
+The dielectrics are in this order:
+   FOX (height=0, attaches to substrate)
+   ILD (heigth=thickness(FOX)
+   IMD1 (height=heigth(ILD)+thickness(ILD))
+   etc.
+
+Manually corrected the numbers for all dielectrics to close all gaps
+
+
+3) Running icecaps
+icecaps -plan gpdk090_9l.ict icecaps
+
+
+4) Running plan file
+cd icecaps
+./icecaps.plan
+
+
+5) Concat files
+cd ..
+icecaps -concat gpdk090_9l.ict icecaps
+
+
+6) Run LibGen
+libgen libgen.cmd

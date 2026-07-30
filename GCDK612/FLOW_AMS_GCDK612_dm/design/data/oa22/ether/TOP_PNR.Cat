@@ -1,0 +1,4 @@
+TDMCHECKPOINT="1.0"
+ether/top_1_port_digital type="cell"
+ether/top_1_port_pnr type="cell"
+keepEmptyCategory type="unknown"

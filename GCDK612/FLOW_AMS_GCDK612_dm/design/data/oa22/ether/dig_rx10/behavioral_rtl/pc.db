@@ -1,0 +1,18 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_rx10_squelch *
+i_dig_rx10_squelch
+
+#CELL
+* dig_rx10_manch_dec *
+i_dig_rx10_manch_dec
+
+#CELL
+* dig_rx10_pol_rvrs *
+i_dig_rx10_pol_rvrs
+
+#CELL
+* dig_rx10_ser2par *
+i_dig_rx10_ser2par
+

@@ -1,0 +1,60 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I111:VSS=dgnd;
+	I111:VDD=dvdd;
+	I126:VDD=dvdd;
+	I126:VSS=dgnd;
+	I125:VSS=dgnd;
+	I125:VDD=dvdd;
+	I114:VDD=dvdd;
+	I114:VSS=dgnd;
+	I113:VSS=dgnd;
+	I113:VDD=dvdd;
+	I96:VDD=dvdd;
+	I96:VSS=dgnd;
+$END
+$TIMESTAMP
+	1272925627=7-gpdk09010-resnsppoly;
+	1272925627=7-gpdk09010-resnsppoly6-symbol;
+	-1=9-gsclib0905-TIEHI;
+	1272925623=9-gsclib0905-TIEHI6-symbol;
+	-1=9-gsclib0905-TIELO;
+	1272925621=9-gsclib0905-TIELO6-symbol;
+	1272925628=7-gpdk0906-pmos2v;
+	1272925628=7-gpdk0906-pmos2v6-symbol;
+	1272925627=7-gpdk0906-nmos2v;
+	1272925627=7-gpdk0906-nmos2v6-symbol;
+	1272925629=7-gpdk0909-nmoscap2v;
+	1272925629=7-gpdk0909-nmoscap2v6-symbol;
+	1272925652=5-ether16-analog_eq_cm_res;
+	1272925652=5-ether16-analog_eq_cm_res6-symbol;
+	1272925652=5-ether14-Analog_eq_bias;
+	1272925652=5-ether14-Analog_eq_bias6-symbol;
+	1272925645=5-ether7-AEQ_Dec;
+	1272925645=5-ether7-AEQ_Dec6-symbol;
+	1272925646=5-ether20-Analog_eq_pcaps_zero;
+	1272925646=5-ether20-Analog_eq_pcaps_zero6-symbol;
+	1272925653=5-ether14-Analog_eq_pole;
+	1272925653=5-ether14-Analog_eq_pole6-symbol;
+	1272925650=5-ether13-Analog_eq_cmf;
+	1272925650=5-ether13-Analog_eq_cmf6-symbol;
+	1272925649=5-ether14-Analog_eq_gain;
+	1272925649=5-ether14-Analog_eq_gain6-symbol;
+	-1=5-ether22-AEQ_lvlshft_1p0_to_2p5;
+	1272925652=5-ether22-AEQ_lvlshft_1p0_to_2p512-symbol_xform;
+	1316495983=9-analogLib3-cap;
+	1236576105=9-analogLib3-cap6-symbol;
+	-1=5-basic4-ipin;
+	1273039899=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1273039898=5-basic4-opin6-symbol;
+	1316822907=verilog.vams;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:cap:symbol:*:4-PLUS1-15-MINUS30-(FUNCTION minus(root("PLUS")));
+$END

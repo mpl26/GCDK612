@@ -1,0 +1,31 @@
+Subject: VoltageStorm examples.
+Date: Thu, 19 Aug 2004 16:04:04 -0700
+From: "Giridhar Bajpe" <gbajpe@cadence.com>
+To: "Jeff Guy" <jguy@cadence.com>, "John Gianni" <john@cadence.com>
+Cc: "Khoa Nguyen" <knguyen@cadence.com>
+
+Jeff & John,
+ 
+With reference to our meeting today, Following are the high level requirements for running Voltage Storm:
+ 
+1) Top level design in DEF(preferred) and/or gdsii
+2) Process technology file (.tch) : an example ascii version .txt file is attached for your reference
+3) Libgen PowerGrid view library (.cl)
+4) Power consumption information (either a total chip power or cell power file/instance power file showing power numbers in watts for
+    cells/instances)
+5) VStorm command file (example attached)
+ 
+6) for details on all the requirements, you can take a look at the attached .doc file.
+ 
+Let's talk more when we meet again.
+ 
+Regards,
+Giri....
+
+[] VSPE_FLOW.ppt 
+
+[] icecaps.txt 
+
+[] vstorm_cmd 
+
+[] VSPE - Requirements.doc 

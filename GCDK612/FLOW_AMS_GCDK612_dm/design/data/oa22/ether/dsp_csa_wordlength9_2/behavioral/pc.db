@@ -1,0 +1,54 @@
+#
+gsclib090 CLKBUFX1 symbol
+i_821
+#
+gsclib090 OAI21X1 symbol
+i_35
+i_37
+i_39
+i_41
+i_43
+i_45
+i_47
+i_48
+i_22
+#
+gsclib090 AND2X1 symbol
+i_17
+#
+gsclib090 MX2X1 symbol
+i_1
+i_05514
+#
+gsclib090 XOR2X1 symbol
+i_8
+i_7
+i_6
+i_5
+i_4
+i_3
+i_2
+i_28
+i_27
+i_26
+i_25
+i_24
+i_23
+i_18
+#
+gsclib090 NAND2X1 symbol
+i_16
+i_15
+i_14
+i_13
+i_12
+i_11
+i_10
+i_9
+i_20
+i_36
+i_38
+i_40
+i_42
+i_44
+i_46

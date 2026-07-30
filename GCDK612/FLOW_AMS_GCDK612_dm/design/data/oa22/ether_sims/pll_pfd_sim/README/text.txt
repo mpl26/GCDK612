@@ -1,0 +1,26 @@
+Simulation:     PFD_sim 
+
+Purpose:       Verify pulse widths of the phase frequency detector output.
+ 
+
+States:          tt 
+
+Description:   The PFD_sim test bench contains an instantiation of the phase 
+frequency dectector PLL_PFD. The PLL_PFD inputs are driven by a clock source 
+having the same frequency but are out of phase. The resulting phase difference 
+causes a periodic pulse to appear on either the UP or DN output of the block.
+The pulse-width of the UP and DN signals is proportional to the phase difference
+between the clocks REFCLK and FBCLK.
+
+Verification:  The PFD_sim test bench is verfied by running a transient 
+analysis. The UP and DN signals from the phase frequency detector can be
+looked at to check for proper operation of the phase frequency detector.In
+addition the minimum pulse-width of the UP and DN signals can be checked, 
+which occurs when the phase difference between the REFCLK and FBCLK is zero. 
+The minimum pulse-width pulses need to be full-swing and wide enough to 
+prevent a dead-zone in the Charge Pump.
+
+Input Signals:  VCOCLK, REFCLK
+
+Output Signals: UP, DN
+

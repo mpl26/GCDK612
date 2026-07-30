@@ -1,0 +1,17 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1136387858174=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1136388213000:7-dirName36-$AMS/simulation/ether.top.transistor8-snapShot24-top_sim:ams1109899095483;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11084371060726-Solver8-UltraSim7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11087597359786-Solver8-UltraSim7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11093852937146-Solver8-UltraSim7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11098990954836-Solver8-UltraSim7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11065208265966-Solver8-UltraSim7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11084302805956-Solver8-UltraSim7-CdsPlat5-lnx86;
+$END

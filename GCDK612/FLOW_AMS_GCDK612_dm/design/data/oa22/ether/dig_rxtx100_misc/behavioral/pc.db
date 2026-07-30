@@ -1,0 +1,9 @@
+#
+ether dig_rxtx100_linkmonitor symbol
+i_dig_rxtx100_linkmonitor
+#
+ether dig_rxtx100_mii_loopback symbol
+i_dig_rxtx100_mii_loopback
+#
+ether dig_rxtx100_dig_loopback symbol
+i_dig_rxtx100_dig_loopback

@@ -1,0 +1,80 @@
+#
+gsclib090 INVX8 symbol
+i_169980
+#
+gsclib090 CLKBUFX1 symbol
+i_1026
+i_1027
+#
+gsclib090 NOR2X1 symbol
+i_05572
+i_224361
+#
+gsclib090 OR2X1 symbol
+i_2
+#
+gsclib090 NAND2X1 symbol
+i_37
+i_36
+i_35
+i_3
+i_4
+i_5
+i_6
+i_7
+i_8
+i_9
+i_10
+i_11
+i_12
+i_13
+i_20
+i_27
+i_28
+i_29
+i_30
+i_31
+i_32
+i_33
+i_34
+#
+gsclib090 XOR2X1 symbol
+i_136
+i_47
+#
+gsclib090 AOI21X1 symbol
+i_17291
+i_1
+#
+gsclib090 DFFSRX1 symbol
+SD_OUT_reg_1
+SD_OUT_reg_0
+acc_reg_11
+acc_reg_10
+acc_reg_9
+acc_reg_8
+acc_reg_7
+acc_reg_6
+acc_reg_5
+acc_reg_4
+acc_reg_3
+acc_reg_2
+acc_reg_1
+acc_reg_0
+#
+gsclib090 INVX1 symbol
+i_747
+i_746
+i_745
+#
+gsclib090 INVX2 symbol
+i_748
+#
+ether AWDP_ADD_058719 symbol
+i_14712
+#
+ether dsp_tc_greater_width12 symbol
+greater
+#
+ether dsp_tc_less_width12 symbol
+less

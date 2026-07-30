@@ -1,0 +1,6 @@
+
+The gpdk090_tech_9lm.lef file is now stored in
+the CDK090/gsclib090/lef/ directory
+
+Previous files contained in the gpdk090 should not be used.
+

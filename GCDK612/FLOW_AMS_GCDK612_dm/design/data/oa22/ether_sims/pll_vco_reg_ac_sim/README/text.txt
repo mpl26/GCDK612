@@ -1,0 +1,32 @@
+Simulation:     VCO_REG_ac_sim 
+
+Purpose:        AC simulation of the VCO control voltage regulator PLL_VCO_REG  
+block at different corners. The simulation is meant to check the stability of   
+the internal feedback loop 
+
+States:         ff, tt, ss 
+
+Description:    The VCO_REG_ac_sim testbench contains an instantiation of the
+VCO control voltage regulator, PLL_VCO_REG. The control voltage regulator, 
+PLL_VCO_REG block converts the control voltage from the loop filter node to 
+the ring supply voltage in the VCO. In the test bench, ideal sources are used 
+for power and current references. The control voltage is set by a dc voltage 
+source through the net Vcntl. The control voltage on the Vcntl node is set to 
+a voltage that would couse the frequency of the output clock from the VCO is 
+close to 250MHz. The power down signal, PD is connected to ground through a 
+zero voltage source. The voltage source V5 is the AC input source. The 
+open-loop gain and the phase of the feedback loop are calculated without
+breaking the loop. The control voltage regulator, PLL_VCO_REG block converts 
+the control voltage from the loop filter node to the ring supply voltage in 
+the VCO.
+
+Verification:   The Openloop gain and the phase of the loop are plotted. 
+The expressions for the Openloop gain and the phase are stored in the 
+artist states for convenience and are automatically plotted after the 
+simulation completes. The phase margin and the gain bandwidth product are 
+printed in the Analog Design Environment  window. These can be checked to 
+make sure that the numbers are acceptable.
+
+Input Signals:  Vcntl
+
+Output Signals: VRING, VFB

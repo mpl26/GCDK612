@@ -1,0 +1,6 @@
+define ncuse5x
+define ams
+define WORK connectLib
+define NCELABOPTS  -access +rwc -messages
+define NCVLOGOPTS  -messages
+

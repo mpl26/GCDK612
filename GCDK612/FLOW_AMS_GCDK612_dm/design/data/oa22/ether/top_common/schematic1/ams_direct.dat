@@ -1,0 +1,23 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1136308093=5-ether8-Bias_top;
+	1136308093=5-ether8-Bias_top6-symbol;
+	1136308132=5-ether10-PLL_250MHZ;
+	1136308132=5-ether10-PLL_250MHZ6-symbol;
+	1136308124=5-ether10-PLL_160MHZ;
+	1136308125=5-ether10-PLL_160MHZ6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic5-iopin;
+	1133906589=5-basic5-iopin7-symbolr;
+	1136393733=verilog.vams;
+$END

@@ -1,0 +1,27 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Rule Set File generated/modified by Assura Code on Sep 30 14:47:24 2003
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ruleSet( "default"
+     (DrcRules             "drc.rul" )
+     (DrcTemplateFile      ".drc_setup.tpl" )
+     (LvsExtractRules      "extract.rul" )
+     (LvsCompareRules      "compare.rul" )
+     (LvsBindingFile       "bind.rul" )
+     (LvsInclude           "LVSinclude.rsf" )
+     (LvsTemplateFile      ".lvs_setup.tpl" )
+     (LvsAVCTemplateFile   ".avc_setup.tpl" )
+     (RcxSetupDir          "rcx" )
+)
+
+ruleSet( "density"
+     (DrcRules             "density.rul" )
+     (DrcTemplateFile      ".den_setup.tpl" )
+     (DrcSwitchesFile      ".den_switch" )
+)
+
+ruleSet( "antenna"
+     (DrcRules             "antenna.rul" )
+     (DrcTemplateFile      ".ant_setup.tpl" )
+)
+

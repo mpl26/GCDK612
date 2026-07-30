@@ -1,0 +1,33 @@
+#
+gsclib090 INVX8 symbol
+i_235775
+i_235888
+#
+gsclib090 CLKBUFX1 symbol
+i_676
+i_821
+#
+gsclib090 BUFX3 symbol
+i_423
+i_653
+#
+ether dig_rxtx10_loopback symbol
+i_dig_rxtx10_loopback
+#
+ether dig_rxtx_col symbol
+i_dig_rxtx_col
+#
+ether dig_rxtx10_link symbol
+i_dig_rxtx10_link
+#
+ether dig_rxtx_crs_gen symbol
+i_dig_rxtx_crs_gen
+#
+ether dig_tx10_jabber symbol
+i_dig_tx10_jabber
+#
+ether dig_tx10_filter symbol
+i_dig_tx10_filter
+#
+ether dig_tx10_manch_enc symbol
+i_dig_tx10_manch_enc

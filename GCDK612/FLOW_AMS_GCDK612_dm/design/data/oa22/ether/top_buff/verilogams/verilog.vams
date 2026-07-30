@@ -1,0 +1,68 @@
+//Verilog-AMS HDL for "drouillard_ph2", "top_buff" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module top_buff ( PHASE_125, PHASE_250, XTAL25, X_125, PHASE_IN, PLL_160_IN,
+    RESETN, XTAL25_IN, X_160, VDDTX, VDDRX, GNDRX, GNDTX, VDD, GND );
+
+output  [10:0] PHASE_125, PHASE_250;
+output         XTAL25, X_125, X_160;
+input   [10:0] PHASE_IN;
+input          XTAL25_IN, PLL_160_IN;
+input          RESETN;
+input	       VDDTX, VDDRX, VDD;
+input          GNDTX, GNDRX, GND;
+
+logic  [10:0] PHASE_125, PHASE_250, PHASE_IN;
+logic         XTAL25, X_125, X_160;
+logic         XTAL25_IN, PLL_160_IN;
+logic         RESETN;
+electrical    VDDTX, VDDRX, VDD, GNDTX, GNDRX, GND;
+
+reg  [10:0] PHASE_125, PHASE_250;
+reg         XTAL25, X_125, X_160;
+
+reg        started;
+reg [10:0] ph125;
+reg [2:0]  reset_ff;
+reg        resetn_int, rstb;
+
+initial begin
+   PHASE_250  = 10'b0;
+   PHASE_125  = 10'b0;
+   XTAL25     = 1'b0;
+   X_125      = 1'b0;
+   X_160      = 1'b0;
+   ph125      = 10'b0;
+   started    = 1'b0;
+   reset_ff   = 3'b111;
+   resetn_int = 1'b1;
+   rstb       = 1'b1;
+   @(posedge PHASE_IN[3]) started = 1;
+end
+
+always @(PHASE_IN)   PHASE_250 = PHASE_IN;
+always @(XTAL25_IN)  XTAL25    = XTAL25_IN;
+always @(PLL_160_IN) X_160     = PLL_160_IN;
+
+always @(RESETN) resetn_int = RESETN; 
+always @(XTAL25) reset_ff[2:0] = {resetn_int,reset_ff[2:1]};
+always @(resetn_int or reset_ff[0]) rstb = resetn_int & reset_ff[0];
+
+always @(posedge PHASE_IN[10]) ph125[10]= (started) ? !ph125[10]: ph125[10];
+always @(posedge PHASE_IN[9] ) ph125[9] = (started) ? !ph125[9]:  ph125[9];
+always @(posedge PHASE_IN[8] ) ph125[8] = (started) ? !ph125[8]:  ph125[8];
+always @(posedge PHASE_IN[7] ) ph125[7] = (started) ? !ph125[7]:  ph125[7];
+always @(posedge PHASE_IN[6] ) ph125[6] = (started) ? !ph125[6]:  ph125[6];
+always @(posedge PHASE_IN[5] ) ph125[5] = (started) ? !ph125[5]:  ph125[5];
+always @(posedge PHASE_IN[4] ) ph125[4] = (started) ? !ph125[4]:  ph125[4];
+always @(posedge PHASE_IN[3] ) ph125[3] = !ph125[3];
+always @(posedge PHASE_IN[2] ) ph125[2] = !ph125[2];
+always @(posedge PHASE_IN[1] ) ph125[1] = !ph125[1];
+always @(posedge PHASE_IN[0] ) ph125[0] = !ph125[0];
+
+always @(ph125 or rstb) PHASE_125 = (!rstb) ? 10'b0: ph125;
+always @(ph125[0] or rstb) X_125  = (!rstb) ? 1'b0: ph125[0];
+
+endmodule

@@ -1,0 +1,32 @@
+Simulation  :	adc_SIM
+Purpose     :	Test the operation of the 6-bit ADC (adc).
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+
+Simulator   :	AMSDesigner
+View        :   config_ams
+Connectivity Module: mixedsignal_25A
+	elect2logic25a module:
+	   threshold voltage: 1.25V
+	   voltage high (> threshold voltage) (Produces a logic "1" state)
+	   voltage low  (< threshold voltage) (Produces a logic "0" state)
+	
+	logic2elect25a module:
+	   output high : 2.5V (Analog voltage corresponding to logic "1" state)
+	   output low  : 0.0V (Analog voltage corresponding to logic "0" state)
+	   output Z    : 0.0V (Analog voltage corresponding to logic "Z" state)
+	   output X    : 0.0V (Analog voltage corresponding to logic "X" state)
+	   rise time   : 400p (Transition time from Analog low to high voltage)
+	   fall time   : 400p (Transition time from Analog high to low voltage)
+--------------------------------------------------------------------------------
+
+Description :	An input signal with a common mode of 765mV is ramped from
+		565mV to 965mV for 512ns.
+		The corresponding 63 digital word (THERM<62:0>) is then verified
+		to be increasing corresponding to the value of the input ramping
+		analog signal.
+		  
+Verification:   Verify results by checking the Thermometer Code (THERM<62:0>) 
+		vs the input (INP-INM).

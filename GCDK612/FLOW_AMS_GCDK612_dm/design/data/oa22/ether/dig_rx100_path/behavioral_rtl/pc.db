@@ -1,0 +1,30 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_rx100_descrambler *
+i_dig_rx100_descrambler
+
+#CELL
+* dig_rx100_mlt3_dec *
+i_dig_rx100_mlt3_dec
+
+#CELL
+* dig_rx100_bypass_dec4b5b *
+i_dig_rx100_bypass_dec4b5b
+
+#CELL
+* dig_fef_det *
+i_dig_fef_det
+
+#CELL
+* dig_rx100_deserializer *
+i_dig_rx100_deserializer
+
+#CELL
+* dig_rx100_dec4b5b *
+i_dig_rx100_dec4b5b
+
+#CELL
+* dig_rx100_bypass_descrambler *
+i_dig_rx100_bypass_descrambler
+

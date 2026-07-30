@@ -1,0 +1,200 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  tenbt_rec
+// Project :  shawnee
+// Author  :  dshelton
+// Notes   :  based on umc05001 spectre hdl module, updated 2/19/2003
+// To Do   :  
+//
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+module tenbt_rec( 
+  pos, 
+  neg, 
+  MR_SQUELCH_RANGE, 
+  siddq, 
+  MR_BYPASS10RX_FILTER,                
+  RX10_PRESENT, 
+  gnd, 
+  SLICER_OUT, 
+  NEG_SIG_DET, 
+  POS_SIG_DET,
+  ibias_rpoly2_100u, 
+  ibias_rpoly_100u, 
+  ibias_rext_100u, 
+  vdd, 
+  MR_SQUELCH_DISB)
+
+  node [V,I] pos;
+  node [V,I] neg;
+  node [V,I] MR_SQUELCH_RANGE[1:0];
+  node [V,I] siddq;
+  node [V,I] MR_BYPASS10RX_FILTER;
+  node [V,I] RX10_PRESENT;
+  node [V,I] gnd;
+  node [V,I] SLICER_OUT;
+  node [V,I] NEG_SIG_DET;
+  node [V,I] POS_SIG_DET;
+  node [V,I] ibias_rext_100u;
+  node [V,I] ibias_rpoly_100u;
+  node [V,I] ibias_rpoly2_100u;
+  node [V,I] ibias_rext_100u;
+  node [V,I] vdd;
+  node [V,I] MR_SQUELCH_DISB;
+       
+{  
+
+
+  node [V,I] VFILTEREDp;         // low-pass filtered inputs 
+  node [V,I] VFILTEREDm;      
+
+  const real pi      = 3.14159;
+
+  const real td_slice= 1.2e-9;   // delay through slicer path
+  const real td_edge = 4.0e-9;   // delay through NEG/POS_SIG_DET paths
+  const real tr      = 0.5n;
+  const real tf      = 0.5n;  
+  const real rbias   = 7000;     // close to effective input resistance 
+                                 //   for bias current inputs
+  const real roff    = 10e6;     // resistance through NFET switch off
+  const real sq11low = 120e-3;   // lowest squelch level
+  const real sq10low = 140e-3;   //         .
+  const real sq01low = 160e-3;   //         .
+  const real sq00low = 180e-3;   //         .
+  const real sq01hgh = 200e-3;   //         .
+  const real sq00hgh = 220e-3;   // highest squelch level 
+
+
+  real rnom;
+  real flp           = 110e6;    // typical cutoff frequency for lp filter
+                                 //   filter enabled  -> 21.2MHz
+                                 //   filter disabled -> 110MHz 
+  real voffset       = 200e-3;   // squelch reference
+  real vthresh;
+  real low_bias      = 80e-6;
+  real high_bias     = 120e-6;
+   
+  real slicer_out_int;
+  real neg_sig_det_int;
+  real pos_sig_det_int;
+  real vfilteredp_int;
+  real vfilteredm_int;
+
+  analog {
+    // track supplies
+    vthresh = 0.5*(V(vdd) - V(gnd)) + V(gnd);
+	
+    // internal node for filter pole  
+    V(VFILTEREDp) <- V(pos) - (1/(2*pi*flp))*dot(V(VFILTEREDp));
+    V(VFILTEREDm) <- V(neg) - (1/(2*pi*flp))*dot(V(VFILTEREDm)); 
+    vfilteredp_int = V(VFILTEREDp);
+    vfilteredm_int = V(VFILTEREDm);
+
+    // siddq mode
+    if(V(siddq) > vthresh) {
+     
+      slicer_out_int  = 0;
+      neg_sig_det_int = 0;
+      pos_sig_det_int = 0;
+
+      // bias current inputs tristate during siddq mode
+      rnom = roff;
+
+    }
+
+    // bias out-of-range shutdown
+    else if ((V(siddq) < vthresh) &&
+       ((I(ibias_rext_100u, gnd)   < low_bias)  ||
+        (I(ibias_rext_100u, gnd)   > high_bias) ||
+        (I(ibias_rpoly_100u, gnd)  < low_bias)  ||
+        (I(ibias_rpoly_100u, gnd)  > high_bias) ||
+        (I(ibias_rpoly2_100u, gnd) < low_bias)  ||
+        (I(ibias_rpoly2_100u, gnd) > high_bias))) {
+     
+      slicer_out_int  = 0;
+      neg_sig_det_int = 0;
+      pos_sig_det_int = 0;
+
+      rnom = rbias;
+
+    }	  
+
+    // operational mode  
+    else {
+      if (V(MR_SQUELCH_DISB) > vthresh ) {
+        voffset = 0;
+      }
+
+      else {
+        if(V(MR_SQUELCH_RANGE[1]) > vthresh ) {
+          if(V(MR_SQUELCH_RANGE[0]) > vthresh ) {
+            if(V(RX10_PRESENT) > vthresh) {
+	      voffset = sq11low;
+	    } 
+
+            else {
+              voffset = sq01low;
+            }
+          }  
+
+          else {
+            if(V(RX10_PRESENT) > vthresh) {
+	      voffset = sq10low;
+            } 
+
+            else {
+	      voffset = sq00low; 
+	    }	     
+          }  
+        }
+     	  
+        else {
+          if(V(MR_SQUELCH_RANGE[0]) > vthresh ) {
+	    if(V(RX10_PRESENT) > vthresh) {
+	      voffset = sq01low;
+	    }
+ 
+            else {
+	      voffset = sq01hgh;
+	    }
+          }
+  
+          else {
+	    if(V(RX10_PRESENT) > vthresh) {
+	      voffset = sq00low;
+	    } 
+
+            else {
+	      voffset = sq00hgh;
+	    }     
+          }
+        }
+      }   	
+ 
+      // low pass filter enabled?
+      if (V(MR_BYPASS10RX_FILTER) > vthresh) { 
+        flp = 110e6;
+      }
+      else {	  
+        flp = 21.2e6;
+      }
+
+      slicer_out_int  = (V(VFILTEREDp) > (V(VFILTEREDm)+1u)) ? V(vdd) : V(gnd);
+      neg_sig_det_int = ((V(neg) - voffset) > V(pos)) ? V(vdd) : V(gnd);
+      pos_sig_det_int = ((V(pos) - voffset) > V(neg)) ? V(vdd) : V(gnd);
+
+      rnom = rbias;
+
+    }
+
+    V(ibias_rext_100u, gnd)   <- rnom*I(ibias_rext_100u, gnd);
+    V(ibias_rpoly_100u, gnd)  <- rnom*I(ibias_rpoly_100u, gnd);
+    V(ibias_rpoly2_100u, gnd) <- rnom*I(ibias_rpoly2_100u, gnd);
+
+    V(SLICER_OUT)  <- $transition(slicer_out_int, td_slice, tr, tf);
+    V(NEG_SIG_DET) <- $transition(neg_sig_det_int, td_edge, tr, tf);
+    V(POS_SIG_DET) <- $transition(pos_sig_det_int, td_edge, tr, tf);
+
+  }
+}

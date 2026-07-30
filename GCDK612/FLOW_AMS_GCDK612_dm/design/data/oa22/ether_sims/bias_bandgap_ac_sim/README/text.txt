@@ -1,0 +1,59 @@
+
+
+Simulation: bias_bandgap_ac_sim
+
+
+Purpose: Measure the AC open loop gain and phase of the bandgap for stability.
+	 Additional test includes measuring bandgap dc output, bandgap
+	 temperature sweep, and bandgap trimming.
+	
+Description:
+	The bias_bandgap_ac_sim test bench consists of the Bias_bandgap, whose bias
+currents are derived from the bg_rt_current_ref2 block, in addition with an external bias 
+cicuit is setup to model additional parasitic capacitive loading on the bandgap output.
+A Loop breaking block, loop breaker, is included with the 
+test bench for AC analysis.
+
+States: tt	
+
+Verification: 
+	AC analysis is useful for determining the stability of the bandgap.	
+	This test looks at the open loop gain in conjunction with the phase of the bandgap to
+	determine the phase margin of the block. This is done with instance I0,
+	loop_breaker. Loop breaker consists of a series inductor, that appears
+	as a DC short between the AC_IN and AC_OUT pins and as an open under AC
+	conditions, thus breaking the loop while allowing the circuit to bias
+	up correctly under dc conditions. One side of the loop is tied to AC
+	ground via a cap. While an AC signal is injected on the other side of
+	the inductor. The AC gain can be measured by taking the ratio of AC_OUT
+	and AC_IN (i.e. dB20(VF("/AC_OUT")/VF("/AC_IN")) ). Also, the phase
+	response can be found based on this ratio (i.e.
+	phase(VF("/AC_OUT")/VF("/AC_IN"))).
+		
+		The bandgap dc output voltage measurement can be measured simply be
+	running a dc analysis on the block and then printing the final voltage
+	observed on the VBG pin.
+		
+		Similar to the dc output voltage measurement, the bandgap output,VBG,
+	can be measured as a function of temperature. This may be useful in
+	determing the overall error in the bangap as a function of temperature
+	or for expressing this error as variation in terms of ppm/deg C. The dc
+	analysis option is chosen in the spectre environment with the added
+	option of temperature sweep specifying the temperature range of
+	interest.
+
+		The bias_bandgap_ac test bench allows for trim adjustement of the bandgap for compensation
+	against process variation. Process variation, such as substrate bipolar, resistor, and mosfet variation 
+	will shift the bandgap final output voltage and center. The BGTRIM<3:0> bus allows the 
+	bandgap to be simulated across process and re-centered accordingly. 
+
+Input Signals: AC_IN			AC signal input
+	       BGTRIM<3:0>		Bandgap trim adjustment
+
+Output Signals: AC_OUT			AC signal output
+	        VBG			Bandgap output	
+	
+
+
+
+	

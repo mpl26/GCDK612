@@ -1,0 +1,14 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_rxtx100_dig_loopback *
+i_dig_rxtx100_dig_loopback
+
+#CELL
+* dig_rxtx100_linkmonitor *
+i_dig_rxtx100_linkmonitor
+
+#CELL
+* dig_rxtx100_mii_loopback *
+i_dig_rxtx100_mii_loopback
+

@@ -1,0 +1,27 @@
+Simulation:     CMOSDVR_sim 
+
+Purpose: Verify driver output characteristics (i.e. output swing,
+slew rate, drive strength, duty cycle, and jitter) using transient
+analysis.
+
+
+States:         ff, ss 
+
+Description: The CMOSDVR test bench contains an instantiation of the 
+PLL_VCO_CMOSDVR block. The VCO clock driver takes two clock inputs 
+from the two weakly coupled VCO rings and outputs a full swing clock. 
+A measurement block, misc_clock_monitor, is incorporated into the 
+test bench for the purpose of monitoring the driver's frequency output, 
+duty cycle and jitter. Finally, ideal sources are used to supply power 
+to the driver.  
+ 
+
+Verification:  A transient analysis is run on the CMOSDVR_sim test bench 
+using spectre. Following the transient analysis the driver output, VCO_CLK, 
+can be checked for drive_strength, output swing, slew rate, duty cycyle, 
+and added jitter.
+
+Input Signals:  net3, net5 - clock inputs to the VCO clock driver 
+
+Output Signals: CMP_OUT, DUMP
+

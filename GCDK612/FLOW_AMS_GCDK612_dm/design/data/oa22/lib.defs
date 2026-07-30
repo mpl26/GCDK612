@@ -1,0 +1,42 @@
+DEFINE cdsDefTechLib /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/red/tools/dfII/etc/cdsDefTechLib
+ASSIGN cdsDefTechLib libMode shared
+DEFINE basic /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/red/tools/dfII/etc/cdslib/basic
+ASSIGN basic libMode shared
+DEFINE analogLib /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/red/tools/dfII/etc/cdslib/artist/analogLib
+ASSIGN analogLib libMode shared
+DEFINE sample /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/red/tools/dfII/samples/cdslib/sample
+ASSIGN sample libMode shared
+DEFINE gpdk090 ../../../share/CDK090/gpdk090/libs.oa22/gpdk090
+ASSIGN gpdk090 libMode shared
+DEFINE gsclib090 ../../../share/CDK090/gsclib090/oa22/gsclib090
+ASSIGN gsclib090 libMode shared
+DEFINE ether_label ./ether_label
+ASSIGN ether_label libMode shared
+DEFINE av_hrcx_ether ./av_hrcx_ether
+ASSIGN av_hrcx_ether libMode shared
+DEFINE ether ./ether
+ASSIGN ether libMode shared
+DEFINE ether_sims ./ether_sims
+ASSIGN ether_sims libMode shared
+DEFINE giolib090 ../../../share/CDK090/giolib090/oa22/giolib090
+ASSIGN giolib090 libMode shared
+DEFINE ether_adcflash_RAD90 ./ether_adcflash_RAD90
+ASSIGN ether_adcflash_RAD90 libMode shared
+DEFINE ether_adcflash_RAD90_sims ./ether_adcflash_RAD90_sims
+ASSIGN ether_adcflash_RAD90_sims libMode shared
+DEFINE ether_adcflash_VLM90 ./ether_adcflash_VLM90
+ASSIGN ether_adcflash_VLM90 libMode shared
+DEFINE ether_adcflash_VLM90_sims ./ether_adcflash_VLM90_sims
+ASSIGN ether_adcflash_VLM90_sims libMode shared
+DEFINE gpdk180 /am/l4b/FLOW/FLOW_AMS_GCDK/share/CDK180/gpdk180/libs.oa22/gpdk180
+ASSIGN gpdk180 libMode shared
+DEFINE GSCLib_20 /am/l4b/FLOW/FLOW_AMS_GCDK/share/CDK180/gsclib180/oa22/GSCLib_20
+ASSIGN GSCLib_20 libMode shared
+DEFINE ether_adcflash_180 ./ether_adcflash_180
+ASSIGN ether_adcflash_180 libMode shared
+DEFINE ether_adcflash_180_sims ./ether_adcflash_180_sims
+ASSIGN ether_adcflash_180_sims libMode shared
+DEFINE iplib_adcflash_RAD180 ./iplib_adcflash_RAD180
+ASSIGN iplib_adcflash_RAD180 libMode shared
+DEFINE iplib_adcflash_RAD180_sims ./iplib_adcflash_RAD180_sims
+ASSIGN iplib_adcflash_RAD180_sims libMode shared

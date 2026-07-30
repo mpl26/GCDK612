@@ -1,0 +1,4 @@
+Note:
+The DFII techfiles shipped with this GPDK will require 5.1.41 (CDBA and OA20)
+The OA22 DFII techfile shipped with this GPDK will require 5.2.51 (OA22)
+Earlier versions of DFII will not load the techfile correctly.

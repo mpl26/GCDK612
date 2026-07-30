@@ -1,0 +1,26 @@
+Simulation:     160MHZ_MDIV_sim 
+
+
+Purpose:    
+	Verify operability  of feedback dividers at highest frequency and at the
+slowest corner.
+
+States:         ss_640M 
+
+Description:
+	The 160MHZ_MDIV_sim test bench contains an instantian of the PLL
+feedback divider block,PLL_160MHZ_MDIV. The PLL_160MHZ_MDIV input is driven 
+by a 640Mhz ideal periodic source. Capacitance is placed at outputs, CLKFB
+and CLK160, for loading. The simulation is meant to ensure that the feedback dividers operate and provide
+a feedback clock at the highest VCO frequency. 
+
+Verification:
+	The 160MHZ_MDIV_sim is verified by running a transient analysis using
+the spectre simulator in the analog artist environment.The output clocks of 
+the feedback dividers are checked to make sure the have full swing and good 
+slew rate.
+
+Input Signals:  VCOCLK 
+
+Output Signals: CLKFB, CLK160 
+

@@ -1,0 +1,16 @@
+printf("***************************************************************\n")
+printf("*           90nm  Generic Low Power Standard Cell Library     *\n")
+printf("*                                                             *\n")
+printf("* This library is provided as an education medium. It is      *\n")
+printf("* based upon the generic process available thru Cadence PDK   *\n")
+printf("* factory in the GPDK Process Delivery Kit.                   *\n")
+printf("* Cadence shall in no case be liable for the contents of      *\n")
+printf("* this library.                                               *\n")
+printf("*                                                             *\n")
+printf("* Copyright Cadence Design Systems  2005                      *\n")
+printf("* gsclib090_hvt v0.1, Dec 2005                                *\n")
+printf("*                                                             *\n")
+printf("***************************************************************\n")
+printf(" \n")
+
+;; All procedures from gsclib090/libInit.il assumed to work with this library also

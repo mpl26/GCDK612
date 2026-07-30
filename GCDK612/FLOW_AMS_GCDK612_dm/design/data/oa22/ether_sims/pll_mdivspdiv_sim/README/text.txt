@@ -1,0 +1,25 @@
+Simulation:     MDIVsPDIV_sim 
+
+Purpose:Verify output of the PLL clock dividers at the
+highest frequency and the slowest corner.
+
+States:         ss 
+
+Description: The MDIVsPDIV_sim test bench contains instantiations 
+of the pll divider blocks, PLL_160MHZ_PDIV, PLL_160MHZ_MDIV, and 
+PLL _250MHZ_MDIV. The outputs of each PLL divider block are connected 
+to a measurment block, misc_clock_monitor, so that clock characteristics 
+such as frequency output, duty cycle, and jitter can be examinied.
+
+ 
+Verification:   The MDIVsPDIV_sim test bench is verified by running a 
+transient analysis using spectre. The output clocks of the dividers for 
+the 160MHz and 250MHz PLLs are checked to make sure they have full swing 
+and good slew rate. The frequency, duty cycle and jitter on the clocks 
+can be measured from the outputs of the misc_clock_monitor blocks.
+
+Input Signals:  VCOCLK, REFCLK
+
+Output Signals: MDIV10_CLK, net18, net19, MDIV2_CLK, f_MDIV10, net13, net14,
+f_MDIV2, MDIV64_CLK, net8, net9, f_MDIV64, REFDIV5_CLK,  net3, net4, f_REFDIV5
+

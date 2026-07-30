@@ -1,0 +1,15 @@
+**************************************************************
+*   Generic PDK Capacitor model                       05/17/03
+*                                              PDK Tech Center
+**************************************************************
+
+simulator lang=spectre
+library gpdk090
+
+section cap
+*
+model gpdk090_mimcap capacitor cj=1e-3 cjsw=1e-10 tc2=3e-10 tc1=9e-4
+*
+endsection cap
+
+endlibrary gpdk090

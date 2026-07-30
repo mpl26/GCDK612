@@ -1,0 +1,44 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dsp_slice_mult *
+m0
+m11
+m10
+m9
+m8
+m7
+m6
+m5
+m4
+m3
+m2
+m1
+
+#CELL
+* dsp_csa *
+i_dsp_csa1_0
+i_dsp_csa5_0
+i_dsp_csa4_0
+i_dsp_csa3_1
+i_dsp_csa3_0
+i_dsp_csa2_1
+i_dsp_csa2_0
+i_dsp_csa1_2
+i_dsp_csa1_1
+
+#CELL
+* dsp_fb_update *
+i_dsp_fb_update_0
+i_dsp_fb_update_11
+i_dsp_fb_update_10
+i_dsp_fb_update_9
+i_dsp_fb_update_8
+i_dsp_fb_update_7
+i_dsp_fb_update_6
+i_dsp_fb_update_5
+i_dsp_fb_update_4
+i_dsp_fb_update_3
+i_dsp_fb_update_2
+i_dsp_fb_update_1
+

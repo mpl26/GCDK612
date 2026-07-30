@@ -1,0 +1,103 @@
+#
+gsclib090 BUFX3 symbol
+int_phase_select_reg_1_988_3
+int_phase_select_reg_1_989_3
+dec_data_even_reg_1066_3
+dec_data_even_reg_1067_3
+int_phase_select_reg_2_1340_3
+int_phase_select_reg_2_1341_3
+dec_data_odd_reg_1372_3
+dec_data_odd_reg_1373_3
+int_phase_select_reg_0_1643_3
+int_phase_select_reg_4_1675_3
+dec_clk10_even_reg_1890_3
+dec_clk10_odd_reg_1896_3
+int_phase_select_reg_3_2006_3
+int_phase_select_reg_0_2531_3
+int_phase_select_reg_4_2821_3
+dec_clk10_even_reg_2920_3
+#
+gsclib090 BUFX1 symbol
+i_238687
+dec_clk10_odd_reg_404_5a
+int_phase_select_reg_3_440_5a
+int_phase_select_reg_2_448_5a
+int_phase_select_reg_1_457_5a
+dec_data_even_reg_654_5a
+#
+gsclib090 OR2X1 symbol
+i_3
+i_12420
+i_12421
+#
+gsclib090 XOR2X1 symbol
+i_21
+i_5
+#
+gsclib090 AOI22X1 symbol
+i_30
+i_1
+#
+gsclib090 AOI21X1 symbol
+i_41
+i_23
+i_34
+#
+gsclib090 NAND4X1 symbol
+i_44
+#
+gsclib090 NOR2X1 symbol
+i_12443
+i_12440
+i_12475
+i_95104
+i_10
+i_46
+i_45
+i_35
+i_16
+#
+gsclib090 OAI21X1 symbol
+i_2176
+i_12483
+#
+gsclib090 NAND2X1 symbol
+i_2178
+i_12447
+i_20
+i_2
+#
+gsclib090 AND2X1 symbol
+i_12451
+i_12456
+i_19
+#
+gsclib090 DFFSRX1 symbol
+dec_data_odd_reg
+dec_data_even_reg
+dec_clk10_even_reg
+dec_clk10_odd_reg
+int_phase_select_reg_4
+int_phase_select_reg_3
+int_phase_select_reg_2
+int_phase_select_reg_1
+int_phase_select_reg_0
+#
+gsclib090 MX2X1 symbol
+i_2183
+i_2169
+i_2162
+i_2155
+i_2148
+i_2141
+i_2134
+i_2127
+#
+gsclib090 INVX1 symbol
+i_2239
+i_2237
+i_2236
+i_2235
+#
+gsclib090 INVX2 symbol
+i_2240

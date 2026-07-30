@@ -1,0 +1,3 @@
+("DFII Bookmark File" "Version: IC6.1.0")("Last updated by user tklee on Apr 21 13:37:09 2009")("top" (("open" (nil hierarchy "/{ether top layout }:a"))) "maskLayout" nil "" ((-649.014 -178.8125) (2576.169 1756.297)) "top ==> ether.top:layout")
+("top" (("open" (nil hierarchy "/{ether top schematic }:r"))) "schematic" nil "" ((-10.65 -16.90625) (19.8125 7.75625)) "top ==> ether.top:schematic")
+("top" (("open" (nil hierarchy "/{ether top layout }:a"))) "maskLayout" nil "" ((-553.0085 -117.9325) (2469.242 1695.418)) "top ==> ether.top:layout")

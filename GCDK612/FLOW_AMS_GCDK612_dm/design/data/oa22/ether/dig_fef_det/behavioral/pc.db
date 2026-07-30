@@ -1,0 +1,171 @@
+#
+gsclib090 BUFX3 symbol
+meta_fe_en_reg_1_390_3
+meta_fe_en_reg_1_391_3
+meta_fe_en_reg_0_618_3
+meta_fe_en_reg_0_619_3
+stretch_count_reg_2_954_3
+stretch_count_reg_2_955_3
+rx_sync_reg_0_998_3
+rx_sync_reg_0_999_3
+stretch_count_reg_1_1000_3
+stretch_count_reg_1_1001_3
+start_stretch_reg_1531_3
+stretch_count_reg_0_1698_3
+cycle_count_reg_1_1753_3
+counter84_reg_6_1760_3
+cycle_count_reg_0_1803_3
+counter84_reg_4_1820_3
+rx_sync_reg_1_1825_3
+counter84_reg_3_1902_3
+counter84_reg_1_2146_3
+counter84_reg_5_2205_3
+meta_fe_en_reg_1_2377_3
+start_stretch_reg_2551_3
+meta_fe_en_reg_0_2713_3
+stretch_count_reg_0_2780_3
+cycle_count_reg_1_2893_3
+counter84_reg_6_2901_3
+rx_sync_reg_1_69_5a
+#
+gsclib090 CLKBUFX1 symbol
+i_793
+i_1753
+#
+gsclib090 INVX8 symbol
+i_169929
+i_169931
+i_169932
+i_169933
+i_169934
+i_169935
+i_169936
+i_169937
+i_169938
+#
+gsclib090 BUFX1 symbol
+i_1068
+counter84_reg_3_255_5a
+counter84_reg_0_260_5a
+counter84_reg_4_279_5a
+rx_sync_reg_0_301_5a
+counter84_reg_2_380_5a
+meta_fe_en_reg_1_424_5a
+stretch_count_reg_2_441_5a
+#
+gsclib090 AND2X1 symbol
+i_12990
+#
+gsclib090 NAND4X1 symbol
+i_5
+i_11
+i_27
+i_14
+i_16
+i_20
+i_21
+i_23
+#
+gsclib090 NAND3X1 symbol
+i_55
+i_4
+i_26
+#
+gsclib090 OR2X1 symbol
+i_13035
+i_50
+i_54
+i_62
+#
+gsclib090 NOR2X1 symbol
+i_8
+i_13066
+i_35
+i_44
+i_52
+i_56
+i_58
+i_6
+i_60
+i_12993
+i_13096
+i_13086
+i_36
+i_9
+#
+gsclib090 MX2X1 symbol
+i_1205
+i_1177
+i_1170
+i_1163
+i_1156
+i_1149
+i_1142
+i_1135
+i_1128
+i_1121
+#
+gsclib090 AOI21X1 symbol
+i_23085
+i_3
+i_1198
+i_1192
+i_1191
+i_33094
+i_61
+#
+gsclib090 DFFSRX1 symbol
+stretch_count_reg_2
+stretch_count_reg_1
+stretch_count_reg_0
+start_stretch_reg
+cycle_count_reg_1
+cycle_count_reg_0
+counter84_reg_6
+counter84_reg_5
+counter84_reg_4
+counter84_reg_3
+counter84_reg_2
+counter84_reg_1
+counter84_reg_0
+rx_sync_reg_1
+rx_sync_reg_0
+meta_fe_en_reg_1
+meta_fe_en_reg_0
+#
+gsclib090 OAI21X1 symbol
+i_1219
+i_1212
+i_1184
+i_53092
+i_63091
+#
+gsclib090 NAND2X1 symbol
+i_1221
+i_1214
+i_23095
+i_1186
+i_43093
+i_73090
+i_12985
+i_32
+i_39
+i_41
+i_49
+i_0
+i_7
+i_15199
+i_1
+i_45206
+i_12
+i_24
+i_15
+i_17
+#
+gsclib090 INVX2 symbol
+i_1315
+#
+gsclib090 INVX1 symbol
+i_1317
+i_1316
+i_1314

@@ -1,0 +1,89 @@
+#
+gsclib090 CLKBUFX1 symbol
+i_1101
+i_1106
+i_155
+#
+gsclib090 OR2X1 symbol
+i_2206
+#
+gsclib090 NAND4X1 symbol
+i_95188
+i_9
+i_20
+#
+gsclib090 NAND3X1 symbol
+i_34
+i_05599
+i_2128
+#
+gsclib090 AOI21X1 symbol
+i_2009
+i_29
+#
+gsclib090 NOR2X1 symbol
+i_2162
+i_32
+i_2176
+i_36
+i_31
+i_2190
+i_10
+i_11
+#
+gsclib090 XOR2X1 symbol
+i_2029
+#
+gsclib090 AND2X1 symbol
+i_2117
+#
+gsclib090 MX2X1 symbol
+i_2043
+i_2036
+i_1
+i_2
+i_3
+i_4
+i_2105
+#
+gsclib090 OAI21X1 symbol
+i_2050
+i_2019
+i_1992
+i_1983
+i_2080
+#
+gsclib090 NAND2X1 symbol
+i_2052
+i_2078
+i_2021
+i_2148
+i_1991
+i_1990
+i_1985
+i_2069
+#
+gsclib090 DFFSRX1 symbol
+data_d6_reg
+aligned_reg
+RX10_DV_reg
+early_dv_reg
+sfd_found_reg
+data_d5_reg
+clk_count_reg
+prev_actv_reg
+RX10_ACTIVE_reg
+data_d4_reg
+data_d3_reg
+data_d2_reg
+DEC10_DATA_D1_reg
+RCLK2_5_GOOD_reg
+RX10_RCLK2_5_reg
+#
+gsclib090 INVX1 symbol
+i_2123
+i_2122
+i_2121
+i_2120
+i_2119
+i_2118

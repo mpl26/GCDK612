@@ -1,0 +1,92 @@
+;History:
+;2004-09-02: RayV rewrites this function from John Goelz's SKILL code
+;
+;Functionality: Update properties of the specified resistor and capacitor.
+;               This update is applicable to only "ether" design migration.
+;
+;How to use: @ciw> flow_update_RC("ether")cp 
+;
+;---------------------------------------------------------------------
+procedure( flow_update_RC(libName)
+  let( ( libid cellid viewName cvId cv cdfgData length cap width res segs)        
+    libid = ddGetObj(libName)
+     foreach( cellid libid~>cells
+      foreach( viewName cellid~>views~>name 
+         if( viewName == "schematic" then
+             cvId = dbOpenCellView(libid cellid~>name viewName nil "a")
+             printf("\nFYI:  %s/%s/%s " libName cvId~>cellName viewName)
+	     foreach(inst cvId~>instances 
+;------------------------------------------------------------	     
+; nmoscap2v
+             if( inst~>cellName == "nmoscap2v" then
+                 cv=dbOpenCellView("gpdk090" "nmoscap2v" "symbol")
+                 inst~>master=cv
+		 cdfgData=cdfGetInstCDF(inst)
+		 length = cdfParseFloatString(cdfgData->l->value)
+		 cap = cdfParseFloatString(cdfgData->c->value)
+		 segs = cdfParseFloatString(cdfgData->fingers->value)
+		 width =  sprintf( nil "%g" cap/(length*.00606*segs))
+		 putprop(get(cdfgData 'fw) width `value)
+		 PasCdfCallCallbacks(inst list("fw"))
+		
+		 printf("\nFYI: Delete User property,  %s:" inst~>name )	 
+		 foreach( param inst~>prop
+			  when( param~>name == "entryModeC" || param~>name == "totalC"  
+		  		printf(" %s" param~>name)
+		  		dbDeleteObject(param)
+		  		)
+		           ); end foreach 
+                 )
+; pmoscap2v
+             if( inst~>cellName == "pmoscap2v" then
+                 cv=dbOpenCellView("gpdk090" "pmoscap2v" "symbol")
+                 inst~>master=cv
+		 cdfgData=cdfGetInstCDF(inst)
+		 length = cdfParseFloatString(cdfgData->l->value)
+		 cap = cdfParseFloatString(cdfgData->c->value)
+		 segs = cdfParseFloatString(cdfgData->fingers->value)
+		 width =  sprintf( nil "%g" cap/(length*.00617*segs))
+		 putprop(get(cdfgData 'fw) width `value)
+		 PasCdfCallCallbacks(inst list("fw"))
+		 
+		 printf("\nFYI: Delete User property,  %s:" inst~>name )	 
+		 foreach( param inst~>prop
+			  when( param~>name == "entryModeC" || param~>name == "totalC"  
+		  		printf(" %s" param~>name)
+		  		dbDeleteObject(param)
+		  		)
+		           ); end foreach 		 
+                 )
+; resnsnpoly
+           if( inst~>cellName == "resnsnpoly" then
+;                cv=dbOpenCellView("gpdk090" "resnsnpoly" "symbol")
+                 cv=dbOpenCellView("gpdk090" "resnsppoly" "symbol"); update it to P-poly res.
+                 inst~>master=cv
+		 cdfgData=cdfGetInstCDF(inst)
+		 width = inst->w
+		 res = cdfgData->r->value
+		 putprop(get(cdfgData 'segW) width `value)
+		 cdfgData->calculatedParam->value = "Length"
+		 PasCdfCallCallbacks(inst list("r" "segW"))
+
+		 printf("\nFYI: Delete User property,  %s:" inst~>name )	 
+		 foreach( param inst~>prop
+			  when( param~>name == "rbody" || param~>name == "sl" || 
+		  		param~>name == "l"     || param~>name == "w"
+		  		printf(" %s" param~>name)
+		  		dbDeleteObject(param)
+		  		)
+		           ); end foreach
+               ); end if		 
+;--------------------------------------------------------------		 
+                      ) ; end foreach
+                 ;schCheck(cvId)
+                 dbSave(cvId)
+                 dbClose(cvId)
+	         println("FYI: Clodes DB")	       
+	   );end if  
+	 );end foreach
+     );end foread
+    );end let
+  );end prog	     
+;-----------------------------------------------------------------------------------

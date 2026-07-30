@@ -1,0 +1,34 @@
+Simulation:     PFDCP_sim 
+
+Purpose:        Transient simulation of the combination of the Phase Frequency  
+Detector and the Charge Pump 
+
+States:         ff, tt, ss 
+
+Description:    The PFDCP_sim testbench contains instantiations of the
+phase frequency detector (PLL_PFD) and the charge pump (PLL_CP). The phase 
+frequency detector clock inputs, REFCLK and FBCLK are driven by vpulse voltage 
+sources V3 and V4. An ideal voltage source connected to a poly resistor is used 
+to derive a poly resistor based bias current for the block. The voltage source  
+V6 biases the output of the charge pump at a fixed output voltage. V6 is also
+used to measure the charge output from the charge pump. The test bench to check 
+the charge output of the charge pump and the estimated phase error when the PLL 
+is in the locked state. ( The input phase error could also be swept using a     
+parametric simulation  to obtain the charge-pump transfer function. )
+
+Verification:   The charge output of the charge pump and the estimated phase 
+error when the PLL is in the locked state are printed in the Analog Design 
+Environment window. The estimated phase error when the PLL is in a locked 
+state is expected to be very small, of the order of a few hundred pico 
+seconds. 
+
+The input phase error could also be swept for a fixed output voltage using a  
+parametric simulation  to obtain the Charge-Pump transfer function. In such 
+a simulation, the charge pump output voltage set by V6 is usually set to the 
+value of the control voltage that corresponds to the desired output frequency 
+from the VCO or simply to half the power supply voltage. 
+
+Input Signals:  REFCLK, VCOCLK
+
+Output Signals: /I6/CP_ITEST_25u, /I6/OUT
+

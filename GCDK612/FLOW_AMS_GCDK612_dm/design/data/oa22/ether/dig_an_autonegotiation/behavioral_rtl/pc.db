@@ -1,0 +1,22 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_an_arbitration *
+i_dig_an_arbitration
+
+#CELL
+* dig_an_receive *
+i_dig_an_receive
+
+#CELL
+* dig_an_linktest *
+i_dig_an_linktest
+
+#CELL
+* dig_an_transmit *
+i_dig_an_transmit
+
+#CELL
+* dig_an_txrx10 *
+i_dig_an_txrx10
+

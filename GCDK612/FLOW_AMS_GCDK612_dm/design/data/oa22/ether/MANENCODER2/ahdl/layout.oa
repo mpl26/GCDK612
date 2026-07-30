@@ -1,0 +1,43 @@
+module MANENCODER2 (enc_data, clk, data,  gnd, vdd) (td, tr, tf)
+
+node [V,I] clk;
+node [V,I] data;
+node [V,I] vdd;
+node [V,I] gnd;
+node [V,I] enc_data;
+parameter real td=0;
+parameter real tr=100p;
+parameter real tf=100p;
+
+{    //begin module statement
+
+real vthresh;
+real a;
+real b;
+
+initial
+   {
+   a=0;  
+   b=0;
+   }
+
+      analog
+      {
+	vthresh = V(vdd)/2;
+        a=(V(clk)>vthresh);
+
+        if ($threshold(V(clk)-vthresh,0))    //Sample on any clock edge
+        {
+          if (V(data)>vthresh)    //if data is logic high
+          {
+            b=!a;
+          }
+          else
+          {
+            b=a;
+          }
+        }
+
+        V(enc_data)<-V(vdd)*$transition(b,td,tr,tf);
+      } //end analog
+} //end module 

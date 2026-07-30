@@ -1,0 +1,24 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dsp_tc_greater *
+greater
+
+#CELL
+* dsp_fb *
+i_dsp_fb
+
+#CELL
+* dsp_ff *
+i_dsp_ff
+
+#CELL
+* dsp_tc_less *
+less
+
+#CELL
+* dsp_csa *
+i_dsp_csa6_0
+i_dsp_csa8_0
+i_dsp_csa7_0
+

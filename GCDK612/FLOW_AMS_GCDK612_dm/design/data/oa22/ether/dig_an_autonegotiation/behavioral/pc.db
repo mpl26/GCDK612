@@ -1,0 +1,40 @@
+#
+gsclib090 INVX8 symbol
+i_235827
+i_235829
+i_235830
+i_235832
+i_235833
+i_235835
+i_235914
+i_235915
+i_235916
+i_235917
+i_235953
+i_235954
+i_235972
+#
+gsclib090 CLKBUFX1 symbol
+i_847
+i_866
+#
+gsclib090 BUFX3 symbol
+i_221
+#
+gsclib090 INVX1 symbol
+i_2488
+#
+ether dig_an_transmit symbol
+i_dig_an_transmit
+#
+ether dig_an_txrx10 symbol
+i_dig_an_txrx10
+#
+ether dig_an_receive symbol
+i_dig_an_receive
+#
+ether dig_an_linktest symbol
+i_dig_an_linktest
+#
+ether dig_an_arbitration symbol
+i_dig_an_arbitration

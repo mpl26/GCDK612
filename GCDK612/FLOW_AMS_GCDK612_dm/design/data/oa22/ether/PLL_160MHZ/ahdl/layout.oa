@@ -1,0 +1,250 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  PLL_160MHZ
+// Project :  umc18a01
+// Author  :  dshelton
+// Notes   :  based on umc05001 spectre hdl pll module
+//            modeled zero lock-time
+//
+//            setting ACCURATE define provides cycle to cycle
+//            phase locking, typical duty cycle, accurate prop delays 
+//            from input reference to phase comparator and from phase 
+//            comparator to output. Otherwise model simply 'locks' to
+//            first edge of reference clock and puts out 160MHz clock 
+//            with 50% duty cycle  
+//    
+// To Do   :  
+//
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+#define PLL160_ACCURATE 
+ 
+module PLL_160MHZ (        
+  VDD, 
+  VSS,  
+  DISABLE, 
+  IEXT_25u,
+  IEXT_100u, 
+  IPLY_25u, 			 
+  CLK_160MHZ,	
+  CP_ITEST_25u,      
+  SIDDQ, 
+  CLK_25MHZ ) ()
+
+  node [V,I] VDD;
+  node [V,I] VSS;
+  node [V,I] DISABLE;
+  node [V,I] IEXT_25u;
+  node [V,I] IEXT_100u;
+  node [V,I] IPLY_25u;   
+  node [V,I] CLK_160MHZ;
+  node [V,I] CP_ITEST_25u;
+  node [V,I] SIDDQ;
+  node [V,I] CLK_25MHZ;
+
+{
+#ifdef PLL160_ACCURATE
+  node [V,I] CLK_5MHZ;
+ 
+  integer i           = 0;
+  integer go          = 0;
+  integer count5      = 0;
+  integer out5        = 0;
+  integer trig5;
+  integer count2      = 0;
+  integer out2        = 0;
+  integer trig2; 
+  integer end5        = 5;
+  integer end2        = 2; 
+
+  real duty_cycle     = .425;
+  real last_cross;
+#endif
+
+  real vth            = 0;
+  real start_time     = 0;
+  real out2_real;
+  real rbias25        = 9e3; 
+  real rbias100       = 9e3;
+  real period         = 6.25n;
+  real low_bias_25    = 20e-6;
+  real high_bias_25   = 30e-6;
+  real low_bias_100   = 80e-6;
+  real high_bias_100  = 120e-6; 
+ 
+#ifdef PLL160_ACCURATE 
+  real td             = .345n;   
+  real tr             = .2n;
+  real tf             = .2n;
+#else
+  real td             = .5n;   
+  real tr             = 1n;
+  real tf             = 1n; 
+#endif 
+
+  integer rising_edge = 1; 
+  integer restart     = 1; 
+  integer vout        = 0; 
+   
+  analog {
+    // track supplies
+    vth = 0.5*(V(VDD) - V(VSS)) + V(VSS);
+
+#ifdef PLL160_ACCURATE	  // accurate model here
+    // model divide by 5   
+    trig5 = $threshold(V(CLK_25MHZ,VSS) - vth, 0, .001, 1);
+
+    if( trig5 == 1 ) {
+       count5++;
+
+       if( count5 <= end5 ) {       
+          out5 = 1;
+       } 
+       else {
+          out5 = 0;
+       }       
+    }
+	   
+    if( count5 >= end5*2 ) count5 = 0; 
+  
+    V(CLK_5MHZ,VSS) <- 2*vth*$transition(out5, 345p, tr, tf);      
+
+    rising_edge = $threshold(V(CLK_5MHZ) - vth, +1, .001, 1);
+ 
+    // model pll loop with divide by 64 feedback
+    if ($threshold(V(CLK_5MHZ) - vth, +1, .001, 1)) {	      
+      i += 1;
+      go = (i > 1) ? 1 : 0;
+      period     = ($time() - last_cross)/64e0;
+      last_cross = $time();
+    }
+ 
+    // siddq/disable mode
+    if(V(SIDDQ) > vth || V(DISABLE) > vth) {
+      vout = 0;
+      restart = 1;
+      i = 0;
+
+      // bias current inputs pulled high in SIDDQ mode 
+      V(IEXT_25u, VDD) <- V(VDD);
+      V(IPLY_25u, VDD) <- V(VDD);
+      V(IEXT_100u, VDD) <- V(VDD);					    
+
+    }
+	  
+    // bias out-of-range shutdown
+    else if((V(SIDDQ) < vth) && 
+       (V(DISABLE) < vth) &&
+      ((I(VDD, IEXT_25u)  < low_bias_25)   ||
+       (I(VDD, IEXT_25u)  > high_bias_25)  ||
+       (I(VDD, IPLY_25u)  < low_bias_25)   ||
+       (I(VDD, IPLY_25u)  > high_bias_25)  ||
+       (I(VDD, IEXT_100u) < low_bias_100)  ||
+       (I(VDD, IEXT_100u) > high_bias_100))) {
+					      
+      vout = 0;
+      restart = 1;
+      i = 0;
+
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);
+    }	  
+
+    // normal operation	  
+    else {
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);	  
+	 
+      if(go && rising_edge) {
+	vout = 1;
+        restart = 0;
+	start_time = $time();
+      }
+	 
+      if($break_point(start_time, period) && !restart) {
+          vout = 1;
+	}
+        
+     if($break_point(start_time + duty_cycle*period, period) && !restart) {
+          vout = 0;
+	}
+
+    }
+
+    // model divide by 2   
+    trig2     = $threshold(vout - 0.5, 0, .001, 1);
+
+    if( trig2 == 1 ) {
+      count2++;
+
+      if( count2 <= end2 ) {       
+        out2 = 1;
+      } 
+      else {
+         out2 = 0;
+      }       
+    }
+	   
+    if( count2 >= end2*2 ) count2 = 0;      
+
+    out2_real = out2 ? V(VDD) : V(VSS);
+	  
+#else  // fast model here
+    rising_edge = $threshold(V(CLK_25MHZ) - vth, +1, .001, 1);
+	
+    // siddq/disable mode  
+    if(V(SIDDQ) > vth || V(DISABLE) > vth) {	  
+      restart = 1;
+      vout = 0;
+						  
+      // bias current inputs pulled high in SIDDQ mode 
+      V(IEXT_25u, VDD) <- V(VDD);
+      V(IPLY_25u, VDD) <- V(VDD);
+      V(IEXT_100u, VDD) <- V(VDD);
+    }
+
+    // bias out-of-range shutdown
+    else if((V(SIDDQ) < vth) && 
+       (V(DISABLE) < vth) &&
+      ((I(VDD, IEXT_25u)  < low_bias_25)   ||
+       (I(VDD, IEXT_25u)  > high_bias_25)  ||
+       (I(VDD, IPLY_25u)  < low_bias_25)   ||
+       (I(VDD, IPLY_25u)  > high_bias_25)  ||
+       (I(VDD, IEXT_100u) < low_bias_100)  ||
+       (I(VDD, IEXT_100u) > high_bias_100))) {
+					      
+      restart = 1;
+      vout = 0; 
+
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);
+    }	  	  
+
+    // normal operation		  
+    else {
+      V(IEXT_25u, VDD)  <- rbias25*I(IEXT_25u, VDD);
+      V(IPLY_25u, VDD)  <- rbias25*I(IPLY_25u, VDD);
+      V(IEXT_100u, VDD) <- rbias100*I(IEXT_100u, VDD);	 
+	 
+      if(rising_edge && restart) {
+	vout = 1;
+	start_time = $time();
+	restart = 0;
+      }
+
+      if($break_point(start_time, 0.5*period) && !restart) {
+          vout = !vout;
+      }	 
+    }
+	  
+    out2_real = vout ? V(VDD) : V(VSS);
+
+#endif	  
+	
+    V(CLK_160MHZ) <- $transition(out2_real, td, tr, tf);  
+  }
+}
+

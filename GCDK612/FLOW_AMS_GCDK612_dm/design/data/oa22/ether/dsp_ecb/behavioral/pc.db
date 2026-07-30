@@ -1,0 +1,123 @@
+#
+gsclib090 INVX8 symbol
+i_170140
+i_170141
+i_170142
+#
+gsclib090 BUFX3 symbol
+i_805
+AEQ_CONVERGE_reg_1522_3
+count_en_reg_0_1870_3
+count_en_reg_19_2073_3
+count_en_reg_2_2095_3
+count_en_reg_3_2135_3
+count_en_reg_1_2139_3
+count_en_reg_13_2180_3
+count_en_reg_6_2217_3
+count_en_reg_14_2233_3
+count_en_reg_8_2250_3
+AEQ_CONVERGE_reg_2284_3
+AEQ_CONVERGE_reg_134_5a
+#
+gsclib090 BUFX1 symbol
+i_613
+count_en_reg_10_253_5a
+count_en_reg_12_312_5a
+count_en_reg_4_314_5a
+count_en_reg_9_379_5a
+count_en_reg_0_431_5a
+count_en_reg_15_524_5a
+count_en_reg_18_526_5a
+count_en_reg_11_665_5a
+count_en_reg_16_721_5a
+count_en_reg_7_758_5a
+#
+gsclib090 CLKBUFX1 symbol
+i_612
+i_806
+#
+gsclib090 OR4X1 symbol
+i_10
+#
+gsclib090 AOI21X1 symbol
+i_72
+#
+gsclib090 NAND3X1 symbol
+i_27
+#
+gsclib090 NAND4X1 symbol
+i_28
+i_19
+i_18
+i_11
+#
+gsclib090 NOR2X1 symbol
+i_29
+i_24
+i_23
+i_25
+i_20
+i_13
+i_12
+i_3
+i_6
+i_5
+#
+gsclib090 NAND2X1 symbol
+i_2
+#
+gsclib090 MX2X1 symbol
+i_212
+i_205
+i_198
+i_191
+i_184
+i_177
+i_170
+i_163
+i_156
+i_149
+i_142
+i_135
+i_128
+i_121
+i_114
+i_107
+i_100
+i_93
+i_86
+i_79
+#
+gsclib090 DFFSRX1 symbol
+AEQ_CONVERGE_reg
+count_en_reg_19
+count_en_reg_18
+count_en_reg_17
+count_en_reg_16
+count_en_reg_15
+count_en_reg_14
+count_en_reg_13
+count_en_reg_12
+count_en_reg_11
+count_en_reg_10
+count_en_reg_9
+count_en_reg_8
+count_en_reg_7
+count_en_reg_6
+count_en_reg_5
+count_en_reg_4
+count_en_reg_3
+count_en_reg_2
+count_en_reg_1
+count_en_reg_0
+BLW_EN_reg
+#
+gsclib090 AND2X1 symbol
+i_221
+#
+gsclib090 INVX1 symbol
+i_287
+i_286
+#
+ether AWDP_INC_048003 symbol
+i_4644

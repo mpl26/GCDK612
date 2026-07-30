@@ -1,0 +1,176 @@
+#
+gsclib090 BUFX3 symbol
+t524count_reg_0_1614_3
+t5count_reg_0_1771_3
+t524count_reg_1_1876_3
+t524count_reg_3_1883_3
+t524count_reg_4_1885_3
+t5count_reg_13_1893_3
+t524count_reg_20_1952_3
+JABBER_DETECTED_reg_1965_3
+t5count_reg_6_2034_3
+t524count_reg_2_2047_3
+t5count_reg_12_2129_3
+t5count_reg_2_2140_3
+t5count_reg_5_2188_3
+t524count_reg_12_2211_3
+t5count_reg_7_2220_3
+t5count_reg_4_2253_3
+t524count_reg_0_2787_3
+t5count_reg_0_2824_3
+t5count_reg_13_2955_3
+t5count_reg_8_51_5a
+t524count_reg_13_78_5a
+t524count_reg_15_93_5a
+t5count_reg_1_118_5a
+t5count_reg_9_142_5a
+t5count_reg_10_150_5a
+#
+gsclib090 INVX8 symbol
+i_235781
+i_235782
+#
+gsclib090 CLKBUFX1 symbol
+i_591
+i_429
+#
+gsclib090 BUFX1 symbol
+i_590
+i_593
+i_759
+t524count_reg_18_265_5a
+t524count_reg_14_315_5a
+t524count_reg_10_334_5a
+t524count_reg_8_374_5a
+t524count_reg_3_392_5a
+JABBER_DETECTED_reg_432_5a
+t524count_reg_4_454_5a
+t524count_reg_1_486_5a
+t5count_reg_3_498_5a
+t524count_reg_16_525_5a
+t524count_reg_20_764_5a
+#
+gsclib090 XOR2X1 symbol
+i_175
+#
+gsclib090 AOI21X1 symbol
+i_8
+#
+gsclib090 NAND4X1 symbol
+i_5
+#
+gsclib090 AND2X1 symbol
+i_0
+#
+gsclib090 NOR2X1 symbol
+i_45610
+i_2
+i_13
+i_1
+#
+gsclib090 MX2X1 symbol
+i_273
+i_266
+i_259
+i_252
+i_245
+i_238
+i_231
+i_224
+i_217
+i_210
+i_203
+i_196
+i_189
+i_182
+i_28
+i_168
+i_161
+i_154
+i_147
+i_140
+i_35
+i_133
+i_126
+i_119
+i_112
+i_105
+i_98
+i_42
+i_91
+i_84
+i_77
+i_70
+i_63
+i_56
+i_49
+#
+gsclib090 DFFSRX1 symbol
+JABBER_DETECTED_reg
+t5count_reg_13
+t5count_reg_12
+t5count_reg_11
+t5count_reg_10
+t5count_reg_9
+t5count_reg_8
+t5count_reg_7
+t5count_reg_6
+t5count_reg_5
+t5count_reg_4
+t5count_reg_3
+t5count_reg_2
+t5count_reg_1
+t524count_reg_0
+t5count_reg_0
+unjab_done_reg
+t524count_reg_20
+t524count_reg_19
+t524count_reg_18
+t524count_reg_17
+t524count_reg_1
+t524count_reg_16
+t524count_reg_15
+t524count_reg_14
+t524count_reg_13
+t524count_reg_12
+t524count_reg_11
+t524count_reg_2
+t524count_reg_10
+t524count_reg_9
+t524count_reg_8
+t524count_reg_7
+t524count_reg_6
+t524count_reg_5
+t524count_reg_3
+t524count_reg_4
+#
+gsclib090 OAI21X1 symbol
+i_280
+i_6
+#
+gsclib090 NAND2X1 symbol
+i_282
+i_10
+#
+gsclib090 INVX2 symbol
+i_370
+#
+gsclib090 INVX1 symbol
+i_373
+i_372
+i_371
+#
+ether AWDP_LT_363491 symbol
+i_3309
+#
+ether AWDP_INC_463521 symbol
+i_3307
+#
+ether AWDP_GE_063408 symbol
+i_3305
+#
+ether AWDP_INC_163438 symbol
+i_3292
+#
+ether AWDP_GE_263463 symbol
+i_3290

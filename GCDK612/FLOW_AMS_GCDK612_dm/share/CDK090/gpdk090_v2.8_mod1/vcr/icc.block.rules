@@ -1,0 +1,214 @@
+; Technology File: gpdk090
+; THIS RULE FILE IS USED FOR TOP LEVEL ROUTING WHERE YOU DO NOT WANT THE 
+; ROUTER TO ROUTE OVER THE BLOCKS. THE DIFFERENCE BETWEEN THIS FILE AND 
+; icc.rules FILE IS THE SECTION OF iccKeepouts(). 
+; There is a logical AND function between prBoundary and all Metal(1 to 9) 
+; layer to prevent CCAR routing over any block in the design.
+
+iccRevision = "2.0"
+iccTechnologyFile = "gpdk090"
+
+iccLayers =
+    list(
+	list( '("Metal9" "drawing") "metal" "horizontal" 0.44 0.44 nil nil)
+	list( '("Via8" "drawing") "cut" "off" 0.36 0.36 nil nil)
+	list( '("Metal8" "drawing") "metal" "vertical" 0.44 0.44 nil nil)
+	list( '("Via7" "drawing") "cut" "off" 0.36 0.36 nil nil)
+	list( '("Metal7" "drawing") "metal" "horizontal" 0.15 0.14 nil t)
+	list( '("Via6" "drawing") "cut" "off" 0.14 0.15 t nil)
+	list( '("Metal6" "drawing") "metal" "vertical" 0.15 0.14 nil t)
+	list( '("Via5" "drawing") "cut" "off" 0.14 0.15 t t)
+	list( '("Metal5" "drawing") "metal" "horizontal" 0.15 0.14 nil t)
+	list( '("Via4" "drawing") "cut" "off" 0.14 0.15 t t)
+	list( '("Metal4" "drawing") "metal" "vertical" 0.15 0.14 nil t)
+	list( '("Via3" "drawing") "cut" "off" 0.14 0.15 t t)
+	list( '("Metal3" "drawing") "metal" "horizontal" 0.15 0.14 nil t)
+	list( '("Via2" "drawing") "cut" "off" 0.14 0.15 t t)
+	list( '("Metal2" "drawing") "metal" "vertical" 0.15 0.14 nil t)
+	list( '("Via1" "drawing") "cut" "off" 0.14 0.15 t t)
+	list( '("Metal1" "drawing") "metal" "horizontal" 0.12 0.12 nil t)
+	list( '("Cont" "drawing") "cut" "off" 0.12 0.14 nil nil)
+	list( '("Poly" "drawing") "polysilicon" "orthogonal" 0.1 0.12 nil nil)
+	list( '("Oxide" "drawing") "n_diffusion" "off" 0.1 0.15 nil nil)
+    )
+
+iccVias =
+    list(
+	list( '("gpdk090" "M2_M1" "symbolic") t)
+	list( '("gpdk090" "M3_M2" "symbolic") t)
+	list( '("gpdk090" "M4_M3" "symbolic") t)
+	list( '("gpdk090" "M5_M4" "symbolic") nil)
+	list( '("gpdk090" "M6_M5" "symbolic") nil)
+	list( '("gpdk090" "M7_M6" "symbolic") nil)
+	list( '("gpdk090" "M8_M7" "symbolic") nil)
+	list( '("gpdk090" "M9_M8" "symbolic") nil)
+	list( '("gpdk090" "M1_PO" "symbolic") t)
+	list( '("gpdk090" "M2_M1c" "layout") t)
+	list( '("gpdk090" "M3_M2c" "layout") t)
+	list( '("gpdk090" "M4_M3c" "layout") t)
+	list( '("gpdk090" "M5_M4c" "layout") t)
+	list( '("gpdk090" "M6_M5c" "layout") t)
+    )
+
+iccEquivalentLayers =
+    list(
+	list(
+	    '("Metal9" "drawing")
+	    '("Metal9" "boundary")
+	    '("Metal9" "pin")
+	)
+	list(
+	    '("Via8" "drawing")
+	    '("Via8" "boundary")
+	)
+	list(
+	    '("Metal8" "drawing")
+	    '("Metal8" "boundary")
+	    '("Metal8" "pin")
+	)
+	list(
+	    '("Via7" "drawing")
+	    '("Via7" "boundary")
+	)
+	list(
+	    '("Metal7" "drawing")
+	    '("Metal7" "boundary")
+	    '("Metal7" "pin")
+	)
+	list(
+	    '("Via6" "drawing")
+	    '("Via6" "boundary")
+	)
+	list(
+	    '("Metal6" "drawing")
+	    '("Metal6" "boundary")
+	    '("Metal6" "pin")
+	)
+	list(
+	    '("Via5" "drawing")
+	    '("Via5" "boundary")
+	)
+	list(
+	    '("Metal5" "drawing")
+	    '("Metal5" "boundary")
+	    '("Metal5" "pin")
+	)
+	list(
+	    '("Via4" "drawing")
+	    '("Via4" "boundary")
+	)
+	list(
+	    '("Metal4" "drawing")
+	    '("Metal4" "boundary")
+	    '("Metal4" "pin")
+	)
+	list(
+	    '("Via3" "drawing")
+	    '("Via3" "boundary")
+	)
+	list(
+	    '("Metal3" "drawing")
+	    '("Metal3" "boundary")
+	    '("Metal3" "pin")
+	)
+	list(
+	    '("Via2" "drawing")
+	    '("Via2" "boundary")
+	)
+	list(
+	    '("Metal2" "drawing")
+	    '("Metal2" "boundary")
+	    '("Metal2" "pin")
+	)
+	list(
+	    '("Via1" "drawing")
+	    '("Via1" "boundary")
+	)
+	list(
+	    '("Metal1" "drawing")
+	    '("Metal1" "boundary")
+	    '("Metal1" "pin")
+	)
+	list(
+	    '("Cont" "drawing")
+	    '("Cont" "boundary")
+	)
+	list(
+	    '("Poly" "drawing")
+	    '("Poly" "boundary")
+	    '("Poly" "pin")
+	)
+	list(
+	    '("Oxide" "drawing")
+	    '("Oxide_thk" "drawing")
+	)
+    )
+
+iccBoundaryLayers =
+    list(
+	list( '("Metal9" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via8" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal8" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via7" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal7" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via6" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal6" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via5" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal5" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via4" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal4" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via3" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal3" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via2" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal2" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Via1" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Metal1" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Cont" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Poly" "drawing") '("prBoundary" "drawing") 0.0)
+	list( '("Oxide" "drawing") '("prBoundary" "drawing") 0.0)
+    )
+
+iccKeepouts = list(
+    list( nil list(
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal1" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal2" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal3" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal4" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal5" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal6" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal7" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal8" "drawing") "routing" t
+	)
+	list(
+	    "=>" list('("prBoundary" "boundary"))
+	    '("Metal9" "drawing") "routing" t
+	)
+    )   32)
+)
+
+iccConductors = list(
+)
+

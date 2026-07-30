@@ -1,0 +1,17 @@
+#
+gsclib090 CLKBUFX1 symbol
+i_797
+#
+gsclib090 INVX8 symbol
+i_235745
+i_235749
+i_235753
+#
+ether dig_rx10_manch_dec_outwave symbol
+i_dig_rx10_manch_dec_outwave
+#
+ether dig_rx10_manch_dec_filter symbol
+i_dig_rx10_manch_dec_filter
+#
+ether dig_rx10_manch_dec_edge symbol
+i_dig_rx10_manch_dec_edge

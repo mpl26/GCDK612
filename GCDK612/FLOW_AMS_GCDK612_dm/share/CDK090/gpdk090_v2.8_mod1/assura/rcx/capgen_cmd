@@ -1,0 +1,5 @@
+capgen -S -np 1 procfile .
+
+capgen -C -p poly,allGate,diff -canonical_res_caps \
+-length_units meters -mos_diff_ap -exclude_gate_res \
+-lvs lvsfile -p2lvs p2lvsfile .

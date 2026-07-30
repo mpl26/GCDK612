@@ -1,0 +1,12 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dsp_tc_greater *
+i_gthigh
+i_gtlow
+
+#CELL
+* dsp_tc_less *
+i_ltlow
+i_lthigh
+

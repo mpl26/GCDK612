@@ -1,0 +1,37 @@
+Simulation:     ARST_sim 
+
+Purpose:        Transient simulation of the Auto Reset operation at slow corner 
+
+States:         ss 
+
+Description:   The ARST_bias_sim test bench contains an instantiation of the PLL 
+auto reset block (PLL_ARST). In addition the test bench contains instantiations
+of the charge pump (PLL_CP), loop filter (PLL_160MHZ_LF) and the VCO regulator
+(PLL_VCO_REG) blocks. The blocks are connected together as they are in the      
+actual PLL circuit. An ideal voltage source connected to a poly resistor is used
+to derive poly resistor based bias current for the block.
+
+The UP input of the charge pump is tied to VDD and the DN input is tied to GND  
+such that it constantly  pumps the control voltage of the PLL  i.e., voltage on 
+the vCNTL node up towards the power supply. The auto reset circuitry which is 
+made up of the PLL_ARST and PLL_ARST_DIG blocks monitors the loop filter voltage 
+through the TAP input. The dc voltage on the TAP node is a filtered version of 
+the voltage on the vCNTL node. When the voltage on the TAP node rises past the 
+threshold voltage of the auto reset block, the auto reset circuitry causes the 
+DUMP signal to be asserted high, which discharges the loop filter and thereby 
+resets the control voltage. Once the control voltage is below the auto reset
+threshold, the DUMP signal is turned back low.
+
+Verification:   Following the transient analysis, the voltages on the nodes     
+vCNTL, TAP, CMP_OUT and DUMP may be plotted using the calculator to observe     
+the operation of the auto reset block. When the voltage on the TAP node rises 
+past the threshold voltage of the auto reset block, the auto reset circuitry 
+causes the DUMP signal to be asserted high, which discharges the loop filter 
+and thereby resets the control voltage. Once the control voltage is below the 
+auto reset threshold, the DUMP signal is turned back low.
+
+
+Input Signals:  vCNTL, TAP 
+
+Output Signals: CMP_OUT, DUMP
+

@@ -1,0 +1,30 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* dig_tx100_mlt3_enc *
+i_dig_tx100_mlt3_enc
+
+#CELL
+* dig_tx100_bypass_scrambler *
+i_dig_tx100_bypass_scrambler
+
+#CELL
+* dig_fef_gen *
+i_dig_fef_gen
+
+#CELL
+* dig_tx100_bypass4b5b *
+i_dig_tx100_bypass4b5b
+
+#CELL
+* dig_tx100_scrambler *
+i_dig_tx100_scrambler
+
+#CELL
+* dig_tx100_enc4b5b *
+i_dig_tx100_enc4b5b
+
+#CELL
+* dig_tx100_serializer *
+i_dig_tx100_serializer
+

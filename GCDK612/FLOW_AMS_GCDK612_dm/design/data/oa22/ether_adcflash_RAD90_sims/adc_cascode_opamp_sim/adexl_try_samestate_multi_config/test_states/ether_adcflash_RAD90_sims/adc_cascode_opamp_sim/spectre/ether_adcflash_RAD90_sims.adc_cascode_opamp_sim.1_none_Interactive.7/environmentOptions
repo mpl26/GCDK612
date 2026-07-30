@@ -1,0 +1,14 @@
+(envOpts enableArclength) nil
+(envOpts restart) ""
+(envOpts savestate) ""
+(envOpts analysisOrder) ("pz" "dcmatch" "stb" "tran" "envlp" "ac" "dc" "noise" "xf" "sp" "pss" "pac" "pstb" "pnoise" "pxf" "psp" "qpss" "qpac" "qpnoise" "qpxf" "qpsp" "hb" "hbac" "hbnoise" "hbsp" "sens")
+(envOpts cmd64bit) nil
+(envOpts paramRangeCheckFile) ""
+(envOpts autoDisplay) t
+(envOpts pllPlugin) ""
+(envOpts vcoType) ""
+(envOpts userCmdLineOption) ""
+(envOpts printComments) nil
+(envOpts pllWizardinfo) ""
+(envOpts firstRun) t
+(envOpts sst2usecolon) nil

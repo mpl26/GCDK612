@@ -1,0 +1,99 @@
+#
+gsclib090 BUFX1 symbol
+curr_slicer_odd_n_reg_242_5a
+NEW_PHASE_reg_0_597_5a
+#
+gsclib090 BUFX3 symbol
+NEW_PHASE_reg_0_1220_3
+NEW_PHASE_reg_0_1221_3
+odd_edge_found_reg_1306_3
+odd_edge_found_reg_1307_3
+prev_slicer_even_n_reg_1494_3
+prev_slicer_odd_n_reg_1631_3
+curr_slicer_odd_n_reg_1725_3
+curr_slicer_even_n_reg_1736_3
+NEW_PHASE_reg_2_1796_3
+even_edge_found_reg_1805_3
+NEW_PHASE_reg_4_1812_3
+NEW_PHASE_reg_3_1869_3
+NEW_PHASE_reg_1_1913_3
+prev_slicer_even_n_reg_2457_3
+curr_slicer_even_n_reg_2728_3
+prev_slicer_odd_n_reg_2749_3
+even_edge_found_reg_2867_3
+NEW_PHASE_reg_2_2896_3
+NEW_PHASE_reg_4_2934_3
+NEW_PHASE_reg_3_2953_3
+NEW_PHASE_reg_1_2974_3
+NEW_EDGE_reg_48_5a
+#
+gsclib090 NOR2X1 symbol
+i_12
+#
+gsclib090 CLKBUFX3 symbol
+i_940
+#
+gsclib090 AND2X1 symbol
+i_6
+#
+gsclib090 NAND3X1 symbol
+i_1
+#
+gsclib090 NAND2X1 symbol
+i_835
+i_05602
+i_5098
+i_7
+i_5
+#
+gsclib090 OR2X1 symbol
+i_5056
+i_15
+#
+gsclib090 OAI21X1 symbol
+i_10
+i_11
+i_833
+i_17
+#
+gsclib090 XOR2X1 symbol
+i_9
+i_5024
+i_798
+#
+gsclib090 MX2X1 symbol
+i_868
+i_861
+i_854
+i_847
+i_840
+i_826
+i_819
+i_812
+i_805
+i_791
+i_784
+i_770
+i_763
+#
+gsclib090 INVX1 symbol
+i_920
+i_4
+#
+gsclib090 DFFSRX1 symbol
+NEW_EDGE_reg
+NEW_PHASE_reg_4
+NEW_PHASE_reg_3
+NEW_PHASE_reg_2
+NEW_PHASE_reg_1
+NEW_PHASE_reg_0
+odd_edge_found_reg
+PHASE_COUNT_reg_4
+PHASE_COUNT_reg_3
+PHASE_COUNT_reg_2
+PHASE_COUNT_reg_1
+even_edge_found_reg
+prev_slicer_odd_n_reg
+curr_slicer_odd_n_reg
+prev_slicer_even_n_reg
+curr_slicer_even_n_reg

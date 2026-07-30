@@ -1,0 +1,23 @@
+#
+gsclib090 INVX8 symbol
+i_169906
+#
+gsclib090 CLKBUFX1 symbol
+i_1969
+#
+gsclib090 MX2X1 symbol
+i_2
+i_3
+#
+gsclib090 DFFSRX1 symbol
+equalizer_data_reg_1
+equalizer_data_reg_0
+equalizer_data_clkn_reg_1
+equalizer_data_clkn_reg_0
+loopback_data_reg_1
+loopback_data_reg_0
+loopback_data_clkn_reg_1
+loopback_data_clkn_reg_0
+#
+gsclib090 INVX2 symbol
+i_701

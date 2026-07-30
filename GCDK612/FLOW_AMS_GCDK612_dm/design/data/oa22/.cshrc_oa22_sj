@@ -1,0 +1,85 @@
+#!/bin/csh
+#******************************************************************************
+#**** Cadence Design Systems Inc., CIC, VFS, Virtuoso Flow Solutions team *****
+#************* Sample C-Shell resource file for RHE-3.0 ***********************
+#******************************************************************************
+# 
+# Basic Unix/Linux variables:
+#==============================================================================
+limit coredumpsize 0
+set history = 100 
+set savehistory = 40
+set nobeep
+set filec
+set notify
+set glob
+umask 002
+setenv LD_LIBRARY_PATH /usr/lib:/usr/bin/X11:/usr/local/lib
+setenv MANPATH /usr/share/man:/usr/bin/man:/usr/local/share/man:/usr/X11R6/man
+setenv LANG en_US
+setenv MOZILLA_HOME /usr/bin/netscape
+# ============================================================================
+set path = ( . ~/bin \
+             /usr/bin/X11 \
+             /usr/local/bin \
+             /usr/bin \
+             /bin \
+             /usr/sbin \
+	     /usr/X11R6/bin \
+           )
+# ==============================================================================
+# ******************************************************************************
+# **** Update/Modify below paths to  software hierarchies in your site *********
+# ******************************************************************************
+#setenv CDSHOME   /am/l3a/5251USV2/ICOA5251USV2_194_lnx86  #for CIC DFII: icfb
+#setenv CDSHOME   /am/cds/ICOA5251_212_lnx86           #for CIC: icfb
+#setenv CDSHOME    /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/BETA3
+setenv CDSHOME    /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/red
+#setenv CDSHOME    /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/050718
+setenv MMSIMHOME  /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/MMSIM/latest
+#setenv MMSIMHOME  /am/cds/MMSIM60ISR_lnx86            #for Analog sim and env
+#setenv IUSHOME    /am/cds/IUS54ISR_050211_lnx86       #for ICD: ncvlog, ncsim
+setenv IUSHOME   /am/cds/IUS55ISR_lnx86               #for ICD
+setenv ASSURAHOME /grid/cic/ciccm_v67/cds/ICOA5.2.51/lnx86/assura/avt31
+#setenv ASSURAHOME /am/cds/ASSURA314-OA5251ISR_lnx86   #for DFM: drc, lvs, rcx
+#setenv ICCHOME  /am/cds/ICC11141_lnx86
+#setenv DCM_GUI $ACV_ROOT/samples/dcm/odcm/ODCM_GUI:/usr1/buvan/equator/reg
+# -----------------------------------------------------------------------------
+setenv LD_LIBRARY_PATH ${IUSHOME}/tools/lib:${LD_LIBRARY_PATH}
+setenv LD_LIBRARY_PATH ${CDSHOME}/tools/lib:${LD_LIBRARY_PATH}
+#------------------------------------------------------------------------------
+set icpath = ( $CDSHOME/tools/bin \
+               $CDSHOME/tools/dfII/bin \
+               $CDSHOME/tools/dfII/pvt/bin \
+               $ASSURAHOME/tools/assura/bin\
+                )
+set iuspath = ( $IUSHOME/tools/bin \
+                $IUSHOME/tools/inca/bin \
+                )
+set mmspath = ( $MMSIMHOME/tools/bin )
+# -----------------------------------------------------------------------------		
+# Master path ordering:
+set path = ( $path\
+             $iuspath \
+	     $mmspath \
+             $icpath \
+             )
+#
+# *****************************************************************************
+# Environment variables for Cadence software:
+setenv CDS_Netlisting_Mode "Analog"
+setenv CLS_CDSD_COMPATIBILITY_LOCKING NO
+setenv GDMTIMEOUTVAL 3600
+setenv LM_LICENSE_FILE 5280@sjflex1:5280@sjflex2:5280@sjflex3
+setenv SPECTRE_DEFAULTS -E
+setenv CDS_CONTROLLED_AMS_ULTRA_RELEASE_ENABLED 1 #enable AMSUltra
+setenv LD_ASSUME_KERNEL 2.4.1           #surpress Linux warning on icfb invoking
+#-------------------------------------------------------------------------------
+# Variables for Virtuoso Solutions Flow:
+setenv AMS `pwd`  # For AMS sim directory, hdl.var, and analog model path
+#*******************************************************************************
+# Personal preferences:
+#source $HOME/.prompt2
+setenv EDITOR /usr/bin/X11/nedit
+#setenv PRINTER da11s02
+#------------------------------End of File -------------------------------------

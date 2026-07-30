@@ -1,0 +1,27 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1234219118=7-gpdk0906-nmos2v;
+	1234219118=7-gpdk0906-nmos2v7-ivpcell;
+	1234219119=7-gpdk0906-pmos2v;
+	1234219119=7-gpdk0906-pmos2v7-ivpcell;
+	1234219118=7-gpdk0906-nmos2v;
+	1234219118=7-gpdk0906-nmos2v7-ivpcell;
+	1234219120=7-gpdk0909-pmoscap2v;
+	1234219120=7-gpdk0909-pmoscap2v7-ivpcell;
+	1234219119=7-gpdk0906-pmos2v;
+	1234219119=7-gpdk0906-pmos2v7-ivpcell;
+	1234219120=7-gpdk0909-pmoscap2v;
+	1234219120=7-gpdk0909-pmoscap2v7-ivpcell;
+	1234219120=7-gpdk0909-pmoscap2v;
+	1234219120=7-gpdk0909-pmoscap2v7-ivpcell;
+	1234219120=7-gpdk0909-pmoscap2v;
+	1234219120=7-gpdk0909-pmoscap2v7-ivpcell;
+	1234219120=7-gpdk0909-pmoscap2v;
+	1234219120=7-gpdk0909-pmoscap2v7-ivpcell;
+	1253878366=verilog.vams;
+$END

@@ -1,0 +1,113 @@
+;; 
+;; Program to Print the Hierarchy Tree on the Schematic Editor
+;; The Menu appears on the Design->Hierarchy Menu on the Schematic Editor
+;; 
+;------------------------------------------------------------------------;
+; Adding tree in the regular menus. Scroll down for Tree Code
+;------------------------------------------------------------------------;
+procedure( CdsAddHierSliderItem()
+tracef(t)
+let( (a fileMenu slider )
+
+fileMenu = car( setof( menu hiGetBannerMenus(hiGetCurrentWindow()) rexMatchp("^schFileMenu" menu) ) )
+
+if( fileMenu 
+  slider=eval( 
+         car( 
+          setof( item eval(fileMenu)->? rexMatchp("^schHierSlider" item ) ) 
+         ) 
+       ) 
+)
+a = hiCreateMenuItem(
+		?name 'two1
+		?itemText "CDS Show Hierarchy"
+		?callback "CdsShowTree()"
+		)
+when( !slider->two1 hiInsertMenuItem(slider a length( slider->?) ))
+
+);let
+untrace()
+);procedure
+
+procedure( CdsUserPostInstallTrigger( args )
+;  hiInsertBannerMenu(
+;  args->window 
+
+;when( !boundp('two1)
+    CdsAddHierSliderItem()
+;  )
+;  length( hiGetBannerMenus( args->window ))
+;)
+)
+
+deUnRegUserTriggers( "schematic")
+deRegUserTriggers( "schematic" nil nil 'CdsUserPostInstallTrigger)
+
+
+;------------------------------------------------------------------------;
+; Schematic Tree. 
+;------------------------------------------------------------------------;
+procedure( CdsShowTree( @key (cvId geGetEditCellView()) 
+             (tab "") 
+             (viewList "schematic cmos_sch symbol")
+             port 
+             ) 
+  let( (file title)
+    unless( port && portp(port)
+        ;port = poport
+      port = outfile( file=makeTempFileName( "/tmp/tree" ) )
+    )
+
+fprintf( port "\
+\n                                          Design Hierarchy                                          \
+\n****************************************************************************************************\
+\nLibrary     : %s\
+\nCell        : %s\
+\nView        : %s\
+\nOption      : Top to bottom\
+\nStop Level  : Top to bottom \
+\n****************************************************************************************************\n\n"
+    cvId~>libName cvId~>cellName cvId~>viewName )
+
+      goDeep( cvId 
+           ?tab strcat(tab "  ") 
+           ?viewList viewList 
+           ?port port
+      )
+
+    sprintf( title "CDS Tree: %s/%s/%s" cvId~>libName cvId~>cellName cvId~>viewName )
+    view( file list(25:25 900:800) title ) 
+    deleteFile(file)
+  )
+)
+procedure( goDeep( cvId @key 
+             (tab "") 
+             (viewList "schematic cmos_sch symbol")
+             (port poport)
+             ) 
+  let((inst tmp)
+
+  foreach( hdr cvId~>instHeaders
+    if( (length(hdr~>instances) > 0) 
+        && (inst = car( hdr~>instances )) 
+        && (tmp = dbGetAnyInstSwitchMaster( inst viewList )) then
+      fprintf( port "%s%s %s %s (%d)\n" 
+                tab 
+                hdr->libName 
+                hdr->cellName 
+                hdr->viewName  
+                length(hdr~>instances)
+    )
+    unless( tmp->cellViewType == "schematicSymbol" 
+      goDeep( tmp 
+           ?tab strcat(tab "  ") 
+           ?viewList viewList 
+           ?port port
+      )
+    )
+      ;printf("%s DEADEND\n" tab)
+    ) 
+  )
+  drain( port )
+  )
+)

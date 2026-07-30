@@ -1,0 +1,8 @@
+//
+//
+
+connectrules mps_inh;
+  connect E2L_inh ;
+  connect L2E_1_inh ;
+  connect Bidir_inh ;
+endconnectrules

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<setupdb version="5">data
+	<active>Active Setup
+		<currentmode>Single Run, Sweeps and Corners</currentmode>
+		<extensions>
+			<extension>Parasitics
+				<callback>_parSetupDBExtensionCB</callback>
+				<iconvalue></iconvalue>
+				<icontype></icontype>
+			</extension>
+		</extensions>
+	</active>
+	<history>History</history>
+</setupdb>

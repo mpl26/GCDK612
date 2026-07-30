@@ -1,0 +1,14 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$VERILOG_NAME_MAP_LIST
+	inst:top:top_instclash;
+$END
+$TIMESTAMP
+	-1=13-av_hrcx_ether7-top_rcx;
+	1128403847=13-av_hrcx_ether7-top_rcx14-av_hrcx_intcon;
+	1128404122=verilog.vams;
+$END

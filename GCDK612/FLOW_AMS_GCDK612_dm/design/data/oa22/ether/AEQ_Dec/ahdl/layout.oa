@@ -1,0 +1,237 @@
+// Look-up Table 5 - 14 bit
+// Spectre AHDL 
+// By Luca Ravezzi
+// Mar 19, 2000
+//------------------------------
+// timing_mode: 0=Muller-Muller
+//		1=T/2
+
+module AEQ_dec ( gain, pole, zero, agc_eq, timing_mode, agc_eq_bypass)
+(Vthr, Vhigh, Vlow,tdel, trise, tfall,filename)
+    node [V,I] gain[4:0];
+    node [V,I] pole[1:0];
+    node [V,I] zero[6:0];
+    node [V,I] agc_eq[4:0];
+    node [V,I] agc_eq_bypass;
+    node [V,I] timing_mode;
+parameter real Vthr= 0.9 from [0:inf);
+parameter real Vhigh= 5 from [0:inf);
+parameter real Vlow= 0 from [0:inf);
+parameter string filename = "/user/lravezzi/Data.dat";    
+parameter real tdel= 1p from [0:inf);
+parameter real trise= 1p from [0:inf);
+parameter real tfall= 1p from [0:inf);
+
+{
+integer InWord, PoleW, GainW, ZeroW;
+integer i,k;
+real Vswing;
+stream fptr;
+initial 
+  {
+//    fptr = $fopen(filename, "w");
+//    $fstrobe(fptr, "Luca_Data \n");
+    Vswing=Vhigh-Vlow;
+  }
+
+analog 
+ {
+
+  InWord=800000;
+  k=1;
+  generate (i=0:4:+1)
+  {
+    if (V(agc_eq[i])>Vthr)
+    {
+      InWord=InWord+k;
+    }
+    k=k*10;
+  }
+
+  if (V(agc_eq_bypass)>Vthr)
+  {
+   //
+   // Bypass mode
+   //
+   GainW=810000;PoleW=800;ZeroW=80000000;
+  }
+  else
+  {
+   //
+   // Normal mode
+   //  
+   if (V(timing_mode)<Vthr)
+   {
+    //
+    //Muller-Muller mode
+    //
+    switch(InWord)
+    { 
+      case 800000: {GainW=800001;PoleW=810;ZeroW=80000000;};
+      break;
+      case 800001: {GainW=800001;PoleW=810;ZeroW=80000001;};
+      break;
+      case 800010: {GainW=800001;PoleW=801;ZeroW=80000000;};
+      break;
+      case 800011: {GainW=800001;PoleW=801;ZeroW=80000010;};
+      break;
+      case 800100: {GainW=800001;PoleW=801;ZeroW=80000100;};
+      break;
+      case 800101: {GainW=800010;PoleW=801;ZeroW=80000100;};
+      break;
+      case 800110: {GainW=800010;PoleW=801;ZeroW=80000110;};
+      break;
+      case 800111: {GainW=800100;PoleW=801;ZeroW=80000110;};
+      break;
+      case 801000: {GainW=800100;PoleW=801;ZeroW=80001000;};
+      break;
+      case 801001: {GainW=801000;PoleW=801;ZeroW=80001000;};
+      break;
+      case 801010: {GainW=801000;PoleW=800;ZeroW=80001010;};
+      break;
+      case 801011: {GainW=810000;PoleW=800;ZeroW=80001010;};
+      break;
+      case 801100: {GainW=810000;PoleW=800;ZeroW=80001100;};
+      break;
+      case 801101: {GainW=810000;PoleW=800;ZeroW=80010001;};
+      break;
+      case 801110: {GainW=810000;PoleW=800;ZeroW=80010010;};
+      break;
+      case 801111: {GainW=810000;PoleW=800;ZeroW=80010111;};
+      break;
+      case 810000: {GainW=810000;PoleW=801;ZeroW=80011111;};
+      break;
+      case 810001: {GainW=810000;PoleW=801;ZeroW=80100010;};
+      break;
+      case 810010: {GainW=810000;PoleW=801;ZeroW=80100111;};
+      break;
+      case 810011: {GainW=810000;PoleW=801;ZeroW=80101110;};
+      break;
+      case 810100: {GainW=810000;PoleW=801;ZeroW=80110011;};
+      break;
+      case 810101: {GainW=810000;PoleW=801;ZeroW=80110110;};
+      break;
+      case 810110: {GainW=810000;PoleW=810;ZeroW=80111111;};
+      break;
+      case 810111: {GainW=810000;PoleW=810;ZeroW=81000110;};
+      break;
+      case 811000: {GainW=810000;PoleW=810;ZeroW=81001101;};
+      break;
+      case 811001: {GainW=810000;PoleW=810;ZeroW=81010100;};
+      break;
+      case 811010: {GainW=810000;PoleW=810;ZeroW=81011001;};
+      break;
+      case 811011: {GainW=810000;PoleW=810;ZeroW=81100001;};
+      break;
+      case 811100: {GainW=810000;PoleW=810;ZeroW=81101100;};
+      break;
+      case 811101: {GainW=810000;PoleW=810;ZeroW=81110000;};
+      break;
+      case 811110: {GainW=810000;PoleW=810;ZeroW=81110101;};
+      break;
+      case 811111: {GainW=810000;PoleW=810;ZeroW=81111111;};
+      break;
+      default: {};
+      break;
+    }
+   } 
+   else
+   {
+    //
+    // T/2 mode
+    //
+    switch(InWord)
+    { 
+      case 800000: {GainW=800001;PoleW=800;ZeroW=80000000;};
+      break;
+      case 800001: {GainW=800001;PoleW=800;ZeroW=80000001;};
+      break;
+      case 800010: {GainW=800001;PoleW=800;ZeroW=80000000;};
+      break;
+      case 800011: {GainW=800001;PoleW=800;ZeroW=80000010;};
+      break;
+      case 800100: {GainW=800001;PoleW=800;ZeroW=80000100;};
+      break;
+      case 800101: {GainW=800010;PoleW=800;ZeroW=80000100;};
+      break;
+      case 800110: {GainW=800010;PoleW=800;ZeroW=80000110;};
+      break;
+      case 800111: {GainW=800100;PoleW=800;ZeroW=80000110;};
+      break;
+      case 801000: {GainW=800100;PoleW=800;ZeroW=80001000;};
+      break;
+      case 801001: {GainW=801000;PoleW=800;ZeroW=80001000;};
+      break;
+      case 801010: {GainW=801000;PoleW=800;ZeroW=80001010;};
+      break;
+      case 801011: {GainW=810000;PoleW=800;ZeroW=80001010;};
+      break;
+      case 801100: {GainW=810000;PoleW=800;ZeroW=80001100;};
+      break;
+      case 801101: {GainW=810000;PoleW=800;ZeroW=80010001;};
+      break;
+      case 801110: {GainW=810000;PoleW=800;ZeroW=80010010;};
+      break;
+      case 801111: {GainW=810000;PoleW=800;ZeroW=80010111;};
+      break;
+      case 810000: {GainW=810000;PoleW=801;ZeroW=80011111;};
+      break;
+      case 810001: {GainW=810000;PoleW=801;ZeroW=80100010;};
+      break;
+      case 810010: {GainW=810000;PoleW=801;ZeroW=80100111;};
+      break;
+      case 810011: {GainW=810000;PoleW=801;ZeroW=80101110;};
+      break;
+      case 810100: {GainW=810000;PoleW=801;ZeroW=80110011;};
+      break;
+      case 810101: {GainW=810000;PoleW=801;ZeroW=80110110;};
+      break;
+      case 810110: {GainW=810000;PoleW=810;ZeroW=80111111;};
+      break;
+      case 810111: {GainW=810000;PoleW=810;ZeroW=81000110;};
+      break;
+      case 811000: {GainW=810000;PoleW=810;ZeroW=81001101;};
+      break;
+      case 811001: {GainW=810000;PoleW=810;ZeroW=81010100;};
+      break;
+      case 811010: {GainW=810000;PoleW=810;ZeroW=81011001;};
+      break;
+      case 811011: {GainW=810000;PoleW=810;ZeroW=81100001;};
+      break;
+      case 811100: {GainW=810000;PoleW=810;ZeroW=81101100;};
+      break;
+      case 811101: {GainW=810000;PoleW=810;ZeroW=81110000;};
+      break;
+      case 811110: {GainW=810000;PoleW=810;ZeroW=81110101;};
+      break;
+      case 811111: {GainW=810000;PoleW=810;ZeroW=81111111;};
+      break;
+      default: {};
+      break;
+    } 
+   }
+  }
+//    $fstrobe(fptr, "InWord= %d Gain=%d Pole=%d Zero=%d \n",InWord, GainW, PoleW, ZeroW);
+   
+  generate (i=0:4:+1)
+  {
+    V(gain[i]) <- $transition((Vlow+(GainW%10)*Vswing),tdel,trise,tfall);
+    GainW=GainW/10;
+  }
+  
+  generate (i=0:1:+1)
+  {
+    V(pole[i]) <- $transition((Vlow+(PoleW%10)*Vswing),tdel,trise,tfall);
+    PoleW=PoleW/10;
+  }
+  generate (i=0:6:+1)
+  {
+    V(zero[i]) <- $transition((Vlow+(ZeroW%10)*Vswing),tdel,trise,tfall);
+    ZeroW=ZeroW/10;
+  }
+ }
+
+//final{
+//	$fclose(fptr);
+//     } 
+}

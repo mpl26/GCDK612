@@ -1,0 +1,29 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I45:VDD=VDD;
+	I45:VSS=GND;
+$END
+$TIMESTAMP
+	1272925650=5-ether14-top_1_port_pnr;
+	1272925651=5-ether14-top_1_port_pnr13-symbol_golden;
+	1272925652=5-ether9-Bias_port;
+	1272925652=5-ether9-Bias_port6-symbol;
+	-1=5-ether18-top_1_port_receive;
+	1272925649=5-ether18-top_1_port_receive6-symbol;
+	1272925645=5-ether9-anlg_cntl;
+	1272925645=5-ether9-anlg_cntl6-symbol;
+	1272925647=5-ether19-top_1_port_transmit;
+	1272925647=5-ether19-top_1_port_transmit6-symbol;
+	1272925649=5-ether10-top_common;
+	1272925649=5-ether10-top_common6-symbol;
+	-1=5-basic4-opin;
+	1273039898=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1273039899=5-basic4-ipin6-symbol;
+	1273705327=verilog.vams;
+$END

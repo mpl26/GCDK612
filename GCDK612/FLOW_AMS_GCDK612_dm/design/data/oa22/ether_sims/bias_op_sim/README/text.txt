@@ -1,0 +1,48 @@
+
+Simulation: bias_op_sim
+
+Purpose: Measure the bias dc operating points, current source output and current
+source trim adjustment.
+
+Available states: state_05_20	tt_55_2p5	tt_55_2p5v
+
+
+
+Description: The bias_op_sim test bench consists of the bias_top, which is the top level
+representation for the bias block. The bias_top block outputs currents based on
+an internal poly resistor and currents based on an external resistor. In application, 
+the block delivers current sources and/or sinks to other sublocks. 
+For the purposes of this test bench, these currents are delivered to dummy loads
+having a zero volt voltage dc source connected in series with each load so that the
+current can be monitored through each load. 
+
+Verification:
+	The external and poly based dc currents can be quickly observed flowing
+into the dummy loads for a given temperature and corner by running a dc
+analysis. The current can be monitored flowing through the zero volt
+voltage sources.
+		
+	The external and poly based current variation can be observed as a
+function of temperature by adding the temperature sweep option to the dc
+analysis run.
+		
+	By adjusting BGTRIM<3:0>, the bandgap trim select pins, the bias poly based and
+external currents are immdiately adjusted since both are based on the bandgap
+(i.e. VBG/Rext,poly) The bandgap voltage can be observed at the VBG pin, while
+the currents can be measured via the zero volt voltage sources.
+	
+ 
+Input Signals:  BGTRIM<3:0>		Bandgap trim adjustment
+
+Output Signals: I_100u_Rext_PLL<1:0> 	Current Source
+		I_25U_Rext_PLL<1:0>  	Current Source
+		I_25U_Rpoly_PLL<1:0> 	Current Source
+		I_400u_Rext		Current Sink
+		I_100u_Rext		Current Sink
+		I_100u_Rpoly		Current Sink
+		
+
+
+
+
+		

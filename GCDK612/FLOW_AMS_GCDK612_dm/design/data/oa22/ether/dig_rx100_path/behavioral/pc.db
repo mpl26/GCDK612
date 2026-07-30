@@ -1,0 +1,106 @@
+#
+gsclib090 BUFX1 symbol
+syncn_RX100_STABLE_reg_1_182_5a
+sync_RX100_STABLE_reg_1_513_5a
+#
+gsclib090 BUFX3 symbol
+i_1538
+i_1735
+sync_MR_BYPASS_SCRAMBLER_reg_1_60_3
+sync_MR_BYPASS_SCRAMBLER_reg_1_61_3
+syncn_MR_ALIGN_DISB_reg_1_134_3
+syncn_MR_ALIGN_DISB_reg_1_135_3
+sync_RX100_STABLE_reg_1_340_3
+sync_RX100_STABLE_reg_1_341_3
+syncn_RX100_STABLE_reg_1_364_3
+syncn_RX100_STABLE_reg_1_365_3
+meta_LINK100_DOWN_reg_1_468_3
+meta_LINK100_DOWN_reg_1_469_3
+sync_MR_SYMBOL_MODE_reg_1_488_3
+sync_MR_SYMBOL_MODE_reg_1_489_3
+syncn_MR_ALIGN_DISB_reg_0_508_3
+syncn_MR_ALIGN_DISB_reg_0_509_3
+sync_MR_BYPASS_SCRAMBLER_reg_0_870_3
+sync_MR_BYPASS_SCRAMBLER_reg_0_871_3
+sync_MR_SYMBOL_MODE_reg_0_918_3
+sync_MR_SYMBOL_MODE_reg_0_919_3
+i_2200
+syncn_RX100_STABLE_reg_1_2261_3
+sync_MR_BYPASS_SCRAMBLER_reg_1_2278_3
+sync_RX100_STABLE_reg_1_2348_3
+meta_LINK100_DOWN_reg_1_2418_3
+syncn_MR_ALIGN_DISB_reg_0_2428_3
+sync_MR_SYMBOL_MODE_reg_1_2439_3
+sync_MR_BYPASS_SCRAMBLER_reg_0_2581_3
+syncn_MR_ALIGN_DISB_reg_1_2647_3
+sync_MR_BYPASS_SCRAMBLER_reg_1_13_5a
+#
+gsclib090 INVX8 symbol
+i_169908
+i_169909
+i_169914
+i_169915
+i_169924
+i_169925
+i_169928
+i_169942
+i_169945
+i_169947
+i_169948
+i_169949
+i_169950
+i_169951
+i_170164
+i_170165
+i_170168
+i_170169
+i_170171
+i_170222
+i_170223
+i_170225
+i_170250
+#
+gsclib090 CLKBUFX1 symbol
+i_672
+i_1709
+i_1755
+i_1804
+i_1811
+#
+gsclib090 DFFSRX1 symbol
+sync_RX100_STABLE_reg_1
+sync_RX100_STABLE_reg_0
+meta_LINK100_DOWN_reg_1
+meta_LINK100_DOWN_reg_0
+syncn_MR_ALIGN_DISB_reg_1
+syncn_MR_ALIGN_DISB_reg_0
+sync_MR_BYPASS_SCRAMBLER_reg_1
+sync_MR_BYPASS_SCRAMBLER_reg_0
+sync_MR_SYMBOL_MODE_reg_1
+sync_MR_SYMBOL_MODE_reg_0
+syncn_RX100_STABLE_reg_1
+syncn_RX100_STABLE_reg_0
+#
+gsclib090 INVX2 symbol
+i_1369
+#
+ether dig_rx100_mlt3_dec symbol
+i_dig_rx100_mlt3_dec
+#
+ether dig_rx100_descrambler symbol
+i_dig_rx100_descrambler
+#
+ether dig_rx100_bypass_descrambler symbol
+i_dig_rx100_bypass_descrambler
+#
+ether dig_rx100_deserializer symbol
+i_dig_rx100_deserializer
+#
+ether dig_rx100_dec4b5b symbol
+i_dig_rx100_dec4b5b
+#
+ether dig_rx100_bypass_dec4b5b symbol
+i_dig_rx100_bypass_dec4b5b
+#
+ether dig_fef_det symbol
+i_dig_fef_det

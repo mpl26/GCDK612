@@ -1,0 +1,166 @@
+#
+gsclib090 BUFX3 symbol
+eof_count_reg_3_1326_3
+eof_count_reg_3_1327_3
+capture_data_reg_1_1432_3
+capture_data_reg_1_1433_3
+filt_enab_extend_reg_1446_3
+filt_enab_extend_reg_1447_3
+capture_data_reg_3_1500_3
+prev_txen_reg_1515_3
+eof_hold_h2_reg_1535_3
+capture_data_reg_2_1559_3
+prev1_filt_enab_frame_reg_1568_3
+prev2_filt_enab_frame_reg_1574_3
+eof_hold_h1_reg_1577_3
+eof_count_reg_2_1629_3
+TX10_PRESENT_reg_1679_3
+prev2_txc2_5_reg_1784_3
+enc_h1_data_reg_1817_3
+TX10_ACTIVE_reg_1960_3
+prev1_txc2_5_reg_2090_3
+enc_h2_data_reg_2163_3
+capture_data_reg_2_2520_3
+eof_hold_h2_reg_2557_3
+capture_data_reg_3_2584_3
+prev1_filt_enab_frame_reg_2672_3
+prev_txen_reg_2693_3
+prev2_filt_enab_frame_reg_2757_3
+eof_hold_h1_reg_2804_3
+TX10_PRESENT_reg_2832_3
+eof_count_reg_2_50_5a
+prev2_txc2_5_reg_67_5a
+#
+gsclib090 INVX8 symbol
+i_235772
+#
+gsclib090 BUFX1 symbol
+i_1098
+enc_h1_data_reg_252_5a
+eof_count_reg_1_297_5a
+TX10_ACTIVE_reg_620_5a
+#
+gsclib090 AND2X1 symbol
+i_42
+#
+gsclib090 XOR2X1 symbol
+i_740
+i_1962
+i_1873
+i_21
+i_26
+i_1856
+i_4
+i_3
+i_2
+#
+gsclib090 AOI22X1 symbol
+i_68
+i_1987
+#
+gsclib090 AOI21X1 symbol
+i_2021
+i_18
+i_59
+i_19
+#
+gsclib090 NOR2X1 symbol
+i_2001
+i_67
+i_14
+i_15
+i_22
+i_16
+i_13
+i_12
+i_05612
+i_10
+i_58
+i_56
+i_53
+#
+gsclib090 NAND3X1 symbol
+i_2034
+i_769
+i_20
+i_72
+#
+gsclib090 MX2X1 symbol
+i_789
+i_831
+i_824
+i_803
+i_796
+i_782
+i_775
+i_747
+i_9
+i_726
+i_719
+i_1941
+#
+gsclib090 NAND4X1 symbol
+i_839
+i_81
+i_279372
+#
+gsclib090 DFFSRX1 symbol
+TX10_ACTIVE_reg
+filt_enab_extend_reg
+prev2_filt_enab_frame_reg
+prev1_filt_enab_frame_reg
+eof_hold_h1_reg
+eof_hold_h2_reg
+enc_h1_data_reg
+capture_data_reg_3
+capture_data_reg_2
+capture_data_reg_1
+enc_h2_data_reg
+TX10_PRESENT_reg
+eof_count_reg_3
+eof_count_reg_2
+eof_count_reg_1
+eof_count_reg_0
+prev_txen_reg
+prev2_txc2_5_reg
+prev1_txc2_5_reg
+#
+gsclib090 OAI21X1 symbol
+i_845
+i_838
+i_817
+i_810
+i_768
+i_761
+i_754
+i_733
+i_64
+i_25
+#
+gsclib090 NAND2X1 symbol
+i_847
+i_279376
+i_2049
+i_819
+i_812
+i_2015
+i_763
+i_756
+i_735
+i_11
+i_5
+i_31
+i_1857
+#
+gsclib090 INVX1 symbol
+i_951
+i_950
+i_949
+i_948
+i_947
+i_946
+i_945
+i_944
+i_943
+i_942
+i_941

@@ -1,0 +1,60 @@
+;----------------------------------------------------------------------------
+; @(#)$CDS: assura version av3.1:Production:dfII5.0.0 07/29/2003 04:40 (source) $
+;----------------------------------------------------------------------------
+
+
+;----------------------------------------------------------------------------
+; Assura 3.1 Template Version 1
+;----------------------------------------------------------------------------
+
+vuiLVSOptions = '(
+     (( ?avrpt ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( avrpt t )
+             ( spacer "  " )
+             ( spacer2 "  " )
+             ( useOption nil )
+             ( maxErrorShapesPerCell 1000 )
+     )
+     (( ?dbuPerUU ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( dbuPerUU 2000.0 )
+     )
+     (( ?joinPins ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( joinPins "Top" )
+     )
+     (( ?overwrite ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( overwrite t )
+     )
+     (( ?textLevel ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( label "textLevel" )
+             ( from 0 )
+             ( to 0 )
+     )
+     (( ?textPriOnly ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( textPriOnly t )
+     )
+     (( ?userUnits ) 
+             ( "view" t )
+             ( "edit" t )
+             ( "use" t )
+             ( userUnits "micron" )
+     )
+)
+

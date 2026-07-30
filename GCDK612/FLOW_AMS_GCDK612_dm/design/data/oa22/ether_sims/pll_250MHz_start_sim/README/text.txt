@@ -1,0 +1,31 @@
+Simulation:     PLL_250MHZ_start_sim 
+
+Purpose:        Transient simulation of the 250MHZ PLL to check start up of the
+PLL using spectre. The simulation is meant to check that the PLL sub-blocks like
+the Charge Pump and the VCO start up correctly.
+
+States:         tt 
+
+Description:    The PLL_250MHZ_start_sim test bench contains an 
+instantiation of the top level PLL macro, PLL_250MHZ. Ideal sources are used 
+for power and current references. An ideal voltage source connected to a poly 
+resistor is used to derive  a poly resistor based bias current for the block. 
+The SIDDQ pin is connected to a pulse voltage source via net PD. In addition 
+the misc_clock_monitor and misc_skew_monitor blocks are included to monitor 
+the characteristics of the PLL output clocks, CLK_250MHZ<10:0>.  
+
+Verification:   The simulation needs to be run for about 3-4us for the PLL 
+to lock. The CLK_250MHZ<0> output of the PLL is monitored using the
+misc_clock_monitor block. The outputs of this block give the frequency,
+duty-cycle and the edge-to-edge jitter of the clock. When the f_CLK_250MHZ
+output reaches a steady value around 250MHz, it indicates PLL lock. After this
+point the duty-cycle and the edge-to-edge jitter can be read from the
+dc_CLK_250MHZ and j_CLK_250MHZ outputs. Further the skew between the various
+phases of the output clock are monitored using the misc_skew_monitor blocks. The
+skew can be read from the pSKEW<10:0> outputs.
+ 
+Input Signals:  VDD, CLK_REF 
+
+Output Signals: CLK_250MHZ<10:0>, f_CLK_250MHZ, dc_CLK_250MHZ, j_CLK_250MHZ,
+pSKEW<10:0> 
+

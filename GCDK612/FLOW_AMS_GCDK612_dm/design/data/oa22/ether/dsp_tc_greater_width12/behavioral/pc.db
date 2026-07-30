@@ -1,0 +1,19 @@
+#
+gsclib090 NAND2X1 symbol
+i_05570
+#
+gsclib090 OR4X1 symbol
+i_8
+#
+gsclib090 NAND3X1 symbol
+i_9
+#
+gsclib090 NOR2X1 symbol
+i_66
+i_3
+i_2
+i_6
+i_1
+#
+gsclib090 INVX1 symbol
+i_654

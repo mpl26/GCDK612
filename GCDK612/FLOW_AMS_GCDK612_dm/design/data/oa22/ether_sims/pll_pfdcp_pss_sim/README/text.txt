@@ -1,0 +1,31 @@
+Simulation:     PFDCP_pss_sim 
+
+Purpose:        Transient, Periodic Steady State and Phase Noise simulation 
+of the combination of the Phase Frequency Detector and the Charge Pump. The
+simulation is meant to check the combined contribution of the Phase Frequency 
+Detector and the Charge Pump to the internal phase noise of the PLL. 
+
+States:         tt 
+
+Description:    The PFDCP_pss_sim testbench contains instantiations of the
+phase frequency detector (PLL_PFD), the charge pump (PLL_CP) and the loop
+filter (PLL_160MHZ_LF). The phase frequency detector clock inputs, REFCLK 
+and FBCLK are driven by vpulse voltage sources V3 and V4. An ideal voltage 
+source connected to a poly resistor is used to derive a poly resistor based 
+bias current for the block. The zero-volt voltage source V2 is used to monitor
+the charge output from the charge pump.  The simulation is meant to check 
+the combined contribution of the phase frequency detector and the charge 
+pump to the internal phase noise of the PLL.
+
+Verification:   Transient, Periodic Steady State and Phase Noise simulations
+are run using spectre and spectreRF. The phase noise can be plotted from the 
+Results->Direct Plot->Main Menu option in the Analog Design Environment 
+window. The phase noise plot gives a measure of the combined contribution of 
+the phase frequency detector and the charge pump to the internal phase noise 
+and jitter of the PLL.
+ 
+
+Input Signals:  REFCLK, VCOCLK
+
+Output Signals: OUT
+

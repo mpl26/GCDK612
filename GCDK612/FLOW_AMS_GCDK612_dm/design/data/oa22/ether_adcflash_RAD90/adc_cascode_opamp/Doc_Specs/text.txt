@@ -1,0 +1,132 @@
+ 
+                      Doc and Design Specifications
+		      ============================
+		      
+
+I. Supply: 
+   DC Supply voltage: 2.5V (Power net: VDD, Ground net: VSS)
+   
+II. Operating condition:
+    Tempature: 0 C to 125 C
+    
+III. Operating specifications:
+     ---------------------------------------------------------------------------
+         Spec. item                     |    Value    |  Notes
+     --------------------------------------------------------------------------- 
+      1. Gain:
+         a. AC Gain                     |     122     | 
+         b. Open-loop gain              |      94     |
+	 c. Common-mode gain            |     0.56    |
+	                                |             |
+      2. Phase and Phase Margin: 
+	 a. Phase margin                |   86 degress|	
+	  
+      3. AC Response Band width @3DB    |  25M Hz     | 
+      4. Input Offset Voltage           |   36m V     |  
+      5. Common Mode Rejection Ratio    |   44 dB     |
+      6. Slew Rate                      |  1.6 V/uSec |
+      7. Power Consumption              |             |
+      8. Supply current                 |             |
+     -------------------------------------------------------------------------
+
+
+V. Miscellaneous
+   A. ADE Expressions Used
+      1. Input Offset Voltage:
+         Vio = abs((value(VT("INP") cross(VT("/Vout") 0.09 1 "falling")) - value(VT("INM") cross(VT("/Vout") 0.09 1 "falling"))))
+
+      2. Common-Mode Gain:
+         Acm = (value(VT("Vout3") 1.8e-06) / value(VT("Vcm") 1.8e-06))
+	
+      3. Open-Loop Gain:
+         Aol = (value(VT("/Vout2") 1.8e-06) / (value(VT("/INP2") 1.8e-06) - value(VT("/INM2") 1.8e-06)))
+	
+      4. Common-Mode Rejection Ratio:
+         CMRR = 20log( Aol / Acm )
+              = dB20((value(VT("/Vout2") 1.8e-06) / (value(VT("/INP2") 1.8e-06) - value(VT("/INM2") 1.8e-06)) / (value(VT("Vout3") 1.8e-06) / value(VT("Vcm") 1.8e-06))))
+      
+      5. Slew Rate:
+         SR = dV / dT
+            =((value(VT("Vout2") cross(VT("Vout2") 780m 1 "rising" )) - value(VT("Vout2") cross(VT("Vout2") 300m 1 "rising" )))/(cross(VT("Vout2") 780m 1 "rising" ) - cross(VT("Vout2") 300m 1 "rising" )))*1E-6
+	 Where: dV = value(VT("Vout2") cross(VT("Vout2") 780m 1 "rising" )) - value(VT("Vout2") cross(VT("Vout2") 300m 1 "rising" ))
+	        dT = cross(VT("Vout2") 780m 1 "rising" ) - cross(VT("Vout2") 300m 1 "rising" )
+ 
+      6. AC Gain at 1K Hz:
+         Aac = value(mag(VF("/OUT_AC_3BIT")) 1000)
+
+      7. AC response band-wdith @3dB:
+         AC_BW = bandwidth(mag(VF("/OUT_AC_3BIT")) 3 "low" )
+      
+
+   B. Design Optimization with ADE, NeoCircuit, NeoCell, Assura, VXL:
+   
+      ---------------------------------------------------------- (120 character width) ---------------------------------
+	  Activity                                    |      View         |       NeoCktDB   & Note              
+      =================================================================================================================
+      0. Run simulation in ADE for check for the      |                   | $NEOWA/snapshot/
+         design differences between old and new node  |                   |cascode_opamp_180n_vs_90n_before_sizing.png
+	 
+      1. Optimize design with NeoCircuit:
+         a. In NeoCkt, enter "Design Variable"        |                   |                              
+         b. In NeoCkt, enter "Simulation" states      |                   |                              
+            ADE states: i. Trans_12u_Gain_Vio_CMRR_SR |                   |                            
+	                ii. dc_ac10G_2                |                   |                             
+         c. In NeoCkt, enter "Design Goals"           |                   |                             
+         d. In NeoCkt, run "Schematic Points"         | schematic_init    | OpAmp1_init_schematic_points.NeoCktDB
+             ==> Failed on some specs.                |                   |
+         e. In NeoCkt, run "local Optimization"       |                   | OpAmp2_local_sizing.NeoCktDB
+            ==> Passed ... All specs are met.         |                   |
+                (Elapse time = 14 minutes)            |                   |
+         f. Backannotate device size to schematic     |                   |
+      
+      2. Run simulation in ADE and use either the     |                   | $NEOWA/snapshot/
+         waveform overlay or two sub-window for       |                   | 
+	 for apple-to-apple comparision.              |                   |cascode_opamp_180n_vs_90n_after_gsizing.png
+
+      3. Implement the physical design with NeoCell:  |                   |
+         a. Enter physical constraints                |                   |
+	 b. Perfrom initial device placement.         | layout_place1a    |
+	 c. Improve the placement by adjust cellplan, | schematic_place_adjusted |
+	    and device finger/multiplicity; and       | layout_place1b    |         
+	    perfrom NeoCell ECO.                      |                   |
+         d. Route all nets                            | layout_route1b    |
+	 e. Add ESD protection and run DRC/LVS        | layout1b          |
+	 f. Run RC extraction with Assura-RCX         | av_rcx1b          |
+	 
+      4. Verify the impact of RC parasitics for       |                   |
+         closing design loop.                         |                   |
+	 a. Run NeoCkt ECO with the extracted view.   |                   | OpAmp4a_av_rcx1b.NeoCktDB
+	    =>Fail on AC bandwidth                    |                   | 
+	 b. Run NeoCkt local optimization             |                   | OpAmp4b_av_rcx1b_lsize1.NeoCktDB
+	 c. Backannotate device size to schematic     | schematic_rcx_lsize|
+	 d. Run NeoCell ECO for update device size.   | layout_place2a    |
+	    Analyze the change on block floor plan,   |                   |
+	    adjust device finger, cellPlan, placement.| layout_place2b
+	 e. Run NeoCell routing                       | layout_route2b    |
+	 f. Add ESD protection and DRC/LVS correction | layout2b          |
+	 g. Run Assura RC extraction                  | av_rcx2b          |
+	 h. Run NeoCkt ECO with extracted view:       |                   | OpAmp5_av_rcx2b.NeoCktDB
+	    **** Yahoo... all specs are met! ****     |                   |
+	    Note: Don't forget to turn off ECO:       |                   |
+	            [x] Extracted Netlist Mode        |                   |
+		  for switching from extracted view   |                   |
+		  to schematic view in config.        |                   |
+		   
+      5. Optional, nnotate parasitics to schematic:   |                   |
+      	 a. On ADE, run simulation to                 |                   |
+	    "Config_OpAmp_in_Ref_Ladder"              |                   |
+	 b. <for detail steps, please refer to        |                   |
+	    "Doc_Specs" view of Compartor_Actuator.   |                   |
+	 c. Save schematic for just in case.          | schematic2b       |   
+	 	 
+	   
+      6. Close loop with simulation for compare       |                   |
+         block behavior between before and after RAD  |                   |
+	 optimization:
+	 a. On ADE, run simulation to                 |                   |
+	    "Config_OpAmp_in_Ref_Ladder"              |                   |
+	    and put them to different sub-window.     |                   |
+	 b. Compare results                           |                   | cascode_opamp_180n_vs_90n_afterRAD.png
+	 **** Excellent RAD optimization - Cheer! ****|                   |
+------------------------------------------------------------------------------------------------------------------------	 
+	 

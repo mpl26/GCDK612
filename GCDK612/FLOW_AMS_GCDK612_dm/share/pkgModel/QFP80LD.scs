@@ -1,0 +1,1375 @@
+// BEGIN THE SPICE SUB-CIRCUIT OF PACKAGE "80LDQFP"
+// 
+// Created for project "80LDQFP"
+// Created by FMTC, SPS, Motorola Inc. 
+// Created at Mon Jan 27 15:26:51 2003
+//  Modified for Spectre by rbean on Feb 3, 2003.
+// 
+// Format: This sub-circuit is HSPICE, PSPICE, Berkely SPICE compatible
+// Since Mica is case sensitive, lower case is used in the model.
+
+// In the model, minimum K factor included is set to be 5.000E-02.
+// In the model, minimum mutual C is set to be 1.000E-14 F.
+// In the model, minimum mutual R is set to be 1.000E-03 Ohm.
+// 
+//  Nodes are ordered sequentially, starting from a corner
+// 
+// node  1     1                         at die side
+// node  2     2                         at die side
+// node  3     3                         at die side
+// node  4     4                         at die side
+// node  5     5                         at die side
+// node  6     6                         at die side
+// node  7     7                         at die side
+// node  8     8                         at die side
+// node  9     9                         at die side
+// node  10    10                        at die side
+// node  11    11                        at die side
+// node  12    12                        at die side
+// node  13    13                        at die side
+// node  14    14                        at die side
+// node  15    15                        at die side
+// node  16    16                        at die side
+// node  17    17                        at die side
+// node  18    18                        at die side
+// node  19    19                        at die side
+// node  20    20                        at die side
+// node  21    21                        at die side
+// node  22    22                        at die side
+// node  23    23                        at die side
+// node  24    24                        at die side
+// node  25    25                        at die side
+// node  26    26                        at die side
+// node  27    27                        at die side
+// node  28    28                        at die side
+// node  29    29                        at die side
+// node  30    30                        at die side
+// node  31    31                        at die side
+// node  32    32                        at die side
+// node  33    33                        at die side
+// node  34    34                        at die side
+// node  35    35                        at die side
+// node  36    36                        at die side
+// node  37    37                        at die side
+// node  38    38                        at die side
+// node  39    39                        at die side
+// node  40    40                        at die side
+// node  41    41                        at die side
+// node  42    42                        at die side
+// node  43    43                        at die side
+// node  44    44                        at die side
+// node  45    45                        at die side
+// node  46    46                        at die side
+// node  47    47                        at die side
+// node  48    48                        at die side
+// node  49    49                        at die side
+// node  50    50                        at die side
+// node  51    51                        at die side
+// node  52    52                        at die side
+// node  53    53                        at die side
+// node  54    54                        at die side
+// node  55    55                        at die side
+// node  56    56                        at die side
+// node  57    57                        at die side
+// node  58    58                        at die side
+// node  59    59                        at die side
+// node  60    60                        at die side
+// node  61    61                        at die side
+// node  62    62                        at die side
+// node  63    63                        at die side
+// node  64    64                        at die side
+// node  65    65                        at die side
+// node  66    66                        at die side
+// node  67    67                        at die side
+// node  68    68                        at die side
+// node  69    69                        at die side
+// node  70    70                        at die side
+// node  71    71                        at die side
+// node  72    72                        at die side
+// node  73    73                        at die side
+// node  74    74                        at die side
+// node  75    75                        at die side
+// node  76    76                        at die side
+// node  77    77                        at die side
+// node  78    78                        at die side
+// node  79    79                        at die side
+// node  80    80                        at die side
+// node  81    1                         at board side
+// node  82    2                         at board side
+// node  83    3                         at board side
+// node  84    4                         at board side
+// node  85    5                         at board side
+// node  86    6                         at board side
+// node  87    7                         at board side
+// node  88    8                         at board side
+// node  89    9                         at board side
+// node  90    10                        at board side
+// node  91    11                        at board side
+// node  92    12                        at board side
+// node  93    13                        at board side
+// node  94    14                        at board side
+// node  95    15                        at board side
+// node  96    16                        at board side
+// node  97    17                        at board side
+// node  98    18                        at board side
+// node  99    19                        at board side
+// node  100   20                        at board side
+// node  101   21                        at board side
+// node  102   22                        at board side
+// node  103   23                        at board side
+// node  104   24                        at board side
+// node  105   25                        at board side
+// node  106   26                        at board side
+// node  107   27                        at board side
+// node  108   28                        at board side
+// node  109   29                        at board side
+// node  110   30                        at board side
+// node  111   31                        at board side
+// node  112   32                        at board side
+// node  113   33                        at board side
+// node  114   34                        at board side
+// node  115   35                        at board side
+// node  116   36                        at board side
+// node  117   37                        at board side
+// node  118   38                        at board side
+// node  119   39                        at board side
+// node  120   40                        at board side
+// node  121   41                        at board side
+// node  122   42                        at board side
+// node  123   43                        at board side
+// node  124   44                        at board side
+// node  125   45                        at board side
+// node  126   46                        at board side
+// node  127   47                        at board side
+// node  128   48                        at board side
+// node  129   49                        at board side
+// node  130   50                        at board side
+// node  131   51                        at board side
+// node  132   52                        at board side
+// node  133   53                        at board side
+// node  134   54                        at board side
+// node  135   55                        at board side
+// node  136   56                        at board side
+// node  137   57                        at board side
+// node  138   58                        at board side
+// node  139   59                        at board side
+// node  140   60                        at board side
+// node  141   61                        at board side
+// node  142   62                        at board side
+// node  143   63                        at board side
+// node  144   64                        at board side
+// node  145   65                        at board side
+// node  146   66                        at board side
+// node  147   67                        at board side
+// node  148   68                        at board side
+// node  149   69                        at board side
+// node  150   70                        at board side
+// node  151   71                        at board side
+// node  152   72                        at board side
+// node  153   73                        at board side
+// node  154   74                        at board side
+// node  155   75                        at board side
+// node  156   76                        at board side
+// node  157   77                        at board side
+// node  158   78                        at board side
+// node  159   79                        at board side
+// node  160   80                        at board side
+// node  161   Ground_Bias
+
+subckt QFP80LD (1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161)
+
+//     1    2    3    4    5    6    7    8    9    10  
+//     11   12   13   14   15   16   17   18   19   20  
+//     21   22   23   24   25   26   27   28   29   30  
+//     31   32   33   34   35   36   37   38   39   40  
+//     41   42   43   44   45   46   47   48   49   50  
+//     51   52   53   54   55   56   57   58   59   60  
+//     61   62   63   64   65   66   67   68   69   70  
+//     71   72   73   74   75   76   77   78   79   80  
+//     81   82   83   84   85   86   87   88   89   90  
+//     91   92   93   94   95   96   97   98   99   100 
+//     101  102  103  104  105  106  107  108  109  110 
+//     111  112  113  114  115  116  117  118  119  120 
+//     121  122  123  124  125  126  127  128  129  130 
+//     131  132  133  134  135  136  137  138  139  140 
+//     141  142  143  144  145  146  147  148  149  150 
+//     151  152  153  154  155  156  157  158  159  160 
+//     161 
+
+c0001    ( 162    161 ) capacitor   c=1.804e-13    
+c0002    ( 163    161 ) capacitor   c=1.347e-13    
+c0003    ( 164    161 ) capacitor   c=1.252e-13    
+c0004    ( 165    161 ) capacitor   c=1.222e-13    
+c0005    ( 166    161 ) capacitor   c=1.224e-13    
+c0006    ( 167    161 ) capacitor   c=1.164e-13    
+c0007    ( 168    161 ) capacitor   c=1.126e-13    
+c0008    ( 169    161 ) capacitor   c=1.181e-13    
+c0009    ( 170    161 ) capacitor   c=1.178e-13    
+c0010    ( 171    161 ) capacitor   c=1.183e-13    
+c0011    ( 172    161 ) capacitor   c=1.169e-13    
+c0012    ( 173    161 ) capacitor   c=1.179e-13    
+c0013    ( 174    161 ) capacitor   c=1.177e-13    
+c0014    ( 175    161 ) capacitor   c=1.142e-13    
+c0015    ( 176    161 ) capacitor   c=1.157e-13    
+c0016    ( 177    161 ) capacitor   c=1.212e-13    
+c0017    ( 178    161 ) capacitor   c=1.222e-13    
+c0018    ( 179    161 ) capacitor   c=1.260e-13    
+c0019    ( 180    161 ) capacitor   c=1.348e-13    
+c0020    ( 181    161 ) capacitor   c=1.800e-13    
+c0021    ( 182    161 ) capacitor   c=1.780e-13    
+c0022    ( 183    161 ) capacitor   c=1.339e-13    
+c0023    ( 184    161 ) capacitor   c=1.255e-13    
+c0024    ( 185    161 ) capacitor   c=1.220e-13    
+c0025    ( 186    161 ) capacitor   c=1.202e-13    
+c0026    ( 187    161 ) capacitor   c=1.153e-13    
+c0027    ( 188    161 ) capacitor   c=1.133e-13    
+c0028    ( 189    161 ) capacitor   c=1.166e-13    
+c0029    ( 190    161 ) capacitor   c=1.161e-13    
+c0030    ( 191    161 ) capacitor   c=1.161e-13    
+c0031    ( 192    161 ) capacitor   c=1.151e-13    
+c0032    ( 193    161 ) capacitor   c=1.157e-13    
+c0033    ( 194    161 ) capacitor   c=1.151e-13    
+c0034    ( 195    161 ) capacitor   c=1.110e-13    
+c0035    ( 196    161 ) capacitor   c=1.141e-13    
+c0036    ( 197    161 ) capacitor   c=1.207e-13    
+c0037    ( 198    161 ) capacitor   c=1.234e-13    
+c0038    ( 199    161 ) capacitor   c=1.281e-13    
+c0039    ( 200    161 ) capacitor   c=1.405e-13    
+c0040    ( 201    161 ) capacitor   c=1.874e-13    
+c0041    ( 202    161 ) capacitor   c=1.810e-13    
+c0042    ( 203    161 ) capacitor   c=1.337e-13    
+c0043    ( 204    161 ) capacitor   c=1.245e-13    
+c0044    ( 205    161 ) capacitor   c=1.203e-13    
+c0045    ( 206    161 ) capacitor   c=1.186e-13    
+c0046    ( 207    161 ) capacitor   c=1.137e-13    
+c0047    ( 208    161 ) capacitor   c=1.115e-13    
+c0048    ( 209    161 ) capacitor   c=1.156e-13    
+c0049    ( 210    161 ) capacitor   c=1.168e-13    
+c0050    ( 211    161 ) capacitor   c=1.163e-13    
+c0051    ( 212    161 ) capacitor   c=1.156e-13    
+c0052    ( 213    161 ) capacitor   c=1.163e-13    
+c0053    ( 214    161 ) capacitor   c=1.154e-13    
+c0054    ( 215    161 ) capacitor   c=1.113e-13    
+c0055    ( 216    161 ) capacitor   c=1.144e-13    
+c0056    ( 217    161 ) capacitor   c=1.199e-13    
+c0057    ( 218    161 ) capacitor   c=1.220e-13    
+c0058    ( 219    161 ) capacitor   c=1.250e-13    
+c0059    ( 220    161 ) capacitor   c=1.337e-13    
+c0060    ( 221    161 ) capacitor   c=1.802e-13    
+c0061    ( 222    161 ) capacitor   c=1.806e-13    
+c0062    ( 223    161 ) capacitor   c=1.373e-13    
+c0063    ( 224    161 ) capacitor   c=1.256e-13    
+c0064    ( 225    161 ) capacitor   c=1.228e-13    
+c0065    ( 226    161 ) capacitor   c=1.199e-13    
+c0066    ( 227    161 ) capacitor   c=1.141e-13    
+c0067    ( 228    161 ) capacitor   c=1.103e-13    
+c0068    ( 229    161 ) capacitor   c=1.167e-13    
+c0069    ( 230    161 ) capacitor   c=1.143e-13    
+c0070    ( 231    161 ) capacitor   c=1.170e-13    
+c0071    ( 232    161 ) capacitor   c=1.151e-13    
+c0072    ( 233    161 ) capacitor   c=1.168e-13    
+c0073    ( 234    161 ) capacitor   c=1.171e-13    
+c0074    ( 235    161 ) capacitor   c=1.118e-13    
+c0075    ( 236    161 ) capacitor   c=1.132e-13    
+c0076    ( 237    161 ) capacitor   c=1.190e-13    
+c0077    ( 238    161 ) capacitor   c=1.207e-13    
+c0078    ( 239    161 ) capacitor   c=1.255e-13    
+c0079    ( 240    161 ) capacitor   c=1.323e-13    
+c0080    ( 241    161 ) capacitor   c=1.784e-13    
+c00010002    ( 162    163 ) capacitor   c=1.521e-13    
+c00010003    ( 162    164 ) capacitor   c=2.587e-14    
+c00010004    ( 162    165 ) capacitor   c=1.043e-14    
+c00010079    ( 162    240 ) capacitor   c=1.449e-14    
+c00010080    ( 162    241 ) capacitor   c=5.225e-14    
+c00020003    ( 163    164 ) capacitor   c=1.342e-13    
+c00020004    ( 163    165 ) capacitor   c=2.206e-14    
+c00020080    ( 163    241 ) capacitor   c=1.448e-14    
+c00030004    ( 164    165 ) capacitor   c=1.264e-13    
+c00030005    ( 164    166 ) capacitor   c=2.035e-14    
+c00040005    ( 165    166 ) capacitor   c=1.199e-13    
+c00040006    ( 165    167 ) capacitor   c=1.940e-14    
+c00050006    ( 166    167 ) capacitor   c=1.151e-13    
+c00050007    ( 166    168 ) capacitor   c=1.921e-14    
+c00060007    ( 167    168 ) capacitor   c=1.039e-13    
+c00060008    ( 167    169 ) capacitor   c=2.002e-14    
+c00070008    ( 168    169 ) capacitor   c=1.016e-13    
+c00070009    ( 168    170 ) capacitor   c=1.753e-14    
+c00080009    ( 169    170 ) capacitor   c=1.005e-13    
+c00080010    ( 169    171 ) capacitor   c=1.758e-14    
+c00090010    ( 170    171 ) capacitor   c=9.741e-14    
+c00090011    ( 170    172 ) capacitor   c=1.692e-14    
+c00100011    ( 171    172 ) capacitor   c=9.399e-14    
+c00100012    ( 171    173 ) capacitor   c=1.794e-14    
+c00110012    ( 172    173 ) capacitor   c=9.881e-14    
+c00110013    ( 172    174 ) capacitor   c=1.735e-14    
+c00120013    ( 173    174 ) capacitor   c=1.007e-13    
+c00120014    ( 173    175 ) capacitor   c=1.849e-14    
+c00130014    ( 174    175 ) capacitor   c=1.034e-13    
+c00130015    ( 174    176 ) capacitor   c=1.970e-14    
+c00140015    ( 175    176 ) capacitor   c=1.059e-13    
+c00140016    ( 175    177 ) capacitor   c=1.986e-14    
+c00150016    ( 176    177 ) capacitor   c=1.147e-13    
+c00150017    ( 176    178 ) capacitor   c=1.927e-14    
+c00160017    ( 177    178 ) capacitor   c=1.221e-13    
+c00160018    ( 177    179 ) capacitor   c=2.081e-14    
+c00170018    ( 178    179 ) capacitor   c=1.278e-13    
+c00170019    ( 178    180 ) capacitor   c=2.208e-14    
+c00170020    ( 178    181 ) capacitor   c=1.035e-14    
+c00180019    ( 179    180 ) capacitor   c=1.360e-13    
+c00180020    ( 179    181 ) capacitor   c=2.571e-14    
+c00190020    ( 180    181 ) capacitor   c=1.484e-13    
+c00190021    ( 180    182 ) capacitor   c=1.393e-14    
+c00200021    ( 181    182 ) capacitor   c=5.073e-14    
+c00200022    ( 181    183 ) capacitor   c=1.484e-14    
+c00210022    ( 182    183 ) capacitor   c=1.513e-13    
+c00210023    ( 182    184 ) capacitor   c=2.623e-14    
+c00210024    ( 182    185 ) capacitor   c=1.048e-14    
+c00220023    ( 183    184 ) capacitor   c=1.371e-13    
+c00220024    ( 183    185 ) capacitor   c=2.281e-14    
+c00230024    ( 184    185 ) capacitor   c=1.305e-13    
+c00230025    ( 184    186 ) capacitor   c=2.091e-14    
+c00240025    ( 185    186 ) capacitor   c=1.213e-13    
+c00240026    ( 185    187 ) capacitor   c=2.019e-14    
+c00250026    ( 186    187 ) capacitor   c=1.151e-13    
+c00250027    ( 186    188 ) capacitor   c=1.940e-14    
+c00260027    ( 187    188 ) capacitor   c=1.039e-13    
+c00260028    ( 187    189 ) capacitor   c=1.930e-14    
+c00270028    ( 188    189 ) capacitor   c=1.029e-13    
+c00270029    ( 188    190 ) capacitor   c=1.806e-14    
+c00280029    ( 189    190 ) capacitor   c=9.956e-14    
+c00280030    ( 189    191 ) capacitor   c=1.736e-14    
+c00290030    ( 190    191 ) capacitor   c=9.746e-14    
+c00290031    ( 190    192 ) capacitor   c=1.735e-14    
+c00300031    ( 191    192 ) capacitor   c=9.576e-14    
+c00300032    ( 191    193 ) capacitor   c=1.783e-14    
+c00310032    ( 192    193 ) capacitor   c=9.794e-14    
+c00310033    ( 192    194 ) capacitor   c=1.711e-14    
+c00320033    ( 193    194 ) capacitor   c=9.962e-14    
+c00320034    ( 193    195 ) capacitor   c=1.830e-14    
+c00330034    ( 194    195 ) capacitor   c=1.050e-13    
+c00330035    ( 194    196 ) capacitor   c=2.041e-14    
+c00340035    ( 195    196 ) capacitor   c=1.076e-13    
+c00340036    ( 195    197 ) capacitor   c=2.031e-14    
+c00350036    ( 196    197 ) capacitor   c=1.170e-13    
+c00350037    ( 196    198 ) capacitor   c=2.013e-14    
+c00360037    ( 197    198 ) capacitor   c=1.244e-13    
+c00360038    ( 197    199 ) capacitor   c=2.155e-14    
+c00370038    ( 198    199 ) capacitor   c=1.312e-13    
+c00370039    ( 198    200 ) capacitor   c=2.391e-14    
+c00370040    ( 198    201 ) capacitor   c=1.091e-14    
+c00380039    ( 199    200 ) capacitor   c=1.399e-13    
+c00380040    ( 199    201 ) capacitor   c=2.622e-14    
+c00390040    ( 200    201 ) capacitor   c=1.491e-13    
+c00390041    ( 200    202 ) capacitor   c=1.335e-14    
+c00400041    ( 201    202 ) capacitor   c=5.098e-14    
+c00400042    ( 201    203 ) capacitor   c=1.443e-14    
+c00410042    ( 202    203 ) capacitor   c=1.521e-13    
+c00410043    ( 202    204 ) capacitor   c=2.648e-14    
+c00410044    ( 202    205 ) capacitor   c=1.060e-14    
+c00420043    ( 203    204 ) capacitor   c=1.353e-13    
+c00420044    ( 203    205 ) capacitor   c=2.222e-14    
+c00430044    ( 204    205 ) capacitor   c=1.290e-13    
+c00430045    ( 204    206 ) capacitor   c=2.057e-14    
+c00440045    ( 205    206 ) capacitor   c=1.214e-13    
+c00440046    ( 205    207 ) capacitor   c=1.932e-14    
+c00450046    ( 206    207 ) capacitor   c=1.136e-13    
+c00450047    ( 206    208 ) capacitor   c=1.865e-14    
+c00460047    ( 207    208 ) capacitor   c=1.025e-13    
+c00460048    ( 207    209 ) capacitor   c=1.880e-14    
+c00470048    ( 208    209 ) capacitor   c=1.006e-13    
+c00470049    ( 208    210 ) capacitor   c=1.764e-14    
+c00480049    ( 209    210 ) capacitor   c=9.917e-14    
+c00480050    ( 209    211 ) capacitor   c=1.647e-14    
+c00490050    ( 210    211 ) capacitor   c=9.658e-14    
+c00490051    ( 210    212 ) capacitor   c=1.666e-14    
+c00500051    ( 211    212 ) capacitor   c=9.182e-14    
+c00500052    ( 211    213 ) capacitor   c=1.706e-14    
+c00510052    ( 212    213 ) capacitor   c=9.748e-14    
+c00510053    ( 212    214 ) capacitor   c=1.660e-14    
+c00520053    ( 213    214 ) capacitor   c=9.892e-14    
+c00520054    ( 213    215 ) capacitor   c=1.760e-14    
+c00530054    ( 214    215 ) capacitor   c=1.007e-13    
+c00530055    ( 214    216 ) capacitor   c=1.909e-14    
+c00540055    ( 215    216 ) capacitor   c=1.034e-13    
+c00540056    ( 215    217 ) capacitor   c=1.861e-14    
+c00550056    ( 216    217 ) capacitor   c=1.118e-13    
+c00550057    ( 216    218 ) capacitor   c=1.884e-14    
+c00560057    ( 217    218 ) capacitor   c=1.203e-13    
+c00560058    ( 217    219 ) capacitor   c=2.018e-14    
+c00570058    ( 218    219 ) capacitor   c=1.292e-13    
+c00570059    ( 218    220 ) capacitor   c=2.224e-14    
+c00570060    ( 218    221 ) capacitor   c=1.038e-14    
+c00580059    ( 219    220 ) capacitor   c=1.349e-13    
+c00580060    ( 219    221 ) capacitor   c=2.579e-14    
+c00590060    ( 220    221 ) capacitor   c=1.485e-13    
+c00590061    ( 220    222 ) capacitor   c=1.359e-14    
+c00600061    ( 221    222 ) capacitor   c=5.007e-14    
+c00600062    ( 221    223 ) capacitor   c=1.433e-14    
+c00610062    ( 222    223 ) capacitor   c=1.484e-13    
+c00610063    ( 222    224 ) capacitor   c=2.487e-14    
+c00610064    ( 222    225 ) capacitor   c=1.040e-14    
+c00620063    ( 223    224 ) capacitor   c=1.365e-13    
+c00620064    ( 223    225 ) capacitor   c=2.365e-14    
+c00630064    ( 224    225 ) capacitor   c=1.274e-13    
+c00630065    ( 224    226 ) capacitor   c=2.049e-14    
+c00640065    ( 225    226 ) capacitor   c=1.251e-13    
+c00640066    ( 225    227 ) capacitor   c=2.012e-14    
+c00650066    ( 226    227 ) capacitor   c=1.160e-13    
+c00650067    ( 226    228 ) capacitor   c=1.914e-14    
+c00660067    ( 227    228 ) capacitor   c=1.047e-13    
+c00660068    ( 227    229 ) capacitor   c=2.062e-14    
+c00670068    ( 228    229 ) capacitor   c=1.009e-13    
+c00670069    ( 228    230 ) capacitor   c=1.678e-14    
+c00680069    ( 229    230 ) capacitor   c=9.993e-14    
+c00680070    ( 229    231 ) capacitor   c=1.785e-14    
+c00690070    ( 230    231 ) capacitor   c=9.522e-14    
+c00690071    ( 230    232 ) capacitor   c=1.592e-14    
+c00700071    ( 231    232 ) capacitor   c=9.256e-14    
+c00700072    ( 231    233 ) capacitor   c=1.750e-14    
+c00710072    ( 232    233 ) capacitor   c=9.625e-14    
+c00710073    ( 232    234 ) capacitor   c=1.680e-14    
+c00720073    ( 233    234 ) capacitor   c=1.003e-13    
+c00720074    ( 233    235 ) capacitor   c=1.748e-14    
+c00730074    ( 234    235 ) capacitor   c=1.016e-13    
+c00730075    ( 234    236 ) capacitor   c=1.977e-14    
+c00740075    ( 235    236 ) capacitor   c=1.063e-13    
+c00740076    ( 235    237 ) capacitor   c=2.003e-14    
+c00750076    ( 236    237 ) capacitor   c=1.170e-13    
+c00750077    ( 236    238 ) capacitor   c=1.963e-14    
+c00760077    ( 237    238 ) capacitor   c=1.224e-13    
+c00760078    ( 237    239 ) capacitor   c=2.101e-14    
+c00770078    ( 238    239 ) capacitor   c=1.294e-13    
+c00770079    ( 238    240 ) capacitor   c=2.161e-14    
+c00770080    ( 238    241 ) capacitor   c=1.036e-14    
+c00780079    ( 239    240 ) capacitor   c=1.352e-13    
+c00780080    ( 239    241 ) capacitor   c=2.639e-14    
+c00790080    ( 240    241 ) capacitor   c=1.483e-13    
+l0001      ( 1    322 ) inductor   l=2.591e-09   
+l0002      ( 2    323 ) inductor   l=2.485e-09   
+l0003      ( 3    324 ) inductor   l=2.420e-09   
+l0004      ( 4    325 ) inductor   l=2.353e-09   
+l0005      ( 5    326 ) inductor   l=2.274e-09   
+l0006      ( 6    327 ) inductor   l=2.255e-09   
+l0007      ( 7    328 ) inductor   l=2.250e-09   
+l0008      ( 8    329 ) inductor   l=2.195e-09   
+l0009      ( 9    330 ) inductor   l=2.168e-09   
+l0010     ( 10    331 ) inductor   l=2.153e-09   
+l0011     ( 11    332 ) inductor   l=2.164e-09   
+l0012     ( 12    333 ) inductor   l=2.224e-09   
+l0013     ( 13    334 ) inductor   l=2.192e-09   
+l0014     ( 14    335 ) inductor   l=2.291e-09   
+l0015     ( 15    336 ) inductor   l=2.261e-09   
+l0016     ( 16    337 ) inductor   l=2.291e-09   
+l0017     ( 17    338 ) inductor   l=2.360e-09   
+l0018     ( 18    339 ) inductor   l=2.456e-09   
+l0019     ( 19    340 ) inductor   l=2.547e-09   
+l0020     ( 20    341 ) inductor   l=2.657e-09   
+l0021     ( 21    342 ) inductor   l=2.620e-09   
+l0022     ( 22    343 ) inductor   l=2.488e-09   
+l0023     ( 23    344 ) inductor   l=2.399e-09   
+l0024     ( 24    345 ) inductor   l=2.311e-09   
+l0025     ( 25    346 ) inductor   l=2.256e-09   
+l0026     ( 26    347 ) inductor   l=2.222e-09   
+l0027     ( 27    348 ) inductor   l=2.209e-09   
+l0028     ( 28    349 ) inductor   l=2.164e-09   
+l0029     ( 29    350 ) inductor   l=2.142e-09   
+l0030     ( 30    351 ) inductor   l=2.132e-09   
+l0031     ( 31    352 ) inductor   l=2.143e-09   
+l0032     ( 32    353 ) inductor   l=2.156e-09   
+l0033     ( 33    354 ) inductor   l=2.192e-09   
+l0034     ( 34    355 ) inductor   l=2.280e-09   
+l0035     ( 35    356 ) inductor   l=2.314e-09   
+l0036     ( 36    357 ) inductor   l=2.381e-09   
+l0037     ( 37    358 ) inductor   l=2.480e-09   
+l0038     ( 38    359 ) inductor   l=2.594e-09   
+l0039     ( 39    360 ) inductor   l=2.721e-09   
+l0040     ( 40    361 ) inductor   l=2.729e-09   
+l0041     ( 41    362 ) inductor   l=2.555e-09   
+l0042     ( 42    363 ) inductor   l=2.430e-09   
+l0043     ( 43    364 ) inductor   l=2.324e-09   
+l0044     ( 44    365 ) inductor   l=2.252e-09   
+l0045     ( 45    366 ) inductor   l=2.178e-09   
+l0046     ( 46    367 ) inductor   l=2.148e-09   
+l0047     ( 47    368 ) inductor   l=2.147e-09   
+l0048     ( 48    369 ) inductor   l=2.096e-09   
+l0049     ( 49    370 ) inductor   l=2.084e-09   
+l0050     ( 50    371 ) inductor   l=2.068e-09   
+l0051     ( 51    372 ) inductor   l=2.075e-09   
+l0052     ( 52    373 ) inductor   l=2.082e-09   
+l0053     ( 53    374 ) inductor   l=2.100e-09   
+l0054     ( 54    375 ) inductor   l=2.161e-09   
+l0055     ( 55    376 ) inductor   l=2.170e-09   
+l0056     ( 56    377 ) inductor   l=2.200e-09   
+l0057     ( 57    378 ) inductor   l=2.250e-09   
+l0058     ( 58    379 ) inductor   l=2.331e-09   
+l0059     ( 59    380 ) inductor   l=2.423e-09   
+l0060     ( 60    381 ) inductor   l=2.513e-09   
+l0061     ( 61    382 ) inductor   l=2.597e-09   
+l0062     ( 62    383 ) inductor   l=2.526e-09   
+l0063     ( 63    384 ) inductor   l=2.411e-09   
+l0064     ( 64    385 ) inductor   l=2.321e-09   
+l0065     ( 65    386 ) inductor   l=2.239e-09   
+l0066     ( 66    387 ) inductor   l=2.192e-09   
+l0067     ( 67    388 ) inductor   l=2.177e-09   
+l0068     ( 68    389 ) inductor   l=2.121e-09   
+l0069     ( 69    390 ) inductor   l=2.109e-09   
+l0070     ( 70    391 ) inductor   l=2.071e-09   
+l0071     ( 71    392 ) inductor   l=2.084e-09   
+l0072     ( 72    393 ) inductor   l=2.092e-09   
+l0073     ( 73    394 ) inductor   l=2.106e-09   
+l0074     ( 74    395 ) inductor   l=2.154e-09   
+l0075     ( 75    396 ) inductor   l=2.168e-09   
+l0076     ( 76    397 ) inductor   l=2.208e-09   
+l0077     ( 77    398 ) inductor   l=2.272e-09   
+l0078     ( 78    399 ) inductor   l=2.373e-09   
+l0079     ( 79    400 ) inductor   l=2.476e-09   
+l0080     ( 80    401 ) inductor   l=2.603e-09   
+k00010002  mutual_inductor ind1=l0001  ind2=l0002   coupling=3.260e-01   
+k00010003  mutual_inductor ind1=l0001  ind2=l0003   coupling=1.725e-01   
+k00010004  mutual_inductor ind1=l0001  ind2=l0004   coupling=1.038e-01   
+k00010005  mutual_inductor ind1=l0001  ind2=l0005   coupling=6.730e-02   
+k00010078  mutual_inductor ind1=l0001  ind2=l0078   coupling=6.373e-02   
+k00010079  mutual_inductor ind1=l0001  ind2=l0079   coupling=9.472e-02   
+k00010080  mutual_inductor ind1=l0001  ind2=l0080   coupling=1.465e-01   
+k00020003  mutual_inductor ind1=l0002  ind2=l0003   coupling=3.161e-01   
+k00020004  mutual_inductor ind1=l0002  ind2=l0004   coupling=1.681e-01   
+k00020005  mutual_inductor ind1=l0002  ind2=l0005   coupling=1.017e-01   
+k00020006  mutual_inductor ind1=l0002  ind2=l0006   coupling=6.537e-02   
+k00020079  mutual_inductor ind1=l0002  ind2=l0079   coupling=6.615e-02   
+k00020080  mutual_inductor ind1=l0002  ind2=l0080   coupling=9.414e-02   
+k00030004  mutual_inductor ind1=l0003  ind2=l0004   coupling=3.114e-01   
+k00030005  mutual_inductor ind1=l0003  ind2=l0005   coupling=1.653e-01   
+k00030006  mutual_inductor ind1=l0003  ind2=l0006   coupling=9.860e-02   
+k00030007  mutual_inductor ind1=l0003  ind2=l0007   coupling=6.334e-02   
+k00030080  mutual_inductor ind1=l0003  ind2=l0080   coupling=6.263e-02   
+k00040005  mutual_inductor ind1=l0004  ind2=l0005   coupling=3.067e-01   
+k00040006  mutual_inductor ind1=l0004  ind2=l0006   coupling=1.607e-01   
+k00040007  mutual_inductor ind1=l0004  ind2=l0007   coupling=9.619e-02   
+k00040008  mutual_inductor ind1=l0004  ind2=l0008   coupling=6.242e-02   
+k00050006  mutual_inductor ind1=l0005  ind2=l0006   coupling=2.976e-01   
+k00050007  mutual_inductor ind1=l0005  ind2=l0007   coupling=1.570e-01   
+k00050008  mutual_inductor ind1=l0005  ind2=l0008   coupling=9.450e-02   
+k00050009  mutual_inductor ind1=l0005  ind2=l0009   coupling=6.074e-02   
+k00060007  mutual_inductor ind1=l0006  ind2=l0007   coupling=2.917e-01   
+k00060008  mutual_inductor ind1=l0006  ind2=l0008   coupling=1.540e-01   
+k00060009  mutual_inductor ind1=l0006  ind2=l0009   coupling=9.180e-02   
+k00060010  mutual_inductor ind1=l0006  ind2=l0010   coupling=5.951e-02   
+k00070008  mutual_inductor ind1=l0007  ind2=l0008   coupling=2.878e-01   
+k00070009  mutual_inductor ind1=l0007  ind2=l0009   coupling=1.505e-01   
+k00070010  mutual_inductor ind1=l0007  ind2=l0010   coupling=9.063e-02   
+k00070011  mutual_inductor ind1=l0007  ind2=l0011   coupling=5.934e-02   
+k00080009  mutual_inductor ind1=l0008  ind2=l0009   coupling=2.819e-01   
+k00080010  mutual_inductor ind1=l0008  ind2=l0010   coupling=1.486e-01   
+k00080011  mutual_inductor ind1=l0008  ind2=l0011   coupling=9.065e-02   
+k00080012  mutual_inductor ind1=l0008  ind2=l0012   coupling=5.882e-02   
+k00090010  mutual_inductor ind1=l0009  ind2=l0010   coupling=2.800e-01   
+k00090011  mutual_inductor ind1=l0009  ind2=l0011   coupling=1.500e-01   
+k00090012  mutual_inductor ind1=l0009  ind2=l0012   coupling=9.033e-02   
+k00090013  mutual_inductor ind1=l0009  ind2=l0013   coupling=6.029e-02   
+k00100011  mutual_inductor ind1=l0010  ind2=l0011   coupling=2.831e-01   
+k00100012  mutual_inductor ind1=l0010  ind2=l0012   coupling=1.491e-01   
+k00100013  mutual_inductor ind1=l0010  ind2=l0013   coupling=9.214e-02   
+k00100014  mutual_inductor ind1=l0010  ind2=l0014   coupling=5.999e-02   
+k00110012  mutual_inductor ind1=l0011  ind2=l0012   coupling=2.778e-01   
+k00110013  mutual_inductor ind1=l0011  ind2=l0013   coupling=1.504e-01   
+k00110014  mutual_inductor ind1=l0011  ind2=l0014   coupling=9.128e-02   
+k00110015  mutual_inductor ind1=l0011  ind2=l0015   coupling=6.069e-02   
+k00120013  mutual_inductor ind1=l0012  ind2=l0013   coupling=2.816e-01   
+k00120014  mutual_inductor ind1=l0012  ind2=l0014   coupling=1.498e-01   
+k00120015  mutual_inductor ind1=l0012  ind2=l0015   coupling=9.234e-02   
+k00120016  mutual_inductor ind1=l0012  ind2=l0016   coupling=6.170e-02   
+k00130014  mutual_inductor ind1=l0013  ind2=l0014   coupling=2.861e-01   
+k00130015  mutual_inductor ind1=l0013  ind2=l0015   coupling=1.549e-01   
+k00130016  mutual_inductor ind1=l0013  ind2=l0016   coupling=9.623e-02   
+k00130017  mutual_inductor ind1=l0013  ind2=l0017   coupling=6.440e-02   
+k00140015  mutual_inductor ind1=l0014  ind2=l0015   coupling=2.896e-01   
+k00140016  mutual_inductor ind1=l0014  ind2=l0016   coupling=1.582e-01   
+k00140017  mutual_inductor ind1=l0014  ind2=l0017   coupling=9.836e-02   
+k00140018  mutual_inductor ind1=l0014  ind2=l0018   coupling=6.496e-02   
+k00150016  mutual_inductor ind1=l0015  ind2=l0016   coupling=3.032e-01   
+k00150017  mutual_inductor ind1=l0015  ind2=l0017   coupling=1.660e-01   
+k00150018  mutual_inductor ind1=l0015  ind2=l0018   coupling=1.020e-01   
+k00150019  mutual_inductor ind1=l0015  ind2=l0019   coupling=6.834e-02   
+k00160017  mutual_inductor ind1=l0016  ind2=l0017   coupling=3.133e-01   
+k00160018  mutual_inductor ind1=l0016  ind2=l0018   coupling=1.692e-01   
+k00160019  mutual_inductor ind1=l0016  ind2=l0019   coupling=1.058e-01   
+k00160020  mutual_inductor ind1=l0016  ind2=l0020   coupling=6.947e-02   
+k00170018  mutual_inductor ind1=l0017  ind2=l0018   coupling=3.154e-01   
+k00170019  mutual_inductor ind1=l0017  ind2=l0019   coupling=1.743e-01   
+k00170020  mutual_inductor ind1=l0017  ind2=l0020   coupling=1.068e-01   
+k00180019  mutual_inductor ind1=l0018  ind2=l0019   coupling=3.258e-01   
+k00180020  mutual_inductor ind1=l0018  ind2=l0020   coupling=1.759e-01   
+k00180021  mutual_inductor ind1=l0018  ind2=l0021   coupling=6.343e-02   
+k00190020  mutual_inductor ind1=l0019  ind2=l0020   coupling=3.230e-01   
+k00190021  mutual_inductor ind1=l0019  ind2=l0021   coupling=9.347e-02   
+k00190022  mutual_inductor ind1=l0019  ind2=l0022   coupling=6.688e-02   
+k00200021  mutual_inductor ind1=l0020  ind2=l0021   coupling=1.448e-01   
+k00200022  mutual_inductor ind1=l0020  ind2=l0022   coupling=9.552e-02   
+k00200023  mutual_inductor ind1=l0020  ind2=l0023   coupling=6.423e-02   
+k00210022  mutual_inductor ind1=l0021  ind2=l0022   coupling=3.362e-01   
+k00210023  mutual_inductor ind1=l0021  ind2=l0023   coupling=1.798e-01   
+k00210024  mutual_inductor ind1=l0021  ind2=l0024   coupling=1.089e-01   
+k00210025  mutual_inductor ind1=l0021  ind2=l0025   coupling=6.988e-02   
+k00220023  mutual_inductor ind1=l0022  ind2=l0023   coupling=3.236e-01   
+k00220024  mutual_inductor ind1=l0022  ind2=l0024   coupling=1.737e-01   
+k00220025  mutual_inductor ind1=l0022  ind2=l0025   coupling=1.041e-01   
+k00220026  mutual_inductor ind1=l0022  ind2=l0026   coupling=6.732e-02   
+k00230024  mutual_inductor ind1=l0023  ind2=l0024   coupling=3.193e-01   
+k00230025  mutual_inductor ind1=l0023  ind2=l0025   coupling=1.683e-01   
+k00230026  mutual_inductor ind1=l0023  ind2=l0026   coupling=1.012e-01   
+k00230027  mutual_inductor ind1=l0023  ind2=l0027   coupling=6.451e-02   
+k00240025  mutual_inductor ind1=l0024  ind2=l0025   coupling=3.095e-01   
+k00240026  mutual_inductor ind1=l0024  ind2=l0026   coupling=1.637e-01   
+k00240027  mutual_inductor ind1=l0024  ind2=l0027   coupling=9.713e-02   
+k00240028  mutual_inductor ind1=l0024  ind2=l0028   coupling=6.294e-02   
+k00250026  mutual_inductor ind1=l0025  ind2=l0026   coupling=3.021e-01   
+k00250027  mutual_inductor ind1=l0025  ind2=l0027   coupling=1.579e-01   
+k00250028  mutual_inductor ind1=l0025  ind2=l0028   coupling=9.509e-02   
+k00250029  mutual_inductor ind1=l0025  ind2=l0029   coupling=6.128e-02   
+k00260027  mutual_inductor ind1=l0026  ind2=l0027   coupling=2.903e-01   
+k00260028  mutual_inductor ind1=l0026  ind2=l0028   coupling=1.535e-01   
+k00260029  mutual_inductor ind1=l0026  ind2=l0029   coupling=9.189e-02   
+k00260030  mutual_inductor ind1=l0026  ind2=l0030   coupling=6.013e-02   
+k00270028  mutual_inductor ind1=l0027  ind2=l0028   coupling=2.885e-01   
+k00270029  mutual_inductor ind1=l0027  ind2=l0029   coupling=1.522e-01   
+k00270030  mutual_inductor ind1=l0027  ind2=l0030   coupling=9.260e-02   
+k00270031  mutual_inductor ind1=l0027  ind2=l0031   coupling=6.158e-02   
+k00280029  mutual_inductor ind1=l0028  ind2=l0029   coupling=2.857e-01   
+k00280030  mutual_inductor ind1=l0028  ind2=l0030   coupling=1.520e-01   
+k00280031  mutual_inductor ind1=l0028  ind2=l0031   coupling=9.426e-02   
+k00280032  mutual_inductor ind1=l0028  ind2=l0032   coupling=6.190e-02   
+k00290030  mutual_inductor ind1=l0029  ind2=l0030   coupling=2.835e-01   
+k00290031  mutual_inductor ind1=l0029  ind2=l0031   coupling=1.552e-01   
+k00290032  mutual_inductor ind1=l0029  ind2=l0032   coupling=9.485e-02   
+k00290033  mutual_inductor ind1=l0029  ind2=l0033   coupling=6.215e-02   
+k00300031  mutual_inductor ind1=l0030  ind2=l0031   coupling=2.928e-01   
+k00300032  mutual_inductor ind1=l0030  ind2=l0032   coupling=1.556e-01   
+k00300033  mutual_inductor ind1=l0030  ind2=l0033   coupling=9.450e-02   
+k00300034  mutual_inductor ind1=l0030  ind2=l0034   coupling=6.325e-02   
+k00310032  mutual_inductor ind1=l0031  ind2=l0032   coupling=2.862e-01   
+k00310033  mutual_inductor ind1=l0031  ind2=l0033   coupling=1.529e-01   
+k00310034  mutual_inductor ind1=l0031  ind2=l0034   coupling=9.586e-02   
+k00310035  mutual_inductor ind1=l0031  ind2=l0035   coupling=6.454e-02   
+k00320033  mutual_inductor ind1=l0032  ind2=l0033   coupling=2.859e-01   
+k00320034  mutual_inductor ind1=l0032  ind2=l0034   coupling=1.582e-01   
+k00320035  mutual_inductor ind1=l0032  ind2=l0035   coupling=9.948e-02   
+k00320036  mutual_inductor ind1=l0032  ind2=l0036   coupling=6.736e-02   
+k00330034  mutual_inductor ind1=l0033  ind2=l0034   coupling=3.007e-01   
+k00330035  mutual_inductor ind1=l0033  ind2=l0035   coupling=1.659e-01   
+k00330036  mutual_inductor ind1=l0033  ind2=l0036   coupling=1.047e-01   
+k00330037  mutual_inductor ind1=l0033  ind2=l0037   coupling=6.980e-02   
+k00340035  mutual_inductor ind1=l0034  ind2=l0035   coupling=3.052e-01   
+k00340036  mutual_inductor ind1=l0034  ind2=l0036   coupling=1.702e-01   
+k00340037  mutual_inductor ind1=l0034  ind2=l0037   coupling=1.060e-01   
+k00340038  mutual_inductor ind1=l0034  ind2=l0038   coupling=7.097e-02   
+k00350036  mutual_inductor ind1=l0035  ind2=l0036   coupling=3.144e-01   
+k00350037  mutual_inductor ind1=l0035  ind2=l0037   coupling=1.728e-01   
+k00350038  mutual_inductor ind1=l0035  ind2=l0038   coupling=1.084e-01   
+k00350039  mutual_inductor ind1=l0035  ind2=l0039   coupling=7.242e-02   
+k00360037  mutual_inductor ind1=l0036  ind2=l0037   coupling=3.166e-01   
+k00360038  mutual_inductor ind1=l0036  ind2=l0038   coupling=1.758e-01   
+k00360039  mutual_inductor ind1=l0036  ind2=l0039   coupling=1.101e-01   
+k00360040  mutual_inductor ind1=l0036  ind2=l0040   coupling=6.820e-02   
+k00370038  mutual_inductor ind1=l0037  ind2=l0038   coupling=3.237e-01   
+k00370039  mutual_inductor ind1=l0037  ind2=l0039   coupling=1.792e-01   
+k00370040  mutual_inductor ind1=l0037  ind2=l0040   coupling=1.041e-01   
+k00380039  mutual_inductor ind1=l0038  ind2=l0039   coupling=3.254e-01   
+k00380040  mutual_inductor ind1=l0038  ind2=l0040   coupling=1.680e-01   
+k00380041  mutual_inductor ind1=l0038  ind2=l0041   coupling=5.923e-02   
+k00390040  mutual_inductor ind1=l0039  ind2=l0040   coupling=3.029e-01   
+k00390041  mutual_inductor ind1=l0039  ind2=l0041   coupling=8.588e-02   
+k00390042  mutual_inductor ind1=l0039  ind2=l0042   coupling=6.246e-02   
+k00400041  mutual_inductor ind1=l0040  ind2=l0041   coupling=1.362e-01   
+k00400042  mutual_inductor ind1=l0040  ind2=l0042   coupling=9.062e-02   
+k00400043  mutual_inductor ind1=l0040  ind2=l0043   coupling=6.229e-02   
+k00410042  mutual_inductor ind1=l0041  ind2=l0042   coupling=3.291e-01   
+k00410043  mutual_inductor ind1=l0041  ind2=l0043   coupling=1.763e-01   
+k00410044  mutual_inductor ind1=l0041  ind2=l0044   coupling=1.059e-01   
+k00410045  mutual_inductor ind1=l0041  ind2=l0045   coupling=6.861e-02   
+k00420043  mutual_inductor ind1=l0042  ind2=l0043   coupling=3.234e-01   
+k00420044  mutual_inductor ind1=l0042  ind2=l0044   coupling=1.718e-01   
+k00420045  mutual_inductor ind1=l0042  ind2=l0045   coupling=1.039e-01   
+k00420046  mutual_inductor ind1=l0042  ind2=l0046   coupling=6.708e-02   
+k00430044  mutual_inductor ind1=l0043  ind2=l0044   coupling=3.194e-01   
+k00430045  mutual_inductor ind1=l0043  ind2=l0045   coupling=1.700e-01   
+k00430046  mutual_inductor ind1=l0043  ind2=l0046   coupling=1.024e-01   
+k00430047  mutual_inductor ind1=l0043  ind2=l0047   coupling=6.475e-02   
+k00440045  mutual_inductor ind1=l0044  ind2=l0045   coupling=3.147e-01   
+k00440046  mutual_inductor ind1=l0044  ind2=l0046   coupling=1.671e-01   
+k00440047  mutual_inductor ind1=l0044  ind2=l0047   coupling=9.801e-02   
+k00440048  mutual_inductor ind1=l0044  ind2=l0048   coupling=6.342e-02   
+k00450046  mutual_inductor ind1=l0045  ind2=l0046   coupling=3.085e-01   
+k00450047  mutual_inductor ind1=l0045  ind2=l0047   coupling=1.585e-01   
+k00450048  mutual_inductor ind1=l0045  ind2=l0048   coupling=9.512e-02   
+k00450049  mutual_inductor ind1=l0045  ind2=l0049   coupling=6.097e-02   
+k00460047  mutual_inductor ind1=l0046  ind2=l0047   coupling=2.888e-01   
+k00460048  mutual_inductor ind1=l0046  ind2=l0048   coupling=1.524e-01   
+k00460049  mutual_inductor ind1=l0046  ind2=l0049   coupling=9.088e-02   
+k00460050  mutual_inductor ind1=l0046  ind2=l0050   coupling=5.842e-02   
+k00470048  mutual_inductor ind1=l0047  ind2=l0048   coupling=2.885e-01   
+k00470049  mutual_inductor ind1=l0047  ind2=l0049   coupling=1.506e-01   
+k00470050  mutual_inductor ind1=l0047  ind2=l0050   coupling=8.955e-02   
+k00470051  mutual_inductor ind1=l0047  ind2=l0051   coupling=5.828e-02   
+k00480049  mutual_inductor ind1=l0048  ind2=l0049   coupling=2.811e-01   
+k00480050  mutual_inductor ind1=l0048  ind2=l0050   coupling=1.461e-01   
+k00480051  mutual_inductor ind1=l0048  ind2=l0051   coupling=8.828e-02   
+k00480052  mutual_inductor ind1=l0048  ind2=l0052   coupling=5.793e-02   
+k00490050  mutual_inductor ind1=l0049  ind2=l0050   coupling=2.763e-01   
+k00490051  mutual_inductor ind1=l0049  ind2=l0051   coupling=1.459e-01   
+k00490052  mutual_inductor ind1=l0049  ind2=l0052   coupling=8.872e-02   
+k00490053  mutual_inductor ind1=l0049  ind2=l0053   coupling=5.786e-02   
+k00500051  mutual_inductor ind1=l0050  ind2=l0051   coupling=2.784e-01   
+k00500052  mutual_inductor ind1=l0050  ind2=l0052   coupling=1.479e-01   
+k00500053  mutual_inductor ind1=l0050  ind2=l0053   coupling=8.937e-02   
+k00500054  mutual_inductor ind1=l0050  ind2=l0054   coupling=5.908e-02   
+k00510052  mutual_inductor ind1=l0051  ind2=l0052   coupling=2.821e-01   
+k00510053  mutual_inductor ind1=l0051  ind2=l0053   coupling=1.483e-01   
+k00510054  mutual_inductor ind1=l0051  ind2=l0054   coupling=9.099e-02   
+k00510055  mutual_inductor ind1=l0051  ind2=l0055   coupling=6.012e-02   
+k00520053  mutual_inductor ind1=l0052  ind2=l0053   coupling=2.815e-01   
+k00520054  mutual_inductor ind1=l0052  ind2=l0054   coupling=1.514e-01   
+k00520055  mutual_inductor ind1=l0052  ind2=l0055   coupling=9.296e-02   
+k00520056  mutual_inductor ind1=l0052  ind2=l0056   coupling=6.085e-02   
+k00530054  mutual_inductor ind1=l0053  ind2=l0054   coupling=2.905e-01   
+k00530055  mutual_inductor ind1=l0053  ind2=l0055   coupling=1.566e-01   
+k00530056  mutual_inductor ind1=l0053  ind2=l0056   coupling=9.505e-02   
+k00530057  mutual_inductor ind1=l0053  ind2=l0057   coupling=6.239e-02   
+k00540055  mutual_inductor ind1=l0054  ind2=l0055   coupling=2.957e-01   
+k00540056  mutual_inductor ind1=l0054  ind2=l0056   coupling=1.572e-01   
+k00540057  mutual_inductor ind1=l0054  ind2=l0057   coupling=9.568e-02   
+k00540058  mutual_inductor ind1=l0054  ind2=l0058   coupling=6.341e-02   
+k00550056  mutual_inductor ind1=l0055  ind2=l0056   coupling=2.982e-01   
+k00550057  mutual_inductor ind1=l0055  ind2=l0057   coupling=1.594e-01   
+k00550058  mutual_inductor ind1=l0055  ind2=l0058   coupling=9.842e-02   
+k00550059  mutual_inductor ind1=l0055  ind2=l0059   coupling=6.508e-02   
+k00560057  mutual_inductor ind1=l0056  ind2=l0057   coupling=3.058e-01   
+k00560058  mutual_inductor ind1=l0056  ind2=l0058   coupling=1.658e-01   
+k00560059  mutual_inductor ind1=l0056  ind2=l0059   coupling=1.018e-01   
+k00560060  mutual_inductor ind1=l0056  ind2=l0060   coupling=6.614e-02   
+k00570058  mutual_inductor ind1=l0057  ind2=l0058   coupling=3.177e-01   
+k00570059  mutual_inductor ind1=l0057  ind2=l0059   coupling=1.708e-01   
+k00570060  mutual_inductor ind1=l0057  ind2=l0060   coupling=1.032e-01   
+k00580059  mutual_inductor ind1=l0058  ind2=l0059   coupling=3.201e-01   
+k00580060  mutual_inductor ind1=l0058  ind2=l0060   coupling=1.708e-01   
+k00580061  mutual_inductor ind1=l0058  ind2=l0061   coupling=6.156e-02   
+k00590060  mutual_inductor ind1=l0059  ind2=l0060   coupling=3.194e-01   
+k00590061  mutual_inductor ind1=l0059  ind2=l0061   coupling=9.045e-02   
+k00590062  mutual_inductor ind1=l0059  ind2=l0062   coupling=6.385e-02   
+k00600061  mutual_inductor ind1=l0060  ind2=l0061   coupling=1.395e-01   
+k00600062  mutual_inductor ind1=l0060  ind2=l0062   coupling=8.984e-02   
+k00600063  mutual_inductor ind1=l0060  ind2=l0063   coupling=6.116e-02   
+k00610062  mutual_inductor ind1=l0061  ind2=l0062   coupling=3.203e-01   
+k00610063  mutual_inductor ind1=l0061  ind2=l0063   coupling=1.740e-01   
+k00610064  mutual_inductor ind1=l0061  ind2=l0064   coupling=1.055e-01   
+k00610065  mutual_inductor ind1=l0061  ind2=l0065   coupling=6.856e-02   
+k00620063  mutual_inductor ind1=l0062  ind2=l0063   coupling=3.241e-01   
+k00620064  mutual_inductor ind1=l0062  ind2=l0064   coupling=1.732e-01   
+k00620065  mutual_inductor ind1=l0062  ind2=l0065   coupling=1.053e-01   
+k00620066  mutual_inductor ind1=l0062  ind2=l0066   coupling=6.819e-02   
+k00630064  mutual_inductor ind1=l0063  ind2=l0064   coupling=3.169e-01   
+k00630065  mutual_inductor ind1=l0063  ind2=l0065   coupling=1.703e-01   
+k00630066  mutual_inductor ind1=l0063  ind2=l0066   coupling=1.030e-01   
+k00630067  mutual_inductor ind1=l0063  ind2=l0067   coupling=6.647e-02   
+k00640065  mutual_inductor ind1=l0064  ind2=l0065   coupling=3.168e-01   
+k00640066  mutual_inductor ind1=l0064  ind2=l0066   coupling=1.683e-01   
+k00640067  mutual_inductor ind1=l0064  ind2=l0067   coupling=1.013e-01   
+k00640068  mutual_inductor ind1=l0064  ind2=l0068   coupling=6.526e-02   
+k00650066  mutual_inductor ind1=l0065  ind2=l0066   coupling=3.069e-01   
+k00650067  mutual_inductor ind1=l0065  ind2=l0067   coupling=1.634e-01   
+k00650068  mutual_inductor ind1=l0065  ind2=l0068   coupling=9.772e-02   
+k00650069  mutual_inductor ind1=l0065  ind2=l0069   coupling=6.280e-02   
+k00660067  mutual_inductor ind1=l0066  ind2=l0067   coupling=3.010e-01   
+k00660068  mutual_inductor ind1=l0066  ind2=l0068   coupling=1.575e-01   
+k00660069  mutual_inductor ind1=l0066  ind2=l0069   coupling=9.414e-02   
+k00660070  mutual_inductor ind1=l0066  ind2=l0070   coupling=6.106e-02   
+k00670068  mutual_inductor ind1=l0067  ind2=l0068   coupling=2.884e-01   
+k00670069  mutual_inductor ind1=l0067  ind2=l0069   coupling=1.516e-01   
+k00670070  mutual_inductor ind1=l0067  ind2=l0070   coupling=9.151e-02   
+k00670071  mutual_inductor ind1=l0067  ind2=l0071   coupling=5.957e-02   
+k00680069  mutual_inductor ind1=l0068  ind2=l0069   coupling=2.868e-01   
+k00680070  mutual_inductor ind1=l0068  ind2=l0070   coupling=1.507e-01   
+k00680071  mutual_inductor ind1=l0068  ind2=l0071   coupling=9.094e-02   
+k00680072  mutual_inductor ind1=l0068  ind2=l0072   coupling=5.923e-02   
+k00690070  mutual_inductor ind1=l0069  ind2=l0070   coupling=2.814e-01   
+k00690071  mutual_inductor ind1=l0069  ind2=l0071   coupling=1.487e-01   
+k00690072  mutual_inductor ind1=l0069  ind2=l0072   coupling=8.992e-02   
+k00690073  mutual_inductor ind1=l0069  ind2=l0073   coupling=5.806e-02   
+k00700071  mutual_inductor ind1=l0070  ind2=l0071   coupling=2.824e-01   
+k00700072  mutual_inductor ind1=l0070  ind2=l0072   coupling=1.494e-01   
+k00700073  mutual_inductor ind1=l0070  ind2=l0073   coupling=8.948e-02   
+k00700074  mutual_inductor ind1=l0070  ind2=l0074   coupling=5.807e-02   
+k00710072  mutual_inductor ind1=l0071  ind2=l0072   coupling=2.834e-01   
+k00710073  mutual_inductor ind1=l0071  ind2=l0073   coupling=1.480e-01   
+k00710074  mutual_inductor ind1=l0071  ind2=l0074   coupling=8.875e-02   
+k00710075  mutual_inductor ind1=l0071  ind2=l0075   coupling=5.971e-02   
+k00720073  mutual_inductor ind1=l0072  ind2=l0073   coupling=2.811e-01   
+k00720074  mutual_inductor ind1=l0072  ind2=l0074   coupling=1.469e-01   
+k00720075  mutual_inductor ind1=l0072  ind2=l0075   coupling=9.208e-02   
+k00720076  mutual_inductor ind1=l0072  ind2=l0076   coupling=6.233e-02   
+k00730074  mutual_inductor ind1=l0073  ind2=l0074   coupling=2.828e-01   
+k00730075  mutual_inductor ind1=l0073  ind2=l0075   coupling=1.560e-01   
+k00730076  mutual_inductor ind1=l0073  ind2=l0076   coupling=9.811e-02   
+k00730077  mutual_inductor ind1=l0073  ind2=l0077   coupling=6.469e-02   
+k00740075  mutual_inductor ind1=l0074  ind2=l0075   coupling=3.015e-01   
+k00740076  mutual_inductor ind1=l0074  ind2=l0076   coupling=1.658e-01   
+k00740077  mutual_inductor ind1=l0074  ind2=l0077   coupling=1.009e-01   
+k00740078  mutual_inductor ind1=l0074  ind2=l0078   coupling=6.615e-02   
+k00750076  mutual_inductor ind1=l0075  ind2=l0076   coupling=3.128e-01   
+k00750077  mutual_inductor ind1=l0075  ind2=l0077   coupling=1.672e-01   
+k00750078  mutual_inductor ind1=l0075  ind2=l0078   coupling=1.022e-01   
+k00750079  mutual_inductor ind1=l0075  ind2=l0079   coupling=6.799e-02   
+k00760077  mutual_inductor ind1=l0076  ind2=l0077   coupling=3.105e-01   
+k00760078  mutual_inductor ind1=l0076  ind2=l0078   coupling=1.678e-01   
+k00760079  mutual_inductor ind1=l0076  ind2=l0079   coupling=1.045e-01   
+k00760080  mutual_inductor ind1=l0076  ind2=l0080   coupling=6.929e-02   
+k00770078  mutual_inductor ind1=l0077  ind2=l0078   coupling=3.182e-01   
+k00770079  mutual_inductor ind1=l0077  ind2=l0079   coupling=1.744e-01   
+k00770080  mutual_inductor ind1=l0077  ind2=l0080   coupling=1.078e-01   
+k00780079  mutual_inductor ind1=l0078  ind2=l0079   coupling=3.267e-01   
+k00780080  mutual_inductor ind1=l0078  ind2=l0080   coupling=1.783e-01   
+k00790080  mutual_inductor ind1=l0079  ind2=l0080   coupling=3.297e-01   
+r0001    ( 322    162 ) resistor   r=2.701e-02   
+r0002    ( 323    163 ) resistor   r=2.612e-02   
+r0003    ( 324    164 ) resistor   r=2.624e-02   
+r0004    ( 325    165 ) resistor   r=2.676e-02   
+r0005    ( 326    166 ) resistor   r=2.686e-02   
+r0006    ( 327    167 ) resistor   r=2.755e-02   
+r0007    ( 328    168 ) resistor   r=2.834e-02   
+r0008    ( 329    169 ) resistor   r=2.884e-02   
+r0009    ( 330    170 ) resistor   r=2.926e-02   
+r0010    ( 331    171 ) resistor   r=2.958e-02   
+r0011    ( 332    172 ) resistor   r=3.019e-02   
+r0012    ( 333    173 ) resistor   r=2.918e-02   
+r0013    ( 334    174 ) resistor   r=2.854e-02   
+r0014    ( 335    175 ) resistor   r=2.785e-02   
+r0015    ( 336    176 ) resistor   r=2.747e-02   
+r0016    ( 337    177 ) resistor   r=2.715e-02   
+r0017    ( 338    178 ) resistor   r=2.698e-02   
+r0018    ( 339    179 ) resistor   r=2.782e-02   
+r0019    ( 340    180 ) resistor   r=2.736e-02   
+r0020    ( 341    181 ) resistor   r=2.854e-02   
+r0021    ( 342    182 ) resistor   r=2.767e-02   
+r0022    ( 343    183 ) resistor   r=2.603e-02   
+r0023    ( 344    184 ) resistor   r=2.597e-02   
+r0024    ( 345    185 ) resistor   r=2.564e-02   
+r0025    ( 346    186 ) resistor   r=2.654e-02   
+r0026    ( 347    187 ) resistor   r=2.657e-02   
+r0027    ( 348    188 ) resistor   r=2.686e-02   
+r0028    ( 349    189 ) resistor   r=2.791e-02   
+r0029    ( 350    190 ) resistor   r=2.867e-02   
+r0030    ( 351    191 ) resistor   r=2.903e-02   
+r0031    ( 352    192 ) resistor   r=2.976e-02   
+r0032    ( 353    193 ) resistor   r=2.899e-02   
+r0033    ( 354    194 ) resistor   r=2.892e-02   
+r0034    ( 355    195 ) resistor   r=2.947e-02   
+r0035    ( 356    196 ) resistor   r=2.918e-02   
+r0036    ( 357    197 ) resistor   r=2.992e-02   
+r0037    ( 358    198 ) resistor   r=3.087e-02   
+r0038    ( 359    199 ) resistor   r=3.177e-02   
+r0039    ( 360    200 ) resistor   r=3.343e-02   
+r0040    ( 361    201 ) resistor   r=3.028e-02   
+r0041    ( 362    202 ) resistor   r=2.588e-02   
+r0042    ( 363    203 ) resistor   r=2.437e-02   
+r0043    ( 364    204 ) resistor   r=2.345e-02   
+r0044    ( 365    205 ) resistor   r=2.351e-02   
+r0045    ( 366    206 ) resistor   r=2.421e-02   
+r0046    ( 367    207 ) resistor   r=2.467e-02   
+r0047    ( 368    208 ) resistor   r=2.590e-02   
+r0048    ( 369    209 ) resistor   r=2.639e-02   
+r0049    ( 370    210 ) resistor   r=2.758e-02   
+r0050    ( 371    211 ) resistor   r=2.757e-02   
+r0051    ( 372    212 ) resistor   r=2.827e-02   
+r0052    ( 373    213 ) resistor   r=2.731e-02   
+r0053    ( 374    214 ) resistor   r=2.647e-02   
+r0054    ( 375    215 ) resistor   r=2.611e-02   
+r0055    ( 376    216 ) resistor   r=2.497e-02   
+r0056    ( 377    217 ) resistor   r=2.487e-02   
+r0057    ( 378    218 ) resistor   r=2.417e-02   
+r0058    ( 379    219 ) resistor   r=2.412e-02   
+r0059    ( 380    220 ) resistor   r=2.448e-02   
+r0060    ( 381    221 ) resistor   r=2.498e-02   
+r0061    ( 382    222 ) resistor   r=2.685e-02   
+r0062    ( 383    223 ) resistor   r=2.749e-02   
+r0063    ( 384    224 ) resistor   r=2.626e-02   
+r0064    ( 385    225 ) resistor   r=2.606e-02   
+r0065    ( 386    226 ) resistor   r=2.586e-02   
+r0066    ( 387    227 ) resistor   r=2.535e-02   
+r0067    ( 388    228 ) resistor   r=2.612e-02   
+r0068    ( 389    229 ) resistor   r=2.629e-02   
+r0069    ( 390    230 ) resistor   r=2.733e-02   
+r0070    ( 391    231 ) resistor   r=2.694e-02   
+r0071    ( 392    232 ) resistor   r=2.779e-02   
+r0072    ( 393    233 ) resistor   r=2.679e-02   
+r0073    ( 394    234 ) resistor   r=2.587e-02   
+r0074    ( 395    235 ) resistor   r=2.542e-02   
+r0075    ( 396    236 ) resistor   r=2.496e-02   
+r0076    ( 397    237 ) resistor   r=2.480e-02   
+r0077    ( 398    238 ) resistor   r=2.451e-02   
+r0078    ( 399    239 ) resistor   r=2.540e-02   
+r0079    ( 400    240 ) resistor   r=2.561e-02   
+r0080    ( 401    241 ) resistor   r=2.707e-02   
+l0001b    ( 162    482 ) inductor  l=2.591e-09   
+l0002b    ( 163    483 ) inductor  l=2.485e-09   
+l0003b    ( 164    484 ) inductor  l=2.420e-09   
+l0004b    ( 165    485 ) inductor  l=2.353e-09   
+l0005b    ( 166    486 ) inductor  l=2.274e-09   
+l0006b    ( 167    487 ) inductor  l=2.255e-09   
+l0007b    ( 168    488 ) inductor  l=2.250e-09   
+l0008b    ( 169    489 ) inductor  l=2.195e-09   
+l0009b    ( 170    490 ) inductor  l=2.168e-09   
+l0010b    ( 171    491 ) inductor  l=2.153e-09   
+l0011b    ( 172    492 ) inductor  l=2.164e-09   
+l0012b    ( 173    493 ) inductor  l=2.224e-09   
+l0013b    ( 174    494 ) inductor  l=2.192e-09   
+l0014b    ( 175    495 ) inductor  l=2.291e-09   
+l0015b    ( 176    496 ) inductor  l=2.261e-09   
+l0016b    ( 177    497 ) inductor  l=2.291e-09   
+l0017b    ( 178    498 ) inductor  l=2.360e-09   
+l0018b    ( 179    499 ) inductor  l=2.456e-09   
+l0019b    ( 180    500 ) inductor  l=2.547e-09   
+l0020b    ( 181    501 ) inductor  l=2.657e-09   
+l0021b    ( 182    502 ) inductor  l=2.620e-09   
+l0022b    ( 183    503 ) inductor  l=2.488e-09   
+l0023b    ( 184    504 ) inductor  l=2.399e-09   
+l0024b    ( 185    505 ) inductor  l=2.311e-09   
+l0025b    ( 186    506 ) inductor  l=2.256e-09   
+l0026b    ( 187    507 ) inductor  l=2.222e-09   
+l0027b    ( 188    508 ) inductor  l=2.209e-09   
+l0028b    ( 189    509 ) inductor  l=2.164e-09   
+l0029b    ( 190    510 ) inductor  l=2.142e-09   
+l0030b    ( 191    511 ) inductor  l=2.132e-09   
+l0031b    ( 192    512 ) inductor  l=2.143e-09   
+l0032b    ( 193    513 ) inductor  l=2.156e-09   
+l0033b    ( 194    514 ) inductor  l=2.192e-09   
+l0034b    ( 195    515 ) inductor  l=2.280e-09   
+l0035b    ( 196    516 ) inductor  l=2.314e-09   
+l0036b    ( 197    517 ) inductor  l=2.381e-09   
+l0037b    ( 198    518 ) inductor  l=2.480e-09   
+l0038b    ( 199    519 ) inductor  l=2.594e-09   
+l0039b    ( 200    520 ) inductor  l=2.721e-09   
+l0040b    ( 201    521 ) inductor  l=2.729e-09   
+l0041b    ( 202    522 ) inductor  l=2.555e-09   
+l0042b    ( 203    523 ) inductor  l=2.430e-09   
+l0043b    ( 204    524 ) inductor  l=2.324e-09   
+l0044b    ( 205    525 ) inductor  l=2.252e-09   
+l0045b    ( 206    526 ) inductor  l=2.178e-09   
+l0046b    ( 207    527 ) inductor  l=2.148e-09   
+l0047b    ( 208    528 ) inductor  l=2.147e-09   
+l0048b    ( 209    529 ) inductor  l=2.096e-09   
+l0049b    ( 210    530 ) inductor  l=2.084e-09   
+l0050b    ( 211    531 ) inductor  l=2.068e-09   
+l0051b    ( 212    532 ) inductor  l=2.075e-09   
+l0052b    ( 213    533 ) inductor  l=2.082e-09   
+l0053b    ( 214    534 ) inductor  l=2.100e-09   
+l0054b    ( 215    535 ) inductor  l=2.161e-09   
+l0055b    ( 216    536 ) inductor  l=2.170e-09   
+l0056b    ( 217    537 ) inductor  l=2.200e-09   
+l0057b    ( 218    538 ) inductor  l=2.250e-09   
+l0058b    ( 219    539 ) inductor  l=2.331e-09   
+l0059b    ( 220    540 ) inductor  l=2.423e-09   
+l0060b    ( 221    541 ) inductor  l=2.513e-09   
+l0061b    ( 222    542 ) inductor  l=2.597e-09   
+l0062b    ( 223    543 ) inductor  l=2.526e-09   
+l0063b    ( 224    544 ) inductor  l=2.411e-09   
+l0064b    ( 225    545 ) inductor  l=2.321e-09   
+l0065b    ( 226    546 ) inductor  l=2.239e-09   
+l0066b    ( 227    547 ) inductor  l=2.192e-09   
+l0067b    ( 228    548 ) inductor  l=2.177e-09   
+l0068b    ( 229    549 ) inductor  l=2.121e-09   
+l0069b    ( 230    550 ) inductor  l=2.109e-09   
+l0070b    ( 231    551 ) inductor  l=2.071e-09   
+l0071b    ( 232    552 ) inductor  l=2.084e-09   
+l0072b    ( 233    553 ) inductor  l=2.092e-09   
+l0073b    ( 234    554 ) inductor  l=2.106e-09   
+l0074b    ( 235    555 ) inductor  l=2.154e-09   
+l0075b    ( 236    556 ) inductor  l=2.168e-09   
+l0076b    ( 237    557 ) inductor  l=2.208e-09   
+l0077b    ( 238    558 ) inductor  l=2.272e-09   
+l0078b    ( 239    559 ) inductor  l=2.373e-09   
+l0079b    ( 240    560 ) inductor  l=2.476e-09   
+l0080b    ( 241    561 ) inductor  l=2.603e-09   
+k00010002b  mutual_inductor ind1=l0001b  ind2=l0002b   coupling=3.260e-01   
+k00010003b  mutual_inductor ind1=l0001b  ind2=l0003b   coupling=1.725e-01   
+k00010004b  mutual_inductor ind1=l0001b  ind2=l0004b   coupling=1.038e-01   
+k00010005b  mutual_inductor ind1=l0001b  ind2=l0005b   coupling=6.730e-02   
+k00010078b  mutual_inductor ind1=l0001b  ind2=l0078b   coupling=6.373e-02   
+k00010079b  mutual_inductor ind1=l0001b  ind2=l0079b   coupling=9.472e-02   
+k00010080b  mutual_inductor ind1=l0001b  ind2=l0080b   coupling=1.465e-01   
+k00020003b  mutual_inductor ind1=l0002b  ind2=l0003b   coupling=3.161e-01   
+k00020004b  mutual_inductor ind1=l0002b  ind2=l0004b   coupling=1.681e-01   
+k00020005b  mutual_inductor ind1=l0002b  ind2=l0005b   coupling=1.017e-01   
+k00020006b  mutual_inductor ind1=l0002b  ind2=l0006b   coupling=6.537e-02   
+k00020079b  mutual_inductor ind1=l0002b  ind2=l0079b   coupling=6.615e-02   
+k00020080b  mutual_inductor ind1=l0002b  ind2=l0080b   coupling=9.414e-02   
+k00030004b  mutual_inductor ind1=l0003b  ind2=l0004b   coupling=3.114e-01   
+k00030005b  mutual_inductor ind1=l0003b  ind2=l0005b   coupling=1.653e-01   
+k00030006b  mutual_inductor ind1=l0003b  ind2=l0006b   coupling=9.860e-02   
+k00030007b  mutual_inductor ind1=l0003b  ind2=l0007b   coupling=6.334e-02   
+k00030080b  mutual_inductor ind1=l0003b  ind2=l0080b   coupling=6.263e-02   
+k00040005b  mutual_inductor ind1=l0004b  ind2=l0005b   coupling=3.067e-01   
+k00040006b  mutual_inductor ind1=l0004b  ind2=l0006b   coupling=1.607e-01   
+k00040007b  mutual_inductor ind1=l0004b  ind2=l0007b   coupling=9.619e-02   
+k00040008b  mutual_inductor ind1=l0004b  ind2=l0008b   coupling=6.242e-02   
+k00050006b  mutual_inductor ind1=l0005b  ind2=l0006b   coupling=2.976e-01   
+k00050007b  mutual_inductor ind1=l0005b  ind2=l0007b   coupling=1.570e-01   
+k00050008b  mutual_inductor ind1=l0005b  ind2=l0008b   coupling=9.450e-02   
+k00050009b  mutual_inductor ind1=l0005b  ind2=l0009b   coupling=6.074e-02   
+k00060007b  mutual_inductor ind1=l0006b  ind2=l0007b   coupling=2.917e-01   
+k00060008b  mutual_inductor ind1=l0006b  ind2=l0008b   coupling=1.540e-01   
+k00060009b  mutual_inductor ind1=l0006b  ind2=l0009b   coupling=9.180e-02   
+k00060010b  mutual_inductor ind1=l0006b  ind2=l0010b   coupling=5.951e-02   
+k00070008b  mutual_inductor ind1=l0007b  ind2=l0008b   coupling=2.878e-01   
+k00070009b  mutual_inductor ind1=l0007b  ind2=l0009b   coupling=1.505e-01   
+k00070010b  mutual_inductor ind1=l0007b  ind2=l0010b   coupling=9.063e-02   
+k00070011b  mutual_inductor ind1=l0007b  ind2=l0011b   coupling=5.934e-02   
+k00080009b  mutual_inductor ind1=l0008b  ind2=l0009b   coupling=2.819e-01   
+k00080010b  mutual_inductor ind1=l0008b  ind2=l0010b   coupling=1.486e-01   
+k00080011b  mutual_inductor ind1=l0008b  ind2=l0011b   coupling=9.065e-02   
+k00080012b  mutual_inductor ind1=l0008b  ind2=l0012b   coupling=5.882e-02   
+k00090010b  mutual_inductor ind1=l0009b  ind2=l0010b   coupling=2.800e-01   
+k00090011b  mutual_inductor ind1=l0009b  ind2=l0011b   coupling=1.500e-01   
+k00090012b  mutual_inductor ind1=l0009b  ind2=l0012b   coupling=9.033e-02   
+k00090013b  mutual_inductor ind1=l0009b  ind2=l0013b   coupling=6.029e-02   
+k00100011b  mutual_inductor ind1=l0010b  ind2=l0011b   coupling=2.831e-01   
+k00100012b  mutual_inductor ind1=l0010b  ind2=l0012b   coupling=1.491e-01   
+k00100013b  mutual_inductor ind1=l0010b  ind2=l0013b   coupling=9.214e-02   
+k00100014b  mutual_inductor ind1=l0010b  ind2=l0014b   coupling=5.999e-02   
+k00110012b  mutual_inductor ind1=l0011b  ind2=l0012b   coupling=2.778e-01   
+k00110013b  mutual_inductor ind1=l0011b  ind2=l0013b   coupling=1.504e-01   
+k00110014b  mutual_inductor ind1=l0011b  ind2=l0014b   coupling=9.128e-02   
+k00110015b  mutual_inductor ind1=l0011b  ind2=l0015b   coupling=6.069e-02   
+k00120013b  mutual_inductor ind1=l0012b  ind2=l0013b   coupling=2.816e-01   
+k00120014b  mutual_inductor ind1=l0012b  ind2=l0014b   coupling=1.498e-01   
+k00120015b  mutual_inductor ind1=l0012b  ind2=l0015b   coupling=9.234e-02   
+k00120016b  mutual_inductor ind1=l0012b  ind2=l0016b   coupling=6.170e-02   
+k00130014b  mutual_inductor ind1=l0013b  ind2=l0014b   coupling=2.861e-01   
+k00130015b  mutual_inductor ind1=l0013b  ind2=l0015b   coupling=1.549e-01   
+k00130016b  mutual_inductor ind1=l0013b  ind2=l0016b   coupling=9.623e-02   
+k00130017b  mutual_inductor ind1=l0013b  ind2=l0017b   coupling=6.440e-02   
+k00140015b  mutual_inductor ind1=l0014b  ind2=l0015b   coupling=2.896e-01   
+k00140016b  mutual_inductor ind1=l0014b  ind2=l0016b   coupling=1.582e-01   
+k00140017b  mutual_inductor ind1=l0014b  ind2=l0017b   coupling=9.836e-02   
+k00140018b  mutual_inductor ind1=l0014b  ind2=l0018b   coupling=6.496e-02   
+k00150016b  mutual_inductor ind1=l0015b  ind2=l0016b   coupling=3.032e-01   
+k00150017b  mutual_inductor ind1=l0015b  ind2=l0017b   coupling=1.660e-01   
+k00150018b  mutual_inductor ind1=l0015b  ind2=l0018b   coupling=1.020e-01   
+k00150019b  mutual_inductor ind1=l0015b  ind2=l0019b   coupling=6.834e-02   
+k00160017b  mutual_inductor ind1=l0016b  ind2=l0017b   coupling=3.133e-01   
+k00160018b  mutual_inductor ind1=l0016b  ind2=l0018b   coupling=1.692e-01   
+k00160019b  mutual_inductor ind1=l0016b  ind2=l0019b   coupling=1.058e-01   
+k00160020b  mutual_inductor ind1=l0016b  ind2=l0020b   coupling=6.947e-02   
+k00170018b  mutual_inductor ind1=l0017b  ind2=l0018b   coupling=3.154e-01   
+k00170019b  mutual_inductor ind1=l0017b  ind2=l0019b   coupling=1.743e-01   
+k00170020b  mutual_inductor ind1=l0017b  ind2=l0020b   coupling=1.068e-01   
+k00180019b  mutual_inductor ind1=l0018b  ind2=l0019b   coupling=3.258e-01   
+k00180020b  mutual_inductor ind1=l0018b  ind2=l0020b   coupling=1.759e-01   
+k00180021b  mutual_inductor ind1=l0018b  ind2=l0021b   coupling=6.343e-02   
+k00190020b  mutual_inductor ind1=l0019b  ind2=l0020b   coupling=3.230e-01   
+k00190021b  mutual_inductor ind1=l0019b  ind2=l0021b   coupling=9.347e-02   
+k00190022b  mutual_inductor ind1=l0019b  ind2=l0022b   coupling=6.688e-02   
+k00200021b  mutual_inductor ind1=l0020b  ind2=l0021b   coupling=1.448e-01   
+k00200022b  mutual_inductor ind1=l0020b  ind2=l0022b   coupling=9.552e-02   
+k00200023b  mutual_inductor ind1=l0020b  ind2=l0023b   coupling=6.423e-02   
+k00210022b  mutual_inductor ind1=l0021b  ind2=l0022b   coupling=3.362e-01   
+k00210023b  mutual_inductor ind1=l0021b  ind2=l0023b   coupling=1.798e-01   
+k00210024b  mutual_inductor ind1=l0021b  ind2=l0024b   coupling=1.089e-01   
+k00210025b  mutual_inductor ind1=l0021b  ind2=l0025b   coupling=6.988e-02   
+k00220023b  mutual_inductor ind1=l0022b  ind2=l0023b   coupling=3.236e-01   
+k00220024b  mutual_inductor ind1=l0022b  ind2=l0024b   coupling=1.737e-01   
+k00220025b  mutual_inductor ind1=l0022b  ind2=l0025b   coupling=1.041e-01   
+k00220026b  mutual_inductor ind1=l0022b  ind2=l0026b   coupling=6.732e-02   
+k00230024b  mutual_inductor ind1=l0023b  ind2=l0024b   coupling=3.193e-01   
+k00230025b  mutual_inductor ind1=l0023b  ind2=l0025b   coupling=1.683e-01   
+k00230026b  mutual_inductor ind1=l0023b  ind2=l0026b   coupling=1.012e-01   
+k00230027b  mutual_inductor ind1=l0023b  ind2=l0027b   coupling=6.451e-02   
+k00240025b  mutual_inductor ind1=l0024b  ind2=l0025b   coupling=3.095e-01   
+k00240026b  mutual_inductor ind1=l0024b  ind2=l0026b   coupling=1.637e-01   
+k00240027b  mutual_inductor ind1=l0024b  ind2=l0027b   coupling=9.713e-02   
+k00240028b  mutual_inductor ind1=l0024b  ind2=l0028b   coupling=6.294e-02   
+k00250026b  mutual_inductor ind1=l0025b  ind2=l0026b   coupling=3.021e-01   
+k00250027b  mutual_inductor ind1=l0025b  ind2=l0027b   coupling=1.579e-01   
+k00250028b  mutual_inductor ind1=l0025b  ind2=l0028b   coupling=9.509e-02   
+k00250029b  mutual_inductor ind1=l0025b  ind2=l0029b   coupling=6.128e-02   
+k00260027b  mutual_inductor ind1=l0026b  ind2=l0027b   coupling=2.903e-01   
+k00260028b  mutual_inductor ind1=l0026b  ind2=l0028b   coupling=1.535e-01   
+k00260029b  mutual_inductor ind1=l0026b  ind2=l0029b   coupling=9.189e-02   
+k00260030b  mutual_inductor ind1=l0026b  ind2=l0030b   coupling=6.013e-02   
+k00270028b  mutual_inductor ind1=l0027b  ind2=l0028b   coupling=2.885e-01   
+k00270029b  mutual_inductor ind1=l0027b  ind2=l0029b   coupling=1.522e-01   
+k00270030b  mutual_inductor ind1=l0027b  ind2=l0030b   coupling=9.260e-02   
+k00270031b  mutual_inductor ind1=l0027b  ind2=l0031b   coupling=6.158e-02   
+k00280029b  mutual_inductor ind1=l0028b  ind2=l0029b   coupling=2.857e-01   
+k00280030b  mutual_inductor ind1=l0028b  ind2=l0030b   coupling=1.520e-01   
+k00280031b  mutual_inductor ind1=l0028b  ind2=l0031b   coupling=9.426e-02   
+k00280032b  mutual_inductor ind1=l0028b  ind2=l0032b   coupling=6.190e-02   
+k00290030b  mutual_inductor ind1=l0029b  ind2=l0030b   coupling=2.835e-01   
+k00290031b  mutual_inductor ind1=l0029b  ind2=l0031b   coupling=1.552e-01   
+k00290032b  mutual_inductor ind1=l0029b  ind2=l0032b   coupling=9.485e-02   
+k00290033b  mutual_inductor ind1=l0029b  ind2=l0033b   coupling=6.215e-02   
+k00300031b  mutual_inductor ind1=l0030b  ind2=l0031b   coupling=2.928e-01   
+k00300032b  mutual_inductor ind1=l0030b  ind2=l0032b   coupling=1.556e-01   
+k00300033b  mutual_inductor ind1=l0030b  ind2=l0033b   coupling=9.450e-02   
+k00300034b  mutual_inductor ind1=l0030b  ind2=l0034b   coupling=6.325e-02   
+k00310032b  mutual_inductor ind1=l0031b  ind2=l0032b   coupling=2.862e-01   
+k00310033b  mutual_inductor ind1=l0031b  ind2=l0033b   coupling=1.529e-01   
+k00310034b  mutual_inductor ind1=l0031b  ind2=l0034b   coupling=9.586e-02   
+k00310035b  mutual_inductor ind1=l0031b  ind2=l0035b   coupling=6.454e-02   
+k00320033b  mutual_inductor ind1=l0032b  ind2=l0033b   coupling=2.859e-01   
+k00320034b  mutual_inductor ind1=l0032b  ind2=l0034b   coupling=1.582e-01   
+k00320035b  mutual_inductor ind1=l0032b  ind2=l0035b   coupling=9.948e-02   
+k00320036b  mutual_inductor ind1=l0032b  ind2=l0036b   coupling=6.736e-02   
+k00330034b  mutual_inductor ind1=l0033b  ind2=l0034b   coupling=3.007e-01   
+k00330035b  mutual_inductor ind1=l0033b  ind2=l0035b   coupling=1.659e-01   
+k00330036b  mutual_inductor ind1=l0033b  ind2=l0036b   coupling=1.047e-01   
+k00330037b  mutual_inductor ind1=l0033b  ind2=l0037b   coupling=6.980e-02   
+k00340035b  mutual_inductor ind1=l0034b  ind2=l0035b   coupling=3.052e-01   
+k00340036b  mutual_inductor ind1=l0034b  ind2=l0036b   coupling=1.702e-01   
+k00340037b  mutual_inductor ind1=l0034b  ind2=l0037b   coupling=1.060e-01   
+k00340038b  mutual_inductor ind1=l0034b  ind2=l0038b   coupling=7.097e-02   
+k00350036b  mutual_inductor ind1=l0035b  ind2=l0036b   coupling=3.144e-01   
+k00350037b  mutual_inductor ind1=l0035b  ind2=l0037b   coupling=1.728e-01   
+k00350038b  mutual_inductor ind1=l0035b  ind2=l0038b   coupling=1.084e-01   
+k00350039b  mutual_inductor ind1=l0035b  ind2=l0039b   coupling=7.242e-02   
+k00360037b  mutual_inductor ind1=l0036b  ind2=l0037b   coupling=3.166e-01   
+k00360038b  mutual_inductor ind1=l0036b  ind2=l0038b   coupling=1.758e-01   
+k00360039b  mutual_inductor ind1=l0036b  ind2=l0039b   coupling=1.101e-01   
+k00360040b  mutual_inductor ind1=l0036b  ind2=l0040b   coupling=6.820e-02   
+k00370038b  mutual_inductor ind1=l0037b  ind2=l0038b   coupling=3.237e-01   
+k00370039b  mutual_inductor ind1=l0037b  ind2=l0039b   coupling=1.792e-01   
+k00370040b  mutual_inductor ind1=l0037b  ind2=l0040b   coupling=1.041e-01   
+k00380039b  mutual_inductor ind1=l0038b  ind2=l0039b   coupling=3.254e-01   
+k00380040b  mutual_inductor ind1=l0038b  ind2=l0040b   coupling=1.680e-01   
+k00380041b  mutual_inductor ind1=l0038b  ind2=l0041b   coupling=5.923e-02   
+k00390040b  mutual_inductor ind1=l0039b  ind2=l0040b   coupling=3.029e-01   
+k00390041b  mutual_inductor ind1=l0039b  ind2=l0041b   coupling=8.588e-02   
+k00390042b  mutual_inductor ind1=l0039b  ind2=l0042b   coupling=6.246e-02   
+k00400041b  mutual_inductor ind1=l0040b  ind2=l0041b   coupling=1.362e-01   
+k00400042b  mutual_inductor ind1=l0040b  ind2=l0042b   coupling=9.062e-02   
+k00400043b  mutual_inductor ind1=l0040b  ind2=l0043b   coupling=6.229e-02   
+k00410042b  mutual_inductor ind1=l0041b  ind2=l0042b   coupling=3.291e-01   
+k00410043b  mutual_inductor ind1=l0041b  ind2=l0043b   coupling=1.763e-01   
+k00410044b  mutual_inductor ind1=l0041b  ind2=l0044b   coupling=1.059e-01   
+k00410045b  mutual_inductor ind1=l0041b  ind2=l0045b   coupling=6.861e-02   
+k00420043b  mutual_inductor ind1=l0042b  ind2=l0043b   coupling=3.234e-01   
+k00420044b  mutual_inductor ind1=l0042b  ind2=l0044b   coupling=1.718e-01   
+k00420045b  mutual_inductor ind1=l0042b  ind2=l0045b   coupling=1.039e-01   
+k00420046b  mutual_inductor ind1=l0042b  ind2=l0046b   coupling=6.708e-02   
+k00430044b  mutual_inductor ind1=l0043b  ind2=l0044b   coupling=3.194e-01   
+k00430045b  mutual_inductor ind1=l0043b  ind2=l0045b   coupling=1.700e-01   
+k00430046b  mutual_inductor ind1=l0043b  ind2=l0046b   coupling=1.024e-01   
+k00430047b  mutual_inductor ind1=l0043b  ind2=l0047b   coupling=6.475e-02   
+k00440045b  mutual_inductor ind1=l0044b  ind2=l0045b   coupling=3.147e-01   
+k00440046b  mutual_inductor ind1=l0044b  ind2=l0046b   coupling=1.671e-01   
+k00440047b  mutual_inductor ind1=l0044b  ind2=l0047b   coupling=9.801e-02   
+k00440048b  mutual_inductor ind1=l0044b  ind2=l0048b   coupling=6.342e-02   
+k00450046b  mutual_inductor ind1=l0045b  ind2=l0046b   coupling=3.085e-01   
+k00450047b  mutual_inductor ind1=l0045b  ind2=l0047b   coupling=1.585e-01   
+k00450048b  mutual_inductor ind1=l0045b  ind2=l0048b   coupling=9.512e-02   
+k00450049b  mutual_inductor ind1=l0045b  ind2=l0049b   coupling=6.097e-02   
+k00460047b  mutual_inductor ind1=l0046b  ind2=l0047b   coupling=2.888e-01   
+k00460048b  mutual_inductor ind1=l0046b  ind2=l0048b   coupling=1.524e-01   
+k00460049b  mutual_inductor ind1=l0046b  ind2=l0049b   coupling=9.088e-02   
+k00460050b  mutual_inductor ind1=l0046b  ind2=l0050b   coupling=5.842e-02   
+k00470048b  mutual_inductor ind1=l0047b  ind2=l0048b   coupling=2.885e-01   
+k00470049b  mutual_inductor ind1=l0047b  ind2=l0049b   coupling=1.506e-01   
+k00470050b  mutual_inductor ind1=l0047b  ind2=l0050b   coupling=8.955e-02   
+k00470051b  mutual_inductor ind1=l0047b  ind2=l0051b   coupling=5.828e-02   
+k00480049b  mutual_inductor ind1=l0048b  ind2=l0049b   coupling=2.811e-01   
+k00480050b  mutual_inductor ind1=l0048b  ind2=l0050b   coupling=1.461e-01   
+k00480051b  mutual_inductor ind1=l0048b  ind2=l0051b   coupling=8.828e-02   
+k00480052b  mutual_inductor ind1=l0048b  ind2=l0052b   coupling=5.793e-02   
+k00490050b  mutual_inductor ind1=l0049b  ind2=l0050b   coupling=2.763e-01   
+k00490051b  mutual_inductor ind1=l0049b  ind2=l0051b   coupling=1.459e-01   
+k00490052b  mutual_inductor ind1=l0049b  ind2=l0052b   coupling=8.872e-02   
+k00490053b  mutual_inductor ind1=l0049b  ind2=l0053b   coupling=5.786e-02   
+k00500051b  mutual_inductor ind1=l0050b  ind2=l0051b   coupling=2.784e-01   
+k00500052b  mutual_inductor ind1=l0050b  ind2=l0052b   coupling=1.479e-01   
+k00500053b  mutual_inductor ind1=l0050b  ind2=l0053b   coupling=8.937e-02   
+k00500054b  mutual_inductor ind1=l0050b  ind2=l0054b   coupling=5.908e-02   
+k00510052b  mutual_inductor ind1=l0051b  ind2=l0052b   coupling=2.821e-01   
+k00510053b  mutual_inductor ind1=l0051b  ind2=l0053b   coupling=1.483e-01   
+k00510054b  mutual_inductor ind1=l0051b  ind2=l0054b   coupling=9.099e-02   
+k00510055b  mutual_inductor ind1=l0051b  ind2=l0055b   coupling=6.012e-02   
+k00520053b  mutual_inductor ind1=l0052b  ind2=l0053b   coupling=2.815e-01   
+k00520054b  mutual_inductor ind1=l0052b  ind2=l0054b   coupling=1.514e-01   
+k00520055b  mutual_inductor ind1=l0052b  ind2=l0055b   coupling=9.296e-02   
+k00520056b  mutual_inductor ind1=l0052b  ind2=l0056b   coupling=6.085e-02   
+k00530054b  mutual_inductor ind1=l0053b  ind2=l0054b   coupling=2.905e-01   
+k00530055b  mutual_inductor ind1=l0053b  ind2=l0055b   coupling=1.566e-01   
+k00530056b  mutual_inductor ind1=l0053b  ind2=l0056b   coupling=9.505e-02   
+k00530057b  mutual_inductor ind1=l0053b  ind2=l0057b   coupling=6.239e-02   
+k00540055b  mutual_inductor ind1=l0054b  ind2=l0055b   coupling=2.957e-01   
+k00540056b  mutual_inductor ind1=l0054b  ind2=l0056b   coupling=1.572e-01   
+k00540057b  mutual_inductor ind1=l0054b  ind2=l0057b   coupling=9.568e-02   
+k00540058b  mutual_inductor ind1=l0054b  ind2=l0058b   coupling=6.341e-02   
+k00550056b  mutual_inductor ind1=l0055b  ind2=l0056b   coupling=2.982e-01   
+k00550057b  mutual_inductor ind1=l0055b  ind2=l0057b   coupling=1.594e-01   
+k00550058b  mutual_inductor ind1=l0055b  ind2=l0058b   coupling=9.842e-02   
+k00550059b  mutual_inductor ind1=l0055b  ind2=l0059b   coupling=6.508e-02   
+k00560057b  mutual_inductor ind1=l0056b  ind2=l0057b   coupling=3.058e-01   
+k00560058b  mutual_inductor ind1=l0056b  ind2=l0058b   coupling=1.658e-01   
+k00560059b  mutual_inductor ind1=l0056b  ind2=l0059b   coupling=1.018e-01   
+k00560060b  mutual_inductor ind1=l0056b  ind2=l0060b   coupling=6.614e-02   
+k00570058b  mutual_inductor ind1=l0057b  ind2=l0058b   coupling=3.177e-01   
+k00570059b  mutual_inductor ind1=l0057b  ind2=l0059b   coupling=1.708e-01   
+k00570060b  mutual_inductor ind1=l0057b  ind2=l0060b   coupling=1.032e-01   
+k00580059b  mutual_inductor ind1=l0058b  ind2=l0059b   coupling=3.201e-01   
+k00580060b  mutual_inductor ind1=l0058b  ind2=l0060b   coupling=1.708e-01   
+k00580061b  mutual_inductor ind1=l0058b  ind2=l0061b   coupling=6.156e-02   
+k00590060b  mutual_inductor ind1=l0059b  ind2=l0060b   coupling=3.194e-01   
+k00590061b  mutual_inductor ind1=l0059b  ind2=l0061b   coupling=9.045e-02   
+k00590062b  mutual_inductor ind1=l0059b  ind2=l0062b   coupling=6.385e-02   
+k00600061b  mutual_inductor ind1=l0060b  ind2=l0061b   coupling=1.395e-01   
+k00600062b  mutual_inductor ind1=l0060b  ind2=l0062b   coupling=8.984e-02   
+k00600063b  mutual_inductor ind1=l0060b  ind2=l0063b   coupling=6.116e-02   
+k00610062b  mutual_inductor ind1=l0061b  ind2=l0062b   coupling=3.203e-01   
+k00610063b  mutual_inductor ind1=l0061b  ind2=l0063b   coupling=1.740e-01   
+k00610064b  mutual_inductor ind1=l0061b  ind2=l0064b   coupling=1.055e-01   
+k00610065b  mutual_inductor ind1=l0061b  ind2=l0065b   coupling=6.856e-02   
+k00620063b  mutual_inductor ind1=l0062b  ind2=l0063b   coupling=3.241e-01   
+k00620064b  mutual_inductor ind1=l0062b  ind2=l0064b   coupling=1.732e-01   
+k00620065b  mutual_inductor ind1=l0062b  ind2=l0065b   coupling=1.053e-01   
+k00620066b  mutual_inductor ind1=l0062b  ind2=l0066b   coupling=6.819e-02   
+k00630064b  mutual_inductor ind1=l0063b  ind2=l0064b   coupling=3.169e-01   
+k00630065b  mutual_inductor ind1=l0063b  ind2=l0065b   coupling=1.703e-01   
+k00630066b  mutual_inductor ind1=l0063b  ind2=l0066b   coupling=1.030e-01   
+k00630067b  mutual_inductor ind1=l0063b  ind2=l0067b   coupling=6.647e-02   
+k00640065b  mutual_inductor ind1=l0064b  ind2=l0065b   coupling=3.168e-01   
+k00640066b  mutual_inductor ind1=l0064b  ind2=l0066b   coupling=1.683e-01   
+k00640067b  mutual_inductor ind1=l0064b  ind2=l0067b   coupling=1.013e-01   
+k00640068b  mutual_inductor ind1=l0064b  ind2=l0068b   coupling=6.526e-02   
+k00650066b  mutual_inductor ind1=l0065b  ind2=l0066b   coupling=3.069e-01   
+k00650067b  mutual_inductor ind1=l0065b  ind2=l0067b   coupling=1.634e-01   
+k00650068b  mutual_inductor ind1=l0065b  ind2=l0068b   coupling=9.772e-02   
+k00650069b  mutual_inductor ind1=l0065b  ind2=l0069b   coupling=6.280e-02   
+k00660067b  mutual_inductor ind1=l0066b  ind2=l0067b   coupling=3.010e-01   
+k00660068b  mutual_inductor ind1=l0066b  ind2=l0068b   coupling=1.575e-01   
+k00660069b  mutual_inductor ind1=l0066b  ind2=l0069b   coupling=9.414e-02   
+k00660070b  mutual_inductor ind1=l0066b  ind2=l0070b   coupling=6.106e-02   
+k00670068b  mutual_inductor ind1=l0067b  ind2=l0068b   coupling=2.884e-01   
+k00670069b  mutual_inductor ind1=l0067b  ind2=l0069b   coupling=1.516e-01   
+k00670070b  mutual_inductor ind1=l0067b  ind2=l0070b   coupling=9.151e-02   
+k00670071b  mutual_inductor ind1=l0067b  ind2=l0071b   coupling=5.957e-02   
+k00680069b  mutual_inductor ind1=l0068b  ind2=l0069b   coupling=2.868e-01   
+k00680070b  mutual_inductor ind1=l0068b  ind2=l0070b   coupling=1.507e-01   
+k00680071b  mutual_inductor ind1=l0068b  ind2=l0071b   coupling=9.094e-02   
+k00680072b  mutual_inductor ind1=l0068b  ind2=l0072b   coupling=5.923e-02   
+k00690070b  mutual_inductor ind1=l0069b  ind2=l0070b   coupling=2.814e-01   
+k00690071b  mutual_inductor ind1=l0069b  ind2=l0071b   coupling=1.487e-01   
+k00690072b  mutual_inductor ind1=l0069b  ind2=l0072b   coupling=8.992e-02   
+k00690073b  mutual_inductor ind1=l0069b  ind2=l0073b   coupling=5.806e-02   
+k00700071b  mutual_inductor ind1=l0070b  ind2=l0071b   coupling=2.824e-01   
+k00700072b  mutual_inductor ind1=l0070b  ind2=l0072b   coupling=1.494e-01   
+k00700073b  mutual_inductor ind1=l0070b  ind2=l0073b   coupling=8.948e-02   
+k00700074b  mutual_inductor ind1=l0070b  ind2=l0074b   coupling=5.807e-02   
+k00710072b  mutual_inductor ind1=l0071b  ind2=l0072b   coupling=2.834e-01   
+k00710073b  mutual_inductor ind1=l0071b  ind2=l0073b   coupling=1.480e-01   
+k00710074b  mutual_inductor ind1=l0071b  ind2=l0074b   coupling=8.875e-02   
+k00710075b  mutual_inductor ind1=l0071b  ind2=l0075b   coupling=5.971e-02   
+k00720073b  mutual_inductor ind1=l0072b  ind2=l0073b   coupling=2.811e-01   
+k00720074b  mutual_inductor ind1=l0072b  ind2=l0074b   coupling=1.469e-01   
+k00720075b  mutual_inductor ind1=l0072b  ind2=l0075b   coupling=9.208e-02   
+k00720076b  mutual_inductor ind1=l0072b  ind2=l0076b   coupling=6.233e-02   
+k00730074b  mutual_inductor ind1=l0073b  ind2=l0074b   coupling=2.828e-01   
+k00730075b  mutual_inductor ind1=l0073b  ind2=l0075b   coupling=1.560e-01   
+k00730076b  mutual_inductor ind1=l0073b  ind2=l0076b   coupling=9.811e-02   
+k00730077b  mutual_inductor ind1=l0073b  ind2=l0077b   coupling=6.469e-02   
+k00740075b  mutual_inductor ind1=l0074b  ind2=l0075b   coupling=3.015e-01   
+k00740076b  mutual_inductor ind1=l0074b  ind2=l0076b   coupling=1.658e-01   
+k00740077b  mutual_inductor ind1=l0074b  ind2=l0077b   coupling=1.009e-01   
+k00740078b  mutual_inductor ind1=l0074b  ind2=l0078b   coupling=6.615e-02   
+k00750076b  mutual_inductor ind1=l0075b  ind2=l0076b   coupling=3.128e-01   
+k00750077b  mutual_inductor ind1=l0075b  ind2=l0077b   coupling=1.672e-01   
+k00750078b  mutual_inductor ind1=l0075b  ind2=l0078b   coupling=1.022e-01   
+k00750079b  mutual_inductor ind1=l0075b  ind2=l0079b   coupling=6.799e-02   
+k00760077b  mutual_inductor ind1=l0076b  ind2=l0077b   coupling=3.105e-01   
+k00760078b  mutual_inductor ind1=l0076b  ind2=l0078b   coupling=1.678e-01   
+k00760079b  mutual_inductor ind1=l0076b  ind2=l0079b   coupling=1.045e-01   
+k00760080b  mutual_inductor ind1=l0076b  ind2=l0080b   coupling=6.929e-02   
+k00770078b  mutual_inductor ind1=l0077b  ind2=l0078b   coupling=3.182e-01   
+k00770079b  mutual_inductor ind1=l0077b  ind2=l0079b   coupling=1.744e-01   
+k00770080b  mutual_inductor ind1=l0077b  ind2=l0080b   coupling=1.078e-01   
+k00780079b  mutual_inductor ind1=l0078b  ind2=l0079b   coupling=3.267e-01   
+k00780080b  mutual_inductor ind1=l0078b  ind2=l0080b   coupling=1.783e-01   
+k00790080b  mutual_inductor ind1=l0079b  ind2=l0080b   coupling=3.297e-01   
+r0001b    ( 482     81 ) resistor   r=2.701e-02   
+r0002b    ( 483     82 ) resistor   r=2.612e-02   
+r0003b    ( 484     83 ) resistor   r=2.624e-02   
+r0004b    ( 485     84 ) resistor   r=2.676e-02   
+r0005b    ( 486     85 ) resistor   r=2.686e-02   
+r0006b    ( 487     86 ) resistor   r=2.755e-02   
+r0007b    ( 488     87 ) resistor   r=2.834e-02   
+r0008b    ( 489     88 ) resistor   r=2.884e-02   
+r0009b    ( 490     89 ) resistor   r=2.926e-02   
+r0010b    ( 491     90 ) resistor   r=2.958e-02   
+r0011b    ( 492     91 ) resistor   r=3.019e-02   
+r0012b    ( 493     92 ) resistor   r=2.918e-02   
+r0013b    ( 494     93 ) resistor   r=2.854e-02   
+r0014b    ( 495     94 ) resistor   r=2.785e-02   
+r0015b    ( 496     95 ) resistor   r=2.747e-02   
+r0016b    ( 497     96 ) resistor   r=2.715e-02   
+r0017b    ( 498     97 ) resistor   r=2.698e-02   
+r0018b    ( 499     98 ) resistor   r=2.782e-02   
+r0019b    ( 500     99 ) resistor   r=2.736e-02   
+r0020b    ( 501    100 ) resistor   r=2.854e-02   
+r0021b    ( 502    101 ) resistor   r=2.767e-02   
+r0022b    ( 503    102 ) resistor   r=2.603e-02   
+r0023b    ( 504    103 ) resistor   r=2.597e-02   
+r0024b    ( 505    104 ) resistor   r=2.564e-02   
+r0025b    ( 506    105 ) resistor   r=2.654e-02   
+r0026b    ( 507    106 ) resistor   r=2.657e-02   
+r0027b    ( 508    107 ) resistor   r=2.686e-02   
+r0028b    ( 509    108 ) resistor   r=2.791e-02   
+r0029b    ( 510    109 ) resistor   r=2.867e-02   
+r0030b    ( 511    110 ) resistor   r=2.903e-02   
+r0031b    ( 512    111 ) resistor   r=2.976e-02   
+r0032b    ( 513    112 ) resistor   r=2.899e-02   
+r0033b    ( 514    113 ) resistor   r=2.892e-02   
+r0034b    ( 515    114 ) resistor   r=2.947e-02   
+r0035b    ( 516    115 ) resistor   r=2.918e-02   
+r0036b    ( 517    116 ) resistor   r=2.992e-02   
+r0037b    ( 518    117 ) resistor   r=3.087e-02   
+r0038b    ( 519    118 ) resistor   r=3.177e-02   
+r0039b    ( 520    119 ) resistor   r=3.343e-02   
+r0040b    ( 521    120 ) resistor   r=3.028e-02   
+r0041b    ( 522    121 ) resistor   r=2.588e-02   
+r0042b    ( 523    122 ) resistor   r=2.437e-02   
+r0043b    ( 524    123 ) resistor   r=2.345e-02   
+r0044b    ( 525    124 ) resistor   r=2.351e-02   
+r0045b    ( 526    125 ) resistor   r=2.421e-02   
+r0046b    ( 527    126 ) resistor   r=2.467e-02   
+r0047b    ( 528    127 ) resistor   r=2.590e-02   
+r0048b    ( 529    128 ) resistor   r=2.639e-02   
+r0049b    ( 530    129 ) resistor   r=2.758e-02   
+r0050b    ( 531    130 ) resistor   r=2.757e-02   
+r0051b    ( 532    131 ) resistor   r=2.827e-02   
+r0052b    ( 533    132 ) resistor   r=2.731e-02   
+r0053b    ( 534    133 ) resistor   r=2.647e-02   
+r0054b    ( 535    134 ) resistor   r=2.611e-02   
+r0055b    ( 536    135 ) resistor   r=2.497e-02   
+r0056b    ( 537    136 ) resistor   r=2.487e-02   
+r0057b    ( 538    137 ) resistor   r=2.417e-02   
+r0058b    ( 539    138 ) resistor   r=2.412e-02   
+r0059b    ( 540    139 ) resistor   r=2.448e-02   
+r0060b    ( 541    140 ) resistor   r=2.498e-02   
+r0061b    ( 542    141 ) resistor   r=2.685e-02   
+r0062b    ( 543    142 ) resistor   r=2.749e-02   
+r0063b    ( 544    143 ) resistor   r=2.626e-02   
+r0064b    ( 545    144 ) resistor   r=2.606e-02   
+r0065b    ( 546    145 ) resistor   r=2.586e-02   
+r0066b    ( 547    146 ) resistor   r=2.535e-02   
+r0067b    ( 548    147 ) resistor   r=2.612e-02   
+r0068b    ( 549    148 ) resistor   r=2.629e-02   
+r0069b    ( 550    149 ) resistor   r=2.733e-02   
+r0070b    ( 551    150 ) resistor   r=2.694e-02   
+r0071b    ( 552    151 ) resistor   r=2.779e-02   
+r0072b    ( 553    152 ) resistor   r=2.679e-02   
+r0073b    ( 554    153 ) resistor   r=2.587e-02   
+r0074b    ( 555    154 ) resistor   r=2.542e-02   
+r0075b    ( 556    155 ) resistor   r=2.496e-02   
+r0076b    ( 557    156 ) resistor   r=2.480e-02   
+r0077b    ( 558    157 ) resistor   r=2.451e-02   
+r0078b    ( 559    158 ) resistor   r=2.540e-02   
+r0079b    ( 560    159 ) resistor   r=2.561e-02   
+r0080b    ( 561    160 ) resistor   r=2.707e-02   
+ends  QFP80LD

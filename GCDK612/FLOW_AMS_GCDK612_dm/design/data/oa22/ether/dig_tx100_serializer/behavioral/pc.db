@@ -1,0 +1,50 @@
+#
+gsclib090 BUFX1 symbol
+select_out_reg_0_599_5a
+align_reg_626_5a
+#
+gsclib090 BUFX3 symbol
+select_out_reg_2_1576_3
+align_reg_1888_3
+select_out_reg_1_2215_3
+select_out_reg_2_2637_3
+#
+gsclib090 NAND2X1 symbol
+i_8
+i_9
+#
+gsclib090 AND2X1 symbol
+i_1
+#
+gsclib090 NOR2X1 symbol
+i_22
+i_23
+i_05579
+#
+gsclib090 NAND3X1 symbol
+i_13
+i_7
+#
+gsclib090 MX2X1 symbol
+i_2
+i_1977
+i_1970
+i_1963
+i_4
+i_5
+#
+gsclib090 DFFSRX1 symbol
+select_out_reg_2
+select_out_reg_1
+select_out_reg_0
+align_reg
+#
+gsclib090 OAI21X1 symbol
+i_1985
+i_1984
+i_24
+i_17
+#
+gsclib090 INVX1 symbol
+i_2013
+i_2012

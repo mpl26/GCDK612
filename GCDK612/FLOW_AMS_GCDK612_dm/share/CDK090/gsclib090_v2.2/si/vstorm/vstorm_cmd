@@ -1,0 +1,15 @@
+# vstorm_pv.cmd
+#
+
+# library & views
+cell_library ./sram2_128_2_pv
+
+# cell & IP instance power
+instance_power_file avg 1.2 ascii instance_power.txt
+cell_power_file 0.1W 1.2
+
+# define voltage sources
+setvar powerpin_location_file ./vdd_loc
+
+# analysis
+analyze VDD 1.2 avg 1.1 ir rj

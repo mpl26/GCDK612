@@ -1,0 +1,32 @@
+Simulation  :	adc_top_ahdl_vs_sch_SIM
+Purpose     :	Compare the ADC ahdl model to the schematic
+
+Input Signal:
+                Common Mode: 765mV
+                Voltage Swing: +/-200mV single ended
+		frequency = 56.64Mhz
+
+Description :	This simulation takes the input differential analog signal and 
+		codifies it into a 6-bit (adc) and/or 3-bit (adcflash) output 
+		digital word.
+
+		The main path to test is the 6-bit path used for 100TX.
+		The testcase sets the following bits:
+		basefx_dis = 1 (disables 100FX mode) 
+		test_en    = 0 (disables test mode of the adc)
+		base100_tx_dis = 0 (Enables 100TX operation)
+
+Simulator   :	Spectre (from Config file)
+State       :	Spectre: tt
+
+Verification:   Verify results by Comparing adc_out_sch to adc_out_ahdl.
+		Note that the results do not have to be the same but similar
+		as the sampling point may be off. 
+
+Warning     :   When using a Config view with 2 different instances of the same
+		circuit and each is using a different view (schematic vs ahdl)
+		care must be taken with the netlister.
+		If the netlister gives problems related to undefined instances,
+		just Re-netlist and then run the simulation.
+		i.e. Simulation->Netlist->Recreate  (To recreate netlist)
+		Simulation->RUN (to run the simulation)

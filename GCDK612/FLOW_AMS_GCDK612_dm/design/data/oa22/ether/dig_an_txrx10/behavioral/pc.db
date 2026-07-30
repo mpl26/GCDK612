@@ -1,0 +1,152 @@
+#
+gsclib090 BUFX1 symbol
+txx_reg_1_226_5a
+rx_reg_0_237_5a
+lp_sync_reg_0_400_5a
+TXE_reg_516_5a
+rx_reg_2_556_5a
+txx_reg_3_661_5a
+#
+gsclib090 CLKBUFX1 symbol
+i_231
+#
+gsclib090 BUFX3 symbol
+i_655
+TXE_reg_982_3
+TXE_reg_983_3
+lp_sync_reg_0_1014_3
+lp_sync_reg_0_1015_3
+td_sync_reg_0_1236_3
+td_sync_reg_0_1237_3
+td_sync_reg_1_1350_3
+td_sync_reg_1_1351_3
+neg_sync_reg_1_1548_3
+neg_sync_reg_0_1602_3
+pos_sync_reg_0_1613_3
+pos_sync_reg_1_1617_3
+rx_reg_3_1743_3
+lp_sync_reg_1_1755_3
+rx_reg_2_1936_3
+txx_reg_1_1941_3
+txx_reg_0_2086_3
+rx_reg_1_2118_3
+txx_reg_2_2154_3
+TXD_reg_2199_3
+neg_sync_reg_1_2541_3
+pos_sync_reg_0_2621_3
+pos_sync_reg_1_2677_3
+neg_sync_reg_0_2684_3
+rx_reg_3_2928_3
+lp_sync_reg_1_2952_3
+txx_reg_5_52_5a
+#
+gsclib090 CLKBUFX3 symbol
+i_1164
+#
+gsclib090 AOI22X1 symbol
+i_8514
+#
+gsclib090 NAND4X1 symbol
+i_30
+i_52
+#
+gsclib090 NAND3X1 symbol
+i_7
+i_13
+i_21
+i_51
+#
+gsclib090 NAND2X1 symbol
+i_49
+i_94818
+i_1
+i_15
+i_54815
+i_8509
+i_47
+i_0
+i_24
+i_22
+i_17
+#
+gsclib090 OAI21X1 symbol
+i_832
+i_831
+i_22705
+i_41
+i_42
+i_43
+i_11
+#
+gsclib090 XOR2X1 symbol
+i_40
+i_4
+i_8
+i_9
+i_10
+#
+gsclib090 NOR2X1 symbol
+i_12706
+i_32704
+i_42703
+i_52702
+i_6
+i_8525
+i_55
+i_54
+i_84817
+i_28
+i_27
+i_29
+i_14
+#
+gsclib090 DFFSRX1 symbol
+TXD_reg
+txx_reg_5
+txx_reg_4
+txx_reg_3
+txx_reg_2
+txx_reg_1
+txx_reg_0
+TXE_reg
+td_sync_reg_1
+td_sync_reg_0
+lp_sync_reg_1
+lp_sync_reg_0
+rx_reg_4
+rx_reg_3
+rx_reg_2
+rx_reg_1
+rx_reg_0
+neg_sync_reg_1
+neg_sync_reg_0
+pos_sync_reg_1
+pos_sync_reg_0
+#
+gsclib090 MX2X1 symbol
+i_880
+i_873
+i_866
+i_859
+i_852
+i_845
+i_838
+i_754
+i_824
+i_817
+i_810
+i_803
+i_796
+i_789
+i_782
+i_775
+i_768
+i_761
+i_747
+i_740
+#
+gsclib090 INVX1 symbol
+i_970
+#
+gsclib090 INVX2 symbol
+i_971

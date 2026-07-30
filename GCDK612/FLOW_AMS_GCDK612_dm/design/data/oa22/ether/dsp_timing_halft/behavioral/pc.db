@@ -1,0 +1,142 @@
+#
+gsclib090 CLKBUFX3 symbol
+i_1524
+#
+gsclib090 INVX8 symbol
+i_169958
+i_169959
+#
+gsclib090 CLKBUFX1 symbol
+i_1738
+i_1755
+#
+gsclib090 BUFX3 symbol
+i_407
+i_1831
+i_1936
+code_1_detected_d1_reg_110_3
+code_1_detected_d1_reg_111_3
+poscode_detected_d1_reg_216_3
+poscode_detected_d1_reg_217_3
+adc_timing_d1_reg_1_308_3
+adc_timing_d1_reg_1_309_3
+adc_timing_d2_reg_2_332_3
+adc_timing_d2_reg_2_333_3
+code_1_detected_reg_490_3
+code_1_detected_reg_491_3
+adc_timing_d2_reg_1_796_3
+adc_timing_d2_reg_1_797_3
+neg_adc_timing_d2_reg_2_920_3
+neg_adc_timing_d2_reg_2_921_3
+adc_timing_d2_reg_0_936_3
+adc_timing_d2_reg_0_937_3
+neg_adc_timing_d2_reg_0_1018_3
+neg_adc_timing_d2_reg_0_1019_3
+bottom_out_reg_1_1388_3
+bottom_out_reg_1_1389_3
+bottom_out_reg_0_1502_3
+top_out_reg_0_1507_3
+poscode_detected_reg_1526_3
+top_out_reg_2_1542_3
+top_out_reg_1_1580_3
+adc_timing_d1_reg_0_1603_3
+bottom_out_reg_2_1726_3
+slice_d1_reg_0_2088_3
+slice_d1_reg_1_2126_3
+i_2320
+i_2389
+poscode_detected_d1_reg_2265_3
+adc_timing_d2_reg_2_2332_3
+code_1_detected_reg_2388_3
+poscode_detected_reg_2407_3
+bottom_out_reg_0_2477_3
+neg_adc_timing_d2_reg_2_2487_3
+top_out_reg_0_2504_3
+top_out_reg_1_2641_3
+top_out_reg_2_2720_3
+neg_adc_timing_d2_reg_1_2785_3
+adc_timing_d2_reg_1_2800_3
+bottom_out_reg_2_2812_3
+neg_adc_timing_d2_reg_0_106_5a
+#
+gsclib090 BUFX1 symbol
+i_189
+poscode_detected_d1_reg_186_5a
+adc_timing_d2_reg_0_232_5a
+adc_timing_d1_reg_2_277_5a
+adc_timing_d2_reg_2_445_5a
+poscode_detected_reg_652_5a
+code_1_detected_reg_733_5a
+#
+gsclib090 NAND2X1 symbol
+i_15
+i_14
+i_13
+#
+gsclib090 NOR2X1 symbol
+i_11
+i_9
+i_05568
+i_34358
+i_8636
+i_16
+i_12600
+i_22599
+i_32598
+i_4
+#
+gsclib090 AND2X1 symbol
+i_10
+i_12
+#
+gsclib090 MX2X1 symbol
+i_5
+i_6
+i_7
+#
+gsclib090 AOI22X1 symbol
+i_1
+i_2
+i_3
+i_12594
+i_22593
+i_32592
+#
+gsclib090 XOR2X1 symbol
+i_8
+#
+gsclib090 DFFSRX1 symbol
+top_out_reg_2
+top_out_reg_1
+top_out_reg_0
+code_1_detected_d1_reg
+bottom_out_reg_2
+bottom_out_reg_1
+bottom_out_reg_0
+adc_timing_d2_reg_2
+adc_timing_d2_reg_1
+adc_timing_d2_reg_0
+poscode_detected_d1_reg
+poscode_detected_reg
+code_1_detected_reg
+slice_d1_reg_1
+slice_d1_reg_0
+neg_adc_timing_d2_reg_2
+neg_adc_timing_d2_reg_1
+neg_adc_timing_d2_reg_0
+adc_timing_d1_reg_2
+adc_timing_d1_reg_1
+adc_timing_d1_reg_0
+#
+gsclib090 INVX1 symbol
+i_687
+i_686
+i_685
+i_684
+i_683
+i_682
+i_681
+i_680
+i_679
+i_678
+i_677

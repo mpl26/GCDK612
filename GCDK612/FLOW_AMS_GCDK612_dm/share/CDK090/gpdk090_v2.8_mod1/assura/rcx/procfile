@@ -1,0 +1,136 @@
+process gpdk090
+
+* file updated 4 January 2002
+* Tricia Eckman, Sr. Technical Lead, Core Competency, Assura RCX
+*
+* Assura RCX procfile for GENERIC PDK Process
+* Library Specification No. GPDK, Version 1.8
+* Cadence Design Systems, Inc.
+* PDK TECHNOLOGY CENTER, Melbourne, FL
+*
+* Process Description Input File for Capgen / Assura RCX
+* maximum search distance for intra-layer lateral 10X minimum spacing
+* maximum width 10X minimum width
+* 2 layer combinations used for inter-layer fringe
+*
+* units are microns
+
+deposition
+*step #	material p/n	name	Z	diel_constant
+step 1	substrate	sti 	0.035	4.5
+
+* Below is not in spec
+step 1	substrate	diff	0.005	4.5
+* Above is not in spec
+
+step 2	metal		poly	0.15
+step 3	dielectric p	ild	0.30	4.5
+step 4	metal		mt1	0.30
+step 5	dielectric p	imd2	0.30	2.9
+step 6	metal		mt2	0.36
+step 7	dielectric p	imd3	0.30	2.9
+step 8 	metal		mt3	0.36
+step 9 	dielectric p	imd4	0.30	2.9
+step 10	metal		mt4	0.36
+step 11	dielectric p	imd5	0.30	2.9
+step 12	metal		mt5	0.36
+step 13	dielectric p	imd6	0.30	2.9
+step 14	metal		mt6	0.36
+step 15	dielectric p	imd7	0.30	2.9
+step 16	metal		mt7	0.36
+step 17	dielectric p	imd8	0.60	4.2
+step 18	metal		mt8	1.00
+step 19	dielectric p	imd9	0.60	4.2
+step 20	metal		mt9	1.00
+step 21	dielectric n	pass 	0.80	4.1
+step 22	dielectric p	air	2.00	1.0
+enddeposition
+
+metal_variations
+*layer	name	s/w	min	max	increment
+* w (1X,2X,1X)
+* w (5X,10X,5X)
+* s (1X,2X,1X)
+* s (4X,5X,2X)
+layer	poly	w	0.10	0.20	0.10
+layer	poly	w	0.50	1.00	0.50	
+layer	poly	s	0.12	0.24	0.12
+layer	poly	s	0.48	0.60	0.48
+*
+layer	mt1	w	0.12	0.24	0.12
+layer	mt1	w	0.60	1.20	0.60
+layer	mt1	s	0.12	0.24	0.12
+layer	mt1	s	0.48	0.60	0.24
+*
+layer	mt2	w	0.14	0.28	0.14
+layer	mt2	w	0.70	1.40	0.70
+layer	mt2	s	0.14	0.28	0.14
+layer	mt2	s	0.56	0.70	0.28
+*
+layer	mt3	w	0.14	0.28	0.14
+layer	mt3	w	0.70	1.40	0.70
+layer	mt3	s	0.14	0.28	0.14
+layer	mt3	s	0.56	0.70	0.28
+*
+layer	mt4	w	0.14	0.28	0.14
+layer	mt4	w	0.70	1.40	0.70
+layer	mt4	s	0.14	0.28	0.14
+layer	mt4	s	0.56	0.70	0.28
+*
+layer	mt5	w	0.14	0.28	0.14
+layer	mt5	w	0.70	1.40	0.70
+layer	mt5	s	0.14	0.28	0.14
+layer	mt5	s	0.56	0.70	0.28
+*
+layer	mt6	w	0.14	0.28	0.14
+layer	mt6	w	0.70	1.40	0.70
+layer	mt6	s	0.14	0.28	0.14
+layer	mt6	s	0.56	0.70	0.28
+*
+layer	mt7	w	0.14	0.28	0.14
+layer	mt7	w	0.70	1.40	0.70
+layer	mt7	s	0.14	0.28	0.14
+layer	mt7	s	0.56	0.70	0.28
+*
+layer	mt8	w	0.44	0.88	0.44
+layer	mt8	w	1.76	3.52	1.76
+layer	mt8	s	0.44    0.88    0.44
+layer	mt8	s	1.76	2.20	0.88
+*
+layer	mt9	w	0.44	0.88	0.44
+layer	mt9	w	1.76	3.52	1.76
+layer	mt9	s	0.44    0.88    0.44
+layer	mt9	s	1.76	2.20	0.88
+endmetal_variations
+
+metal_combinations
+*layers	name1	name2	s_min	s_max	increment
+*                              (above)  s_max/3
+layers	poly	mt1	0.0	3.00	1.00
+layers	poly	mt2	0.0	3.00	1.00
+*
+layers	mt1	mt2	0.0	0.70    0.23
+layers	mt1	mt3	0.0	0.70    0.23
+*
+layers	mt2	mt3	0.0	0.70    0.23
+layers	mt2	mt4	0.0	0.70    0.23
+*
+layers	mt3	mt4	0.0	0.70    0.23
+layers	mt3	mt5	0.0	0.70    0.23
+*
+layers	mt4	mt5	0.0	0.70    0.23
+layers	mt4	mt6	0.0	0.70    0.23
+*
+layers	mt5	mt6	0.0	0.70    0.23
+layers	mt5	mt7	0.0	0.70    0.23
+*
+layers	mt6	mt7	0.0	0.70    0.23
+layers	mt6	mt8	0.0	2.20    0.73
+*
+layers	mt7	mt8	0.0	2.20    0.73
+layers	mt7	mt9	0.0	2.20    0.73
+*
+layers	mt8	mt9	0.0	2.20    0.73
+endmetal_combinations
+
+endprocess 

@@ -1,0 +1,69 @@
+#
+gsclib090 BUFX1 symbol
+rclk25_pos_pos_en_reg_227_5a
+phase_2_reg_419_5a
+#
+gsclib090 BUFX3 symbol
+i_891
+count_posedge_reg_0_840_3
+count_posedge_reg_0_841_3
+count_negedge_reg_0_942_3
+count_negedge_reg_0_943_3
+rclk25_pos_pos_en_reg_1491_3
+count_posedge_reg_1_1806_3
+phase_1_reg_1921_3
+count_negedge_reg_1_2070_3
+count_posedge_reg_0_2842_3
+count_negedge_reg_0_2849_3
+count_posedge_reg_1_2963_3
+count_negedge_reg_1_166_5a
+#
+gsclib090 XOR2X1 symbol
+i_0
+i_225223
+#
+gsclib090 NAND3X1 symbol
+i_4607
+#
+gsclib090 NOR2X1 symbol
+i_35249
+i_11
+#
+gsclib090 AOI21X1 symbol
+i_23176
+i_6
+#
+gsclib090 MX2X1 symbol
+i_550
+#
+gsclib090 OAI21X1 symbol
+i_563
+i_1
+i_13177
+i_2
+#
+gsclib090 NAND2X1 symbol
+i_565
+i_4603
+i_10
+i_45588
+#
+gsclib090 DFFSRX1 symbol
+rclk25_pos_pos_en_reg
+phase_2_b_reg
+rclk25_pos_neg_en_reg
+phase_1_b_reg
+phase_1_reg
+count_posedge_reg_1
+count_posedge_reg_0
+phase_2_reg
+count_negedge_reg_1
+count_negedge_reg_0
+#
+gsclib090 INVX1 symbol
+i_610
+i_608
+i_607
+#
+gsclib090 INVX2 symbol
+i_611

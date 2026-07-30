@@ -1,0 +1,83 @@
+//
+//	Module Name :	clock_monitor
+//	Date :	        7/11/98
+//
+//
+//	Input(s) :	Clkref  - Reference Clock input
+//                      vthresh - Threshold voltage of clock (2.5 for a 0-5 volt clock)
+//
+//	Output(s) :	freq       - Frequency of clock in GHz/volt
+//			duty       - Duty cycle of clock in 100%/volt
+//                      jitter_e2e - Edge to edge jitter (cycle to cycle) in nsec
+//	Parameter(s) :	
+//			start -  Time to start measurements
+//			         Default = 1 nsec
+//	Description :
+//
+// This module looks for rising and falling edges to cross vthresh volts, and 
+// measures duty cycle, frequency, and edge to edge jitter based on these 
+// crossings.
+//
+
+module misc_clock_monitor(freq, duty, clock, vthresh, jitter_e2e)
+  (tstart, discyc, dutyscale, freqscale, jitterscale)
+  node [V,I] freq, duty, clock, vthresh, jitter_e2e;
+
+  parameter real tstart = 1e-9;	 // 1 nsec transient startup
+  parameter real dutyscale = 1;
+  parameter real freqscale = 1e-6;   // 1 = 1MHz
+  parameter real jitterscale = 1e9; // 1 = 1ns
+  parameter integer discyc = 2; // discard first two cycles of results
+{
+  real old_rise, new_rise, old_fall, new_fall, old_period, new_period;
+  real dutycycle, frequency, e2ejitter;
+  integer got;
+
+  initial {
+      old_rise = 0;
+      new_rise = 0;
+      old_fall = 0;
+      new_fall = 0;
+      old_period = 0;
+      new_period = 0;
+      dutycycle = 0;
+      frequency = 0;
+      got = 0;
+    }
+
+  
+  analog {
+  
+    if ($threshold (V(clock) - V(vthresh), +1, 1e-12, 1)) {
+       if (tstart < $time()) {
+          got = got + 1;
+          old_rise = new_rise;
+          new_rise = $time();
+	  old_period = new_period;
+	  new_period = new_rise - old_rise;
+	  if (got > discyc) {
+	     // avoid divide by 0
+             frequency = 1 / (new_rise - old_rise + 1e-30);
+	     e2ejitter = new_period - old_period;
+          }
+       }
+    }
+    if( $threshold (V(clock) - V(vthresh), -1, 1e-12, 1)) {
+       if (tstart < $time()) {
+          old_fall = new_fall;
+          new_fall = $time();
+	  if (got > discyc) {
+	     // avoid divide by 0
+    	     dutycycle = (new_fall - new_rise) / (new_fall - old_fall + 1e-30);
+          }
+       }
+    } 
+      
+    V(duty)<-dutycycle * dutyscale;
+    V(freq)<-frequency * freqscale;
+    V(jitter_e2e)<-e2ejitter * jitterscale;
+  }
+   
+  final {
+  }
+}

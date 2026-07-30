@@ -1,0 +1,20 @@
+Simulation  :   adc_interp_settle
+Purpose     :   Test the operation of the Interpolators
+
+Description :   Tests the ADC Interpolators settling time.
+
+Verification:   look at:
+ 			out0p out0n
+ 			out1p out1n
+ 			out2p out2n
+ 			out3p out3n
+ 			out4p out4n
+ 			out5p out5n
+ 			out6p out6n
+ 			out7p out7n
+ 			out8p out8n
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+

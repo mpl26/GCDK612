@@ -1,0 +1,52 @@
+Simulation:     AMS_PLL_250MHZ 
+
+Purpose:        Measure PLL jitter, duty cycle and lock time.
+
+States:         tt models
+
+Description:    The AMS_PLL_250MHZ test-bench contains  an instantiation of 
+the PLL block, PLL_250MHZ. The input of the PLL_250MHZ block is driven by a 
+25MHz periodic voltage source. Ideal current sources are used to provides the 
+bias currents necessary to operate the block. In addition, clock_monitor2 is 
+used  to monitor the PLL's output frequency, duty-cycle and edge-to-edge jitter.
+
+Verification:  A transient analysis is run on the AMS_PLL_250Mhz test bench 
+using AMS designer. The simulation needs to be run for about 5us for the PLL 
+to lock. The CLK_250MHZ_PH<0> output of the PLL is monitored by looking at the 
+phase<0> signal using the clock_monitor2 block. The outputs of this block give 
+the frequency, duty-cycle and the edge-to-edge jitter of the clock.When the 
+fVCO_CLK output reaches a steady value around 250MHz, it indicates PLL lock. 
+After this point, the duty-cycle and the edge-to-edge jitter can be read from 
+the dcVCO_CLK and jVCO_CLK outputs. 
+
+Input Signals:  I20/CLK_25MHZ
+
+Output Signals: phase<0>, I20/CLK_250MHZ_PH<0>, fVCO_CLK, dcVCO_CLK, jVCO_CLK
+
+Note:
+
+hdl.var
+-------
+# MODELPATH == ALGPRIMPATH
+# softinclude $AMSHOME/inca/files/hdl.var
+# setup use5x by default
+DEFINE VHDL_SUFFIX ( .vhd, .vhdl, .vgate, .vhms )
+define NCVHDLOPTS -use5x -v93
+define ncuse5x
+define WORK schroeder_sims
+define cdslib ./cds.lib
+define MODELPATH /project/tsmc13lv99/models/spectre/tsmc13lv.scs(tt):/project/tsmc13lv99/cust_models/pkgModel/QFP80LD.scs
+define VIEW_MAP ($VIEW_MAP, .vs => shell)
+
+cds.lib
+------- 
+SOFTINCLUDE /project/tsmc13lv99/toolbox/proj_start/cds.lib
+
+transient simulation stop time
+------------------------------
+5us minimum
+
+connectivity module
+-------------------
+library: schroeder_sims
+cell: mixedsignal_25a
